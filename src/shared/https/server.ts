@@ -6,7 +6,6 @@ import { errors } from 'celebrate'
 import routes from './routes';
 import AppError from '@shared/errors/AppError'
 import "@shared/typeorm"
-import { User } from '@modules/User/entity/UserEntity'
 
 const app = express();
 const PORT = 3001;
@@ -45,10 +44,7 @@ app.use((
 })
 
 app.listen( PORT , async () =>{
-//app.listen( PORT ,() =>{
 	console.log(`server started on ${IP_ADDR}:${PORT}`);
-   
-  
 })
 
 

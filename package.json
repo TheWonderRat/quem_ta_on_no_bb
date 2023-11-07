@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node -r tsconfig-paths/register --transpile-only src/shared/https/server.ts",
     "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src src/shared/https/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
-    "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts"
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migration-run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
+    "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts"
   },
   "keywords": [],
   "author": "",

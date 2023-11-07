@@ -16,32 +16,39 @@ export const myDataSource = new DataSource({
   "database":"aprovados_novo",
   //"synchronize": true,
   "entities":[
-    /*
+    //'../../modules/**/entity/*.ts'
     Aprovado,
     Lista,
     Situacao,
     TipoLista,
     Lotacao,
     Turma,
-    */
-    '../../modules/Aprovado/entity/Aprovado',
-    '../../modules/Lista/entity/Lista',
-    '../../modules/Situacao/entity/Situacao',
-    '../../modules/Lotacao/entity/Lotacao',
-    "../../TipoLista/entity/TipoLista",
-    '../../modules/User/entity/UserEntity'
-  ],
-  "migrations":[
-
-    '../../modules/**/entity/*.ts'
     /*
     '../../modules/Aprovado/entity/Aprovado',
     '../../modules/Lista/entity/Lista',
     '../../modules/Situacao/entity/Situacao',
     '../../modules/Lotacao/entity/Lotacao',
     "../../TipoLista/entity/TipoLista",
-    "../../Turma/entity/Turma"
+    '../../modules/User/entity/UserEntity'
     */
+  ],
+  "migrations":[
+    //'./migrations/*.ts',
+    '../../modules/Aprovado/entity/Aprovado',
+    '../../modules/Lista/entity/Lista',
+    '../../modules/Situacao/entity/Situacao',
+    '../../modules/Lotacao/entity/Lotacao',
+    "../../TipoLista/entity/TipoLista",
+    '../../modules/User/entity/UserEntity'
+    /*
+    './migrations/1699291082639-CreateTurma.ts',
+    './migrations/1699293347264-CreateLista.ts',
+    './migrations/1699291030243-CreateLotacao.ts',
+    './migrations/1699291074688-CreateSituacao.ts',
+    './migrations/1699291092575-CreateTipoLista.ts',
+    './migrations/1698767828418-CreateAprovado.ts'
+    */
+    //'../../modules/**/entity/**',
   ]
 });
 

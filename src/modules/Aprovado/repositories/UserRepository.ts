@@ -1,6 +1,5 @@
 
 import { EntityRepository } from "typeorm"
-import { User } from "../entity/UserEntity"
 
 
 /*
