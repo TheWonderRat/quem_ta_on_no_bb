@@ -1,6 +1,7 @@
 import AppError from '@shared/errors/AppError'
-import { Aprovado } from '../entity/Aprovado'
+//import { Aprovado } from '../entity/Aprovado'
 import { myDataSource } from '@shared/typeorm/index';
+import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
 
 interface IRequest{
   pagina: number,

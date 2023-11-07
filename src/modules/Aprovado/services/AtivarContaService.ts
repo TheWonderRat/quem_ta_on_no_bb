@@ -1,7 +1,8 @@
 import AppError from '@shared/errors/AppError'
 import {hash, compare} from 'bcryptjs'
 import { myDataSource } from "@shared/typeorm/index"
-import { Aprovado } from "../entity/Aprovado"
+//import { Aprovado } from "../entity/Aprovado"
+import { Aprovado } from "@modules/Aprovado/entity/Aprovado";
 
 interface IRequest {
   login: number, 

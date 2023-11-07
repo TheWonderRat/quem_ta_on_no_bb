@@ -1,3 +1,4 @@
+/*
 import { Request, Response, NextFunction } from 'express'
 
 import AtivarContaService from '../services/AtivarContaService';
@@ -102,4 +103,4 @@ export default class UserController{
 	}
 }
 
-
+*/

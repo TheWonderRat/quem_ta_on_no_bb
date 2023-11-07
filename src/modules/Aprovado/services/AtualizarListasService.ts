@@ -1,7 +1,8 @@
 import AppError from '@shared/errors/AppError'
 import {compare} from 'bcryptjs'
 import authConfig from '@config/auth'
-import { Aprovado } from '../entity/Aprovado'
+//import { Aprovado } from '../entity/Aprovado'
+import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
 import { myDataSource } from '@shared/typeorm/index'
 
 interface IRequest {

@@ -4,7 +4,8 @@ import {compare} from 'bcryptjs'
 
 import authConfig from '@config/auth'
 //import { UserRepository } from '../entity/UserRepository'
-import { Aprovado } from '../entity/Aprovado'
+//import { Aprovado } from '../entity/Aprovado'
+import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
 import { myDataSource } from '@shared/typeorm/index'
 
 

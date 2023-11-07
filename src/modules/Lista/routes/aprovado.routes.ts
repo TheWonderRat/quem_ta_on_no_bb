@@ -1,3 +1,4 @@
+/*
 import { Router, Request, Response} from 'express'
 import {celebrate, Joi, Segments} from 'celebrate'
 import UsersController from '../controllers/UsersController'
@@ -153,3 +154,4 @@ userRouter.patch(
 );
 
 export default userRouter;
+*/
