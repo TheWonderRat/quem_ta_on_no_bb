@@ -1,0 +1,7 @@
+{
+  "jwt": {
+    "secret": "secret_word",
+    "expiresIn": "time_to_expire"
+  },
+  "__comment__": "for more references about the jwt config, see follow link https://www.npmjs.com/package/jsonwebtoken"
+}

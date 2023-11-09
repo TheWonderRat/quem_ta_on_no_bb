@@ -1,66 +1,39 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAuthenticated = void 0;
-const AppError_1 = __importDefault(require("../../shared/errors/AppError"));
-
-const auth_1 = __importDefault(require("../../config/auth"));
-//Avoiding import error
-const jsonwebtoken = require('jsonwebtoken');
-const { verify } = jsonwebtoken;
-;
-async function isAuthenticated(request, response, next) {
-    const authHeader = request.headers.authorization;
-    if (!authHeader) {
-        throw new AppError_1.default("User is not authenticated!");
-    }
-    const [, token] = authHeader.split(' ');
-    try {
-        //TODO:: refresh token?
-        const decodedToken = await verify(token, auth_1.default.jwt.secret, { complete: true });
-        /*
-         const { sub } = decodedToken as TokenPayload;
-          request.user = {
-            inscricao: sub,
-          };
-        */
-        return next();
-    }
-    catch (error) {
-        console.log(error);
-        throw new AppError_1.default("PORRTA");
-    }
-}
-exports.isAuthenticated = isAuthenticated;
-/*
-export async function isFileOwner(request: Request,next: NextFunction,fileId: String){
-    const authHeader = request.headers.authorization
-
-    if(!authHeader){
-        throw new AppError("No authentication for the user");
-    }
-
-    const [,token] = authHeader.split(' ');
-    let decodedToken :JwtPayload ;
-
-
-    try{
-        decodedToken= await verify( token, authConfig.jwt.secret, {complete: true})
-    }
-    catch(error){
-        throw new AppError("PORRTA");
-    }
-
-        /*
-        if(){
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+// import {Jwt, JwtPayload,SignOptions,decode,verify, sign} from 'jsonwebtoken'
+const auth_json_1 = __importDefault(require("../../config/auth.json"));
+const AppError_1 = __importDefault(require("../errors/AppError"));
+// Avoiding import error
+const { verify } = jsonwebtoken_1.default;
+function isAuthenticated(req, __res, next) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const authHeader = (_a = req.headers.authorization) !== null && _a !== void 0 ? _a : false;
+        if (authHeader === false) {
+            return new AppError_1.default('User is not authenticated!');
         }
-    }
-    else{
-        next()
-    }
-
-    throw new AppError("User has no authorization to edit this file!");
+        try {
+            // TODO:: refresh token?
+            const [, token] = authHeader.split(' ');
+            verify(token, auth_json_1.default.jwt.secret, { complete: true });
+            return next();
+        }
+        catch (error) {
+            return next(new AppError_1.default('User is not authenticated'));
+        }
+    });
 }
-*/
+exports.default = isAuthenticated;
