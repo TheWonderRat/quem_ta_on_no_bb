@@ -1,21 +1,20 @@
-import { DataSource } from "typeorm"
-import { Aprovado } from '../../modules/Aprovado/entity/Aprovado'
-import { Lista } from '../../modules/Lista/entity/Lista'
-import { Situacao } from '../../modules/Situacao/entity/Situacao'
-import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
-import { Lotacao } from '../../modules/Lotacao/entity/Lotacao'
-import { Turma } from '../../modules/Turma/entity/Turma'
+import { DataSource } from 'typeorm';
+// import { Aprovado } from '../../modules/Aprovado/entity/Aprovado';
+// import { Lista } from '../../modules/Lista/entity/Lista';
+// import { Situacao } from '../../modules/Situacao/entity/Situacao';
+// import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
+// import { Lotacao } from '../../modules/Lotacao/entity/Lotacao';
+// import { Turma } from '../../modules/Turma/entity/Turma';
 
-
-export const myDataSource = new DataSource({
-  "type":"postgres",
-  "host":"localhost",
-  "port":5432,
-  "username":"postgres",
-  "password":"docker",
-  "database":"aprovados_novo",
-  //"synchronize": true,
-  "entities":[
+const myDataSource = new DataSource({
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: 'docker',
+  database: 'aprovados_novo',
+  // "synchronize": true,
+  entities: [
     /*
     Aprovado,
     Lista,
@@ -28,12 +27,12 @@ export const myDataSource = new DataSource({
     '../../modules/Lista/entity/Lista',
     '../../modules/Situacao/entity/Situacao',
     '../../modules/Lotacao/entity/Lotacao',
-    "../../TipoLista/entity/TipoLista",
-    '../../modules/User/entity/UserEntity'
+    '../../TipoLista/entity/TipoLista',
+    '../../modules/User/entity/UserEntity',
   ],
-  "migrations":[
+  migrations: [
 
-    '../../modules/**/entity/*.ts'
+    '../../modules/**/entity/*.ts',
     /*
     '../../modules/Aprovado/entity/Aprovado',
     '../../modules/Lista/entity/Lista',
@@ -42,16 +41,16 @@ export const myDataSource = new DataSource({
     "../../TipoLista/entity/TipoLista",
     "../../Turma/entity/Turma"
     */
-  ]
+  ],
 });
-
 
 myDataSource.initialize()
   .then((e) => {
+    console.log(`${e}`);
     /*
     const jsonStringOne = require('../../../dados_dos_candidatos/src/diretas.json');
     const jsonStringTwo = require('../../../dados_dos_candidatos/src/cadastroReserva.json');
-  
+
     jsonStringOne.forEach(async (u: User)=>{
       const user = myDataSource.manager.create(User);
       user.inscricao = u.inscricao;
@@ -87,10 +86,10 @@ myDataSource.initialize()
     });
       */
 
-    console.log("data source has been initialized!")
+    console.log('data source has been initialized!');
   })
-  .catch((e) =>{
-    console.log(`${e}`)
-  })
+  .catch((e) => {
+    console.log(`${e}`);
+  });
 
-
+export default myDataSource;

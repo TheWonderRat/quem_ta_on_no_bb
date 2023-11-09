@@ -1,44 +1,45 @@
-import AppError from '@shared/errors/AppError'
-import {compare} from 'bcryptjs'
-import authConfig from '@config/auth'
-import { Aprovado } from '../entity/Aprovado'
-import { myDataSource } from '@shared/typeorm/index'
+import { compare } from 'bcryptjs';
 
-interface IRequest {
-	login:string;
-	senha:string;
-}
+import AppError from '../../../shared/errors/AppError';
+import myDataSource from '../../../shared/typeorm';
+import Aprovado from '../../Aprovado/entity/Aprovado';
 
-interface IResponse{
-	token:string;
-}
+type Request = {
+  login:string;
+  senha:string;
+};
 
-class AtualizarListasService{
-	//not sure if I should use any here...
-	//TODO:: later I should return, or a class of user, or an instance of AppError 
-	public async execute({login, senha}: IRequest): Promise<IResponse| AppError>{
+type Response = {
+  token:string;
+};
 
-    console.log("atualizar listas service");
+class AtualizarListasService {
+  private readonly startMessage: string = 'atualizar listas service';
+  // not sure if I should use any here...
+  // TODO:: later I should return, or a class of user, or an instance of AppError
+  public async execute({ login, senha }: Request): Promise<Response | AppError> {
+    console.log(this.startMessage);
     const usuario = await myDataSource
       .manager
       .getRepository(Aprovado)
       .createQueryBuilder()
-      .where("inscricao = :login",{ login })
+      .where('inscricao = :login', { login })
       .getOne();
 
-    if(!usuario){
-			return new AppError("Usuario nao foi encontrado!",401)
+    if (!usuario) {
+      return new AppError('Usuario nao foi encontrado!', 401);
     }
 
-		const hashedPswd = await compare(senha,usuario.senha);
+    const hashedPswd = await compare(senha, usuario.senha);
 
-		if(!hashedPswd){
-			return new AppError("Combicanao usuario/senha nao confere!",401)
-		}
+    if (!hashedPswd) {
+      return new AppError('Combicanao usuario/senha nao confere!', 401);
+    }
 
-    return { token: "Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!" }
-	}
+    return {
+      token: 'Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!',
+    };
+  }
 }
 
 export default AtualizarListasService;
-

@@ -1,36 +1,35 @@
-import AppError from '@shared/errors/AppError'
-import { Aprovado } from '../entity/Aprovado'
-import { myDataSource } from '@shared/typeorm/index';
+import AppError from '../../../shared/errors/AppError';
+import Aprovado from '../../Aprovado/entity/Aprovado';
+import myDataSource from '../../../shared/typeorm';
 
-interface IRequest{
+type Request = {
   pagina: number,
   candidatos: number,
-}
-interface IResponse{
+};
+type Response = {
   aprovados: Aprovado[],
   message: string
-}
+};
 
-class ListarQuatroParaUmService{
-	//not sure if I should use any here...
-	//TODO:: later I should return, or a class of user, or an instance of AppError 
-	//TODO:: filter the user info that can be shown(exclude password, for exampl)
-	public async execute({candidatos, pagina}: IRequest): Promise<IResponse| AppError>{
-
-
+class ListarQuatroParaUmService {
+  private readonly tableName = 'usuario';
+  // not sure if I should use any here...
+  // TODO:: later I should return, or a class of user, or an instance of AppError
+  // TODO:: filter the user info that can be shown(exclude password, for exampl)
+  public async execute({ candidatos, pagina }: Request): Promise<Response | AppError> {
     const aprovados = await myDataSource
       .getRepository(Aprovado)
-      .createQueryBuilder("usuario")
+      .createQueryBuilder(this.tableName)
       .select()
       .skip(candidatos * pagina)
       .take(candidatos)
-      .orderBy("usuario.posicaoAmpla","ASC")
+      .orderBy('usuario.posicaoAmpla', 'ASC')
       .execute();
 
-    //adicionar paginacao
+    // adicionar paginacao
     /*
     const aprovados = await myDataSource
-      .manager 
+      .manager
       .getRepository(User)
       .createQueryBuilder()
       .where("posicaoPPP != null")
@@ -38,12 +37,11 @@ class ListarQuatroParaUmService{
       .take(candidatos)
       .execute();
     */
-		//const user = await UserModel.find()
-		
-		//return user
-    return { aprovados, message: "Nao implementado ainda, consultando pela posicao da ampla"}
-	}
+    // const user = await UserModel.find()
+
+    // return user
+    return { aprovados, message: 'Nao implementado ainda, consultando pela posicao da ampla' };
+  }
 }
 
 export default ListarQuatroParaUmService;
-

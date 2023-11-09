@@ -1,17 +1,15 @@
-import { Entity, Column, PrimaryColumn, OneToMany} from 'typeorm';
-import { Aprovado } from '../../Aprovado/entity/Aprovado'
-
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
+import { Aprovado } from '../../Aprovado/entity/Aprovado';
 
 @Entity('situacao')
-export class Situacao{
-  
-  @OneToMany(() => Aprovado, aprovado => aprovado.situacao)
+export default class Situacao {
+  @OneToMany(() => Aprovado, (aprovado) => aprovado.situacao)
   @PrimaryColumn()
-  nome: string
+    nome: string;
 
   @Column()
-  createdAt: Date
-  
+    createdAt: Date;
+
   @Column()
-  updatedAt: Date
+    updatedAt: Date;
 }

@@ -15,6 +15,6 @@ exports.default = {
             const fileHash = crypto_1.default.randomBytes(10).toString('hex');
             const filename = `${fileHash} - ${file.originalname}`;
             callback(null, filename);
-        }
-    })
+        },
+    }),
 };

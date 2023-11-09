@@ -1,39 +1,28 @@
-import {NextFunction, Request, Response} from 'express'
-//import {Jwt, JwtPayload,SignOptions,decode,verify, sign} from 'jsonwebtoken'
-import AppError from '@shared/errors/AppError'
-import authConfig from '@config/auth'
-//Avoiding import error
-const jsonwebtoken = require('jsonwebtoken');
+import { Request, Response, NextFunction as Next } from 'express';
+import jsonwebtoken from 'jsonwebtoken';
+// import {Jwt, JwtPayload,SignOptions,decode,verify, sign} from 'jsonwebtoken'
+import authConfig from '../../config/auth.json';
+import AppError from '../errors/AppError';
+// Avoiding import error
 
-const {verify} = jsonwebtoken;
+const { verify } = jsonwebtoken;
 
-interface TokenPayload{
-  iat: string,
-  exp: number,
-  sub: string
-};
+async function isAuthenticated(req: Request, __res: Response, next: Next):
+Promise<void | AppError> {
+  const authHeader: string | boolean = req.headers.authorization ?? false;
 
+  if (authHeader === false) {
+    return new AppError('User is not authenticated!');
+  }
 
-export async function isAuthenticated(
-	request: Request,
-	response: Response,
-	next:NextFunction
-): Promise<void | AppError>{
-	const authHeader = request.headers.authorization
-
-
-	if(!authHeader){
-		return new AppError("User is not authenticated!");
-	}
-
-	try{
-    //TODO:: refresh token?
-	  const [,token] = authHeader.split(' ');
-		const decodedToken = await verify( token, authConfig.jwt.secret, {complete: true})
-		return next();
-	} catch(error){
-		return next(new AppError("User is not authenticated"));
-	}
+  try {
+    // TODO:: refresh token?
+    const [, token] = authHeader.split(' ');
+    verify(token, authConfig.jwt.secret, { complete: true });
+    return next();
+  } catch (error) {
+    return next(new AppError('User is not authenticated'));
+  }
 }
 
-
+export default isAuthenticated;
