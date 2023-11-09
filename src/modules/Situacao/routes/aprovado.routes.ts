@@ -1,155 +1,151 @@
-import { Router, Request, Response} from 'express'
-import {celebrate, Joi, Segments} from 'celebrate'
-import UsersController from '../controllers/UsersController'
-import { isAuthenticated } from '@shared/middlewares/authMiddlewares'
+import { Router, Request, Response } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
+import { isAuthenticated } from '@shared/middlewares/authMiddlewares';
+import UsersController from '../controllers/UsersController';
 
-const userRouter = Router()
+const userRouter = Router();
 const usersController = new UsersController();
 
-
-//create user
+// create user
 userRouter.post(
-	'/criar-sessao',
-	celebrate({
-		[Segments.BODY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			login:Joi.number().required(),
-			senha:Joi.string().required(),
-		},
-	}),
-	usersController.criarSessao
-)
-
-userRouter.post(
-	'/ativar-conta',
-	celebrate({
-		[Segments.BODY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			login:Joi.number().required(),
-			senha:Joi.string().required(),
-			novaSenha:Joi.string().required(),
-		},
-	}),
-  //isAuthenticated,
-	usersController.ativarConta
-)
+  '/criar-sessao',
+  celebrate({
+    [Segments.BODY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      login: Joi.number().required(),
+      senha: Joi.string().required(),
+    },
+  }),
+  usersController.criarSessao,
+);
 
 userRouter.post(
-	'/atualizar-senha',
-	//isAuthenticated,
+  '/ativar-conta',
   celebrate({
-		[Segments.BODY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			login:Joi.number().required(),
-			senha:Joi.string().required(),
-			novaSenha:Joi.string().required(),
-		},
-	}),
-  //isAuthenticated,
-	usersController.atualizarSenha
-)
+    [Segments.BODY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      login: Joi.number().required(),
+      senha: Joi.string().required(),
+      novaSenha: Joi.string().required(),
+    },
+  }),
+  // isAuthenticated,
+  usersController.ativarConta,
+);
 
 userRouter.post(
-	'/atualizar-listas',
-	//isAuthenticated,
+  '/atualizar-senha',
+  // isAuthenticated,
   celebrate({
-		[Segments.BODY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			login:Joi.number().required(),
-			senha:Joi.string().required(),
-		},
-	}),
-  isAuthenticated,
-	usersController.atualizarListas
-)
+    [Segments.BODY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      login: Joi.number().required(),
+      senha: Joi.string().required(),
+      novaSenha: Joi.string().required(),
+    },
+  }),
+  // isAuthenticated,
+  usersController.atualizarSenha,
+);
 
-//get user info [REQUIRES AUTH MIDDLEWARE] 
-userRouter.get(
-	'/listar-todos',
+userRouter.post(
+  '/atualizar-listas',
+  // isAuthenticated,
   celebrate({
-		[Segments.QUERY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
+    [Segments.BODY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      login: Joi.number().required(),
+      senha: Joi.string().required(),
+    },
+  }),
   isAuthenticated,
-	usersController.listarGeral
-)
+  usersController.atualizarListas,
+);
 
-//get user info [REQUIRES AUTH MIDDLEWARE and PASSWORD] 
+// get user info [REQUIRES AUTH MIDDLEWARE]
 userRouter.get(
-	'/listar-ppp/:candidatos?/:pagina?',
+  '/listar-todos',
   celebrate({
-		[Segments.QUERY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
+    [Segments.QUERY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
   isAuthenticated,
-	usersController.listarPPP
-)
+  usersController.listarGeral,
+);
 
+// get user info [REQUIRES AUTH MIDDLEWARE and PASSWORD]
 userRouter.get(
-	'/listar-pcd/:candidatos?/:pagina?',
+  '/listar-ppp/:candidatos?/:pagina?',
   celebrate({
-		[Segments.QUERY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
+    [Segments.QUERY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
   isAuthenticated,
-	usersController.listarPCD
-)
-
-userRouter.get(
-	'/listar-tres/:candidatos?/:pagina?',
-  celebrate({
-		[Segments.QUERY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
-  isAuthenticated,
-	usersController.listarTresParaUm
-)
-
-userRouter.get(
-	'/listar-quatro/:candidatos?/:pagina?',
-  celebrate({
-		[Segments.QUERY] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
-  isAuthenticated,
-	usersController.listarQuatroParaUm
+  usersController.listarPPP,
 );
 
 userRouter.get(
-	'/listar-convocacao/:candidatos?/:pagina?',
+  '/listar-pcd/:candidatos?/:pagina?',
   celebrate({
-		[Segments.PARAMS] : {
-			//insert server side validation(1 uppercase, 1 number, and so on
-			candidatos:Joi.number().required(),
-			pagina:Joi.number().required(),
-		},
-	}),
+    [Segments.QUERY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
   isAuthenticated,
-	usersController.listarConvocacoes
+  usersController.listarPCD,
 );
 
+userRouter.get(
+  '/listar-tres/:candidatos?/:pagina?',
+  celebrate({
+    [Segments.QUERY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
+  isAuthenticated,
+  usersController.listarTresParaUm,
+);
 
-//evitar o bug de erros personalizados do express
+userRouter.get(
+  '/listar-quatro/:candidatos?/:pagina?',
+  celebrate({
+    [Segments.QUERY]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
+  isAuthenticated,
+  usersController.listarQuatroParaUm,
+);
+
+userRouter.get(
+  '/listar-convocacao/:candidatos?/:pagina?',
+  celebrate({
+    [Segments.PARAMS]: {
+      // insert server side validation(1 uppercase, 1 number, and so on
+      candidatos: Joi.number().required(),
+      pagina: Joi.number().required(),
+    },
+  }),
+  isAuthenticated,
+  usersController.listarConvocacoes,
+);
+
+// evitar o bug de erros personalizados do express
 userRouter.patch(
-	'/dummy-secret-route/abandoned-route-that-will-be-here-until-i-fix-the-express-bug',
-	((request: Request, response: Response) =>{
-		return response.status(500).json({status:"forbidden", message:"this is just a dummy route, until i fix the express bug it will be here!"});
-	})
+  '/dummy-secret-route/abandoned-route-that-will-be-here-until-i-fix-the-express-bug',
+  ((request: Request, response: Response) => response.status(500).json({ status: 'forbidden', message: 'this is just a dummy route, until i fix the express bug it will be here!' })),
 );
 
 export default userRouter;

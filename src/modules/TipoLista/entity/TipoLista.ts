@@ -1,17 +1,15 @@
-import { Entity, Column, PrimaryColumn, OneToMany} from 'typeorm';
-import { Lista } from '../../Lista/entity/Lista'
-
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
+import { Lista } from '../../Lista/entity/Lista';
 
 @Entity('tipo_lista')
-export class TipoLista{
-
-  @OneToMany(() => Lista, lista => lista.tipoLista)
-  @PrimaryColumn()  
-  nome: string
-
-  @Column()
-  createdAt: Date
+export class TipoLista {
+  @OneToMany(() => Lista, (lista) => lista.tipoLista)
+  @PrimaryColumn()
+    nome: string;
 
   @Column()
-  updatedAt: Date 
+    createdAt: Date;
+
+  @Column()
+    updatedAt: Date;
 }
