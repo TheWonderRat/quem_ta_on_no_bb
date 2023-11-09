@@ -1,23 +1,24 @@
-import AppError from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
-import authConfig from '@config/auth';
-import { myDataSource } from '@shared/typeorm/index';
-import { Aprovado } from '../entity/Aprovado';
 
-interface IRequest {
+import AppError from '../../../shared/errors/AppError';
+import myDataSource from '../../../shared/typeorm';
+import Aprovado from '../../Aprovado/entity/Aprovado';
+
+type Request = {
   login:string;
   senha:string;
-}
+};
 
-interface IResponse {
+type Response = {
   token:string;
-}
+};
 
 class AtualizarListasService {
+  private readonly startMessage = 'atualizar listas service';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha }: IRequest): Promise<IResponse | AppError> {
-    console.log('atualizar listas service');
+  public async execute({ login, senha }: Request): Promise<Response | AppError> {
+    console.log(this.startMessage);
     const usuario = await myDataSource
       .manager
       .getRepository(Aprovado)
@@ -35,7 +36,9 @@ class AtualizarListasService {
       return new AppError('Combicanao usuario/senha nao confere!', 401);
     }
 
-    return { token: 'Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!' };
+    return {
+      token: 'Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!',
+    };
   }
 }
 
