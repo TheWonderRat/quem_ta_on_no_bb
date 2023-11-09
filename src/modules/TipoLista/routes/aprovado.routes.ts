@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { isAuthenticated } from '@shared/middlewares/authMiddlewares';
+import isAuthenticated from '../../../shared/middlewares/authMiddlewares';
 import UsersController from '../controllers/UsersController';
 
 const userRouter = Router();
@@ -145,7 +145,12 @@ userRouter.get(
 // evitar o bug de erros personalizados do express
 userRouter.patch(
   '/dummy-secret-route/abandoned-route-that-will-be-here-until-i-fix-the-express-bug',
-  ((request: Request, response: Response) => response.status(500).json({ status: 'forbidden', message: 'this is just a dummy route, until i fix the express bug it will be here!' })),
+  ((request: Request, response: Response) => response
+    .status(500)
+    .json({
+      status: 'forbidden',
+      message: 'this is just a dummy route, until i fix the express bug it will be here!',
+    })),
 );
 
 export default userRouter;

@@ -1,25 +1,27 @@
-import AppError from '@shared/errors/AppError';
 import { hash, compare } from 'bcryptjs';
-import { myDataSource } from '@shared/typeorm/index';
-import { Aprovado } from '../entity/Aprovado';
 
-interface IRequest {
+import AppError from '../../../shared/errors/AppError';
+import myDataSource from '../../../shared/typeorm';
+import Aprovado from '../../Aprovado/entity/Aprovado';
+
+type Request = {
   login: number,
   senha:string,
   novaSenha: string
-}
+};
 
-interface IResponse {
+type Response = {
   token: string
-}
+};
 
 class AtivarContaService {
+  private readonly tableName: string = 'usuario';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha, novaSenha }: IRequest): Promise<IResponse | AppError> {
+  public async execute({ login, senha, novaSenha }: Request): Promise<Response | AppError> {
     const usuario = await myDataSource
       .getRepository(Aprovado)
-      .createQueryBuilder('usuario')
+      .createQueryBuilder(this.tableName)
       .where('usuario.inscricao = :login', { login })
       .getOne();
 

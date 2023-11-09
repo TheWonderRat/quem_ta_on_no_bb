@@ -1,30 +1,31 @@
-import AppError from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
+import jsonwebtoken from 'jsonwebtoken';
 
-import authConfig from '@config/auth';
+import authConfig from '../../../config/auth.json';
 // import { UserRepository } from '../entity/UserRepository'
-import { myDataSource } from '@shared/typeorm/index';
-import { Aprovado } from '../entity/Aprovado';
 
-const jsonwebtoken = require('jsonwebtoken');
+import AppError from '../../../shared/errors/AppError';
+import myDataSource from '../../../shared/typeorm';
+import Aprovado from '../../Aprovado/entity/Aprovado';
 
-interface IRequest {
+type Request = {
   login:string;
   senha:string;
-}
+};
 
-interface IResponse {
+type Response = {
   token:string,
   message: string
-}
+};
 
 class CriarSessaoService {
+  private readonly tableName: string = 'usuario';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha }: IRequest): Promise<IResponse | AppError> {
+  public async execute({ login, senha }: Request): Promise<Response | AppError> {
     const usuario = await myDataSource
       .getRepository(Aprovado)
-      .createQueryBuilder('usuario')
+      .createQueryBuilder(this.tableName)
       .where('usuario.inscricao = :login', { login })
       .getOne();
 
@@ -45,7 +46,7 @@ class CriarSessaoService {
       },
       authConfig.jwt.secret,
       {
-        subject: usuario.inscricao,
+        subject: usuario.inscricao.toString(),
         expiresIn: authConfig.jwt.expiresIn,
       },
     );
