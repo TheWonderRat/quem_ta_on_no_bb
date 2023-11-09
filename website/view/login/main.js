@@ -1,6 +1,6 @@
-//alert("called");
-document.getElementById("submit-login-button").addEventListener("click",(params) =>{
-  const form = document.getElementById("login-form");
+// alert("called");
+document.getElementById('submit-login-button').addEventListener('click', (__params) => {
+  document.getElementById('login-form');
 
   /*
   if(form.classList.contains("animation-size")){
@@ -11,6 +11,4 @@ document.getElementById("submit-login-button").addEventListener("click",(params)
     form.classList.remove("animation-spinner")
   }
   */
-})
-
-
+});
