@@ -16,14 +16,19 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "celebrate": "^15.0.3",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.16",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/multer": "^1.4.10",
     "@types/node": "^17.0.45",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
