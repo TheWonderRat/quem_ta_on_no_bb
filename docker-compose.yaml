@@ -1,12 +1,12 @@
 services:
-  - frontend:
+  frontend:
     build: ./frontend
     ports:
       - "3000:3000"
     depends_on:
       - backend
   
-  - backend:
+  backend:
     build: ./backend
     ports:
       - "3001:3001"
@@ -16,14 +16,12 @@ services:
       - db
     restart: on-failure
   
-  - db:
+  db:
     build: ./database
     ports:
       - "5432:5432"
     env_file:
       - ./database/.env
     volumes:
-      - type: volume
-        source: postgres_data
-        target: /data
+      - ./database/data:/var/lib/postgresql/data
     restart: on-failure
