@@ -5,7 +5,6 @@ import { errors } from 'celebrate';
 
 import routes from './routes';
 import AppError from '../errors/AppError';
-import '@shared/typeorm';
 
 const app = express();
 const PORT = 3001;

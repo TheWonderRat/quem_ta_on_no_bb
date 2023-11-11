@@ -6,12 +6,15 @@ import { DataSource } from 'typeorm';
 // import { Lotacao } from '../../modules/Lotacao/entity/Lotacao';
 // import { Turma } from '../../modules/Turma/entity/Turma';
 
+const USER = process.env.POSTGRES_USER || 'postgres';
+const PASSWORD = process.env.POSTGRES_PASSWORD || 'docker';
+
 const myDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'postgres',
-  password: 'docker',
+  username: USER,
+  password: PASSWORD,
   database: 'aprovados_novo',
   // "synchronize": true,
   entities: [
