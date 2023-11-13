@@ -2,14 +2,18 @@
   "name": "quem_ta_on_no_bb",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server/server.ts",
+  "main": "./build/server/server",
   "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "prestart": "npm run build",
+    "start": "node .",
+    "dev": "tsnd --rs --transpile-only ./src/server/server.ts",
+    "lint": "eslint ./src --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "load-db-data": "ts-node src/shared/database/etl_script/src/loadDb.ts",
     "migration-run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
     "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts",
-    "start": "ts-node -r tsconfig-paths/register --transpile-only .",
-    "dev": "tsnd --rs --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src ."
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "keywords": [],
   "author": "",

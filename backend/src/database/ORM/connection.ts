@@ -19,6 +19,7 @@ const PostgresDataSource = new DataSource({
   // migrations: [
   //   './src/shared/typeorm/migrations/*.ts',
   // ],
+  migrations: ['Turma1699878656685'],
 });
 
 PostgresDataSource.initialize()
@@ -34,3 +35,5 @@ PostgresDataSource.initialize()
   .finally(() => {
     console.log('called after database connection');
   });
+
+export default PostgresDataSource;
