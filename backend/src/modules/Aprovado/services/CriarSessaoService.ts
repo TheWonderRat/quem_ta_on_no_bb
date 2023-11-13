@@ -1,58 +1,51 @@
+import AppError, { AppErrorType } from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
-import jsonwebtoken from 'jsonwebtoken';
 
-import myDataSource from '../../../shared/typeorm';
-import AppError from '../../../shared/errors/AppError';
-import Aprovado from '../entity/Aprovado';
+import authConfig from '@config/auth';
+// import { UserRepository } from '../entity/UserRepository'
+import { myDataSource } from '@shared/typeorm/index';
+import jwt from 'jsonwebtoken';
+import { Aprovado } from '../entity/Aprovado';
+// import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
+import AprovadosDBConstants from '../constants/AprovadosDBConstants';
 
-type jwtEnv = { jwtSecret: string, expiresIn: string } ;
+// const jsonwebtoken = require ('jsonwebtoken');
 
-const authConfig: jwtEnv = {
-  jwtSecret: process.env.JWT_SECRET || 'jwt_secret',
-  expiresIn: process.env.JWT_EXPIRATION || '1d',
-};
+interface IRequest {
+  login:string;
+  senha:string;
+}
 
-type Request = {
-  login: string;
-  senha: string;
-};
-
-type Response = {
-  token: string,
+interface IResponse {
+  token:string,
   message: string
-};
+}
 
 class CriarSessaoService {
-  private readonly tableName = 'usuario';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha }: Request): Promise<Response | AppError> {
+  public async execute({ login, senha }: IRequest): Promise<IResponse | AppError> {
     const usuario = await myDataSource
       .getRepository(Aprovado)
-      .createQueryBuilder(this.tableName)
-      .where('usuario.inscricao = :login', { login })
+      .createQueryBuilder('apr')
+      .where(`apr.${AprovadosDBConstants.Inscricao} = :login`, { login })
       .getOne();
 
     if (!usuario) {
-      return new AppError('Usuario nao foi encontrado!', 401);
+      return new AppError(AppErrorType.UserNotFound);
     }
 
     const hashedPswd = await compare(senha, usuario.senha);
 
     if (!hashedPswd) {
-      return new AppError('Combicanao usuario/senha nao confere!', 401);
+      return new AppError(AppErrorType.MissmatchedPassword);
     }
 
     // TODO:: sobrescrever os tipos do typescript para suportar o retorno do token
-    const token = await jsonwebtoken.sign(
-      {
-        usuario: usuario.inscricao,
-      },
-      authConfig.jwtSecret,
-      {
-        subject: usuario.inscricao.toString(),
-        expiresIn: authConfig.expiresIn,
-      },
+    const token = jwt.sign(
+      { usuario: usuario.inscricao },
+      authConfig.jwt.secret,
+      { subject: usuario.inscricao.toString(), expiresIn: authConfig.jwt.expiresIn },
     );
 
     return { token, message: `sessao de ${usuario.nome} criada com sucesso!` };

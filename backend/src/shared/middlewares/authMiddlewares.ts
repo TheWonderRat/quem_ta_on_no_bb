@@ -1,33 +1,31 @@
-import { Request, Response, NextFunction as Next } from 'express';
-import jsonwebtoken from 'jsonwebtoken';
+import { NextFunction, Request, Response } from 'express';
+import AppError, { AppErrorType } from '@shared/errors/AppError';
 
-import AppError from '../errors/AppError';
+import authConfig from '@config/auth';
+
+const jsonwebtoken = require('jsonwebtoken');
 
 const { verify } = jsonwebtoken;
 
-type jwtEnv = { jwtSecret: string, expiresIn: string } ;
+export async function isAuthenticated(
+  request: Request,
+  response: Response,
+  next:NextFunction,
+): Promise<void | AppError> {
+  const authHeader = request.headers.authorization;
 
-const authConfig: jwtEnv = {
-  jwtSecret: process.env.JWT_SECRET || 'jwt_secret',
-  expiresIn: process.env.JWT_EXPIRATION || '1d',
-};
-
-async function isAuthenticated(req: Request, __res: Response, next: Next):
-Promise<void | AppError> {
-  const authHeader: string | boolean = req.headers.authorization ?? false;
-
-  if (authHeader === false) {
-    return new AppError('User is not authenticated!');
+  if (!authHeader) {
+    // auth header is missing
+    return next(AppErrorType.MissingToken);
   }
 
   try {
     // TODO:: refresh token?
-    const [, token] = authHeader.split(' ');
-    verify(token, authConfig.jwtSecret, { complete: true });
+	  const [,token] = authHeader.split(' ');
+    // const decodedToken para manipular os tokens da aplicacao
+    await verify(token, authConfig.jwt.secret, { complete: true });
     return next();
   } catch (error) {
-    return next(new AppError('User is not authenticated'));
+    return next(new AppError(AppErrorType.UserNotAuthenticated));
   }
 }
-
-export default isAuthenticated;

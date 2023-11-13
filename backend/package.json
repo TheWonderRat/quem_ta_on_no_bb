@@ -5,11 +5,12 @@
   "main": "./src/shared/https/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "load-db-data": "ts-node src/shared/database/etl_script/src/loadDb.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migration-run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
+    "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts",
     "start": "ts-node -r tsconfig-paths/register --transpile-only .",
-    "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src .",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
-    "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src ."
   },
   "keywords": [],
   "author": "",
@@ -23,7 +24,12 @@
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "dotenv": "^16.0.0",
+    "express-async-errors": "^3.1.1",
+    "mime": "^3.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -43,6 +49,11 @@
     "tsc-node": "^0.0.3",
     "tsconfig-paths": "^3.14.2",
     "tslib": "^2.6.2",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "@babel/preset-flow": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/joi": "^17.2.3",
+    "@types/mime": "^2.0.3"
   }
 }
