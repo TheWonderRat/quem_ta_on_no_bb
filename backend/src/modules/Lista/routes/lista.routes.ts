@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { isAuthenticated } from '@shared/middlewares/authMiddlewares';
+import { isAuthenticated } from 'src/middlewares/authMiddlewares';
 import ListarController from '../controllers/ListarController';
 
 const listarRouter = Router();

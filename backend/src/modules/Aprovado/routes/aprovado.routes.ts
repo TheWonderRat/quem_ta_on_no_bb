@@ -1,6 +1,6 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { isAuthenticated } from '@shared/middlewares/authMiddlewares';
+import { isAuthenticated } from 'src/middlewares/authMiddlewares';
 import AprovadoController from '../controllers/AprovadoController';
 
 const userRouter = Router();
@@ -65,10 +65,10 @@ userRouter.post(
 // evitar o bug de erros personalizados do express
 /*
 userRouter.patch(
-	'/dummy-secret-route/abandoned-route-that-will-be-here-until-i-fix-the-express-bug',
-	((request: Request, response: Response) =>{
-		return response.status(500).json({status:"forbidden", message:"this is just a dummy route, until i fix the express bug it will be here!"});
-	})
+'/dummy-secret-route/abandoned-route-that-will-be-here-until-i-fix-the-express-bug',
+((request: Request, response: Response) =>{
+return response.status(500).json({status:"forbidden", message:"this is just a dummy route, until i fix the express bug it will be here!"});
+})
 );
 */
 

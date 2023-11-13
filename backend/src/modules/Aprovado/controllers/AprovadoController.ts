@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 
 import AtivarContaService from '../services/AtivarContaService';
 import AtualizarSenhaService from '../services/AtualizarSenhaService';
@@ -6,31 +6,32 @@ import AtualizarListasService from '../services/AtualizarListasService';
 import CriarSessaoService from '../services/CriarSessaoService';
 
 export default class AprovadoController {
-  async ativarConta(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const ativarConta = new AtivarContaService();
-    const users = await ativarConta.execute(request.body);
+  private readonly ativarContaService = new AtivarContaService();
+  private readonly criarSessaoService = new CriarSessaoService();
+  private readonly atualizarSenhaService = new AtualizarSenhaService();
+  private readonly updateUsersService = new AtualizarListasService();
+
+  async ativarConta(request: Request, response:Response): Promise<Response> {
+    const users = await this.ativarContaService.execute(request.body);
 
     return response.json(users);
   }
 
-  async criarSessao(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const criarSessao = new CriarSessaoService();
-    const users = await criarSessao.execute(request.body);
+  async criarSessao(request: Request, response:Response): Promise<Response> {
+    const users = await this.criarSessaoService.execute(request.body);
 
     return response.json(users);
   }
 
-  async atualizarSenha(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const atualizarSenha = new AtualizarSenhaService();
-    const users = await atualizarSenha.execute(request.body);
+  async atualizarSenha(request: Request, response:Response): Promise<Response> {
+    const users = await this.atualizarSenhaService.execute(request.body);
 
     return response.json(users);
   }
 
-  async atualizarListas(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const updateUsers = new AtualizarListasService();
+  async atualizarListas(request: Request, response:Response): Promise<Response> {
     // TODO:: filtrar os parametros aqui
-    const users = await updateUsers.execute(request.body);
+    const users = await this.updateUsersService.execute(request.body);
 
     return response.json(users);
   }

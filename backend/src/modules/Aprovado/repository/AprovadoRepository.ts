@@ -5,7 +5,7 @@ import AprovadosDBConstants from '../constants/AprovadosDBConstants';
 
 class AprovadoRepository extends Repository<Aprovado> {
   public async findByLogin(login: number): Promise<Aprovado | null> {
-    return await myDataSource
+    return myDataSource
       .getRepository(Aprovado)
       .createQueryBuilder(`${AprovadosDBConstants.NomeEntidade}`)
       .where(`${AprovadosDBConstants.Inscricao} = :login`, { login })
@@ -14,7 +14,7 @@ class AprovadoRepository extends Repository<Aprovado> {
 
   // TODO:: testar o que acontece se o usuario nao for encontrado
   public async updatePassword(login: number, novaSenha: string): Promise<void> {
-    await myDataSource
+    return myDataSource
       .createQueryBuilder()
       .update(Aprovado)
       .set({ senha: novaSenha })
@@ -23,4 +23,4 @@ class AprovadoRepository extends Repository<Aprovado> {
   }
 }
 
-export const AprovadosRepo = new AprovadoRepository(Aprovado, myDataSource.manager);
+export default new AprovadoRepository(Aprovado, myDataSource.manager);

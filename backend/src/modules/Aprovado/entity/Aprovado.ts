@@ -1,4 +1,15 @@
-import { Entity, Column, PrimaryColumn, OneToMany, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, OneToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToOne,
+} from 'typeorm';
+
 import { Lista } from '../../Lista/entity/Lista';
 import { Situacao } from '../../Situacao/entity/Situacao';
 import { Turma } from '../../Turma/entity/Turma';
