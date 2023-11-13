@@ -1,25 +1,47 @@
 import { Aprovado } from '../../Aprovado/entity/Aprovado';
 import { TipoLista } from '../../TipoLista/entity/TipoLista';
-import { Entity, Column, PrimaryColumn,  ManyToOne, ManyToMany} from 'typeorm';
+import { Entity, PrimaryColumn,  ManyToOne, JoinColumn, UpdateDateColumn, CreateDateColumn, Column, } from 'typeorm';
+import ListaDBConstants from '../constants/ListaDBConstants';
+import AprovadosDBConstants from '../../Aprovado/constants/AprovadosDBConstants';
 
 
-@Entity('lista')
+@Entity(ListaDBConstants.NomeEntidade)
 export class Lista{
 
-  @PrimaryColumn({type: 'bigint'})
-  @ManyToMany(() => Aprovado, aprovado => aprovado.inscricao) 
-  inscricao: number 
- 
-  @PrimaryColumn()
-  @ManyToOne(() => TipoLista, tipoLista => tipoLista.nome)
-  tipoLista: string
+  //atributos------------------------------------------------
+  @PrimaryColumn({
+    type: 'bigint', 
+    name: ListaDBConstants.Inscricao,
+    primaryKeyConstraintName:'pk_lista'
+  })
+  inscricao: number
 
-  @PrimaryColumn()
+  @PrimaryColumn({type: 'integer',primaryKeyConstraintName:'pk_lista'})
   posicao: number
 
-  @Column()
-  createdAt: Date 
+  @PrimaryColumn({type:'text',primaryKeyConstraintName:'pk_lista'})
+  tipo: string
 
-  @Column()
-  updatedAt: Date
+  @CreateDateColumn()
+  criado_em: Date 
+
+  @UpdateDateColumn()
+  atualizado_em: Date
+
+//relacionamentos-----------------------------------------------
+//relacionamentos devem ter o mesmo nome da variavel da entidade
+  
+  @ManyToOne(() => Aprovado, (aprovado) => aprovado.aprovadoNasListas)
+  @JoinColumn({
+    name: ListaDBConstants.Inscricao,
+    //Nao gera o bug
+    //descomentar essa linha da problema
+    referencedColumnName: AprovadosDBConstants.Inscricao
+  })
+  aprovadoVinculado: Aprovado
+
+  @ManyToOne(() => TipoLista, (tipoLista) => tipoLista.listasVinculadas)
+  @JoinColumn({ name: ListaDBConstants.TipoLista })
+  listaVinculada: TipoLista;
+
 }

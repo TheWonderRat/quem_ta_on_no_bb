@@ -1,15 +1,16 @@
-import AppError from '@shared/errors/AppError'
+import AppError, { AppErrorType } from '@shared/errors/AppError'
 import {compare} from 'bcryptjs'
 
 
 import authConfig from '@config/auth'
 //import { UserRepository } from '../entity/UserRepository'
-//import { Aprovado } from '../entity/Aprovado'
-import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
+import { Aprovado } from '../entity/Aprovado'
+//import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
 import { myDataSource } from '@shared/typeorm/index'
+import AprovadosDBConstants from '../constants/AprovadosDBConstants'
 
-
-const jsonwebtoken = require ('jsonwebtoken');
+import jwt from 'jsonwebtoken' ;
+//const jsonwebtoken = require ('jsonwebtoken');
 
 interface IRequest {
 	login:string;
@@ -28,31 +29,26 @@ class CriarSessaoService{
 
     const usuario = await myDataSource
       .getRepository(Aprovado)
-      .createQueryBuilder("usuario")
-      .where("usuario.inscricao = :login", { login })
+      .createQueryBuilder("apr")
+      .where(`apr.${AprovadosDBConstants.Inscricao} = :login`, { login })
       .getOne();
 
     if(!usuario){
-			return new AppError("Usuario nao foi encontrado!",401)
+			return new AppError(AppErrorType.UserNotFound)
     }
 
 		const hashedPswd = await compare(senha,usuario.senha)
 
 		if(!hashedPswd){
-			return new AppError("Combicanao usuario/senha nao confere!",401)
+			return new AppError(AppErrorType.MissmatchedPassword)
 		}
 
     //TODO:: sobrescrever os tipos do typescript para suportar o retorno do token
-    const token = await jsonwebtoken.sign(
-			{
-				usuario: usuario.inscricao,
-			},
-			authConfig.jwt.secret,
-			{
-				subject: usuario.inscricao,
-				expiresIn:authConfig.jwt.expiresIn,
-			},
-		)
+    const token = jwt.sign(
+      {usuario: usuario.inscricao},
+      authConfig.jwt.secret,
+      {subject: usuario.inscricao.toString(), expiresIn: authConfig.jwt.expiresIn}
+    );
 
     return {  token, message: `sessao de ${usuario.nome} criada com sucesso!`}
   }

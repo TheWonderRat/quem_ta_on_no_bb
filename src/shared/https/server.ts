@@ -11,12 +11,10 @@ const app = express();
 const PORT = 3001;
 const IP_ADDR = '192.168.1.105';
 
-//app.use((request: Request, response: Response) =>{console.log("this was called after all services")});
 app.use(cors());
 app.use(express.json());
 app.use(routes);
 app.use(errors())
-//app.use((err:Error,req: Request,res: Response,next: NextFunction) =>{});
 
 app.use((
 	error: Error, 
@@ -24,10 +22,6 @@ app.use((
 	response: Response, 
 	next: NextFunction
 ) => {
-
-  console.log("called on server.ts");
-  console.log(request);
-
 	if(error instanceof AppError){
 
 		return response.status(error.statusCode).json({

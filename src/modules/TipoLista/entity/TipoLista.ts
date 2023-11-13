@@ -1,17 +1,29 @@
-import { Entity, Column, PrimaryColumn, OneToMany} from 'typeorm';
+import { Entity, PrimaryColumn, OneToMany, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { Lista } from '../../Lista/entity/Lista'
+import TipoListaDBConstants from '../constants/TipoListaDBConstants';
 
 
-@Entity('tipo_lista')
+
+
+@Entity(TipoListaDBConstants.NomeEntidade)
 export class TipoLista{
 
-  @OneToMany(() => Lista, lista => lista.tipoLista)
-  @PrimaryColumn()  
-  nome: string
+//atributos------------------------------------------------
+  @PrimaryColumn({type: 'text', name: TipoListaDBConstants.TipoLista})
+  //DEVE TER O MESMO NOME DA CONSTANTE DO ARQUIVO DE CONSTANTES
+  tipo: string 
 
-  @Column()
-  createdAt: Date
+  @CreateDateColumn({name: TipoListaDBConstants.CriadoEm})
+  criadoEm: Date
 
-  @Column()
-  updatedAt: Date 
+  @UpdateDateColumn({name: TipoListaDBConstants.AtualizadoEm})
+  atualizadoEm: Date 
+
+//relacionamentos------------------------------------------------
+//relacioinamentos devem ter o mesmo nome da  variavel da entidade
+
+  @OneToMany(() => Lista, (lista) => lista.tipo)
+  @JoinColumn({name: TipoListaDBConstants.TipoLista})
+  listasVinculadas: Lista[];
+ 
 }
