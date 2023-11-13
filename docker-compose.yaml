@@ -1,12 +1,12 @@
 version: '3'
 services:
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    ports:
-      - "${PORT_FRONT}:${PORT_FRONT}"
-    depends_on:
-      - backend
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "${PORT_FRONT}:${PORT_FRONT}"
+  #   depends_on:
+  #     - backend
   
   backend:
     build: ./backend
@@ -21,15 +21,27 @@ services:
     tty: true
     stdin_open: true
   
+  # db:
+  #   image: mysql:8.2
+  #   container_name: db
+  #   ports:
+  #     - ${PORT_DB}:${PORT_DB}
+  #   environment:
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     PORT_DB: ${PORT_DB}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #   restart: on-failure
+
   db:
-    image: mysql:8.2
+    image: postgres:latest
     container_name: db
     ports:
       - ${PORT_DB}:${PORT_DB}
     environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
       PORT_DB: ${PORT_DB}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: on-failure
