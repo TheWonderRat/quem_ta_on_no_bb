@@ -1,3 +1,4 @@
+version: '3'
 services:
   frontend:
     build: ./frontend
@@ -21,12 +22,14 @@ services:
     stdin_open: true
   
   db:
-    build: ./database
+    image: mysql:8.2
     container_name: db
     ports:
-      - "${PORT_DB}:${PORT_DB}"
-    env_file:
-      - ./database/.env
-    volumes:
-      - ./database/data:/var/lib/postgresql/data
+      - ${PORT_DB}:${PORT_DB}
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      PORT_DB: ${PORT_DB}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: on-failure
