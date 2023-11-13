@@ -1,8 +1,8 @@
-import { myDataSource } from '@shared/typeorm';
+import { PostgresDataSource } from '@shared/typeorm';
 import { Repository } from 'typeorm';
 import { Lotacao } from '../entity/Lotacao';
 
 class LotacaoRepository extends Repository<Lotacao> {
 }
 
-export const LotacaosRepo = new LotacaoRepository(Lotacao, myDataSource.manager);
+export const LotacaosRepo = new LotacaoRepository(Lotacao, PostgresDataSource.manager);

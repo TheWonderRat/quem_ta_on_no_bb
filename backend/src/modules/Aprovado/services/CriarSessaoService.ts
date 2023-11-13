@@ -3,7 +3,7 @@ import { compare } from 'bcryptjs';
 
 import authConfig from '@config/auth';
 // import { UserRepository } from '../entity/UserRepository'
-import { myDataSource } from '@shared/typeorm/index';
+import { PostgresDataSource } from '@shared/typeorm/index';
 import jwt from 'jsonwebtoken';
 import { Aprovado } from '../entity/Aprovado';
 // import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
@@ -25,7 +25,7 @@ class CriarSessaoService {
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
   public async execute({ login, senha }: IRequest): Promise<IResponse | AppError> {
-    const usuario = await myDataSource
+    const usuario = await PostgresDataSource
       .getRepository(Aprovado)
       .createQueryBuilder('apr')
       .where(`apr.${AprovadosDBConstants.Inscricao} = :login`, { login })

@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
-import { myDataSource } from '@shared/typeorm/index';
+import { PostgresDataSource } from '@shared/typeorm/index';
 import AprovadosDBConstants from '@modules/Aprovado/constants/AprovadosDBConstants';
 import LotacaoDBConstants from '@modules/Lotacao/constants/LotacaoDBConstants';
 import LotadoEmDBConstants from '@modules/LotadoEm/constants/LotadoEmDBConstants';

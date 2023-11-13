@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "load-db-data": "ts-node src/shared/database/etl_script/src/loadDb.ts",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration-run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
     "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts",
     "start": "ts-node -r tsconfig-paths/register --transpile-only .",

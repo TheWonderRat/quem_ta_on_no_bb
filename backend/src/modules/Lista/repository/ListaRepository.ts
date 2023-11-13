@@ -1,4 +1,4 @@
-import { myDataSource } from '@shared/typeorm';
+import { PostgresDataSource } from '@shared/typeorm';
 import { Aprovado } from '@modules/Aprovado/entity/Aprovado';
 import { Repository } from 'typeorm';
 import AprovadosDBConstants from '@modules/Aprovado/constants/AprovadosDBConstants';
@@ -17,7 +17,7 @@ class ListaRepository extends Repository<Lista> {
     ];
 
     // todas as joins devem estar antes de where
-    let qr = myDataSource
+    let qr = PostgresDataSource
       // apr e o alias da entidade "Aprovado" na query, nao e necessario usar template literals
       .createQueryBuilder(Aprovado, 'apr')
       .innerJoinAndSelect(
@@ -88,4 +88,4 @@ class ListaRepository extends Repository<Lista> {
   }
 }
 
-export const ListasRepo = new ListaRepository(Lista, myDataSource.manager);
+export const ListasRepo = new ListaRepository(Lista, PostgresDataSource.manager);

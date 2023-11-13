@@ -7,7 +7,7 @@ import { Situacao } from '../../../../modules/Situacao/entity/Situacao';
 import { Aprovado } from '../../../../modules/Aprovado/entity/Aprovado';
 import { Lista } from '../../../../modules/Lista/entity/Lista';
 import { LotadoEm } from '../../../../modules/LotadoEm/entity/LotadoEm';
-import { myDataSource } from '../../../typeorm';
+import { PostgresDataSource } from '../../../typeorm';
 import { Lotacao } from '../../../../modules/Lotacao/entity/Lotacao';
 
 import { TurmasRepo } from '../../../../modules/Turma/repository/TurmaRepository';
@@ -72,8 +72,8 @@ async function loadDOUData(
   })),
 
 ) {
-  if (!myDataSource.isInitialized) {
-    await myDataSource.initialize();
+  if (!PostgresDataSource.isInitialized) {
+    await PostgresDataSource.initialize();
   }
 
   console.log('is this freaking script calling something or no??');
@@ -120,40 +120,40 @@ async function cadastrarTipoLista(lista: string[]) {
     const tipoLista = TurmasRepo.manager.create(TipoLista);
 
     tipoLista.tipo = l;
-    await myDataSource.manager.save(tipoLista);
+    await PostgresDataSource.manager.save(tipoLista);
   });
 }
 
 async function cadastrarTurma(turmas: number[]) {
   turmas.forEach(async (l: number) => {
-    const turma = myDataSource.getRepository(Turma).create();
+    const turma = PostgresDataSource.getRepository(Turma).create();
 
     turma.numero = l;
-    await myDataSource.manager.save(turma);
+    await PostgresDataSource.manager.save(turma);
   });
 }
 
 async function cadastrarCidade(cidades: string[]) {
   cidades.forEach(async (c: string) => {
-    const cidade = myDataSource.manager.create(Cidade);
+    const cidade = PostgresDataSource.manager.create(Cidade);
     cidade.nome = c;
-    await myDataSource.manager.save(cidade);
+    await PostgresDataSource.manager.save(cidade);
   });
 }
 
 async function cadastrarDiretoria(diretorias: string[]) {
   diretorias.forEach(async (d: string) => {
-    const diretoria = myDataSource.manager.create(Diretoria);
+    const diretoria = PostgresDataSource.manager.create(Diretoria);
     diretoria.nome = d;
-    await myDataSource.manager.save(diretoria);
+    await PostgresDataSource.manager.save(diretoria);
   });
 }
 
 async function cadastrarSituacao(situacoes: string[]) {
   situacoes.forEach(async (e: string) => {
-    const situacao = myDataSource.manager.create(Situacao);
+    const situacao = PostgresDataSource.manager.create(Situacao);
     situacao.nome = e;
-    await myDataSource.manager.save(situacao);
+    await PostgresDataSource.manager.save(situacao);
   });
 }
 
@@ -165,7 +165,7 @@ async function cadastrarAprovados(
 ) {
   console.log(aprovados[0]);
   aprovados.forEach(async (apr: IAprovado) => {
-    const aprovado = myDataSource.manager.create(Aprovado);
+    const aprovado = PostgresDataSource.manager.create(Aprovado);
     aprovado.inscricao = apr.inscricao;
     aprovado.nome = apr.nome;
     aprovado.senha = apr.senha;
@@ -176,7 +176,7 @@ async function cadastrarAprovados(
       aprovado.turma = mockTurmas[Math.floor(Math.random() * 3)];
     }
 
-    await myDataSource.manager.save(aprovado);
+    await PostgresDataSource.manager.save(aprovado);
   });
 }
 // como os dados estao consistentes vou fingir que typescript nao existe
@@ -185,11 +185,11 @@ async function cadastrarAprovados(
 async function cadastrarListaCR(aprovados: IAprovado[],tipoAmpla: string,tipoPPP: string,tipoPCD: string){
 
   const salvarAprovado = async (a: IAprovado,posicao: number, tipoLista: string) => {
-    const lista = myDataSource.manager.create(Lista);
+    const lista = PostgresDataSource.manager.create(Lista);
     lista.inscricao = a.inscricao;
     lista.tipoLista = tipoLista;
     lista.posicao = posicao;
-    await myDataSource.manager.save(lista);
+    await PostgresDataSource.manager.save(lista);
   };
 
   aprovados.forEach( async (apr) =>{
@@ -209,11 +209,11 @@ async function cadastrarListaCR(aprovados: IAprovado[],tipoAmpla: string,tipoPPP
 // como os dados estao consistentes vou fingir que typescript nao existe
 async function cadastrarLista(aprovados: IAprovado[], tipoAmpla: string, tipoPPP: string, tipoPCD: string) {
   const salvarAprovado = async (a: IAprovado, posicao: number, tipoLista: string) => {
-    const lista = myDataSource.manager.create(Lista);
+    const lista = PostgresDataSource.manager.create(Lista);
     lista.inscricao = a.inscricao;
     lista.tipo = tipoLista;
     lista.posicao = posicao;
-    await myDataSource.manager.save(lista);
+    await PostgresDataSource.manager.save(lista);
   };
 
   aprovados.forEach(async (apr) => {
@@ -230,22 +230,22 @@ async function cadastrarLista(aprovados: IAprovado[], tipoAmpla: string, tipoPPP
 
 async function cadastrarLotacao(lotacoes: ILotacao[]) {
   lotacoes.forEach(async (v) => {
-    const lotacao = myDataSource.manager.create(Lotacao);
+    const lotacao = PostgresDataSource.manager.create(Lotacao);
     lotacao.cidade = v.cidade;
     lotacao.diretoria = v.diretoria;
     lotacao.unidade = v.unidade;
-    await myDataSource.manager.save(lotacao);
+    await PostgresDataSource.manager.save(lotacao);
   });
 }
 
 async function cadastrarLotadosEm(lotados: ILotadoEm[]) {
   lotados.forEach(async (v) => {
-    const lotadoEm = myDataSource.manager.create(LotadoEm);
+    const lotadoEm = PostgresDataSource.manager.create(LotadoEm);
     lotadoEm.cidade = v.cidade;
     lotadoEm.diretoria = v.diretoria;
     lotadoEm.unidade = v.unidade;
     lotadoEm.inscricao = v.inscricao;
-    await myDataSource.manager.save(lotadoEm);
+    await PostgresDataSource.manager.save(lotadoEm);
   });
 }
 
@@ -289,11 +289,11 @@ async function cadastrarListaTresParaUm(lista: IAprovado[], nomeLista: string) {
     let i = 0;
     while (i < counter) {
       if (lst.length > 0) {
-        const lista = myDataSource.manager.create(Lista);
+        const lista = PostgresDataSource.manager.create(Lista);
         lista.inscricao = lst[0].inscricao;
         lista.tipo = lName;
         lista.posicao = position + i;
-        await myDataSource.manager.save(lista);
+        await PostgresDataSource.manager.save(lista);
         lst.splice(0, 1);
       }
       i++;
@@ -352,11 +352,11 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[], nomeLista: string)
     let i = 0;
     while (i < counter) {
       if (lst.length > 0) {
-        const lista = myDataSource.manager.create(Lista);
+        const lista = PostgresDataSource.manager.create(Lista);
         lista.inscricao = lst[0].inscricao;
         lista.posicao = position + i;
         lista.tipo = lName;
-        await myDataSource.manager.save(lista);
+        await PostgresDataSource.manager.save(lista);
         lst.splice(0, 1);
       }
       i++;
@@ -381,7 +381,7 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[], nomeLista: string)
   }
 }
 
-myDataSource.initialize().then(async (e) => {
+PostgresDataSource.initialize().then(async (e) => {
   await loadDOUData().then((e) => {
     console.log('called on resolve');
   });
