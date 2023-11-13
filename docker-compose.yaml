@@ -3,7 +3,7 @@ services:
     build: ./frontend
     container_name: frontend
     ports:
-      - "3000:3000"
+      - "${PORT_FRONT}:${PORT_FRONT}"
     depends_on:
       - backend
   
@@ -11,18 +11,20 @@ services:
     build: ./backend
     container_name: backend
     ports:
-      - "3001:3001"
+      - "${PORT_BACK}:${PORT_BACK}"
     env_file:
       - ./backend/.env
     depends_on:
       - db
     restart: on-failure
+    tty: true
+    stdin_open: true
   
   db:
     build: ./database
     container_name: db
     ports:
-      - "5432:5432"
+      - "${PORT_DB}:${PORT_DB}"
     env_file:
       - ./database/.env
     volumes:
