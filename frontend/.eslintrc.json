@@ -1,0 +1,83 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "plugin:sonarjs/recommended"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["sonarjs"],
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "sonarjs/cognitive-complexity": [
+            "error",
+            12
+        ],
+        "sonarjs/no-one-iteration-loop": [
+            "error"
+        ],
+        "sonarjs/no-identical-expressions": [
+            "error"
+        ],
+        "sonarjs/no-use-of-empty-return-value": [
+            "error"
+        ],
+        "sonarjs/no-extra-arguments": [
+            "error"
+        ],
+        "sonarjs/no-identical-conditions": [
+            "error"
+        ],
+        "sonarjs/no-collapsible-if": [
+            "error"
+        ],
+        "sonarjs/no-collection-size-mischeck": [
+            "error"
+        ],
+        "sonarjs/no-duplicate-string": [
+            "error"
+        ],
+        "sonarjs/no-duplicated-branches": [
+            "error"
+        ],
+        "sonarjs/no-identical-functions": [
+            "error"
+        ],
+        "sonarjs/no-redundant-boolean": [
+            "error"
+        ],
+        "sonarjs/no-unused-collection": [
+            "error"
+        ],
+        "sonarjs/no-useless-catch": [
+            "error"
+        ],
+        "sonarjs/prefer-object-literal": [
+            "error"
+        ],
+        "sonarjs/prefer-single-boolean-return": [
+            "error"
+        ],
+        "sonarjs/no-inverted-boolean-check": [
+            "error"
+        ]
+    }
+}

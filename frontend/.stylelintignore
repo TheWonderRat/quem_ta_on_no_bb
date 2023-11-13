@@ -1,0 +1,5 @@
+Dockerfile
+*.svg
+*.js
+*.json
+*.html
