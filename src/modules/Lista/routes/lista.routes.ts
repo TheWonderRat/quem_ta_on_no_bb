@@ -1,10 +1,14 @@
-import { Router, Request, Response } from 'express'
+import { Router, Request, Response, RequestHandler } from 'express'
 import {celebrate, Joi, Segments} from 'celebrate'
 import ListarController from '../controllers/ListarController'
 import { isAuthenticated } from '@shared/middlewares/authMiddlewares'
 
 const listarRouter = Router()
 const listarController = new ListarController();
+
+listarRouter.get("/", (req: Request, res: Response) => {
+  res.status(200).send({ message: "A rota está funcionando" })
+})
 
 
 listarRouter.get(

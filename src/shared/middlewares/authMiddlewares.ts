@@ -2,7 +2,7 @@ import {NextFunction, Request, Response} from 'express'
 import AppError from '@shared/errors/AppError'
 import { AppErrorType } from '@shared/errors/AppError'
 
-import authConfig from '@config/auth'
+import authConfig from '@config/auth_example'
 const jsonwebtoken = require('jsonwebtoken');
 
 const {verify} = jsonwebtoken;

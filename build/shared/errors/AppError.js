@@ -13,47 +13,49 @@ var AppErrorType;
     //algo nao encontrados
     AppErrorType[AppErrorType["UserNotFound"] = 3] = "UserNotFound";
     AppErrorType[AppErrorType["DataBaseNotFound"] = 4] = "DataBaseNotFound";
-})(AppErrorType || (exports.AppErrorType = AppErrorType = {}));
+    //Erros no servidos
+    AppErrorType[AppErrorType["ErroNoServidor"] = 5] = "ErroNoServidor";
+})(AppErrorType = exports.AppErrorType || (exports.AppErrorType = {}));
 const ErrorConstants = {
-    missingToken: { message: "", statusCode: 400 },
-    userNotAuthenticated: { message: "", statusCode: 400 },
-    missmatchedPassword: { message: "", statusCode: 400 },
-    userNotFound: { message: "", statusCode: 400 },
-    databaseNotFound: { message: "", statusCode: 400 }
+    missingToken: { message: "Token de identificacao nao foi encontrado!", statusCode: 400 },
+    userNotAuthenticated: { message: "A sessao do usuario expirou", statusCode: 400 },
+    missmatchedPassword: { message: "Combicanao usuario/senha nao confere", statusCode: 400 },
+    userNotFound: { message: "O usuario nao foi encontrado", statusCode: 400 },
+    databaseNotFound: { message: "Nao foi possivel conectar com a base de dados", statusCode: 400 },
+    serverSideError: { message: "Nao foi possivel conectar com a base de dados", statusCode: 400 },
 };
 class AppError {
     message;
     statusCode;
     constructor(error) {
-        let message;
-        let statusCode;
+        let errorType;
         switch (error) {
             //error de informacoes faltando
             case AppErrorType.MissingToken:
-                message = ErrorConstants.missingToken.message;
-                statusCode = ErrorConstants.missingToken.statusCode;
+                errorType = ErrorConstants.missingToken;
                 break;
             //
             //erros de autenticacao
             case AppErrorType.UserNotAuthenticated:
-                message = ErrorConstants.userNotAuthenticated.message;
-                statusCode = ErrorConstants.userNotAuthenticated.statusCode;
+                errorType = ErrorConstants.userNotAuthenticated;
                 break;
             case AppErrorType.MissmatchedPassword:
-                message = ErrorConstants.missmatchedPassword.message;
-                statusCode = ErrorConstants.missmatchedPassword.statusCode;
+                errorType = ErrorConstants.missmatchedPassword;
                 break;
             //
             //error na base de dados
             case AppErrorType.DataBaseNotFound:
-                message = ErrorConstants.databaseNotFound.message;
-                statusCode = ErrorConstants.databaseNotFound.statusCode;
+                errorType = ErrorConstants.databaseNotFound;
                 break;
             case AppErrorType.UserNotFound:
-                message = ErrorConstants.userNotFound.message;
-                statusCode = ErrorConstants.userNotFound.statusCode;
+                errorType = ErrorConstants.userNotFound;
+                break;
+            default:
+                errorType = ErrorConstants.serverSideError;
                 break;
         }
+        this.message = errorType.message;
+        this.statusCode = errorType.statusCode;
     }
 }
 exports.default = AppError;

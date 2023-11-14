@@ -2,7 +2,7 @@ import AppError, { AppErrorType } from '@shared/errors/AppError'
 import {compare} from 'bcryptjs'
 
 
-import authConfig from '@config/auth'
+import authConfig from '@config/auth_example'
 //import { UserRepository } from '../entity/UserRepository'
 import { Aprovado } from '../entity/Aprovado'
 //import { Aprovado } from '@modules/Aprovado/entity/Aprovado';

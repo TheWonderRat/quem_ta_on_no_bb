@@ -16,7 +16,7 @@ export const myDataSource = new DataSource({
   "port":5432,
   "username":"postgres",
   "password":"docker",
-  "database":"quem_ta_on_no_bb",
+  "database":"aprovados_bb",
   "synchronize": true,
   //NAO MUDAR
   "entities":[

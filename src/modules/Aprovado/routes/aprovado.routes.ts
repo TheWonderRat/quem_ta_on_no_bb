@@ -6,6 +6,10 @@ import { isAuthenticated } from '@shared/middlewares/authMiddlewares'
 const userRouter = Router()
 const usersController = new AprovadoController();
 
+// userRouter.get("/", (__req: Request, res: Response) => {
+// 	usersController
+// })
+
 
 //create user
 userRouter.post(
