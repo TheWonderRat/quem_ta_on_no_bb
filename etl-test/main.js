@@ -1,5 +1,6 @@
 
 const fs = require('fs').promises;
+
 const { MongoClient } = require('mongodb');
 
 DIRETAS = './src/data/nomes_diretas'
