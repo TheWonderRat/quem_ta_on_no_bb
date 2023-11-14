@@ -19,10 +19,10 @@ class AprovadoRepository extends Repository<Aprovado>{
   //TODO:: testar o que acontece se o usuario nao for encontrado
   public async updatePassword(login: number, novaSenha: string): Promise<void>{
     await myDataSource
-      .createQueryBuilder()
-      .update(Aprovado)
+      .createQueryBuilder(Aprovado, "apr")
+      .update()
       .set({senha: novaSenha})
-      .where(`apr.${ AprovadosDBConstants.Inscricao }= :login`,{ login })
+      .where(`${ AprovadosDBConstants.NomeEntidade}.${ AprovadosDBConstants.Inscricao }= :login`,{ login })
       .execute();
   }
 }
