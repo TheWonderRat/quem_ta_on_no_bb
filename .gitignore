@@ -211,9 +211,9 @@ dist
 .history
 .ionide
 
+### Project directories ###
+/database/data/*
+/backend/build/*
+
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode,dotenv
-=======
-node_modules
-src/config/auth.ts
-build
->>>>>>> branch-com-todas-as-alteracoes-locais
+>>>>>>>>> Temporary merge branch 2

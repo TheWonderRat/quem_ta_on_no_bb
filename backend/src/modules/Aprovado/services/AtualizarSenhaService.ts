@@ -1,51 +1,39 @@
+import AppError, { AppErrorType } from '@shared/errors/AppError';
 import { hash, compare } from 'bcryptjs';
+import { AprovadosRepo } from '../repository/AprovadoRepository';
 
-import myDataSource from '../../../shared/typeorm';
-import AppError from '../../../shared/errors/AppError';
-import Aprovado from '../entity/Aprovado';
-
-type Request = {
-  login: string
-  senha: string,
+interface IRequest {
+  login: number,
+  senha:string,
   novaSenha: string
-};
+}
 
-type Response = {
+interface IResponse {
   token: string
-};
+}
 
 class AtualizarSenhaService {
-  private readonly tableName = 'usuario';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha, novaSenha }: Request): Promise<Response | AppError> {
-    const usuario = await myDataSource
-      .getRepository(Aprovado)
-      .createQueryBuilder(this.tableName)
-      .where('usuario.inscricao = :login', { login })
-      .getOne();
+  public async execute({ login, senha, novaSenha }: IRequest): Promise<IResponse | AppError> {
+    const aprovado = await AprovadosRepo.findByLogin(login);
 
-    if (!usuario) {
-      return new AppError('Usuario nao encontrado', 401);
+    if (!aprovado) {
+      return new AppError(AppErrorType.UserNotFound);
     }
 
-    const hashedPassword = await compare(senha, usuario.senha);
+    const hashedPassword = await compare(senha, aprovado.senha);
 
     if (!hashedPassword) {
-      return new AppError('Combinacao usuario/senha nao confere!', 401);
+      return new AppError(AppErrorType.MissmatchedPassword);
     }
 
     // TODO:: Colocar o salt em uma nova constante
     const newPswd = await hash(novaSenha, 8);
 
-    await myDataSource
-      .createQueryBuilder()
-      .update(Aprovado)
-      .set({ senha: newPswd })
-      .where('inscricao = :login', { login })
-      .execute();
+    await AprovadosRepo.updatePassword(login, newPswd);
 
-    return { token: `Senha de ${usuario.nome} atualizada com sucesso!` };
+    return { token: `Senha de ${aprovado.nome} atualizada com sucesso!` };
   }
 }
 

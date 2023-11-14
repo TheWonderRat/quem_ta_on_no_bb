@@ -2,9 +2,15 @@
   "name": "quem_ta_on_no_bb",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/shared/https/server.ts",
+  "main": "./build/server/server",
   "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "prestart": "npm run build",
+    "start": "node .",
+    "dev": "tsnd --rs --transpile-only ./src/server/server.ts",
+    "lint": "eslint ./src --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
 <<<<<<< HEAD:backend/package.json
     "start": "ts-node -r tsconfig-paths/register --transpile-only .",
     "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src .",
@@ -14,41 +20,64 @@
 =======
     "start": "ts-node -r tsconfig-paths/register --transpile-only src/shared/https/server.ts",
     "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --transpile-only --respawn --ignore-watch node_modules --watch src src/shared/https/server.ts",
+=======
+>>>>>>> origin/branch-to-merge-and-solve-conflicts
     "load-db-data": "ts-node src/shared/database/etl_script/src/loadDb.ts",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration-run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
+<<<<<<< HEAD
     "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts"
 >>>>>>> branch-com-todas-as-alteracoes-locais:package.json
+=======
+    "migration-revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+>>>>>>> origin/branch-to-merge-and-solve-conflicts
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
 <<<<<<< HEAD:backend/package.json
 =======
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
 >>>>>>> branch-com-todas-as-alteracoes-locais:package.json
+=======
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+>>>>>>> origin/branch-to-merge-and-solve-conflicts
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
+    "mime": "^3.0.0",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
+    "@babel/preset-flow": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.16",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
+    "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.9",
+<<<<<<< HEAD
 <<<<<<< HEAD:backend/package.json
     "@types/multer": "^1.4.10",
 =======
     "@types/mime": "^2.0.3",
 >>>>>>> branch-com-todas-as-alteracoes-locais:package.json
+=======
+    "@types/mime": "^2.0.3",
+    "@types/multer": "^1.4.10",
+>>>>>>> origin/branch-to-merge-and-solve-conflicts
     "@types/node": "^17.0.45",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",

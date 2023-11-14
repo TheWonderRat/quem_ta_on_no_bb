@@ -1,15 +1,22 @@
-import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, OneToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 import { Aprovado } from '../../Aprovado/entity/Aprovado';
+import SituacaoDBConstants from '../constants/SituacaoDBConstants';
 
-@Entity('situacao')
-export default class Situacao {
-  @OneToMany(() => Aprovado, (aprovado) => aprovado.situacao)
-  @PrimaryColumn()
+@Entity(SituacaoDBConstants.NomeEntidade)
+export class Situacao {
+// atributos---------------------------------------
+  @PrimaryColumn({ type: 'text', name: SituacaoDBConstants.NomeSituacao })
     nome: string;
 
-  @Column()
-    createdAt: Date;
+  @CreateDateColumn({ name: SituacaoDBConstants.CriadoEm })
+    criadoEm: Date;
 
-  @Column()
-    updatedAt: Date;
+  @UpdateDateColumn({ name: SituacaoDBConstants.AtualizadoEm })
+    atualizadoEm: Date;
+
+  // relacionamentos---------------------------------------
+  // relacionamentos devem ter o mesmo nome da variavel da entidade
+  @OneToMany(() => Aprovado, (aprovado) => aprovado.situacao)
+  // @JoinColumn({ name: SituacaoDBConstants.NomeSituacao, })
+    aprovadosNaSituacao: Aprovado[];
 }

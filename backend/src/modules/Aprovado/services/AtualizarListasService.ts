@@ -1,44 +1,33 @@
+import AppError, { AppErrorType } from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
+import { AprovadosRepo } from '../repository/AprovadoRepository';
 
-import myDataSource from '../../../shared/typeorm';
-import AppError from '../../../shared/errors/AppError';
-import Aprovado from '../entity/Aprovado';
+interface IRequest {
+  login:number;
+  senha:string;
+}
 
-type Request = {
-  login: string;
-  senha: string;
-};
-
-type Response = {
-  token: string;
-};
+interface IResponse {
+  token:string;
+}
 
 class AtualizarListasService {
-  private readonly startMessage = 'atualizar listas service';
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
-  public async execute({ login, senha }: Request): Promise<Response | AppError> {
-    console.log(this.startMessage);
-    const usuario = await myDataSource
-      .manager
-      .getRepository(Aprovado)
-      .createQueryBuilder()
-      .where('inscricao = :login', { login })
-      .getOne();
+  public async execute({ login, senha }: IRequest): Promise<IResponse | AppError> {
+    const aprovado = await AprovadosRepo.findByLogin(login);
 
-    if (!usuario) {
-      return new AppError('Usuario nao foi encontrado!', 401);
+    if (!aprovado) {
+      return new AppError(AppErrorType.UserNotFound);
     }
 
-    const hashedPswd = await compare(senha, usuario.senha);
+    const hashedPswd = await compare(senha, aprovado.senha);
 
     if (!hashedPswd) {
-      return new AppError('Combicanao usuario/senha nao confere!', 401);
+      return new AppError(AppErrorType.MissmatchedPassword);
     }
 
-    return {
-      token: 'Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!',
-    };
+    return { token: 'Atualizar Listas chamado com sucesso, embora ainda nao tenha sido implementado!' };
   }
 }
 
