@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,linux,visualstudiocode,dotenv
 
@@ -211,3 +212,8 @@ dist
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode,dotenv
+=======
+node_modules
+src/config/auth.ts
+build
+>>>>>>> branch-com-todas-as-alteracoes-locais

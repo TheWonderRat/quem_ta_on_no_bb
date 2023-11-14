@@ -1,150 +1,40 @@
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-import { DataSource } from 'typeorm';
-// import { Aprovado } from '../../modules/Aprovado/entity/Aprovado';
-// import { Lista } from '../../modules/Lista/entity/Lista';
-// import { Situacao } from '../../modules/Situacao/entity/Situacao';
-// import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
-// import { Lotacao } from '../../modules/Lotacao/entity/Lotacao';
-// import { Turma } from '../../modules/Turma/entity/Turma';
-=======
-import { DataSource } from "typeorm"
-import { Aprovado } from '../../modules/Aprovado/entity/Aprovado'
-import { Lista } from '../../modules/Lista/entity/Lista'
-import { Situacao } from '../../modules/Situacao/entity/Situacao'
-import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
-import { Lotacao } from '../../modules/Lotacao/entity/Lotacao'
-import { Turma } from '../../modules/Turma/entity/Turma'
-import { Cidade } from '../../modules/Cidade/entity/Cidade'
-import { Diretoria } from '../../modules/Diretoria/entity/Diretoria'
-import { LotadoEm } from "@modules/LotadoEm/entity/LotadoEm";
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
-
-const USER = process.env.POSTGRES_USER || 'postgres';
-const PASSWORD = process.env.POSTGRES_PASSWORD || 'docker';
-
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-const myDataSource = new DataSource({
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: USER,
-  password: PASSWORD,
-  database: 'aprovados_novo',
-  // "synchronize": true,
-  entities: [
-    /*
-    Aprovado,
-    Lista,
-    Situacao,
-    TipoLista,
-    Lotacao,
-    Turma,
-    */
-    '../../modules/Aprovado/entity/Aprovado',
-    '../../modules/Lista/entity/Lista',
-    '../../modules/Situacao/entity/Situacao',
-    '../../modules/Lotacao/entity/Lotacao',
-    '../../TipoLista/entity/TipoLista',
-    '../../modules/User/entity/UserEntity',
-  ],
-  migrations: [
-
-    '../../modules/**/entity/*.ts',
-    /*
-    '../../modules/Aprovado/entity/Aprovado',
-    '../../modules/Lista/entity/Lista',
-    '../../modules/Situacao/entity/Situacao',
-    '../../modules/Lotacao/entity/Lotacao',
-    "../../TipoLista/entity/TipoLista",
-    "../../Turma/entity/Turma"
-    */
-  ],
-=======
-export const myDataSource = new DataSource({
-  "type":"postgres",
-  "host":"localhost",
-  "port":5432,
-  "username":"postgres",
-  "password":"docker",
-  "database":"aprovados_bb",
-  "synchronize": true,
-  //NAO MUDAR
-  "entities":[
-    "./src/modules/**/entity/*.ts"
-  ],
-  //NAO MUDAR
-  "migrations":[
-    "./src/shared/typeorm/migrations/*.ts"
-  ]
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.myDataSource = void 0;
+const typeorm_1 = require("typeorm");
+exports.myDataSource = new typeorm_1.DataSource({
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "docker",
+    "database": "aprovados_bb",
+    "synchronize": true,
+    //NAO MUDAR
+    "entities": [
+        "./src/modules/**/entity/*.ts"
+    ],
+    //NAO MUDAR
+    "migrations": [
+        "./src/shared/typeorm/migrations/*.ts"
+    ]
 });
-
-myDataSource.initialize()
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-  .then((e) => {
-    console.log(`${e}`);
-    /*
-    const jsonStringOne = require('../../../dados_dos_candidatos/src/diretas.json');
-    const jsonStringTwo = require('../../../dados_dos_candidatos/src/cadastroReserva.json');
-
-    jsonStringOne.forEach(async (u: User)=>{
-      const user = myDataSource.manager.create(User);
-      user.inscricao = u.inscricao;
-      user.nome = u.nome,
-      user.senha = u.senha;
-      user.dataPosse = u.dataPosse;
-      user.cidadePosse = u.cidadePosse;
-      user.lotacao = u.lotacao;
-      user.dataQuestionario = u.dataQuestionario;
-      user.turma = u.turma;
-      user.posicaoAmpla = u.posicaoAmpla;
-      user.posicaoPPP = u.posicaoPPP;
-      user.posicaoPCD = u.posicaoPCD;
-
-      await myDataSource.manager.save(user);
-    });
-
-    jsonStringTwo.forEach(async (u: User)=>{
-      const user = myDataSource.manager.create(User);
-      user.inscricao = u.inscricao;
-      user.nome = u.nome,
-      user.senha = u.senha;
-      user.dataPosse = u.dataPosse;
-      user.cidadePosse = u.cidadePosse;
-      user.lotacao = u.lotacao;
-      user.dataQuestionario = u.dataQuestionario;
-      user.turma = u.turma;
-      user.posicaoAmpla = u.posicaoAmpla;
-      user.posicaoPPP = u.posicaoPPP;
-      user.posicaoPCD = u.posicaoPCD;
-
-      await myDataSource.manager.save(user);
-    });
-      */
-
-    console.log('data source has been initialized!');
-  })
-  .catch((e) => {
-    console.log(`${e}`);
-  });
-=======
-  .then(async () => {
+exports.myDataSource.initialize()
+    .then(async () => {
     //run migrations with e
     //insert data with e
     //kill database with e await runAfterInit();
-    console.log("initialized properly")
-  })
-  .catch((e) =>{
-    console.log(`${e}`)
-  })
-  .finally(async () => {
+    console.log("initialized properly");
+})
+    .catch((e) => {
+    console.log(`${e}`);
+})
+    .finally(async () => {
     await runAfterInit();
-    console.log("called after database connection")
-  });
-
-async function runAfterInit(){
+    console.log("called after database connection");
+});
+async function runAfterInit() {
 }
-
 /*
 async function loadDOUData(){
   const AMPLA = require('../../../dados_dos_candidatos/src/diretas.json');
@@ -152,18 +42,18 @@ async function loadDOUData(){
 
   Promise.all([
     cadastrarTurma([1,2,3]),
-    cadastrarTipoLista([ 
+    cadastrarTipoLista([
       'ampla',
       'ampla_diretas',
       'ampla_cadastro_reserva',
-      'ppp', 
-      'ppp_diretas', 
-      'ppp_cadastro_reserva', 
-      'pcd', 
-      'pcd_diretas', 
-      'pcd_cadastro_reserva', 
-      'tres_para_um', 
-      'quatro_para_um', 
+      'ppp',
+      'ppp_diretas',
+      'ppp_cadastro_reserva',
+      'pcd',
+      'pcd_diretas',
+      'pcd_cadastro_reserva',
+      'tres_para_um',
+      'quatro_para_um',
     ]),
     cadastrarSituacao([
       'em_preparacao',
@@ -215,7 +105,7 @@ async function loadDOUData(){
       ];
     await cadastrarLotadosEm(AMPLA.map((v: IAprovado) => {
       const {cidade, diretoria, unidade } = lotacoes[Math.floor(Math.random() * 6)]
-      return { inscricao: v.inscricao, cidade, diretoria, unidade } 
+      return { inscricao: v.inscricao, cidade, diretoria, unidade }
     }));
 
   }).catch((err) => {
@@ -317,7 +207,7 @@ async function cadastrarAprovados(
 //como os dados estao consistentes vou fingir que typescript nao existe
 async function cadastrarLista(aprovados: IAprovado[],tipoAmpla: string,tipoPPP: string,tipoPCD: string){
 
-  const salvarAprovado = async (a: IAprovado,posicao: number ,tipoLista: string) => { 
+  const salvarAprovado = async (a: IAprovado,posicao: number ,tipoLista: string) => {
     const lista = myDataSource.manager.create(Lista);
     lista.inscricao = a.inscricao;
     lista.tipo = tipoLista;
@@ -376,7 +266,7 @@ async function cadastrarListaTresParaUm(lista: IAprovado[],nomeLista: string){
           arr[i] = arr[i - 1];
           arr[i - 1 ] = swap;
           ordered = false;
-        } 
+        }
       }
     }
   }
@@ -399,7 +289,7 @@ bubbleSort(listaPPP,"posicaoPPP");
   bubbleSort(listaPCD,"posicaoPCD");
   bubbleSort(listaAmpla,"posicaoAmpla");
 
-  const salvarAprovado = async (lst: IAprovado[], position: number,counter: number, lName: string) => { 
+  const salvarAprovado = async (lst: IAprovado[], position: number,counter: number, lName: string) => {
     let i = 0;
     while(i < counter){
         if(lst.length > 0){
@@ -441,7 +331,7 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[],nomeLista: string){
           arr[i] = arr[i - 1];
           arr[i - 1 ] = swap;
           ordered = false;
-        } 
+        }
       }
     }
   }
@@ -464,7 +354,7 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[],nomeLista: string){
   bubbleSort(listaPCD,"posicaoPCD");
   bubbleSort(listaAmpla,"posicaoAmpla");
 
-  const salvarAprovado = async (lst: IAprovado[], position: number,counter: number, lName: string) => { 
+  const salvarAprovado = async (lst: IAprovado[], position: number,counter: number, lName: string) => {
     let i = 0;
     while(i < counter){
         if(lst.length > 0){
@@ -502,7 +392,3 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[],nomeLista: string){
 
 
 */
-
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
-
-export default myDataSource;

@@ -1,158 +1,40 @@
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-import { DataSource } from 'typeorm';
-// import { Aprovado } from '../../modules/Aprovado/entity/Aprovado';
-// import { Lista } from '../../modules/Lista/entity/Lista';
-// import { Situacao } from '../../modules/Situacao/entity/Situacao';
-// import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
-// import { Lotacao } from '../../modules/Lotacao/entity/Lotacao';
-// import { Turma } from '../../modules/Turma/entity/Turma';
-=======
-import { DataSource } from "typeorm"
-import { Aprovado } from '../../modules/Aprovado/entity/Aprovado'
-import { Lista } from '../../modules/Lista/entity/Lista'
-import { Situacao } from '../../modules/Situacao/entity/Situacao'
-import { TipoLista } from '../../modules/TipoLista/entity/TipoLista';
-import { Lotacao } from '../../modules/Lotacao/entity/Lotacao'
-import { Turma } from '../../modules/Turma/entity/Turma'
-import { Cidade } from '../../modules/Cidade/entity/Cidade'
-import { Diretoria } from '../../modules/Diretoria/entity/Diretoria'
-import { LotadoEm } from "@modules/LotadoEm/entity/LotadoEm";
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
+import { TipoLista } from "../../../../modules/TipoLista/entity/TipoLista";
+import { Turma } from "../../../../modules/Turma/entity/Turma";
+import { Cidade } from "../../../../modules/Cidade/entity/Cidade";
+import { Diretoria } from "../../../../modules/Diretoria/entity/Diretoria";
+import { Situacao } from "../../../../modules/Situacao/entity/Situacao";
+import { Aprovado } from "../../../../modules/Aprovado/entity/Aprovado";
+import { Lista } from "../../../../modules/Lista/entity/Lista";
+import { LotadoEm } from "../../../../modules/LotadoEm/entity/LotadoEm";
+import { myDataSource } from "../../../typeorm";
+import { Lotacao } from "../../../../modules/Lotacao/entity/Lotacao";
 
-const USER = process.env.POSTGRES_USER || 'postgres';
-const PASSWORD = process.env.POSTGRES_PASSWORD || 'docker';
+import path from "path";
+import { TurmasRepo } from "../../../../modules/Turma/repository/TurmaRepository";
 
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-const myDataSource = new DataSource({
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: USER,
-  password: PASSWORD,
-  database: 'aprovados_novo',
-  // "synchronize": true,
-  entities: [
-    /*
-    Aprovado,
-    Lista,
-    Situacao,
-    TipoLista,
-    Lotacao,
-    Turma,
-    */
-    '../../modules/Aprovado/entity/Aprovado',
-    '../../modules/Lista/entity/Lista',
-    '../../modules/Situacao/entity/Situacao',
-    '../../modules/Lotacao/entity/Lotacao',
-    '../../TipoLista/entity/TipoLista',
-    '../../modules/User/entity/UserEntity',
-  ],
-  migrations: [
 
-    '../../modules/**/entity/*.ts',
-    /*
-    '../../modules/Aprovado/entity/Aprovado',
-    '../../modules/Lista/entity/Lista',
-    '../../modules/Situacao/entity/Situacao',
-    '../../modules/Lotacao/entity/Lotacao',
-    "../../TipoLista/entity/TipoLista",
-    "../../Turma/entity/Turma"
-    */
-  ],
-=======
-export const myDataSource = new DataSource({
-  "type":"postgres",
-  "host":"localhost",
-  "port":5432,
-  "username":"postgres",
-  "password":"docker",
-  "database":"aprovados_bb",
-  "synchronize": true,
-  //NAO MUDAR
-  "entities":[
-    "./src/modules/**/entity/*.ts"
-  ],
-  //NAO MUDAR
-  "migrations":[
-    "./src/shared/typeorm/migrations/*.ts"
-  ]
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
-});
+  //const AMPLA = require('/src/shared/database/etl_script/src/data/diretas.json/diretas.json');
+  //const CADASTRO_RESERVA = require('shared/database/etl_script/src/data/diretas.json/cadastroReserva.json');
+  const AMPLA: IAprovado[ ]= require(path.join(__dirname,'..','data','diretas.json'));
+  const CADASTRO_RESERVA: IAprovado[] = require(path.join(__dirname,'..','data','cadastroReserva.json')); //const CADASTRO_RESERVA = require('./src/shared/database/etl_script/src/data/diretas.json/cadastroReserva.json');
+  const TODOS_OS_APROVADOS = AMPLA.concat(CADASTRO_RESERVA);
 
-myDataSource.initialize()
-<<<<<<< HEAD:backend/src/shared/typeorm/index.ts
-  .then((e) => {
-    console.log(`${e}`);
-    /*
-    const jsonStringOne = require('../../../dados_dos_candidatos/src/diretas.json');
-    const jsonStringTwo = require('../../../dados_dos_candidatos/src/cadastroReserva.json');
 
-    jsonStringOne.forEach(async (u: User)=>{
-      const user = myDataSource.manager.create(User);
-      user.inscricao = u.inscricao;
-      user.nome = u.nome,
-      user.senha = u.senha;
-      user.dataPosse = u.dataPosse;
-      user.cidadePosse = u.cidadePosse;
-      user.lotacao = u.lotacao;
-      user.dataQuestionario = u.dataQuestionario;
-      user.turma = u.turma;
-      user.posicaoAmpla = u.posicaoAmpla;
-      user.posicaoPPP = u.posicaoPPP;
-      user.posicaoPCD = u.posicaoPCD;
+  //const AMPLA = require('../data/diretas.json/diretas.json');
+  //const CADASTRO_RESERVA = require('../data/cadastroReserva.json');
+  const LOTACOES = [{ cidade: 'Sao Paulo', diretoria: 'DITEC', unidade: 1},
+        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 1},
+        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 2},
+        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 3},
+        { cidade: 'Brasilia', diretoria: 'UAN', unidade: 1},
+        { cidade: 'Brasilia', diretoria: 'UCF', unidade: 1}]
 
-      await myDataSource.manager.save(user);
-    });
 
-    jsonStringTwo.forEach(async (u: User)=>{
-      const user = myDataSource.manager.create(User);
-      user.inscricao = u.inscricao;
-      user.nome = u.nome,
-      user.senha = u.senha;
-      user.dataPosse = u.dataPosse;
-      user.cidadePosse = u.cidadePosse;
-      user.lotacao = u.lotacao;
-      user.dataQuestionario = u.dataQuestionario;
-      user.turma = u.turma;
-      user.posicaoAmpla = u.posicaoAmpla;
-      user.posicaoPPP = u.posicaoPPP;
-      user.posicaoPCD = u.posicaoPCD;
 
-      await myDataSource.manager.save(user);
-    });
-      */
 
-    console.log('data source has been initialized!');
-  })
-  .catch((e) => {
-    console.log(`${e}`);
-  });
-=======
-  .then(async () => {
-    //run migrations with e
-    //insert data with e
-    //kill database with e await runAfterInit();
-    console.log("initialized properly")
-  })
-  .catch((e) =>{
-    console.log(`${e}`)
-  })
-  .finally(async () => {
-    await runAfterInit();
-    console.log("called after database connection")
-  });
-
-async function runAfterInit(){
-}
-
-/*
-async function loadDOUData(){
-  const AMPLA = require('../../../dados_dos_candidatos/src/diretas.json');
-  const CADASTRO_RESERVA = require('../../../dados_dos_candidatos/src/cadastroReserva.json');
-
-  Promise.all([
-    cadastrarTurma([1,2,3]),
-    cadastrarTipoLista([ 
+async function loadDOUData(
+    cTurma: Promise<void> = cadastrarTurma([1,2,3]),
+    cTipoLista: Promise<void> = cadastrarTipoLista([ 
       'ampla',
       'ampla_diretas',
       'ampla_cadastro_reserva',
@@ -165,7 +47,7 @@ async function loadDOUData(){
       'tres_para_um', 
       'quatro_para_um', 
     ]),
-    cadastrarSituacao([
+    cSituacao: Promise<void> = cadastrarSituacao([
       'em_preparacao',
       'convocacao_expedida',
       'em_qualificacao',
@@ -177,50 +59,46 @@ async function loadDOUData(){
       'nao_convocado',
       'fila_de_espera'
     ]),
-      cadastrarCidade(['Sao Paulo', 'Brasilia']),
-      cadastrarDiretoria(['DITEC','UAN','UCF']),
+      cCidade: Promise<void> = cadastrarCidade(['Sao Paulo', 'Brasilia']),
+      cDiretoria: Promise<void> = cadastrarDiretoria(['DITEC','UAN','UCF']),
    
-      cadastrarAprovados(AMPLA,"fila_de_espera",true),
-      cadastrarAprovados(CADASTRO_RESERVA,"fila_de_espera",true),
-  ]).then(async () => {
-      /*
-    await cadastrarLotacao([
-        { cidade: 'Sao Paulo', diretoria: 'DITEC', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 2},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 3},
-        { cidade: 'Brasilia', diretoria: 'UAN', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'UCF', unidade: 1},
-    ]),
 
-    //vagas da ampla
-      await cadastrarLista(CADASTRO_RESERVA,"ampla","ppp","pcd");
-      await cadastrarLista(AMPLA,"ampla","ppp","pcd");
+      cAprovadosAmpla: Promise<void> = cadastrarAprovados(TODOS_OS_APROVADOS,"fila_de_espera",true),
+      cLotacao: Promise<void> =  cadastrarLotacao(LOTACOES),
+      cListaAmplaDiretas: Promise<void> = cadastrarLista(CADASTRO_RESERVA,"ampla","ppp","pcd"),
+      cListaAmplaCR : Promise<void> = cadastrarLista(AMPLA,"ampla","ppp","pcd"),
+      cListaDiretas: Promise<void> = cadastrarLista(AMPLA,"ampla_diretas","ppp_diretas","pcd_diretas"),
+      cListaCR: Promise<void> = cadastrarLista(CADASTRO_RESERVA,"ampla_cadastro_reserva","ppp_cadastro_reserva","pcd_cadastro_reserva"),
+      cListaTresParaUm: Promise<void> = cadastrarListaTresParaUm(TODOS_OS_APROVADOS,"tres_para_um"),
+      cListaQuatroParaUm: Promise<void> = cadastrarListaQuatroParaUm(TODOS_OS_APROVADOS,"quatro_para_um"),
 
-    //vagas das diretas
-    await cadastrarLista(AMPLA,"ampla_diretas","ppp_diretas","pcd_diretas");
-    //vagas do cr
-    //await cadastrarLista(CADASTRO_RESERVA,"ampla_cadastro_reserva","ppp_cadastro_reserva","pcd_cadastro_reserva");
-    CADASTRO_RESERVA.forEach((e:IAprovado) => AMPLA.push(e));
+      cLotadosEm: Promise<void> = cadastrarLotadosEm(TODOS_OS_APROVADOS.map((v: IAprovado) => {
+          const {cidade, diretoria, unidade } = LOTACOES[Math.floor(Math.random() * 6)]
+        return { inscricao: v.inscricao, cidade, diretoria, unidade } 
+      })),
 
-    //await cadastrarListaTresParaUm(AMPLA,"tres_para_um");
-    //await cadastrarListaQuatroParaUm(AMPLA,"quatro_para_um");
-    const lotacoes: ILotacao[] = [
-        { cidade: 'Sao Paulo', diretoria: 'DITEC', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 2},
-        { cidade: 'Brasilia', diretoria: 'DITEC', unidade: 3},
-        { cidade: 'Brasilia', diretoria: 'UAN', unidade: 1},
-        { cidade: 'Brasilia', diretoria: 'UCF', unidade: 1},
-      ];
-    await cadastrarLotadosEm(AMPLA.map((v: IAprovado) => {
-      const {cidade, diretoria, unidade } = lotacoes[Math.floor(Math.random() * 6)]
-      return { inscricao: v.inscricao, cidade, diretoria, unidade } 
-    }));
 
-  }).catch((err) => {
-      console.log(`Error!:\n${err}`)
-  });
+){
+
+  if(!myDataSource.isInitialized){
+    await myDataSource.initialize();
+  }
+
+  console.log("is this freaking script calling something or no??");
+  
+  //each tier must load before it is safe to run the tier below 
+  const tierOne = [cTurma,cTipoLista,cSituacao,cCidade,cDiretoria].filter((e) => { e !== null && e !== undefined});
+  const tierTwo = [cAprovadosAmpla, cLotacao, cListaAmplaDiretas,cListaAmplaCR,cListaDiretas, cListaCR, cListaTresParaUm,cListaQuatroParaUm].filter((e) => { e !== null && e !== undefined});
+  const tierThree = [cLotadosEm].filter((e) => { e !== null && e !== undefined});
+  
+  await Promise.all(tierOne).then(async (e) => {
+    await Promise.all(tierTwo).then(async (e) => {
+      await Promise.all(tierThree).then((e) => {
+        console.log("aparentemente deu certo e escolhi deixar essas promisses em forma de seta pq ficou bonito, e a nossa vida indo p frente \n#QUEMTAONNOBB?")
+      }).catch((e) => {console.log("NINGUEEEM ACERRTOUU")})
+    }).catch((e) => console.log("ERROOOOOU"))
+  }).catch((e) => console.log("ERROU"))
+
 }
 
   //como os dados estao consistentes vou fingir que typescript nao existe
@@ -248,7 +126,8 @@ interface ILotadoEm{
 
 async function cadastrarTipoLista(lista: string[]){
   lista.forEach(async (l: string) => {
-    const tipoLista = myDataSource.manager.create(TipoLista);
+    const tipoLista = TurmasRepo.manager.create(TipoLista);
+
     tipoLista.tipo =  l;
     await myDataSource.manager.save(tipoLista);
   });
@@ -257,7 +136,8 @@ async function cadastrarTipoLista(lista: string[]){
 
 async function cadastrarTurma(turmas: number[]){
   turmas.forEach(async (l: number) => {
-    const turma = myDataSource.manager.create(Turma);
+    const turma = myDataSource.getRepository(Turma).create();
+
     turma.numero = l;
     await myDataSource.manager.save(turma);
   });
@@ -295,6 +175,7 @@ async function cadastrarAprovados(
   mock: boolean = false,
   mockTurmas: number[] = [1,2,3],
 ){
+  console.log(aprovados[0]);
   aprovados.forEach(async (apr: IAprovado) => {
 
     const aprovado = myDataSource.manager.create(Aprovado);
@@ -313,6 +194,31 @@ async function cadastrarAprovados(
 }
 //como os dados estao consistentes vou fingir que typescript nao existe
 
+/*
+async function cadastrarListaCR(aprovados: IAprovado[],tipoAmpla: string,tipoPPP: string,tipoPCD: string){
+
+  const salvarAprovado = async (a: IAprovado,posicao: number, tipoLista: string) => { 
+    const lista = myDataSource.manager.create(Lista);
+    lista.inscricao = a.inscricao;
+    lista.tipoLista = tipoLista;
+    lista.posicao = posicao;
+    await myDataSource.manager.save(lista);
+  };
+
+  aprovados.forEach( async (apr) =>{
+
+
+    await salvarAprovado(apr,crAmpla,tipoAmpla);
+
+    if(apr.posicaoPPP !== null){
+      await salvarAprovado(apr,crPPP,tipoPPP);
+    }
+    if(apr.posicaoPCD !== null){
+      await salvarAprovado(apr,tipoPCD);
+    }
+  });
+}
+*/
 
 //como os dados estao consistentes vou fingir que typescript nao existe
 async function cadastrarLista(aprovados: IAprovado[],tipoAmpla: string,tipoPPP: string,tipoPCD: string){
@@ -342,17 +248,17 @@ async function cadastrarLista(aprovados: IAprovado[],tipoAmpla: string,tipoPPP: 
 async function cadastrarLotacao(lotacoes: ILotacao[]){
 
   lotacoes.forEach(async (v) => {
-    const lotacao = myDataSource.getRepository(Lotacao).create();
+    const lotacao = myDataSource.manager.create(Lotacao);
     lotacao.cidade = v.cidade;
     lotacao.diretoria = v.diretoria;
     lotacao.unidade = v.unidade;
-    await myDataSource.getRepository(Lotacao).save(lotacao);
+    await myDataSource.manager.save(lotacao);
   })
 }
 
 async function cadastrarLotadosEm(lotados: ILotadoEm[]){
   lotados.forEach(async (v) => {
-    const lotadoEm = myDataSource.getRepository(LotadoEm).create();
+    const lotadoEm = myDataSource.manager.create(LotadoEm);
     lotadoEm.cidade = v.cidade ;
     lotadoEm.diretoria = v.diretoria;
     lotadoEm.unidade = v.unidade;
@@ -403,7 +309,7 @@ bubbleSort(listaPPP,"posicaoPPP");
     let i = 0;
     while(i < counter){
         if(lst.length > 0){
-          const lista = myDataSource.manager.create(Lista);
+          const lista = myDataSource.manager.create(Lista)
           lista.inscricao = lst[0].inscricao;
           lista.tipo = lName;
           lista.posicao = position + i;
@@ -499,10 +405,15 @@ async function cadastrarListaQuatroParaUm(lista: IAprovado[],nomeLista: string){
   }
 }
 
+myDataSource.initialize().then(async (e) => {
+  
+  await loadDOUData().then((e) => {
+    
+    console.log("called on resolve")
+  })
+});
 
 
-*/
 
->>>>>>> branch-com-todas-as-alteracoes-locais:src/shared/typeorm/index.ts
+//loadDOUData().then((e) => console.log("Data was properly loaded!")).catch((err) => { console.log("something went wrong in the process!")}).finally(() =>{console.log("wtf is going on??")} );
 
-export default myDataSource;
