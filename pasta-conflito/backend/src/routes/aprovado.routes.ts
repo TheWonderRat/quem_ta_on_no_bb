@@ -9,7 +9,6 @@ import { AuthMid } from '../middlewares/exporter';
 import AprovadoController from '../modules/controller/AprovadoController';
 
 const userRouter = Router();
-const usersController = new AprovadoController();
 
 // create user
 userRouter.post(
@@ -21,7 +20,7 @@ userRouter.post(
       senha: Joi.string().required(),
     },
   }),
-  usersController.criarSessao,
+  AprovadoController.criarSessao,
 );
 
 userRouter.post(
@@ -36,7 +35,7 @@ userRouter.post(
   }),
   AuthMid.hasToken,
   AuthMid.hasValidToken,
-  usersController.ativarConta,
+  AprovadoController.ativarConta,
 );
 
 userRouter.post(
@@ -52,7 +51,7 @@ userRouter.post(
   }),
   AuthMid.hasToken,
   AuthMid.hasValidToken,
-  usersController.atualizarSenha,
+  AprovadoController.atualizarSenha,
 );
 
 userRouter.post(
@@ -67,7 +66,7 @@ userRouter.post(
   }),
   AuthMid.hasToken,
   AuthMid.hasValidToken,
-  usersController.atualizarListas,
+  AprovadoController.atualizarListas,
 );
 
 export default userRouter;

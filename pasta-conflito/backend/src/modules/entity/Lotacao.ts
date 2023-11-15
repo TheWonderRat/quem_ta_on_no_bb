@@ -10,9 +10,7 @@ import {
 } from 'typeorm';
 
 // entity
-import { Cidade } from './Cidade';
-import { Diretoria } from './Diretoria';
-import { LotadoEm } from './LotadoEm';
+import { Cidade, Diretoria, LotadoEm } from './exporter';
 
 // SSOT
 import LotacaoDBConstants from '../../SSOT/LotacaoDBConstants';

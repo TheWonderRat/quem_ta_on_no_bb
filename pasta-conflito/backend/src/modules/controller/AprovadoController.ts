@@ -1,37 +1,33 @@
-import { Request, Response, NextFunction } from 'express';
+// libraries
+import { Request, Response } from 'express';
 
-import AtivarContaService from '../services/AtivarContaService';
-import AtualizarSenhaService from '../services/AtualizarSenhaService';
-import AtualizarListasService from '../services/AtualizarListasService';
-import CriarSessaoService from '../services/CriarSessaoService';
+// Service
+import {
+  AtivarContaService,
+  AtualizarSenhaService,
+  AtualizarListasService,
+  CriarSessaoService,
+} from '../service/exporter';
 
 export default class AprovadoController {
-  async ativarConta(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const ativarConta = new AtivarContaService();
-    const users = await ativarConta.execute(request.body);
-
+  public static async ativarConta(request: Request, response:Response): Promise<Response> {
+    const users = await AtivarContaService.execute(request.body);
     return response.json(users);
   }
 
-  async criarSessao(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const criarSessao = new CriarSessaoService();
-    const users = await criarSessao.execute(request.body);
-
+  public static async criarSessao(request: Request, response:Response): Promise<Response> {
+    const users = await CriarSessaoService.execute(request.body);
     return response.json(users);
   }
 
-  async atualizarSenha(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const atualizarSenha = new AtualizarSenhaService();
-    const users = await atualizarSenha.execute(request.body);
-
+  public static async atualizarSenha(request: Request, response:Response): Promise<Response> {
+    const users = await AtualizarSenhaService.execute(request.body);
     return response.json(users);
   }
 
-  async atualizarListas(request: Request, response:Response, nextFunction: NextFunction): Promise<Response> {
-    const updateUsers = new AtualizarListasService();
+  public static async atualizarListas(request: Request, response:Response): Promise<Response> {
     // TODO:: filtrar os parametros aqui
-    const users = await updateUsers.execute(request.body);
-
+    const users = await AtualizarListasService.execute(request.body);
     return response.json(users);
   }
 }

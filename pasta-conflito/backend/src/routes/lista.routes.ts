@@ -9,7 +9,6 @@ import { AuthMid } from '../middlewares/exporter';
 import ListarController from '../modules/controller/ListarController';
 
 const listarRouter = Router();
-const listarController = new ListarController();
 
 listarRouter.get(
   '/:candidatos?/:pagina?/:lista?/:cidade?/:diretoria?/:turma?',
@@ -26,7 +25,7 @@ listarRouter.get(
   }),
   AuthMid.hasToken,
   AuthMid.hasValidToken,
-  listarController.listar,
+  ListarController.listar,
 );
 
 export default listarRouter;

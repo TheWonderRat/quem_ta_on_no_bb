@@ -13,7 +13,7 @@ import LotadoEmDBConstants from '../../SSOT/LotadoEmDBConstants';
 import ListaDBConstants from '../../SSOT/ListaDBConstants';
 
 class ListaRepository extends Repository<Lista> {
-  async findByLista(
+  public async findByLista(
     pagina: number,
     candidatos: number,
     lista?: string,
