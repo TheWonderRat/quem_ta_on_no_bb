@@ -1,5 +1,5 @@
 import { Aprovado } from '../entity/Aprovado';
-import { ListasRepo } from '../repository/ListaRepository';
+import { ListaRepository } from '../repository/exporter';
 
 type Request = {
   pagina: number,
@@ -56,7 +56,7 @@ class ListarService {
     { pagina, candidatos, lista, situacao, cidade, diretoria, turma }: Request,
   ):
     Promise<Response> {
-    const aprovados = await ListasRepo
+    const aprovados = await ListaRepository
       .findByLista(pagina, candidatos, lista, situacao, cidade, diretoria, turma);
     return { aprovados };
   }

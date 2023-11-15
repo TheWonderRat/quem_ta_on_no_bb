@@ -10,7 +10,7 @@ import { errorMessages, httpStatus } from '../../SSOT/exporter';
 import AppError from '../../shared/utils/error/errorConstructor';
 
 // ORM
-import { myDataSource } from '../../database/typeorm';
+import myDataSource from '../../database/typeorm';
 import { Aprovado } from '../entity/Aprovado';
 
 // Environment variables

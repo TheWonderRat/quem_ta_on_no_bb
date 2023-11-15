@@ -8,7 +8,7 @@ import { errorMessages, httpStatus } from '../../SSOT/exporter';
 import AppError from '../../shared/utils/error/errorConstructor';
 
 // repositories
-import { AprovadosRepo } from '../repository/AprovadoRepository';
+import { AprovadosRepository } from '../repository/exporter';
 
 type Request = {
   login: number,
@@ -24,7 +24,7 @@ class AtivarContaService {
   // not sure if I should use any here...
   // TODO:: later I should return, or a class of user, or an instance of AppError
   public static async execute({ login, senha, novaSenha }: Request): Promise<Response> {
-    const usuario = await AprovadosRepo.findByLogin(login);
+    const usuario = await AprovadosRepository.findByLogin(login);
 
     if (!usuario) {
       throw new AppError(errorMessages.USER_NOT_FOUND, httpStatus.HttpStatusNotFound);

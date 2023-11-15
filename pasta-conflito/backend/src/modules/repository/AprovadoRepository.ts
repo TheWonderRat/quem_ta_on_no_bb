@@ -2,7 +2,7 @@
 import { Repository } from 'typeorm';
 
 // ORM
-import { myDataSource } from '../../database/typeorm';
+import myDataSource from '../../database/typeorm';
 
 // entity
 import { Aprovado } from '../entity/Aprovado';
@@ -11,7 +11,7 @@ import { Aprovado } from '../entity/Aprovado';
 import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';
 
 class AprovadoRepository extends Repository<Aprovado> {
-  public static async findByLogin(login: number): Promise<Aprovado | null> {
+  public async findByLogin(login: number): Promise<Aprovado | null> {
     return myDataSource
       .getRepository(Aprovado)
       .createQueryBuilder(`${AprovadosDBConstants.nomeEntidade}`)
@@ -20,7 +20,7 @@ class AprovadoRepository extends Repository<Aprovado> {
   }
 
   // TODO:: testar o que acontece se o usuario nao for encontrado
-  public static async updatePassword(login: number, novaSenha: string): Promise<void> {
+  public async updatePassword(login: number, novaSenha: string): Promise<void> {
     await myDataSource
       .createQueryBuilder(Aprovado, 'apr')
       .update()

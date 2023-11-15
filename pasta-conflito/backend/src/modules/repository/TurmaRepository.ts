@@ -2,7 +2,7 @@
 import { Repository } from 'typeorm';
 
 // ORM
-import { myDataSource } from '../../database/typeorm';
+import myDataSource from '../../database/typeorm';
 
 // entity
 import { Turma } from '../entity/Turma';
