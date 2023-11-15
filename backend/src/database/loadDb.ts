@@ -5,6 +5,7 @@ import { TurmaRepository } from '../modules/repository/exporter';
 
 import * as diretas from './data/diretas.json';
 import * as cadastroReserva from './data/cadastroReserva.json';
+import path from 'path';
 
 // como os dados estao consistentes vou fingir que typescript nao existe
 type Aprovado = {
@@ -29,9 +30,9 @@ type LotadoEm = {
   unidade: number,
 };
 
-const AMPLA = JSON.parse(JSON.stringify(diretas)) as Aprovado[];
-const CADASTRO_RESERVA = JSON.parse(JSON.stringify(cadastroReserva)) as Aprovado[];
-const TODOS_OS_APROVADOS = CADASTRO_RESERVA.concat(AMPLA);
+const AMPLA: Aprovado[ ]= require(path.join(__dirname,'data','diretas.json'));
+const CADASTRO_RESERVA: Aprovado[] = require(path.join(__dirname,'data','cadastroReserva.json')); //const CADASTRO_RESERVA = require('./src/shared/database/etl_script/src/data/diretas.json/cadastroReserva.json');
+const TODOS_OS_APROVADOS = AMPLA.concat(CADASTRO_RESERVA);
 
 async function cadastrarTipoLista(lista: string[]) {
   lista.forEach(async (l: string) => {
