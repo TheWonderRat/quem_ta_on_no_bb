@@ -1,4 +1,4 @@
-import { Aprovado } from '../entity/Aprovado';
+import { Aprovado } from '../entity/exporter';
 import { ListaRepository } from '../repository/exporter';
 
 type Request = {

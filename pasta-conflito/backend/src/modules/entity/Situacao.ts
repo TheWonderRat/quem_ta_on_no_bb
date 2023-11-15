@@ -1,17 +1,28 @@
-import { Entity, PrimaryColumn, OneToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
-import { Aprovado } from '../../Aprovado/entity/Aprovado';
-import SituacaoDBConstants from '../constants/SituacaoDBConstants';
+// libraries
+import {
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity(SituacaoDBConstants.NomeEntidade)
-export class Situacao {
+// entity
+import { Aprovado } from './exporter';
+
+// SSOT
+import SituacaoDBConstants from '../../SSOT/SituacaoDBConstants';
+
+@Entity(SituacaoDBConstants.nomeEntidade)
+export default class Situacao {
 // atributos---------------------------------------
-  @PrimaryColumn({ type: 'text', name: SituacaoDBConstants.NomeSituacao })
+  @PrimaryColumn({ type: 'text', name: SituacaoDBConstants.nomeSituacao })
     nome: string;
 
-  @CreateDateColumn({ name: SituacaoDBConstants.CriadoEm })
+  @CreateDateColumn({ name: SituacaoDBConstants.criadoEm })
     criadoEm: Date;
 
-  @UpdateDateColumn({ name: SituacaoDBConstants.AtualizadoEm })
+  @UpdateDateColumn({ name: SituacaoDBConstants.atualizadoEm })
     atualizadoEm: Date;
 
   // relacionamentos---------------------------------------

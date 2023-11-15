@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import myDataSource from '../../database/typeorm';
 
 // entity
-import { Aprovado } from '../entity/Aprovado';
+import { Aprovado } from '../entity/exporter';
 
 // SSOT
 import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';

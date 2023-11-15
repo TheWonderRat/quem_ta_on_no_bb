@@ -1,15 +1,26 @@
-import { Entity, PrimaryColumn, ManyToOne, JoinColumn, UpdateDateColumn, CreateDateColumn, Column } from 'typeorm';
-import { Aprovado } from '../../Aprovado/entity/Aprovado';
-import { TipoLista } from '../../TipoLista/entity/TipoLista';
-import ListaDBConstants from '../constants/ListaDBConstants';
-import AprovadosDBConstants from '../../Aprovado/constants/AprovadosDBConstants';
+// libraries
+import {
+  Entity,
+  ManyToOne,
+  JoinColumn,
+  PrimaryColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
-@Entity(ListaDBConstants.NomeEntidade)
-export class Lista {
+// entity
+import { TipoLista, Aprovado } from './exporter';
+
+// SSOT
+import ListaDBConstants from '../../SSOT/ListaDBConstants';
+import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';
+
+@Entity(ListaDBConstants.nomeEntidade)
+export default class Lista {
   // atributos------------------------------------------------
   @PrimaryColumn({
     type: 'bigint',
-    name: ListaDBConstants.Inscricao,
+    name: ListaDBConstants.inscricao,
     primaryKeyConstraintName: 'pk_lista',
   })
     inscricao: number;
@@ -21,24 +32,24 @@ export class Lista {
     tipo: string;
 
   @CreateDateColumn()
-    criado_em: Date;
+    criadoEm: Date;
 
   @UpdateDateColumn()
-    atualizado_em: Date;
+    atualizadoEm: Date;
 
   // relacionamentos-----------------------------------------------
   // relacionamentos devem ter o mesmo nome da variavel da entidade
 
   @ManyToOne(() => Aprovado, (aprovado) => aprovado.aprovadoNasListas)
   @JoinColumn({
-    name: ListaDBConstants.Inscricao,
+    name: ListaDBConstants.inscricao,
     // Nao gera o bug
     // descomentar essa linha da problema
-    referencedColumnName: AprovadosDBConstants.Inscricao,
+    referencedColumnName: AprovadosDBConstants.inscricao,
   })
     aprovadoVinculado: Aprovado;
 
   @ManyToOne(() => TipoLista, (tipoLista) => tipoLista.listasVinculadas)
-  @JoinColumn({ name: ListaDBConstants.TipoLista })
+  @JoinColumn({ name: ListaDBConstants.tipoLista })
     listaVinculada: TipoLista;
 }

@@ -1,24 +1,36 @@
-import { Entity, ManyToOne, PrimaryColumn, CreateDateColumn, UpdateDateColumn, JoinColumn, Column, OneToOne } from 'typeorm';
-import { Aprovado } from '../../Aprovado/entity/Aprovado';
+// libraries
+import {
+  Column,
+  Entity,
+  OneToOne,
+  ManyToOne,
+  JoinColumn,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-import AprovadosDBConstants from '../../Aprovado/constants/AprovadosDBConstants';
-import LotadoEmDBConstants from '../constants/LotadoEmDBConstants';
-import { Lotacao } from '../../Lotacao/entity/Lotacao';
-import LotacaoDBConstants from '../../Lotacao/constants/LotacaoDBConstants';
+// entity
+import { Aprovado, Lotacao } from './exporter';
 
-@Entity(LotadoEmDBConstants.NomeEntidade)
-export class LotadoEm {
+// SSOT
+import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';
+import LotadoEmDBConstants from '../../SSOT/LotadoEmDBConstants';
+import LotacaoDBConstants from '../../SSOT/LotacaoDBConstants';
+
+@Entity(LotadoEmDBConstants.nomeEntidade)
+export default class LotadoEm {
 // atributos---------------------------------
-  @PrimaryColumn({ type: 'bigint', name: LotadoEmDBConstants.Inscricao })
+  @PrimaryColumn({ type: 'bigint', name: LotadoEmDBConstants.inscricao })
     inscricao: number;
 
-  @Column({ name: LotadoEmDBConstants.Unidade })
+  @Column({ name: LotadoEmDBConstants.unidade })
     unidade: number;
 
-  @Column({ name: LotadoEmDBConstants.Diretoria })
+  @Column({ name: LotadoEmDBConstants.diretoria })
     diretoria: string;
 
-  @Column({ name: LotadoEmDBConstants.Cidade })
+  @Column({ name: LotadoEmDBConstants.cidade })
     cidade: string;
 
   @CreateDateColumn()
@@ -31,16 +43,16 @@ export class LotadoEm {
   // relacionamentos devem ter o mesmo nome da variavel da entidade
   @OneToOne(() => Aprovado, (aprovado) => aprovado.lotadoEm)
   @JoinColumn({
-    name: LotadoEmDBConstants.Inscricao,
-    referencedColumnName: AprovadosDBConstants.Inscricao,
+    name: LotadoEmDBConstants.inscricao,
+    referencedColumnName: AprovadosDBConstants.inscricao,
   })
     aprovadoNaLotacao: Aprovado;
 
   @ManyToOne(() => Lotacao, (lotacao) => lotacao.aprovadosNaLotacao)
   @JoinColumn([
-    { name: LotadoEmDBConstants.Diretoria, referencedColumnName: LotacaoDBConstants.Diretoria },
-    { name: LotadoEmDBConstants.Cidade, referencedColumnName: LotacaoDBConstants.Cidade },
-    { name: LotadoEmDBConstants.Unidade, referencedColumnName: LotacaoDBConstants.Unidade },
+    { name: LotadoEmDBConstants.diretoria, referencedColumnName: LotacaoDBConstants.diretoria },
+    { name: LotadoEmDBConstants.cidade, referencedColumnName: LotacaoDBConstants.cidade },
+    { name: LotadoEmDBConstants.unidade, referencedColumnName: LotacaoDBConstants.unidade },
   ])
     lotacaoVinculada: Lotacao;
 }

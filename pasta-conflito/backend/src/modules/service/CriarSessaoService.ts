@@ -11,7 +11,7 @@ import AppError from '../../shared/utils/error/errorConstructor';
 
 // ORM
 import myDataSource from '../../database/typeorm';
-import { Aprovado } from '../entity/Aprovado';
+import { Aprovado } from '../entity/exporter';
 
 // Environment variables
 const JWT_SECRET = process.env.JWT_SECRET || 'default';

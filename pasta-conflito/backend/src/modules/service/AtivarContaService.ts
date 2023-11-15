@@ -39,7 +39,7 @@ class AtivarContaService {
     // TODO:: Colocar o salt em uma nova constante
     const newPswd = await hash(novaSenha, 8);
 
-    await AprovadosRepo.updatePassword(login, newPswd);
+    await AprovadosRepository.updatePassword(login, newPswd);
 
     return { token: `conta de ${usuario.nome} Ativado com sucesso!` };
   }

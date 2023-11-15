@@ -1,24 +1,36 @@
-import { Entity, PrimaryColumn, OneToMany, UpdateDateColumn, CreateDateColumn, JoinColumn } from 'typeorm';
-import { Lotacao } from '../../Lotacao/entity/Lotacao';
-import CidadeDBConstants from '../constants/CidadeDBConstants';
+// libraries
+import {
+  Entity,
+  OneToMany,
+  JoinColumn,
+  PrimaryColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
-@Entity(CidadeDBConstants.NomeEntidade)
-export class Cidade {
+// entity
+import { Lotacao } from './exporter';
+
+// SSOT
+import CidadeDBConstants from '../../SSOT/CidadeDBConstants';
+
+@Entity(CidadeDBConstants.nomeEntidade)
+export default class Cidade {
   // atributos---------------------------------------------------
-  @PrimaryColumn({ name: CidadeDBConstants.NomeCidade, type: 'text' })
+  @PrimaryColumn({ name: CidadeDBConstants.nomeCidade, type: 'text' })
     nome: string;
 
-  @CreateDateColumn({ name: CidadeDBConstants.CriadoEm })
+  @CreateDateColumn({ name: CidadeDBConstants.criadoEm })
     criadoEm: Date;
 
-  @UpdateDateColumn({ name: CidadeDBConstants.AtualizadoEm })
+  @UpdateDateColumn({ name: CidadeDBConstants.atualizadoEm })
     atualizadoEm: Date;
 
   // relacionamentos---------------------------------------------
   // relacionamentos devem ter o mesmo nome da variavel da entidade
   @OneToMany(() => Lotacao, (lotacao) => lotacao.cidadeVinculada)
   @JoinColumn({
-    name: CidadeDBConstants.NomeCidade,
+    name: CidadeDBConstants.nomeCidade,
   })
     lotacoesVinculadas: Lotacao[];
 }

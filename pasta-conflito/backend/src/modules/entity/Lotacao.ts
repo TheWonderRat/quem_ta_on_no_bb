@@ -1,21 +1,34 @@
-import { Entity, ManyToOne, PrimaryColumn, OneToMany, CreateDateColumn, UpdateDateColumn, JoinColumn, Column, OneToOne, PrimaryGeneratedColumn, JoinTable } from 'typeorm';
-import LotacaoDBConstants from '../constants/LotacaoDBConstants';
-import { Cidade } from '../../Cidade/entity/Cidade';
-import { Diretoria } from '../../Diretoria/entity/Diretoria';
-import DiretoriaDBConstants from '../../Diretoria/constants/DiretoriaDBConstants';
-import CidadeDBConstants from '../../Cidade/constants/CidadeDBConstants';
-import { LotadoEm } from '../../LotadoEm/entity/LotadoEm';
+// libraries
+import {
+  Entity,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity(LotacaoDBConstants.NomeEntidade)
-export class Lotacao {
+// entity
+import { Cidade } from './Cidade';
+import { Diretoria } from './Diretoria';
+import { LotadoEm } from './LotadoEm';
+
+// SSOT
+import LotacaoDBConstants from '../../SSOT/LotacaoDBConstants';
+import DiretoriaDBConstants from '../../SSOT/DiretoriaDBConstants';
+import CidadeDBConstants from '../../SSOT/CidadeDBConstants';
+
+@Entity(LotacaoDBConstants.nomeEntidade)
+export default class Lotacao {
 // atributos---------------------------------
-  @PrimaryColumn({ type: 'integer', name: LotacaoDBConstants.Unidade })
+  @PrimaryColumn({ type: 'integer', name: LotacaoDBConstants.unidade })
     unidade: number;
 
-  @PrimaryColumn({ type: 'text', name: LotacaoDBConstants.Cidade })
+  @PrimaryColumn({ type: 'text', name: LotacaoDBConstants.cidade })
     cidade: string;
 
-  @PrimaryColumn({ type: 'text', name: LotacaoDBConstants.Diretoria })
+  @PrimaryColumn({ type: 'text', name: LotacaoDBConstants.diretoria })
     diretoria: string;
 
   @CreateDateColumn()
@@ -38,15 +51,15 @@ export class Lotacao {
 
   @ManyToOne(() => Diretoria, (diretoria) => diretoria.lotacoesVinculadas)
   @JoinColumn({
-    name: LotacaoDBConstants.Diretoria,
-    referencedColumnName: DiretoriaDBConstants.NomeDiretoria,
+    name: LotacaoDBConstants.diretoria,
+    referencedColumnName: DiretoriaDBConstants.nomeDiretoria,
   })
     diretoriaVinculada: Diretoria;
 
   @ManyToOne(() => Cidade, (cidade) => cidade.lotacoesVinculadas)
   @JoinColumn({
-    name: LotacaoDBConstants.Cidade,
-    referencedColumnName: CidadeDBConstants.NomeCidade,
+    name: LotacaoDBConstants.cidade,
+    referencedColumnName: CidadeDBConstants.nomeCidade,
   })
     cidadeVinculada:Cidade;
 }

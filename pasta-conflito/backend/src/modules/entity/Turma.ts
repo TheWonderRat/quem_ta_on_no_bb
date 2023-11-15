@@ -1,23 +1,38 @@
-import { Entity, PrimaryColumn, OneToMany, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
-import { Aprovado } from '../../Aprovado/entity/Aprovado';
-import TurmaDBConstants from '../constants/TurmaDBConstants';
-import AprovadosDBConstants from '../../Aprovado/constants/AprovadosDBConstants';
+// libraries
+import {
+  Entity,
+  OneToMany,
+  JoinColumn,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity(TurmaDBConstants.NomeEntidade)
-export class Turma {
+// entity
+import { Aprovado } from './exporter';
+
+// SSOT
+import TurmaDBConstants from '../../SSOT/TurmaDBConstants';
+import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';
+
+@Entity(TurmaDBConstants.nomeEntidade)
+export default class Turma {
 // atributos----------------------------------------------------------
-  @PrimaryColumn({ type: 'text', name: TurmaDBConstants.Numero })
+  @PrimaryColumn({ type: 'text', name: TurmaDBConstants.numero })
     numero: number;
 
-  @CreateDateColumn({ name: TurmaDBConstants.CriadoEm })
+  @CreateDateColumn({ name: TurmaDBConstants.criadoEm })
     criadoEm: Date;
 
-  @UpdateDateColumn({ name: TurmaDBConstants.AtualizadoEm })
+  @UpdateDateColumn({ name: TurmaDBConstants.atualizadoEm })
     atualizadoEm: Date;
 
   // relacionamentos----------------------------------------------------
   // relacionamentos devem ter o mesmo nome da variavel da entidade
   @OneToMany(() => Aprovado, (aprovado) => aprovado.turma)
-  @JoinColumn({ name: TurmaDBConstants.Numero, referencedColumnName: AprovadosDBConstants.Turma })
+  @JoinColumn({
+    name: TurmaDBConstants.numero,
+    referencedColumnName: AprovadosDBConstants.turma,
+  })
     aprovadosNaTurma: Aprovado[];
 }

@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import myDataSource from '../../database/typeorm';
 
 // entity
-import { Turma } from '../entity/Turma';
+import { Turma } from '../entity/exporter';
 
 class TurmaRepository extends Repository<Turma> {}
 

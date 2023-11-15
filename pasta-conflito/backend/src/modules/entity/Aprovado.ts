@@ -1,48 +1,60 @@
-import { Entity, Column, PrimaryColumn, OneToMany, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, OneToOne } from 'typeorm';
-import { Lista } from '../../Lista/entity/Lista';
-import { Situacao } from '../../Situacao/entity/Situacao';
-import { Turma } from '../../Turma/entity/Turma';
-import AprovadosDBConstants from '../constants/AprovadosDBConstants';
-import TurmaDBConstants from '../../Turma/constants/TurmaDBConstants';
-import { LotadoEm } from '../../LotadoEm/entity/LotadoEm';
+// libraries
+import {
+  Entity,
+  Column,
+  OneToOne,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity(AprovadosDBConstants.NomeEntidade)
-export class Aprovado {
+// entity
+import { Lista, Situacao, Turma, LotadoEm } from './exporter';
+
+// SSOT
+import AprovadosDBConstants from '../../SSOT/AprovadosDBConstants';
+import TurmaDBConstants from '../../SSOT/TurmaDBConstants';
+
+@Entity(AprovadosDBConstants.nomeEntidade)
+export default class Aprovado {
   // atributos-----------------------------------------------------------
-  @PrimaryColumn({ type: 'bigint', name: AprovadosDBConstants.Inscricao })
+  @PrimaryColumn({ type: 'bigint', name: AprovadosDBConstants.inscricao })
     inscricao: number;
 
-  @Column({ type: 'text', name: AprovadosDBConstants.Nome })
+  @Column({ type: 'text', name: AprovadosDBConstants.nome })
     nome: string;
 
-  @Column({ type: 'text', name: AprovadosDBConstants.Senha })
+  @Column({ type: 'text', name: AprovadosDBConstants.senha })
     senha: string;
 
-  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.DataPosse })
+  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.dataPosse })
     dataPosse: Date;
 
-  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.DataQuestionario })
+  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.dataQuestionario })
     dataQuestionario: Date;
 
-  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.DataQualificacao })
+  @Column({ type: 'timestamp', nullable: true, name: AprovadosDBConstants.dataQualificacao })
     dataQualificacao: Date;
 
-  @Column({ default: false, name: AprovadosDBConstants.PCD })
+  @Column({ default: false, name: AprovadosDBConstants.pcd })
     pcd:boolean;
 
-  @Column({ default: false, name: AprovadosDBConstants.PPP })
+  @Column({ default: false, name: AprovadosDBConstants.ppp })
     ppp:boolean;
 
-  @CreateDateColumn({ name: AprovadosDBConstants.CriadoEm })
+  @CreateDateColumn({ name: AprovadosDBConstants.criadoEm })
     criadoEm: Date;
 
-  @UpdateDateColumn({ name: AprovadosDBConstants.AtualizadoEm })
+  @UpdateDateColumn({ name: AprovadosDBConstants.atualizadoEm })
     atualizadoEm: Date;
 
-  @Column({ name: AprovadosDBConstants.Situacao })
+  @Column({ name: AprovadosDBConstants.situacao })
     situacao: string;
 
-  @Column({ name: AprovadosDBConstants.Turma, nullable: true })
+  @Column({ name: AprovadosDBConstants.turma, nullable: true })
     turma: number;
 
   // relacionamentos-----------------------------------------------------------
@@ -50,7 +62,7 @@ export class Aprovado {
 
   @OneToMany(() => Lista, (lista) => lista.aprovadoVinculado)
   @JoinColumn({
-    name: AprovadosDBConstants.Inscricao,
+    name: AprovadosDBConstants.inscricao,
     // descomentar esta linha gera NAO erro no typeorm,
     // ao contratio da entidade Situacao
     // coloque aqui porque a chave primaria e composta
@@ -65,7 +77,7 @@ export class Aprovado {
 
   @ManyToOne(() => Situacao, (situacao) => situacao.aprovadosNaSituacao)
   @JoinColumn({
-    name: AprovadosDBConstants.Situacao,
+    name: AprovadosDBConstants.situacao,
     // descomentar esta linha gera erro no typeorm, sabe-se la o motivo
     // deixar ele inferir a chave primary e ok
     // por seguranca, comentarei todas as referencias que nao forem necessarias
@@ -76,8 +88,8 @@ export class Aprovado {
 
   @ManyToOne(() => Turma, (turma) => turma.numero)
   @JoinColumn({
-    name: AprovadosDBConstants.Turma,
-    referencedColumnName: TurmaDBConstants.Numero,
+    name: AprovadosDBConstants.turma,
+    referencedColumnName: TurmaDBConstants.numero,
   })
     estaNaTurma: Turma;
 }

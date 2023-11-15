@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import myDataSource from '../../database/typeorm';
 
 // entity
-import { Cidade } from '../entity/Cidade';
+import { Cidade } from '../entity/exporter';
 
 class CidadeRepository extends Repository<Cidade> {}
 
