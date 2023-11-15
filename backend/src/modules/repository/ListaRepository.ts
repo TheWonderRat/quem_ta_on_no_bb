@@ -34,53 +34,53 @@ class ListaRepository extends Repository<Lista> {
           "lista",
           'apr.inscricao = lista.inscricao'
         */
-        `apr.${AprovadosDBConstants.AprovadosNasListas}`,
-        `${ListaDBConstants.NomeEntidade}`,
-        `apr.${AprovadosDBConstants.Inscricao} = ${ListaDBConstants.NomeEntidade}.${ListaDBConstants.Inscricao}`,
+        `apr.${AprovadosDBConstants.aprovadosNasListas}`,
+        `${ListaDBConstants.nomeEntidade}`,
+        `apr.${AprovadosDBConstants.inscricao} = ${ListaDBConstants.nomeEntidade}.${ListaDBConstants.inscricao}`,
       );
 
     if (cidade || diretoria) {
       qr = qr.innerJoinAndSelect(
-        `apr.${AprovadosDBConstants.LotadoEm}`,
-        `${LotadoEmDBConstants.NomeEntidade}`,
-        `apr.${AprovadosDBConstants.Inscricao} = ${LotadoEmDBConstants.NomeEntidade}.${LotadoEmDBConstants.Inscricao}`,
+        `apr.${AprovadosDBConstants.lotadoEm}`,
+        `${LotadoEmDBConstants.nomeEntidade}`,
+        `apr.${AprovadosDBConstants.inscricao} = ${LotadoEmDBConstants.nomeEntidade}.${LotadoEmDBConstants.inscricao}`,
       );
 
       if (diretoria) {
-        params.push(`${LotadoEmDBConstants.NomeEntidade}.${LotadoEmDBConstants.Diretoria}`);
+        params.push(`${LotadoEmDBConstants.nomeEntidade}.${LotadoEmDBConstants.diretoria}`);
       }
       if (cidade) {
-        params.push(`${LotadoEmDBConstants.NomeEntidade}.${LotadoEmDBConstants.Cidade}`);
+        params.push(`${LotadoEmDBConstants.nomeEntidade}.${LotadoEmDBConstants.cidade}`);
       }
     }
 
     if (turma) {
-      params.push(`apr.${AprovadosDBConstants.Turma}`);
+      params.push(`apr.${AprovadosDBConstants.turma}`);
     }
     if (situacao) {
-      params.push(`apr.${AprovadosDBConstants.Situacao}`);
+      params.push(`apr.${AprovadosDBConstants.situacao}`);
     }
     // deve haver pelo menos um where antes de cada andWhere
-    qr = qr.select(params).where(`${ListaDBConstants.TipoLista} = :lista`, { lista });
+    qr = qr.select(params).where(`${ListaDBConstants.tipoLista} = :lista`, { lista });
 
     if (diretoria) {
-      qr = qr.andWhere(`${LotadoEmDBConstants.Diretoria} = :diretoria`, { diretoria });
+      qr = qr.andWhere(`${LotadoEmDBConstants.diretoria} = :diretoria`, { diretoria });
     }
     if (cidade) {
-      qr = qr.andWhere(`${LotadoEmDBConstants.Cidade} = :cidade`, { cidade });
+      qr = qr.andWhere(`${LotadoEmDBConstants.cidade} = :cidade`, { cidade });
     }
     if (turma) {
-      qr = qr.andWhere(`apr.${AprovadosDBConstants.Turma}= :turma`, { turma });
+      qr = qr.andWhere(`apr.${AprovadosDBConstants.turma}= :turma`, { turma });
     }
     if (situacao) {
-      qr = qr.andWhere(`apr.${AprovadosDBConstants.Situacao}= :situacao`, { situacao });
+      qr = qr.andWhere(`apr.${AprovadosDBConstants.situacao}= :situacao`, { situacao });
     }
 
     // criterios de ordenacao nao podem vir antes das outras clausulas
     // ou os filtros nao funcionarao
     // considerando que a consulta depende da conexao e as queries funcional, o maximo que acontece
     const aprovados: Aprovado[] = await qr
-      .orderBy(`${ListaDBConstants.Posicao}`, 'ASC')
+      .orderBy(`${ListaDBConstants.posicao}`, 'ASC')
       .offset(candidatos * pagina)
       .limit(candidatos)
       .getRawMany();

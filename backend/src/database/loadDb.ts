@@ -1,10 +1,10 @@
 import myDataSource from 'src/database/typeorm';
-import * as entities from '../../modules/entity/exporter';
+import * as entities from '../modules/entity/exporter';
 
-import { TurmaRepository } from '../../modules/repository/exporter';
+import { TurmaRepository } from '../modules/repository/exporter';
 
-import * as diretas from '../data/diretas.json';
-import * as cadastroReserva from '../data/cadastroReserva.json';
+import * as diretas from './data/diretas.json';
+import * as cadastroReserva from './data/cadastroReserva.json';
 
 // como os dados estao consistentes vou fingir que typescript nao existe
 type Aprovado = {
@@ -29,7 +29,7 @@ type LotadoEm = {
   unidade: number,
 };
 
-const AMPLA = diretas as Aprovado[];
+const AMPLA = diretas as unknown as Aprovado[];
 const CADASTRO_RESERVA = cadastroReserva as unknown as Aprovado[];
 const TODOS_OS_APROVADOS = AMPLA.concat(CADASTRO_RESERVA);
 
@@ -185,7 +185,7 @@ async function loadDOUData(
   cListaTresParaUm: Promise<void> = cadastrarListaTresParaUm(TODOS_OS_APROVADOS, 'tres_para_um'),
   cListaQuatroParaUm: Promise<void> = cadastrarListaQuatroParaUm(TODOS_OS_APROVADOS, 'quatro_para_um'),
 
-  cLotadosEm: Promise<void> = cadastrarLotadosEm(TODOS_OS_APROVADOS.map((v: IAprovado) => {
+  cLotadosEm: Promise<void> = cadastrarLotadosEm(TODOS_OS_APROVADOS.map((v: Aprovado) => {
     const { cidade, diretoria, unidade } = LOTACOES[Math.floor(Math.random() * 6)];
     return { inscricao: v.inscricao, cidade, diretoria, unidade };
   })),
@@ -247,11 +247,11 @@ async function cadastrarListaTresParaUm(lista: Aprovado[], nomeLista: string) {
   bubbleSort(listaPCD, 'posicaoPcd');
   bubbleSort(listaAmpla, 'posicaoAmpla');
 
-  const salvarAprovado = async (lst: IAprovado[], position: number, counter: number, lName: string) => {
+  const salvarAprovado = async (lst: Aprovado[], position: number, counter: number, lName: string) => {
     let i = 0;
     while (i < counter) {
       if (lst.length > 0) {
-        const lista = myDataSource.manager.create(Lista);
+        const lista = myDataSource.manager.create(entities.Lista);
         lista.inscricao = lst[0].inscricao;
         lista.tipo = lName;
         lista.posicao = position + i;
@@ -297,7 +297,7 @@ async function cadastrarListaQuatroParaUm(lista: Aprovado[], nomeLista: string) 
   const listaPCD = lista.filter((e) => e.posicaoPcd !== null && e.posicaoPpp === null);
 
   const listaPCDPPP = lista.filter((e) => e.posicaoPcd !== null && e.posicaoPpp !== null);
-  listaPCDPPP.forEach((v:IAprovado) => {
+  listaPCDPPP.forEach((v: Aprovado) => {
     if (v.posicaoPcd > v.posicaoPpp) {
       listaPCD.push(v);
     } else {
@@ -314,7 +314,7 @@ async function cadastrarListaQuatroParaUm(lista: Aprovado[], nomeLista: string) 
     let i = 0;
     while (i < counter) {
       if (lst.length > 0) {
-        const lista = myDataSource.manager.create(Lista);
+        const lista = myDataSource.manager.create(entities.Lista);
         lista.inscricao = lst[0].inscricao;
         lista.posicao = position + i;
         lista.tipo = lName;
