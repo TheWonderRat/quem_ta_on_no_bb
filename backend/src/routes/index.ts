@@ -1,11 +1,11 @@
-// import { Router } from 'express';
+import { Router } from 'express';
 
-// import userRouter from '@modules/Aprovado/routes/aprovado.routes';
-// import listarRouter from '@modules/Lista/routes/lista.routes';
+import userRouter from './aprovado.routes';
+import listarRouter from './lista.routes';
 
-// const router = Router();
+const router = Router();
 
-// router.use('/listar', listarRouter);
-// router.use('/usuario', userRouter);
+router.use('/listar', listarRouter);
+router.use('/usuario', userRouter);
 
-// export default router;
+export default router;
