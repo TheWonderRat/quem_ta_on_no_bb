@@ -1,4 +1,4 @@
-import myDataSource from 'src/database/typeorm';
+import myDataSource from './typeorm';
 import * as entities from '../modules/entity/exporter';
 
 import { TurmaRepository } from '../modules/repository/exporter';
@@ -29,9 +29,9 @@ type LotadoEm = {
   unidade: number,
 };
 
-const AMPLA = diretas as unknown as Aprovado[];
-const CADASTRO_RESERVA = cadastroReserva as unknown as Aprovado[];
-const TODOS_OS_APROVADOS = AMPLA.concat(CADASTRO_RESERVA);
+const AMPLA = JSON.parse(JSON.stringify(diretas)) as Aprovado[];
+const CADASTRO_RESERVA = JSON.parse(JSON.stringify(cadastroReserva)) as Aprovado[];
+const TODOS_OS_APROVADOS = CADASTRO_RESERVA.concat(AMPLA);
 
 async function cadastrarTipoLista(lista: string[]) {
   lista.forEach(async (l: string) => {

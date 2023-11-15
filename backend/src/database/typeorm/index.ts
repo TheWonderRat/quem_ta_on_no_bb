@@ -14,7 +14,7 @@ const myDataSource = new DataSource({
   synchronize: true,
   // NAO MUDAR
   entities: [
-    './src/modules/**/entity/*.ts',
+    './src/modules/entity/*.ts',
   ],
   // NAO MUDAR
   migrations: [
@@ -30,7 +30,7 @@ myDataSource.initialize()
     console.log('initialized properly');
   })
   .catch((e) => {
-    console.log(`${e}`);
+    console.log(`${e} - cai aqui`);
   })
   .finally(async () => {
     console.log('called after database connection');

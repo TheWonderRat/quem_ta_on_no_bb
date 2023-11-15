@@ -15,11 +15,15 @@ services:
       - "${PORT_BACK}:${PORT_BACK}"
     env_file:
       - ./backend/.env
+    environment:
+      HOST: db
     depends_on:
       - db
     restart: on-failure
     tty: true
     stdin_open: true
+    networks:
+      - aprovados_bb
   
   # db:
   #   image: mysql:8.2
@@ -45,3 +49,9 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       PORT_DB: ${PORT_DB}
     restart: on-failure
+    networks:
+      - aprovados_bb
+
+networks:
+  aprovados_bb:
+    driver: bridge

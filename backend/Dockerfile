@@ -1,5 +1,7 @@
 FROM node:21 AS backend
 
+WORKDIR /app
+
 COPY ./package.json ./
 
 COPY ./package-lock.json ./

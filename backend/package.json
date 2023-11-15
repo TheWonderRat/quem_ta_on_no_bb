@@ -10,9 +10,9 @@
     "dev": "tsnd --rs --transpile-only ./src/server/server.ts",
     "lint": "eslint ./src --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/index.ts",
-    "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/typeorm/index.ts",
-    "load-db-data": "ts-node src/shared/database/etl_script/src/loadDb.ts",
+    "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/database/typeorm/index.ts",
+    "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert -d ./src/database/typeorm/index.ts",
+    "load-db-data": "ts-node src/database/loadDb.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
   "keywords": [],
