@@ -165,15 +165,5 @@
         "sonarjs/no-inverted-boolean-check": [
             "error"
         ]
-    },
-    "overrides": [
-        {
-            "files": [
-                "./src/database/migrations/*.ts"
-            ],
-            "rules": {
-                "class-methods-use-this": "off"
-            }
-        }
-    ]
+    }
 }
