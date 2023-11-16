@@ -1,9 +1,0 @@
-export { default as Aprovado } from './Aprovado';
-export { default as Cidade } from './Cidade';
-export { default as Diretoria } from './Diretoria';
-export { default as Lista } from './Lista';
-export { default as Lotacao } from './Lotacao';
-export { default as LotadoEm } from './LotadoEm';
-export { default as Situacao } from './Situacao';
-export { default as TipoLista } from './TipoLista';
-export { default as Turma } from './Turma';

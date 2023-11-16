@@ -1,12 +1,12 @@
-// libraries
-import { Repository } from 'typeorm';
+// // libraries
+// import { Repository } from 'typeorm';
 
-// ORM
-import myDataSource from '../../database/typeorm';
+// // ORM
+// import myDataSource from '../../database/typeorm';
 
-// entity
-import { Diretoria } from '../entity/exporter';
+// // entity
+// import { Diretoria } from '../entity/exporter';
 
-class DiretoriaRepository extends Repository<Diretoria> {}
+// class DiretoriaRepository extends Repository<Diretoria> {}
 
-export default new DiretoriaRepository(Diretoria, myDataSource.manager);
+// export default new DiretoriaRepository(Diretoria, myDataSource.manager);

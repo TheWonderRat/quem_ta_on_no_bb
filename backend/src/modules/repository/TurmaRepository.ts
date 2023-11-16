@@ -1,12 +1,12 @@
-// libraries
-import { Repository } from 'typeorm';
+// // libraries
+// import { Repository } from 'typeorm';
 
-// ORM
-import myDataSource from '../../database/typeorm';
+// // ORM
+// import myDataSource from '../../database/typeorm';
 
-// entity
-import { Turma } from '../entity/exporter';
+// // entity
+// import { Turma } from '../entity/exporter';
 
-class TurmaRepository extends Repository<Turma> {}
+// class TurmaRepository extends Repository<Turma> {}
 
-export default new TurmaRepository(Turma, myDataSource.manager);
+// export default new TurmaRepository(Turma, myDataSource.manager);

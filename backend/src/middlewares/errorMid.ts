@@ -8,7 +8,7 @@ export default class ErrorMid {
     res: Response,
     __next: Next,
   ): Response {
-    const { statusCode, message } = error.getErrorInfo();
+    const { statusCode, message } = error.errorInfo;
     return res.status(statusCode).send(message);
   }
 }
