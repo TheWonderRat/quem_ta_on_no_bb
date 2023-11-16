@@ -6,7 +6,7 @@ import AppError from '../error/errorConstructor';
 import { errorMessages, httpStatus } from '../../../SSOT/exporter';
 
 // Environment variables
-const JWT_SECRET = process.env.JWT_SECRET || 'default';
+const JWT_SECRET: string = process.env.JWT_SECRET || 'default';
 
 export default function validateToken(token: string): void {
   try {

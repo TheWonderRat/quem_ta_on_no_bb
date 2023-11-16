@@ -5,5 +5,5 @@ import { common } from '../../../SSOT/migrations/exporter';
 import sequelize from '../connection';
 
 export default {
-  up: async () => sequelize.query(common.uuidQuery),
+  up: async (): Promise<void> => { sequelize.query(common.uuidQuery); },
 };

@@ -8,7 +8,7 @@ import { tableNames, columnName } from '../../../SSOT/migrations/exporter';
 import { migrations } from '../../../types/exporter';
 
 export default {
-  up: async (queryInterface: QueryInterface) =>
+  up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrations.City>>(tableNames.Cities, {
       id: {
         type: DataTypes.INTEGER,
@@ -22,5 +22,6 @@ export default {
         allowNull: false,
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Cities, {}),
+  down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
+    .dropTable(tableNames.Cities, {}),
 };

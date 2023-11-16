@@ -8,7 +8,7 @@ import { tableNames, common } from '../../../SSOT/migrations/exporter';
 import { migrations } from '../../../types/exporter';
 
 export default {
-  up: async (queryInterface: QueryInterface) =>
+  up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrations.Ranking>>(tableNames.PcdRanking, {
       position: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true },
       userId: {
@@ -17,6 +17,6 @@ export default {
         references: { model: tableNames.Users, key: common.idKey },
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface
+  down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
     .dropTable(tableNames.PcdRanking, {}),
 };

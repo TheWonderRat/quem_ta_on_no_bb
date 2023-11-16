@@ -8,7 +8,7 @@ import { tableNames, common } from '../../../SSOT/migrations/exporter';
 import { migrations } from '../../../types/exporter';
 
 export default {
-  up: async (queryInterface: QueryInterface) =>
+  up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrations.Class>>(tableNames.Classes, {
       id: {
         type: DataTypes.INTEGER,
@@ -29,5 +29,6 @@ export default {
         defaultValue: Sequelize.literal(common.currentTimestamp),
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Classes, {}),
+  down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
+    .dropTable(tableNames.Classes, {}),
 };

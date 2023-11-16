@@ -1,20 +1,45 @@
-import express from 'express';
-// import cors from 'cors';
-// import { errors } from 'celebrate';
+// library imports
+import express, { Express, Router } from 'express';
 
-// import AppError from '@shared/errors/AppError';
-// import routes from '../routes';
-// import '@shared/typeorm';
+// routes
+import RouterManager from '../routes/router';
 
 // middleware
 import { ErrorMid } from '../middlewares/exporter';
 
-const app = express();
+export default class App {
+  // private properties
+  private readonly _app: Express;
+  private readonly _router: Router;
 
+  constructor() {
+    this._app = express();
+    this._router = new RouterManager().router;
+    this.initMids();
+    this.initRoutes();
+    this.initErrorMid();
+  }
+
+  // getters
+  public get app(): Express { return this._app; }
+
+  private get router(): Router { return this._router; }
+
+  // private methods
+  private initMids(): void {
+    this.app.use(express.json());
+  }
+
+  private initRoutes(): void {
+    this.app.use(this.router);
+  }
+
+  private initErrorMid(): void {
+    this.app.use(ErrorMid.errorHandler);
+  }
+}
 // app.use(cors());
-app.use(express.json());
 // app.use(routes);
-app.use(ErrorMid.errorHandler);
 
 // app.use((error: Error, __request: Request, response: Response) => {
 //   if (error instanceof AppError) {
@@ -29,5 +54,3 @@ app.use(ErrorMid.errorHandler);
 //     message: 'Internal server error and this is a custom error!',
 //   });
 // });
-
-export default app;

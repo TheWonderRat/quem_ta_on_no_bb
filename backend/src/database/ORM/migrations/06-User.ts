@@ -8,7 +8,7 @@ import { tableNames, common } from '../../../SSOT/migrations/exporter';
 import { migrations } from '../../../types/exporter';
 
 export default {
-  up: async (queryInterface: QueryInterface) =>
+  up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrations.User>>(tableNames.Users, {
       id: {
         type: DataTypes.UUID,
@@ -41,5 +41,6 @@ export default {
         references: { model: tableNames.JobLocations, key: common.idKey },
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Users, {}),
+  down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
+    .dropTable(tableNames.Users, {}),
 };

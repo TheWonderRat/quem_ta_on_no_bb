@@ -11,23 +11,25 @@ import validateToken from '../shared/utils/jwt/validateToken';
 
 export default class AuthMid {
   public static hasToken(req: Request, __res: Response, next: Next): void {
-    const authHeader = req.headers as authorization;
+    const authHeader: authorization = req.headers as authorization;
     try {
       authValidation(authHeader);
       next();
     } catch (e) {
-      const exception = e as AppError;
+      const exception: AppError = e as AppError;
       next(exception);
     }
   }
 
   public static hasValidToken(request: Request, __response: Response, next: Next): void {
     try {
-      const token = request.headers.authorization?.split('Bearer ')[1] as string;
+      const positionArray: number = 1;
+      const token: string = request.headers
+        .authorization?.split('Bearer ')[positionArray] as string;
       validateToken(token);
       next();
     } catch (e) {
-      const exception = e as AppError;
+      const exception: AppError = e as AppError;
       next(exception);
     }
   }
