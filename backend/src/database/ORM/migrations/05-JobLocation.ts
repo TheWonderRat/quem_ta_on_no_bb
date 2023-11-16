@@ -22,8 +22,8 @@ export default {
         references: { model: tableNames.City, key: common.idKey },
       },
       department: {
-        type: DataTypes.INTEGER,
         allowNull: false,
+        type: DataTypes.INTEGER,
         references: { model: tableNames.Department, key: common.idKey },
       },
       directoryName: { type: DataTypes.STRING, allowNull: false },

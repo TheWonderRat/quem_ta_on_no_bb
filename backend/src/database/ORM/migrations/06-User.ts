@@ -26,18 +26,18 @@ export default {
       ppp: { type: DataTypes.BOOLEAN, allowNull: false },
       email: { type: DataTypes.STRING, allowNull: true },
       class: {
-        type: DataTypes.INTEGER,
         allowNull: true,
+        type: DataTypes.INTEGER,
         references: { model: tableNames.Class, key: common.idKey },
       },
       status: {
+        allowNull: true,
         type: DataTypes.INTEGER,
-        allowNull: false,
         references: { model: tableNames.StatusUser, key: common.idKey },
       },
       jobLocation: {
-        type: DataTypes.INTEGER,
         allowNull: true,
+        type: DataTypes.INTEGER,
         references: { model: tableNames.JobLocation, key: common.idKey },
       },
     }),
