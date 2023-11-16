@@ -6,4 +6,4 @@ export const StatusUser = 'Status_user';
 export const JobLocation = 'Job_location';
 export const PcdRanking = 'Pcd_ranking';
 export const PppRanking = 'Ppp_ranking';
-export const GlobalRanking = 'Ranking';
+export const GlobalRanking = 'Global_ranking';
