@@ -11,10 +11,10 @@
     "db:up-local": "env $(cat .env) npx sequelize-cli db:create",
     "prestart": "npm run build",
     "start": "node .",
-    "dev": "tsnd --rs --transpile-only ./src/server/server.ts",
+    "dev": "echo 'eu funcionei'",
     "lint": "eslint ./src --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "connect-db": "tsnd ./src/database/ORM/connection.ts"
+    "test-connection-db": "tsnd ./src/database/ORM/connection.ts"
   },
   "keywords": [],
   "author": "",
