@@ -1,9 +1,16 @@
-// SSOT
-import { dbConfig } from '../../SSOT/exporter';
+// Sequelize
+import { Options } from 'sequelize';
 
-export const PORT = Number(process.env.PORT_DB) || dbConfig.DB_DEFAULT_PORT;
-export const HOST = process.env.HOST || dbConfig.DB_DEFAULT_HOST;
-export const DB_NAME = process.env.DB_NAME || dbConfig.DB_DEFAULT_NAME;
-export const DB_PASSWORD = process.env.DB_PASSWORD || dbConfig.DB_DEFAULT_PASSWORD;
-export const DB_USER = process.env.DB_USER || dbConfig.DB_DEFAULT_USER;
-export const DB_TYPE = 'postgres';
+// Environment variables
+import * as env from './environment';
+
+const sequelizeOptions: Options = {
+  port: env.PORT,
+  host: env.HOST,
+  database: env.DB_NAME,
+  username: env.DB_USER,
+  password: env.DB_PASSWORD,
+  dialect: env.DB_DIALECT,
+};
+
+export = sequelizeOptions;

@@ -1,2 +1,8 @@
+# Directories to ignore
 /build
 /node_modules
+
+# Files to ignore
+.env.example
+.eslintrc.json
+.eslintignore

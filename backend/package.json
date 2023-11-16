@@ -2,9 +2,13 @@
   "name": "quem_ta_on_no_bb",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/server/server",
+  "main": "./build/server/server.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "build-local": "env $(cat .env) tsc --project tsconfig.json",
+    "migrate-local": "env $(cat .env) npx sequelize-cli db:migrate",
+    "db:drop-local": "env $(cat .env) npx sequelize-cli db:drop",
+    "db:up-local": "env $(cat .env) npx sequelize-cli db:create",
     "prestart": "npm run build",
     "start": "node .",
     "dev": "tsnd --rs --transpile-only ./src/server/server.ts",
@@ -13,7 +17,8 @@
     "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/database/typeorm/index.ts",
     "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert -d ./src/database/typeorm/index.ts",
     "load-db-data": "ts-node src/database/loadDb.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "connect-db": "tsnd ./src/database/ORM/connection.ts"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +36,9 @@
     "mime": "^3.0.0",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.35.0",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
@@ -53,6 +60,7 @@
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-sonarjs": "^0.23.0",
+    "sequelize-cli": "^6.6.2",
     "ts-node-dev": "^2.0.0",
     "tsc-node": "^0.0.3",
     "tsconfig-paths": "^3.14.2",

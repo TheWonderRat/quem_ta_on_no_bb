@@ -2,10 +2,10 @@
 import { DataSource } from 'typeorm';
 
 // config
-import * as config from '../config/config';
+import * as config from '../config/environment';
 
 const myDataSource = new DataSource({
-  type: config.DB_TYPE,
+  type: config.DB_DIALECT,
   host: config.HOST,
   port: config.PORT,
   username: config.DB_USER,

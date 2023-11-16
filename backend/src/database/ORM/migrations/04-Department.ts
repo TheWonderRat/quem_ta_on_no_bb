@@ -1,0 +1,27 @@
+// libraries
+import { Model, DataTypes, QueryInterface } from 'sequelize';
+
+// SSOT
+import { tableNames, columnName } from '../../../SSOT/migrations/exporter';
+
+// types
+import { migrations } from '../../../types/exporter';
+
+export default {
+  up: async (queryInterface: QueryInterface) =>
+    queryInterface.createTable<Model<migrations.Department>>(tableNames.Department, {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      departmentName: {
+        field: columnName.departmentName,
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    }),
+  down: async (queryInterface: QueryInterface) => queryInterface
+    .dropTable(tableNames.Department, {}),
+};
