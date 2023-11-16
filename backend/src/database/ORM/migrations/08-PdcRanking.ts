@@ -14,7 +14,7 @@ export default {
       userId: {
         type: DataTypes.UUID,
         allowNull: false,
-        references: { model: tableNames.User, key: common.idKey },
+        references: { model: tableNames.Users, key: common.idKey },
       },
     }),
   down: async (queryInterface: QueryInterface) => queryInterface

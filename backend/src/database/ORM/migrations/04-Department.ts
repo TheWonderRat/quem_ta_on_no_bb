@@ -9,7 +9,7 @@ import { migrations } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface) =>
-    queryInterface.createTable<Model<migrations.Department>>(tableNames.Department, {
+    queryInterface.createTable<Model<migrations.Department>>(tableNames.Departments, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -23,5 +23,5 @@ export default {
       },
     }),
   down: async (queryInterface: QueryInterface) => queryInterface
-    .dropTable(tableNames.Department, {}),
+    .dropTable(tableNames.Departments, {}),
 };

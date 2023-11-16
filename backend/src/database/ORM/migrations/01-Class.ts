@@ -9,7 +9,7 @@ import { migrations } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface) =>
-    queryInterface.createTable<Model<migrations.Class>>(tableNames.Class, {
+    queryInterface.createTable<Model<migrations.Class>>(tableNames.Classes, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -29,5 +29,5 @@ export default {
         defaultValue: Sequelize.literal(common.currentTimestamp),
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Class, {}),
+  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Classes, {}),
 };

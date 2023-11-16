@@ -1,6 +1,6 @@
 export type JobLocation = {
   id: number,
-  city: number,
-  department: number,
+  cityId: number,
+  departmentId: number,
   directoryName: string,
 };

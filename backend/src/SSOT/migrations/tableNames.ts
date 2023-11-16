@@ -1,9 +1,9 @@
-export const User = 'User';
-export const City = 'City';
-export const Class = 'Class';
-export const Department = 'Department';
-export const StatusUser = 'Status_user';
-export const JobLocation = 'Job_location';
+export const Users = 'Users';
+export const Cities = 'Cities';
+export const Classes = 'Classes';
+export const Departments = 'Departments';
+export const StatusUsers = 'Status_users';
+export const JobLocations = 'Job_locations';
 export const PcdRanking = 'Pcd_ranking';
 export const PppRanking = 'Ppp_ranking';
 export const GlobalRanking = 'Global_ranking';

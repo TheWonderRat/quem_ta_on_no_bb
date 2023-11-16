@@ -4,9 +4,9 @@ export type User = {
   ppp: boolean,
   name: string,
   email: string,
-  class: number,
-  status: string,
+  classId: number,
+  statusId: string,
   registry: number
   password: string,
-  jobLocation: number,
+  jobLocationId: number,
 };

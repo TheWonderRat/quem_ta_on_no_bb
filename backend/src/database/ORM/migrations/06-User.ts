@@ -9,7 +9,7 @@ import { migrations } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface) =>
-    queryInterface.createTable<Model<migrations.User>>(tableNames.User, {
+    queryInterface.createTable<Model<migrations.User>>(tableNames.Users, {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -25,21 +25,21 @@ export default {
       pcd: { type: DataTypes.BOOLEAN, allowNull: false },
       ppp: { type: DataTypes.BOOLEAN, allowNull: false },
       email: { type: DataTypes.STRING, allowNull: true },
-      class: {
+      classId: {
         allowNull: true,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.Class, key: common.idKey },
+        references: { model: tableNames.Classes, key: common.idKey },
       },
-      status: {
+      statusId: {
         allowNull: true,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.StatusUser, key: common.idKey },
+        references: { model: tableNames.StatusUsers, key: common.idKey },
       },
-      jobLocation: {
+      jobLocationId: {
         allowNull: true,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.JobLocation, key: common.idKey },
+        references: { model: tableNames.JobLocations, key: common.idKey },
       },
     }),
-  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.User, {}),
+  down: async (queryInterface: QueryInterface) => queryInterface.dropTable(tableNames.Users, {}),
 };

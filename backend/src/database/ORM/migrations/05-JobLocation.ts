@@ -9,25 +9,25 @@ import { migrations } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface) =>
-    queryInterface.createTable<Model<migrations.JobLocation>>(tableNames.JobLocation, {
+    queryInterface.createTable<Model<migrations.JobLocation>>(tableNames.JobLocations, {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      city: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: { model: tableNames.City, key: common.idKey },
-      },
-      department: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: { model: tableNames.Department, key: common.idKey },
-      },
       directoryName: { type: DataTypes.STRING, allowNull: false },
+      cityId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: { model: tableNames.Cities, key: common.idKey },
+      },
+      departmentId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: { model: tableNames.Departments, key: common.idKey },
+      },
     }),
   down: async (queryInterface: QueryInterface) => queryInterface
-    .dropTable(tableNames.JobLocation, {}),
+    .dropTable(tableNames.JobLocations, {}),
 };
