@@ -12,6 +12,9 @@ export default function validateToken(token: string): void {
   try {
     jwt.verify(token, JWT_SECRET);
   } catch (__e) {
-    throw new AppError(errorMessages.USER_NOT_AUTHENTICATED, httpStatus.HttpStatusUnauthorized);
+    throw new AppError({
+      message: errorMessages.USER_NOT_AUTHENTICATED,
+      statusCode: httpStatus.Unauthorized,
+    });
   }
 }

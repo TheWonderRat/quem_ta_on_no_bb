@@ -2,19 +2,22 @@
 import express, { Express, Router } from 'express';
 
 // routes
-import RouterManager from '../routes/router';
+import * as routers from '../routes/exporter';
 
 // middleware
 import { ErrorMid } from '../middlewares/exporter';
 
+// SSOT
+import { pathNames } from '../SSOT/exporter';
+
 export default class App {
   // private properties
   private readonly _app: Express;
-  private readonly _router: Router;
+  private readonly _routerManager: Router;
 
   constructor() {
     this._app = express();
-    this._router = new RouterManager().router;
+    this._routerManager = Router();
     this.initMids();
     this.initRoutes();
     this.initErrorMid();
@@ -23,15 +26,17 @@ export default class App {
   // getters
   public get app(): Express { return this._app; }
 
-  private get router(): Router { return this._router; }
+  private get routerManager(): Router { return this._routerManager; }
 
   // private methods
   private initMids(): void {
     this.app.use(express.json());
+    this.app.use(this.routerManager);
   }
 
   private initRoutes(): void {
-    this.app.use(this.router);
+    this.routerManager.use(pathNames.health, new routers.HealthRouter().router);
+    this.routerManager.use(pathNames.login, new routers.LoginRouter().router);
   }
 
   private initErrorMid(): void {

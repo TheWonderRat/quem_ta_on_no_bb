@@ -1,11 +1,11 @@
 import { httpStatus } from '../../types/exporter';
 
 // Success status
-export const HttpStatusOk: httpStatus.HttpStatusOk = 200;
-export const HttpStatusCreated: httpStatus.HttpStatusCreated = 201;
+export const OK: httpStatus.HttpStatusOk = 200;
+export const Created: httpStatus.HttpStatusCreated = 201;
 
 // Error status
-export const HttpStatusBadRequest: httpStatus.HttpStatusBadRequest = 400;
-export const HttpStatusUnauthorized: httpStatus.HttpStatusUnauthorized = 401;
-export const HttpStatusNotFound: httpStatus.HttpStatusNotFound = 404;
-export const HttpStatusInternalServerError: httpStatus.HttpStatusInternalServerError = 500;
+export const NotFound: httpStatus.HttpStatusNotFound = 404;
+export const BadRequest: httpStatus.HttpStatusBadRequest = 400;
+export const Unauthorized: httpStatus.HttpStatusUnauthorized = 401;
+export const InternalServerError: httpStatus.HttpStatusInternalServerError = 500;

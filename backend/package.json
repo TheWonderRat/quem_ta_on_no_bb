@@ -14,7 +14,7 @@
     "db:create-local": "env $(cat .env) npx sequelize-cli db:create",
     "db:up-local": "npm run db:drop-local && npm run db:create-local && npm run migrate-local",
     "predev": "npm run build-local && npm run db:up-local",
-    "dev": "tsnd ./src/server/server.ts",
+    "dev": "env $(cat .env) tsnd --rs ./src/server/server.ts",
     "lint": "eslint ./src --ext .ts",
     "test": "env $(cat .env) jest --watchAll --verbose --forceExit",
     "test-coverage": "env $(cat .env) jest --coverage --watchAll --verbose --forceExit",
@@ -31,7 +31,8 @@
     "sequelize": "^6.35.0"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.13",
     "@types/jest": "^29.5.8",
     "@types/jsonwebtoken": "^8.5.9",

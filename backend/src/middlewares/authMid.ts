@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction as Next } from 'express';
 
 // types
-import { authorization } from '../types/exporter';
+import { jwt } from '../types/exporter';
 
 // utils
 import AppError from '../shared/utils/error/errorConstructor';
@@ -11,7 +11,7 @@ import validateToken from '../shared/utils/jwt/validateToken';
 
 export default class AuthMid {
   public static hasToken(req: Request, __res: Response, next: Next): void {
-    const authHeader: authorization = req.headers as authorization;
+    const authHeader: jwt.authorization = req.headers as jwt.authorization;
     try {
       authValidation(authHeader);
       next();

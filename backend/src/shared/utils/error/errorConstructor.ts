@@ -1,15 +1,12 @@
-import { errorTypes, ErrorMessages, httpStatus } from '../../../types/exporter';
+import { errorTypes } from '../../../types/exporter';
 
 export default class AppError extends Error {
   private readonly _errorInfo: errorTypes.AppErrorTypes;
 
-  constructor(message: string | ErrorMessages, statusCode: httpStatus.HttpStatusError) {
-    super(message);
+  constructor(erroInfo: errorTypes.AppErrorTypes) {
+    super(erroInfo.message);
 
-    this._errorInfo = {
-      message,
-      statusCode,
-    };
+    this._errorInfo = erroInfo;
   }
 
   public get errorInfo(): errorTypes.AppErrorTypes {

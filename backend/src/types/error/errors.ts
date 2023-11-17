@@ -29,8 +29,7 @@ Messages.SERVER_SIDE_ERROR,
 HttpStatus.HttpStatusInternalServerError
 >;
 
-export type AppErrorTypes = AppErrorGeneric
-| UserNotFound
+export type AppErrorTypes = UserNotFound
 | DataBaseNotFound
 | MissingToken
 | UserNotAuthenticated

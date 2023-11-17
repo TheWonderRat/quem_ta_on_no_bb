@@ -1,25 +1,28 @@
 // library imports
 import { Request, Response, Router } from 'express';
 
+// class imports
+import AbstractRouter from '../../classes/router.class';
+
 // SSOT
-import { pathNames, httpStatus } from '../../SSOT/exporter';
+import { httpStatus } from '../../SSOT/exporter';
 
-export default class HealthRouter {
-  // private properties
-  private readonly _router: Router;
+// Controller
+import LoginController from '../../modules/controller/LoginController';
 
+export default class HealthRouter extends AbstractRouter<LoginController> {
   constructor() {
-    this._router = Router();
-    this.init();
+    super(Router(), new LoginController());
+    this.initRoutes();
   }
 
-  // getters
-  get router(): Router { return this._router; }
-
   // private methods
-  private init(): void {
-    this.router.get(pathNames.root, async (__req: Request, res: Response) => res
-      .status(httpStatus.HttpStatusOk)
-      .send({ message: 'Rota funcionando normalmente' }));
+  protected initRoutes(): void {
+    this.router.get(
+      this.rootPath,
+      async (__req: Request, res: Response): Promise<Response> => res
+        .status(httpStatus.OK)
+        .send({ message: 'Rota funcionando normalmente' }),
+    );
   }
 }
