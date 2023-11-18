@@ -35,7 +35,7 @@ JobLocation.init(
   },
   {
     sequelize,
-    tableName: migrations.tableNames.JobLocations,
+    tableName: migrations.tableName.JobLocations,
     underscored: true,
     timestamps: false,
   },

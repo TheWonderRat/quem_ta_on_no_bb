@@ -10,7 +10,7 @@ import { migrationsTypes } from '../../../types/exporter';
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrationsTypes.JobLocation>>(
-      migrations.tableNames.JobLocations,
+      migrations.tableName.JobLocations,
       {
         id: {
           type: DataTypes.INTEGER,
@@ -26,19 +26,19 @@ export default {
         cityId: {
           allowNull: false,
           type: DataTypes.INTEGER,
-          references: { model: migrations.tableNames.Cities, key: migrations.columnName.idKey },
+          references: { model: migrations.tableName.Cities, key: migrations.columnName.idKey },
         },
         departmentId: {
           allowNull: false,
           field: migrations.columnName.departmentId,
           type: DataTypes.INTEGER,
           references: {
-            model: migrations.tableNames.Departments,
+            model: migrations.tableName.Departments,
             key: migrations.columnName.idKey,
           },
         },
       },
     ),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableNames.JobLocations, {}),
+    .dropTable(migrations.tableName.JobLocations, {}),
 };

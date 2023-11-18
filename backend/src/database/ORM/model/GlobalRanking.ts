@@ -25,7 +25,7 @@ GlobalRanking.init(
   },
   {
     sequelize,
-    tableName: migrations.tableNames.GlobalRanking,
+    tableName: migrations.tableName.GlobalRanking,
     underscored: true,
     timestamps: false,
   },

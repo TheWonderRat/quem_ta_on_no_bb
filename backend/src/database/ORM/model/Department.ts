@@ -23,5 +23,5 @@ Department.init(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
     departmentName: { type: DataTypes.STRING, allowNull: false },
   },
-  { sequelize, tableName: migrations.tableNames.Departments, underscored: true, timestamps: false },
+  { sequelize, tableName: migrations.tableName.Departments, underscored: true, timestamps: false },
 );

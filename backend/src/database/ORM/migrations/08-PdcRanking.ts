@@ -9,15 +9,15 @@ import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrationsTypes.Ranking>>(migrations.tableNames.PcdRanking, {
+    queryInterface.createTable<Model<migrationsTypes.Ranking>>(migrations.tableName.PcdRanking, {
       position: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true },
       userId: {
         type: DataTypes.UUID,
         field: migrations.columnName.userId,
         allowNull: false,
-        references: { model: migrations.tableNames.Users, key: migrations.columnName.idKey },
+        references: { model: migrations.tableName.Users, key: migrations.columnName.idKey },
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableNames.PcdRanking, {}),
+    .dropTable(migrations.tableName.PcdRanking, {}),
 };

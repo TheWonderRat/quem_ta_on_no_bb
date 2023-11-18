@@ -22,5 +22,5 @@ City.init(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
     cityName: { type: DataTypes.STRING, allowNull: false },
   },
-  { sequelize, tableName: migrations.tableNames.Cities, underscored: true, timestamps: false },
+  { sequelize, tableName: migrations.tableName.Cities, underscored: true, timestamps: false },
 );

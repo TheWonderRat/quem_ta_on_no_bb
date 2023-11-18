@@ -10,17 +10,17 @@ import { migrationsTypes } from '../../../types/exporter';
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrationsTypes.Ranking>>(
-      migrations.tableNames.GlobalRanking,
+      migrations.tableName.GlobalRanking,
       {
         position: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true },
         userId: {
           type: DataTypes.UUID,
           field: migrations.columnName.userId,
           allowNull: false,
-          references: { model: migrations.tableNames.Users, key: migrations.columnName.idKey },
+          references: { model: migrations.tableName.Users, key: migrations.columnName.idKey },
         },
       },
     ),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableNames.GlobalRanking, {}),
+    .dropTable(migrations.tableName.GlobalRanking, {}),
 };

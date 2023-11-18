@@ -22,5 +22,5 @@ Class.init(
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
     updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
   },
-  { sequelize, tableName: migrations.tableNames.Classes, underscored: true, timestamps: true },
+  { sequelize, tableName: migrations.tableName.Classes, underscored: true, timestamps: true },
 );

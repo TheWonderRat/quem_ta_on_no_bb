@@ -23,5 +23,5 @@ StatusUser.init(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
     statusName: { type: DataTypes.STRING, allowNull: false },
   },
-  { sequelize, tableName: migrations.tableNames.StatusUsers, underscored: true, timestamps: false },
+  { sequelize, tableName: migrations.tableName.StatusUsers, underscored: true, timestamps: false },
 );

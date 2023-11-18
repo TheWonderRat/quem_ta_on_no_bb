@@ -40,7 +40,7 @@ User.init(
     jobLocationId: { type: DataTypes.INTEGER, allowNull: false },
     statusId: { type: DataTypes.INTEGER, allowNull: false },
   },
-  { sequelize, tableName: migrations.tableNames.Users, underscored: true, timestamps: false },
+  { sequelize, tableName: migrations.tableName.Users, underscored: true, timestamps: false },
 );
 
 Class.hasMany(User, { foreignKey: models.classId, sourceKey: models.id, as: models.usersClass });
