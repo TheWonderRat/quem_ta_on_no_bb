@@ -2,16 +2,14 @@
 import { Request, Response, NextFunction as Next } from 'express';
 
 // types
-import { jwt } from '../types/exporter';
+import { jwtTypes } from '../types/exporter';
 
 // utils
-import AppError from '../shared/utils/error/errorConstructor';
-import authValidation from '../shared/utils/auth/authValidation';
-import validateToken from '../shared/utils/jwt/validateToken';
+import { AppError, authValidation, TokenManager } from '../shared/utils/exporter';
 
 export default class AuthMid {
   public static hasToken(req: Request, __res: Response, next: Next): void {
-    const authHeader: jwt.authorization = req.headers as jwt.authorization;
+    const authHeader: jwtTypes.authorization = req.headers as jwtTypes.authorization;
     try {
       authValidation(authHeader);
       next();
@@ -26,7 +24,7 @@ export default class AuthMid {
       const positionArray: number = 1;
       const token: string = request.headers
         .authorization?.split('Bearer ')[positionArray] as string;
-      validateToken(token);
+      TokenManager.validateToken(token);
       next();
     } catch (e) {
       const exception: AppError = e as AppError;

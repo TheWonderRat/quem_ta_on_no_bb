@@ -1,5 +1,5 @@
 // types
-import { jwt } from '../../../types/exporter';
+import { jwtTypes } from '../../../types/exporter';
 
 // SSOT
 import { errorMessages, httpStatus } from '../../../SSOT/exporter';
@@ -10,7 +10,7 @@ import AppError from '../error/errorConstructor';
 // Helpers
 import * as checkers from '../../helpers/auth/token';
 
-export default function authValidation(authHeader: jwt.authorization): void {
+export default function authValidation(authHeader: jwtTypes.authorization): void {
   if (checkers.checkKey(authHeader)) {
     throw new AppError({ message: errorMessages.MISSING_TOKEN, statusCode: httpStatus.BadRequest });
   }

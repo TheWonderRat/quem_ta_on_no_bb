@@ -2,14 +2,14 @@
 import { Model, DataTypes, QueryInterface } from 'sequelize';
 
 // SSOT
-import { tableNames, columnName } from '../../../SSOT/migrations/exporter';
+import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrations.City>>(tableNames.Cities, {
+    queryInterface.createTable<Model<migrationsTypes.City>>(migrations.tableNames.Cities, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,11 +17,11 @@ export default {
         allowNull: false,
       },
       cityName: {
-        field: columnName.cityName,
+        field: migrations.columnName.cityName,
         type: DataTypes.STRING,
         allowNull: false,
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(tableNames.Cities, {}),
+    .dropTable(migrations.tableNames.Cities, {}),
 };

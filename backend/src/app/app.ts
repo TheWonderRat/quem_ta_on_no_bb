@@ -35,27 +35,11 @@ export default class App {
   }
 
   private initRoutes(): void {
-    this.routerManager.use(pathNames.health, new routers.HealthRouter().router);
     this.routerManager.use(pathNames.login, new routers.LoginRouter().router);
+    this.routerManager.use(pathNames.health, new routers.HealthRouter().router);
   }
 
   private initErrorMid(): void {
     this.app.use(ErrorMid.errorHandler);
   }
 }
-// app.use(cors());
-// app.use(routes);
-
-// app.use((error: Error, __request: Request, response: Response) => {
-//   if (error instanceof AppError) {
-//     return response.status(error.statusCode).json({
-//       status: 'error',
-//       message: error.message,
-//     });
-//   }
-
-//   return response.status(500).json({
-//     status: 'error',
-//     message: 'Internal server error and this is a custom error!',
-//   });
-// });

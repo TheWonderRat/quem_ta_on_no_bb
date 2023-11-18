@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 import AbstractController from '../../classes/controller.class';
 
 // types
-import { login, jwt } from '../../types/exporter';
+import { login, jwtTypes } from '../../types/exporter';
 
 // SSOT
 import { httpStatus } from '../../SSOT/exporter';
@@ -21,7 +21,7 @@ export default class LoginController extends AbstractController<LoginService> {
   // public methods
   public async login(request: Request, response: Response): Promise<Response> {
     const { email, password }: login.LoginRequest = request.body;
-    const token: jwt.token = await this.service.validateUser(email, password);
+    const token: jwtTypes.token = await this.service.validateUser(email, password);
     return response.status(httpStatus.OK).send(token);
   }
 }

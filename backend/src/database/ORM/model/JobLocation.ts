@@ -2,10 +2,10 @@
 import { DataTypes, ForeignKey, Model, Optional } from 'sequelize';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 // SSOT
-import { tableNames } from '../../../SSOT/migrations/exporter';
+import { migrations, models } from '../../../SSOT/exporter';
 
 // ORM
 import sequelize from '../connection';
@@ -14,16 +14,16 @@ import sequelize from '../connection';
 import City from './City';
 import Department from './Department';
 
-type JobLocationCreationAttributes = Optional<migrations.JobLocation, 'id'>;
+type JobLocationCreationAttributes = Optional<migrationsTypes.JobLocation, 'id'>;
 
 export default class JobLocation extends Model<
-migrations.JobLocation,
+migrationsTypes.JobLocation,
 JobLocationCreationAttributes
 > {
   declare id: number;
   declare directoryName: string;
-  declare cityId: ForeignKey<migrations.City['id']>;
-  declare departmentId: ForeignKey<migrations.Department['id']>;
+  declare cityId: ForeignKey<migrationsTypes.City['id']>;
+  declare departmentId: ForeignKey<migrationsTypes.Department['id']>;
 }
 
 JobLocation.init(
@@ -33,17 +33,26 @@ JobLocation.init(
     cityId: { type: DataTypes.INTEGER, allowNull: false },
     departmentId: { type: DataTypes.INTEGER, allowNull: false },
   },
-  { sequelize, tableName: tableNames.JobLocations, underscored: true, timestamps: false },
+  {
+    sequelize,
+    tableName: migrations.tableNames.JobLocations,
+    underscored: true,
+    timestamps: false,
+  },
 );
 
-City.hasMany(JobLocation, { foreignKey: 'cityId', sourceKey: 'id', as: 'jobLocationsCity' });
-JobLocation.belongsTo(City, { foreignKey: 'cityId', targetKey: 'id', as: 'city' });
+City.hasMany(JobLocation, {
+  foreignKey: models.cityId,
+  sourceKey: models.id,
+  as: models.jobLocationsCity,
+});
+JobLocation.belongsTo(City, { foreignKey: models.cityId, targetKey: models.id, as: models.city });
 
 Department.hasMany(
   JobLocation,
-  { foreignKey: 'departmentId', sourceKey: 'id', as: 'jobLocationsDepartment' },
+  { foreignKey: models.departmentId, sourceKey: models.id, as: models.jobLocationsDepartment },
 );
 JobLocation.belongsTo(
   Department,
-  { foreignKey: 'departmentId', targetKey: 'id', as: 'department' },
+  { foreignKey: models.departmentId, targetKey: models.id, as: models.department },
 );

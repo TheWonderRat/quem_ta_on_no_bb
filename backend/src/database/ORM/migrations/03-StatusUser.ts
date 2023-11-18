@@ -2,26 +2,29 @@
 import { Model, DataTypes, QueryInterface } from 'sequelize';
 
 // SSOT
-import { tableNames, columnName } from '../../../SSOT/migrations/exporter';
+import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrations.StatusUser>>(tableNames.StatusUsers, {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
+    queryInterface.createTable<Model<migrationsTypes.StatusUser>>(
+      migrations.tableNames.StatusUsers,
+      {
+        id: {
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+          allowNull: false,
+        },
+        statusName: {
+          field: migrations.columnName.statusName,
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
       },
-      statusName: {
-        field: columnName.statusName,
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    }),
+    ),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(tableNames.StatusUsers, {}),
+    .dropTable(migrations.tableNames.StatusUsers, {}),
 };

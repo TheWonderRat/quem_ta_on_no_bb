@@ -1,5 +1,9 @@
 export * as dbConfig from './database/config';
 export * as pathNames from './routes/pathNames';
+export * as jwtConfig from './jwt/jwt';
 export * as httpStatus from './http/status';
 export * as serverConfig from './server/config';
 export * as errorMessages from './error/messages';
+export * as bcryptConfig from './bcrypt/bcrypt';
+export * as migrations from './migrations/exporter';
+export * as models from './models/columnName';

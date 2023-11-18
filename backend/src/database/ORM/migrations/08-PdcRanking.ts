@@ -2,21 +2,22 @@
 import { Model, DataTypes, QueryInterface } from 'sequelize';
 
 // SSOT
-import { tableNames, common } from '../../../SSOT/migrations/exporter';
+import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrations.Ranking>>(tableNames.PcdRanking, {
+    queryInterface.createTable<Model<migrationsTypes.Ranking>>(migrations.tableNames.PcdRanking, {
       position: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true },
       userId: {
         type: DataTypes.UUID,
+        field: migrations.columnName.userId,
         allowNull: false,
-        references: { model: tableNames.Users, key: common.idKey },
+        references: { model: migrations.tableNames.Users, key: migrations.columnName.idKey },
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(tableNames.PcdRanking, {}),
+    .dropTable(migrations.tableNames.PcdRanking, {}),
 };

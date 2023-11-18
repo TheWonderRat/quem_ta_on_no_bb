@@ -1,6 +1,6 @@
-import { jwt } from '../../../types/exporter';
+import { jwtTypes } from '../../../types/exporter';
 
-export function checkKey(authHeader: jwt.authorization): boolean {
+export function checkKey(authHeader: jwtTypes.authorization): boolean {
   return Object.prototype.hasOwnProperty.call(authHeader, 'authorization');
 }
 

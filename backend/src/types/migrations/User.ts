@@ -7,6 +7,6 @@ export type User = {
   classId: number,
   statusId: string,
   registry: number
-  password: string,
+  passwordHash: string,
   jobLocationId: number,
 };

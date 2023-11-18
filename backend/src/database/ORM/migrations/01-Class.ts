@@ -2,33 +2,33 @@
 import { Model, DataTypes, QueryInterface, Sequelize } from 'sequelize';
 
 // SSOT
-import { tableNames, common } from '../../../SSOT/migrations/exporter';
+import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrations.Class>>(tableNames.Classes, {
+    queryInterface.createTable<Model<migrationsTypes.Class>>(migrations.tableNames.Classes, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
       },
       createdAt: {
-        field: common.createdAt,
+        field: migrations.columnName.createdAt,
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal(common.currentTimestamp),
+        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
 
       },
       updatedAt: {
-        field: common.updatedAt,
+        field: migrations.columnName.updatedAt,
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal(common.currentTimestamp),
+        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(tableNames.Classes, {}),
+    .dropTable(migrations.tableNames.Classes, {}),
 };

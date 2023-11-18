@@ -2,21 +2,25 @@
 import { Model, DataTypes, QueryInterface, Sequelize } from 'sequelize';
 
 // SSOT
-import { tableNames, common } from '../../../SSOT/migrations/exporter';
+import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrations } from '../../../types/exporter';
+import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrations.User>>(tableNames.Users, {
+    queryInterface.createTable<Model<migrationsTypes.User>>(migrations.tableNames.Users, {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,
-        defaultValue: Sequelize.literal(common.UUID),
+        defaultValue: Sequelize.literal(migrations.common.UUID),
         allowNull: false,
       },
-      password: { type: DataTypes.STRING, allowNull: false },
+      passwordHash: {
+        type: DataTypes.STRING,
+        field: migrations.columnName.passwordHash,
+        allowNull: false,
+      },
       registry: { type: DataTypes.INTEGER, allowNull: true },
       name: {
         type: DataTypes.STRING,
@@ -27,20 +31,23 @@ export default {
       email: { type: DataTypes.STRING, allowNull: true },
       classId: {
         allowNull: true,
+        field: migrations.columnName.classId,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.Classes, key: common.idKey },
+        references: { model: migrations.tableNames.Classes, key: migrations.columnName.idKey },
       },
       statusId: {
         allowNull: true,
+        field: migrations.columnName.statusId,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.StatusUsers, key: common.idKey },
+        references: { model: migrations.tableNames.StatusUsers, key: migrations.columnName.idKey },
       },
       jobLocationId: {
         allowNull: true,
+        field: migrations.columnName.jobLocationId,
         type: DataTypes.INTEGER,
-        references: { model: tableNames.JobLocations, key: common.idKey },
+        references: { model: migrations.tableNames.JobLocations, key: migrations.columnName.idKey },
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(tableNames.Users, {}),
+    .dropTable(migrations.tableNames.Users, {}),
 };

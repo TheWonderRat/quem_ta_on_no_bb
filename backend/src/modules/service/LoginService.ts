@@ -1,11 +1,11 @@
-// libraries
-import bcrypt from 'bcrypt';
-
 // Abstract service
 import AbstractService from '../../classes/service.class';
 
 // repository
 import LoginRepository from '../repository/LoginRepository';
+
+// utils
+import { TokenManager, PasswordManager } from '../../shared/utils/exporter';
 
 // Error constructor
 import AppError from '../../shared/utils/error/errorConstructor';
@@ -14,8 +14,7 @@ import AppError from '../../shared/utils/error/errorConstructor';
 import { httpStatus, errorMessages } from '../../SSOT/exporter';
 
 // types
-import { jwt } from '../../types/exporter';
-import User from '../../database/ORM/model/User';
+import { jwtTypes, login } from '../../types/exporter';
 
 export default class LoginService extends AbstractService<LoginRepository> {
   constructor() {
@@ -23,8 +22,8 @@ export default class LoginService extends AbstractService<LoginRepository> {
   }
 
   // public methods
-  public async validateUser(email: string, password: string): Promise<jwt.token> {
-    const user: User | null = await this.repository.findUserByEmail(email);
+  public async validateUser(email: string, password: string): Promise<jwtTypes.token> {
+    const user: login.LoginRequest | null = await this.repository.findUserByEmail(email);
 
     if (!user) {
       throw new AppError({
@@ -33,13 +32,13 @@ export default class LoginService extends AbstractService<LoginRepository> {
       });
     }
 
-    if (!bcrypt.compareSync(password, user.password)) {
+    if (!PasswordManager.comparePassword(password, user.password)) {
       throw new AppError({
         message: errorMessages.MISS_MATCHED_PASSWORD,
         statusCode: httpStatus.Unauthorized,
       });
     }
 
-    return { token: 'token' };
+    return { token: TokenManager.generateToken({ email: user.email, password: user.password }) };
   }
 }
