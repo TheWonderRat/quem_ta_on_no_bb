@@ -1,4 +1,4 @@
 build/
 node_modules/
-jest.config.js
+jest.config.ts
 .sequelizerc
