@@ -204,6 +204,7 @@
                 "**/*.test.ts"
             ],
             "rules": {
+                "max-lines-per-function": "off",
                 "@typescript-eslint/typedef": [
                     "error",
                     {

@@ -1,4 +1,8 @@
 // Classes
 import LoginRepository from '../../modules/repository/LoginRepository';
+import AbstractRepository from '../../classes/repository.class';
 
-export type RepositoryTypes = LoginRepository;
+// Models
+import * as models from '../../database/ORM/model/exporter';
+
+export type RepositoryTypes = LoginRepository | AbstractRepository<typeof models>;

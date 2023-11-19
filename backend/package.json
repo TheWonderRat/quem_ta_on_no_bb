@@ -2,7 +2,7 @@
   "name": "quem_ta_on_no_bb",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/server/server.js",
+  "main": "./build/app/server/server.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "db:up": "npx sequelize-cli db:migrate",
@@ -14,9 +14,9 @@
     "db:create-local": "env $(cat .env) npx sequelize-cli db:create",
     "db:up-local": "npm run db:drop-local && npm run db:create-local && npm run migrate-local",
     "predev": "npm run build-local && npm run db:up-local",
-    "dev": "env $(cat .env) tsnd --rs ./src/server/server.ts",
+    "dev": "env $(cat .env) tsnd --rs ./src/app/server/server.ts",
     "lint": "eslint ./src --ext .ts",
-    "test": "jest --verbose --forceExit",
+    "test": " jest --verbose --forceExit",
     "test:coverage": "env $(cat .env) jest --coverage --watchAll --verbose --forceExit",
     "test-connection-db": "tsnd ./src/database/ORM/connection.ts"
   },

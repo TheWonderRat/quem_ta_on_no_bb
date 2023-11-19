@@ -11,7 +11,7 @@ import { login, jwtTypes } from '../../types/exporter';
 import { httpStatus } from '../../SSOT/exporter';
 
 // service
-import LoginService from '../service/LoginService';
+import { LoginService } from '../service/exporter';
 
 export default class LoginController extends AbstractController<LoginService> {
   constructor() {

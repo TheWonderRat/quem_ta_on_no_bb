@@ -1,0 +1,44 @@
+[
+  {
+    "id": "uuid_unico_1",
+    "registry": 571190589,
+    "name": "Aarao Aata Leal Guimaraes",
+    "email": "aarao@email.com",
+    "passwordHash": "senha_hash_1",
+    "pcd": false,
+    "ppp": false,
+    "classId": 1,
+    "statusId": 3,
+    "jobLocationId": 2,
+    "createdAt": "2020-11-01T02:16:58.000Z",
+    "updatedAt": "2020-11-01T02:16:58.000Z"
+  },
+  {
+    "id": "uuid_unico_2",
+    "registry": 571022340,
+    "name": "Abel Barbosa Neto Souto",
+    "email": "abel@email.com",
+    "passwordHash": "senha_hash_2",
+    "pcd": true,
+    "ppp": false,
+    "classId": 1,
+    "statusId": 2,
+    "jobLocationId": 1,
+    "createdAt": "2020-11-01T02:17:58.000Z",
+    "updatedAt": "2020-11-01T02:18:58.000Z"
+  },
+  {
+    "id": "uuid_unico_3",
+    "registry": 570068440,
+    "name": "Abimael de Queiroz Lima",
+    "email": "abimael@email.com",
+    "passwordHash": "senha_hash_2",
+    "pcd": false,
+    "ppp": true,
+    "classId": 2,
+    "statusId": 3,
+    "jobLocationId": 3,
+    "createdAt": "2020-11-01T02:16:48.000Z",
+    "updatedAt": "2020-11-01T02:20:58.000Z"
+  }
+]

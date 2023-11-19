@@ -26,6 +26,7 @@ export default {
         cityId: {
           allowNull: false,
           type: DataTypes.INTEGER,
+          field: migrations.columnName.cityId,
           references: { model: migrations.tableName.Cities, key: migrations.columnName.idKey },
         },
         departmentId: {

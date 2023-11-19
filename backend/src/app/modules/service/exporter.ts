@@ -3,3 +3,4 @@
 // export { default as AtualizarListasService } from './AtualizarListasService';
 // export { default as AtualizarSenhaService } from './AtualizarSenhaService';
 // export { default as ListarService } from './ListarService';
+export { default as LoginService } from './LoginService';

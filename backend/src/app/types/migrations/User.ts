@@ -5,10 +5,10 @@ export type User = {
   name: string,
   email: string,
   classId: number,
-  statusId: string,
+  statusId: number,
   registry: number
   passwordHash: string,
   jobLocationId: number,
-  createdAt: Date,
-  updatedAt: Date,
+  createdAt: string,
+  updatedAt: string,
 };

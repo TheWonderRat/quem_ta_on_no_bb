@@ -19,26 +19,29 @@ type UserCreationAttributes = Optional<migrationsTypes.User, 'id'>;
 
 export default class User extends Model<migrationsTypes.User, UserCreationAttributes> {
   declare id: number;
+  declare pcd: boolean;
+  declare ppp: boolean;
   declare name: string;
   declare email: string;
-  declare password: string;
-  declare cityId: ForeignKey<migrationsTypes.City['id']>;
-  declare departmentId: ForeignKey<migrationsTypes.Department['id']>;
-  declare statusUserId: ForeignKey<migrationsTypes.StatusUser['id']>;
+  declare registry: number;
+  declare passwordHash: string;
+  declare classId: ForeignKey<migrationsTypes.City['id']>;
+  declare statusId: ForeignKey<migrationsTypes.StatusUser['id']>;
+  declare jobLocationId: ForeignKey<migrationsTypes.Department['id']>;
 }
 
 User.init(
   {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+    id: { primaryKey: true, type: DataTypes.INTEGER, defaultValue: DataTypes.UUIDV4 },
     pcd: { type: DataTypes.BOOLEAN, allowNull: false },
     ppp: { type: DataTypes.BOOLEAN, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: true },
+    registry: { type: DataTypes.INTEGER, allowNull: false },
     passwordHash: { type: DataTypes.STRING, allowNull: false },
-    registry: { type: DataTypes.BOOLEAN, allowNull: false },
-    classId: { type: DataTypes.INTEGER, allowNull: false },
-    jobLocationId: { type: DataTypes.INTEGER, allowNull: false },
-    statusId: { type: DataTypes.INTEGER, allowNull: false },
+    classId: { type: DataTypes.INTEGER, allowNull: true },
+    statusId: { type: DataTypes.INTEGER, allowNull: true },
+    jobLocationId: { type: DataTypes.INTEGER, allowNull: true },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
   },

@@ -1,5 +1,6 @@
 // ids
 export const idKey: string = 'id';
+export const cityId: string = 'city_id';
 export const userId: string = 'user_id';
 export const classId: string = 'class_id';
 export const statusId: string = 'status_id';
