@@ -1,5 +1,5 @@
 // Libraries
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction as Next } from 'express';
 
 // Abstract controller
 import AbstractController from '../../classes/controller.class';
@@ -16,12 +16,17 @@ import { LoginService } from '../service/exporter';
 export default class LoginController extends AbstractController<LoginService> {
   constructor() {
     super(new LoginService());
+    this.login = this.login.bind(this);
   }
 
   // public methods
-  public async login(request: Request, response: Response): Promise<Response> {
-    const { email, password }: login.LoginRequest = request.body;
-    const token: jwtTypes.token = await this.service.validateUser(email, password);
-    return response.status(httpStatus.OK).send(token);
+  public async login(request: Request, response: Response, next: Next): Promise<Response | void> {
+    try {
+      const { email, password }: login.LoginRequest = request.body;
+      const token: jwtTypes.token = await this.service.validateUser(email, password);
+      return response.status(httpStatus.OK).send(token);
+    } catch (error) {
+      return next(error);
+    }
   }
 }

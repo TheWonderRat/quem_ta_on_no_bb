@@ -28,14 +28,14 @@ export default class LoginService extends AbstractService<LoginRepository> {
     if (!user) {
       throw new AppError({
         message: errorMessages.USER_NOT_FOUND,
-        statusCode: httpStatus.NotFound,
+        statusCode: httpStatus.NOT_FOUND,
       });
     }
 
     if (!(await PasswordManager.comparePassword(password, user.hash))) {
       throw new AppError({
         message: errorMessages.MISS_MATCHED_PASSWORD,
-        statusCode: httpStatus.Unauthorized,
+        statusCode: httpStatus.UNAUTHORIZED,
       });
     }
 

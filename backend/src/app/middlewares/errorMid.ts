@@ -13,6 +13,6 @@ export default class ErrorMid {
     __next: Next,
   ): Response {
     const { statusCode, message }: errorTypes.AppErrorTypes = error.errorInfo;
-    return res.status(statusCode).send(message);
+    return res.status(statusCode).send({ message });
   }
 }

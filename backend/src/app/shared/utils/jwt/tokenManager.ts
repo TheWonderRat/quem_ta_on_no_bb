@@ -21,7 +21,7 @@ export default class TokenManager {
     } catch (__e) {
       throw new AppError({
         message: errorMessages.USER_NOT_AUTHENTICATED,
-        statusCode: httpStatus.Unauthorized,
+        statusCode: httpStatus.UNAUTHORIZED,
       });
     }
   }

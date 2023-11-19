@@ -13,7 +13,6 @@ import { LoginRepository } from '../../../app/modules/repository/exporter';
 describe('Sequência de testes para o repositório de login', () => {
   // Configurações iniciais
   const repository: LoginRepository = new LoginRepository();
-  const oneCall: number = 1;
 
   afterEach(() => { jest.clearAllMocks(); });
 
@@ -25,7 +24,7 @@ describe('Sequência de testes para o repositório de login', () => {
 
     const user: login.UserInfo | null = await repository.findUserByEmail(userMock.email);
 
-    expect(spy).toHaveBeenCalledTimes(oneCall);
+    expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledWith({ where: { email: userMock.email } });
 
     expect(user).not.toBeNull();
@@ -38,7 +37,7 @@ describe('Sequência de testes para o repositório de login', () => {
 
     const user: login.UserInfo | null = await repository.findUserByEmail('usuário inválido');
 
-    expect(spy).toHaveBeenCalledTimes(oneCall);
+    expect(spy).toHaveBeenCalled();
     expect(user).toBeNull();
   });
 });

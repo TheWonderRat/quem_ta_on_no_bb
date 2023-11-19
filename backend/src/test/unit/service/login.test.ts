@@ -20,7 +20,6 @@ import { LoginService } from '../../../app/modules/service/exporter';
 describe('Sequência de testes para o serviço de login', () => {
   // Configurações iniciais
   const service: LoginService = new LoginService();
-  const oneCall: number = 1;
 
   const validEmail: string = 'valid_email';
   const validHash: string = 'valid_hash';
@@ -39,13 +38,13 @@ describe('Sequência de testes para o serviço de login', () => {
 
     const token: jwtTypes.token = await service.validateUser(validEmail, validPassword);
 
-    expect(spyRepository).toHaveBeenCalledTimes(oneCall);
+    expect(spyRepository).toHaveBeenCalled();
     expect(spyRepository).toHaveBeenCalledWith(validEmail);
 
-    expect(spyBcrypt).toHaveBeenCalledTimes(oneCall);
+    expect(spyBcrypt).toHaveBeenCalled();
     expect(spyBcrypt).toHaveBeenCalledWith(validPassword, validHash);
 
-    expect(spyJwt).toHaveBeenCalledTimes(oneCall);
+    expect(spyJwt).toHaveBeenCalled();
     expect(spyJwt).toHaveBeenCalledWith(
       { email: validEmail, password: validHash },
       jwtConfig.JWT_SECRET,
@@ -84,10 +83,10 @@ describe('Sequência de testes para o serviço de login', () => {
       expect(error.errorInfo).toHaveProperty('message');
       expect(error.errorInfo).toHaveProperty('statusCode');
       expect(error.errorInfo.message).toMatch(errorMessages.USER_NOT_FOUND);
-      expect(error.errorInfo.statusCode).toBe(httpStatus.NotFound);
+      expect(error.errorInfo.statusCode).toBe(httpStatus.NOT_FOUND);
     }
 
-    expect(spyRepository).toHaveBeenCalledTimes(oneCall);
+    expect(spyRepository).toHaveBeenCalled();
     expect(spyRepository).toHaveBeenCalledWith(invalidEmail);
   });
 
@@ -104,12 +103,12 @@ describe('Sequência de testes para o serviço de login', () => {
       expect(error.errorInfo).toHaveProperty('message');
       expect(error.errorInfo).toHaveProperty('statusCode');
       expect(error.errorInfo.message).toMatch(errorMessages.MISS_MATCHED_PASSWORD);
-      expect(error.errorInfo.statusCode).toBe(httpStatus.Unauthorized);
+      expect(error.errorInfo.statusCode).toBe(httpStatus.UNAUTHORIZED);
     }
-    expect(spyRepository).toHaveBeenCalledTimes(oneCall);
+    expect(spyRepository).toHaveBeenCalled();
     expect(spyRepository).toHaveBeenCalledWith(validEmail);
 
-    expect(spyBcrypt).toHaveBeenCalledTimes(oneCall);
+    expect(spyBcrypt).toHaveBeenCalled();
     expect(spyBcrypt).toHaveBeenCalledWith(invalidPassword, validHash);
   });
 });

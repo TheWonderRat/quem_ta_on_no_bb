@@ -205,6 +205,7 @@
             ],
             "rules": {
                 "max-lines-per-function": "off",
+                "max-len": "off",
                 "@typescript-eslint/typedef": [
                     "error",
                     {
