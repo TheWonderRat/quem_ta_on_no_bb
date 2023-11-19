@@ -5,7 +5,7 @@ import { Request, Response, NextFunction as Next } from 'express';
 import { jwtTypes } from '../types/exporter';
 
 // utils
-import { AuthError, RequestError, TokenManager, RequestValidators } from '../shared/utils/exporter';
+import { TokenManager, RequestValidators } from '../shared/utils/exporter';
 
 export default class AuthMid {
   public static hasToken(req: Request, __res: Response, next: Next): void {
@@ -13,9 +13,8 @@ export default class AuthMid {
     try {
       RequestValidators.authorizationField(authHeader);
       next();
-    } catch (e) {
-      const exception: RequestError = e as RequestError;
-      next(exception);
+    } catch (error) {
+      next(error);
     }
   }
 
@@ -26,9 +25,8 @@ export default class AuthMid {
         .authorization?.split('Bearer ')[positionArray] as string;
       TokenManager.validateToken(token);
       next();
-    } catch (e) {
-      const exception: AuthError = e as AuthError;
-      next(exception);
+    } catch (error) {
+      next(error);
     }
   }
 }

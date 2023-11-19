@@ -15,3 +15,8 @@ export const DATABASE_NOT_FOUND: messages
 
 export const SERVER_SIDE_ERROR: messages
   .SERVER_SIDE_ERROR = 'Erro interno do servidor';
+
+export const MISSING_FIELD_LOGIN: messages
+  .MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado';
+
+export const INVALID_EMAIL: messages.INVALID_EMAIL = 'Email fornecido tem formato inválido';

@@ -1,4 +1,5 @@
 // Mensagens de error de requisição
+export type INVALID_EMAIL = 'Email fornecido tem formato inválido';
 export type MISSING_TOKEN = 'Token de identificação não foi encontrado!';
 export type MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado';
 

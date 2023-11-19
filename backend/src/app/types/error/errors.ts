@@ -23,8 +23,9 @@ export type AuthErrorTypes = UserNotFound
 // Tipos de error para requisição
 type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.BadRequest>;
 type MissingFieldLogin = AppError<Messages.MISSING_FIELD_LOGIN, HttpStatus.BadRequest>;
+type InvalidEmail = AppError<Messages.INVALID_EMAIL, HttpStatus.BadRequest>;
 
-export type RequestErrorTypes = MissingToken | MissingFieldLogin;
+export type RequestErrorTypes = MissingToken | MissingFieldLogin | InvalidEmail;
 
 // Tipos de error para servidor
 type DataBaseNotFound = AppError<Messages.DATABASE_NOT_FOUND, HttpStatus.NotFound>;

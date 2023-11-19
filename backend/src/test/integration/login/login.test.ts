@@ -23,11 +23,11 @@ describe('Sequência de testes na rota de login', () => {
   const path: string = '/login';
   const firstPosition: number = 0;
 
-  const validEmail: string = 'valid_email';
+  const validEmail: string = 'valid_email@email.com';
   const validToken: string = 'valid_token';
   const validPassword: string = 'valid_password';
 
-  const invalidEmail: string = 'invalid_email';
+  const invalidEmail: string = 'invalid_email@email.com';
   const invalidPassword: string = 'invalid_password';
 
   const validLoginInfo: login.LoginRequest = { email: validEmail, password: validPassword };

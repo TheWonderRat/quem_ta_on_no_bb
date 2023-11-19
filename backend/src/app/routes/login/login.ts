@@ -1,6 +1,9 @@
 // library imports
 import { Router } from 'express';
 
+// middleware
+import { LoginMid } from '../../middlewares/exporter';
+
 // class imports
 import AbstractRouter from '../../classes/router.class';
 
@@ -15,6 +18,6 @@ export default class LoginRouter extends AbstractRouter<LoginController> {
 
   // private methods
   protected initRoutes(): void {
-    this.router.post(this.rootPath, this.controller.login);
+    this.router.post(this.rootPath, LoginMid.validateLoginFields, this.controller.login);
   }
 }
