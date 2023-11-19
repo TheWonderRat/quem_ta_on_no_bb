@@ -19,14 +19,14 @@ describe('Sequência de testes sobre a camada "LoginController"', () => {
   const res = {} as Response;
 
   const validEmail: string = 'valid_email';
-  const validPassword: string = 'valid_password';
   const validToken: string = 'valid_token';
+  const validPassword: string = 'valid_password';
 
   afterEach(() => { jest.clearAllMocks(); });
 
   test('Verifica se retorna um token em caso de sucesso da autenticação', async () => {
-    res.status = jest.fn().mockReturnValue(res);
     res.send = jest.fn().mockReturnValue(res);
+    res.status = jest.fn().mockReturnValue(res);
     req.body = { email: validEmail, password: validPassword };
 
     const spy = jest.spyOn(LoginService.prototype, 'validateUser')
