@@ -9,4 +9,6 @@ export type User = {
   registry: number
   passwordHash: string,
   jobLocationId: number,
+  createdAt: Date,
+  updatedAt: Date,
 };

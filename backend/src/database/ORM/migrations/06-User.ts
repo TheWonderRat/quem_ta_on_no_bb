@@ -47,6 +47,18 @@ export default {
         type: DataTypes.INTEGER,
         references: { model: migrations.tableName.JobLocations, key: migrations.columnName.idKey },
       },
+      createdAt: {
+        type: DataTypes.DATE,
+        field: migrations.columnName.createdAt,
+        allowNull: false,
+        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        field: migrations.columnName.updatedAt,
+        allowNull: false,
+        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
+      },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
     .dropTable(migrations.tableName.Users, {}),

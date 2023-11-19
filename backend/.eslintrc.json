@@ -183,5 +183,8 @@
         "sonarjs/no-inverted-boolean-check": [
             "error"
         ]
-    }
+    },
+    "overrides": [
+        { "files": ["src/database/ORM/migrations/*"], "rules": { "max-lines-per-function": "off" } }
+    ]
 }
