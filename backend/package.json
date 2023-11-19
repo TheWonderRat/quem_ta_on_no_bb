@@ -16,8 +16,8 @@
     "predev": "npm run build-local && npm run db:up-local",
     "dev": "env $(cat .env) tsnd --rs ./src/server/server.ts",
     "lint": "eslint ./src --ext .ts",
-    "test": "jest --watchAll --verbose --forceExit",
-    "test-coverage": "env $(cat .env) jest --coverage --watchAll --verbose --forceExit",
+    "test": "jest --verbose --forceExit",
+    "test:coverage": "env $(cat .env) jest --coverage --watchAll --verbose --forceExit",
     "test-connection-db": "tsnd ./src/database/ORM/connection.ts"
   },
   "keywords": [],
