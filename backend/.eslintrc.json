@@ -34,7 +34,10 @@
         "consistent-return": "off",
         "indent": [
             "error",
-            2
+            2,
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "error",
@@ -81,7 +84,8 @@
             "error",
             {
                 "ignoreEnums": true,
-                "ignoreNumericLiteralTypes": true
+                "ignoreNumericLiteralTypes": true,
+                "ignoreReadonlyClassProperties": true
             }
         ],
         "@typescript-eslint/typedef": [

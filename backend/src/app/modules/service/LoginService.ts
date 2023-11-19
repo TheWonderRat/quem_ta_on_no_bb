@@ -11,7 +11,7 @@ import { jwtTypes, login } from '../../types/exporter';
 import { TokenManager, PasswordManager } from '../../shared/utils/exporter';
 
 // Error constructor
-import AppError from '../../shared/utils/error/errorConstructor';
+import AuthError from '../../shared/utils/error/authError';
 
 // repository
 import { LoginRepository } from '../repository/exporter';
@@ -26,14 +26,14 @@ export default class LoginService extends AbstractService<LoginRepository> {
     const user: login.UserInfo | null = await this.repository.findUserByEmail(email);
 
     if (!user) {
-      throw new AppError({
+      throw new AuthError({
         message: errorMessages.USER_NOT_FOUND,
         statusCode: httpStatus.NOT_FOUND,
       });
     }
 
     if (!(await PasswordManager.comparePassword(password, user.hash))) {
-      throw new AppError({
+      throw new AuthError({
         message: errorMessages.MISS_MATCHED_PASSWORD,
         statusCode: httpStatus.UNAUTHORIZED,
       });

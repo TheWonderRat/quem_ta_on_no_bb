@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 import { httpStatus, errorMessages } from '../../../app/SSOT/exporter';
 
 // Utils
-import { AppError } from '../../../app/shared/utils/exporter';
+import { AuthError } from '../../../app/shared/utils/exporter';
 
 // Service
 import { LoginService } from '../../../app/modules/service/exporter';
@@ -61,7 +61,7 @@ describe('Sequência de testes sobre a camada "LoginController"', () => {
 
     const spy = jest.spyOn(LoginService.prototype, 'validateUser')
       .mockImplementation(async () => {
-        throw new AppError({
+        throw new AuthError({
           message: errorMessages.USER_NOT_FOUND,
           statusCode: httpStatus.NOT_FOUND });
       });
@@ -76,7 +76,7 @@ describe('Sequência de testes sobre a camada "LoginController"', () => {
 
     expect(next).toHaveBeenCalled();
     expect(next).toHaveBeenCalledWith(
-      new AppError({
+      new AuthError({
         message: errorMessages.USER_NOT_FOUND,
         statusCode: httpStatus.NOT_FOUND }),
     );

@@ -6,32 +6,34 @@ type AppError<T, S> = {
   statusCode: S
 };
 
-export type AppErrorGeneric = AppError<string, HttpStatus.HttpStatusError>;
+export type AppErrorGeneric = AppError<string, HttpStatus.Error>;
 
-export type UserNotFound = AppError<Messages.USER_NOT_FOUND, HttpStatus.HttpStatusNotFound>;
+// Tipos de error para autenticação
+type UserNotFound = AppError<Messages.USER_NOT_FOUND, HttpStatus.NotFound>;
+type InvalidToken = AppError<Messages.INVALID_TOKEN, HttpStatus.Unauthorized>;
+type UserNotAuthenticated = AppError<Messages.USER_NOT_AUTHENTICATED, HttpStatus.Unauthorized>;
 
-export type DataBaseNotFound = AppError<Messages.DATABASE_NOT_FOUND, HttpStatus.HttpStatusNotFound>;
+type MissMatchedPassword = AppError<Messages.MISS_MATCHED_PASSWORD, HttpStatus.Unauthorized>;
 
-export type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.HttpStatusBadRequest>;
-
-export type UserNotAuthenticated = AppError<
-Messages.USER_NOT_AUTHENTICATED,
-HttpStatus.HttpStatusUnauthorized
->;
-
-export type MissmatchedPassword = AppError<
-Messages.MISS_MATCHED_PASSWORD,
-HttpStatus.HttpStatusUnauthorized
->;
-
-export type ServerSideError = AppError<
-Messages.SERVER_SIDE_ERROR,
-HttpStatus.HttpStatusInternalServerError
->;
-
-export type AppErrorTypes = UserNotFound
-| DataBaseNotFound
-| MissingToken
+export type AuthErrorTypes = UserNotFound
+| InvalidToken
 | UserNotAuthenticated
-| MissmatchedPassword
-| ServerSideError;
+| MissMatchedPassword;
+
+// Tipos de error para requisição
+type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.BadRequest>;
+type MissingFieldLogin = AppError<Messages.MISSING_FIELD_LOGIN, HttpStatus.BadRequest>;
+
+export type RequestErrorTypes = MissingToken | MissingFieldLogin;
+
+// Tipos de error para servidor
+type DataBaseNotFound = AppError<Messages.DATABASE_NOT_FOUND, HttpStatus.NotFound>;
+
+type ServerSideError = AppError<
+Messages.SERVER_SIDE_ERROR,
+HttpStatus.InternalServerError
+>;
+
+export type ServerErrorTypes = DataBaseNotFound | ServerSideError;
+
+export type ErrorTypes = AuthErrorTypes | RequestErrorTypes | ServerErrorTypes;

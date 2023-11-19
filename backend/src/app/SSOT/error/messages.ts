@@ -14,4 +14,4 @@ export const DATABASE_NOT_FOUND: messages
   .DATABASE_NOT_FOUND = 'Não foi possível conectar com a base de dados';
 
 export const SERVER_SIDE_ERROR: messages
-  .SERVER_SIDE_ERROR = 'Não foi possível conectar com a base de dados';
+  .SERVER_SIDE_ERROR = 'Erro interno do servidor';

@@ -8,7 +8,7 @@ import { jwtConfig, errorMessages, httpStatus } from '../../../SSOT/exporter';
 import { jwtTypes } from '../../../types/exporter';
 
 // libraries
-import AppError from '../error/errorConstructor';
+import AuthError from '../error/authError';
 
 export default class TokenManager {
   public static generateToken(payload: jwtTypes.payload): string {
@@ -19,7 +19,7 @@ export default class TokenManager {
     try {
       jwt.verify(token, jwtConfig.JWT_SECRET);
     } catch (__e) {
-      throw new AppError({
+      throw new AuthError({
         message: errorMessages.USER_NOT_AUTHENTICATED,
         statusCode: httpStatus.UNAUTHORIZED,
       });

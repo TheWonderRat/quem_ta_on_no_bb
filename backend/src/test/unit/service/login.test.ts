@@ -9,7 +9,7 @@ import { jwtTypes } from '../../../app/types/exporter';
 import { jwtConfig, errorMessages, httpStatus } from '../../../app/SSOT/exporter';
 
 // utils
-import { AppError } from '../../../app/shared/utils/exporter';
+import { AuthError } from '../../../app/shared/utils/exporter';
 
 // Repository
 import { LoginRepository } from '../../../app/modules/repository/exporter';
@@ -59,7 +59,7 @@ describe('Sequência de testes para o serviço de login', () => {
     jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
       .mockImplementation(async () => null);
 
-    return expect(service.validateUser(invalidEmail, validPassword)).rejects.toThrow(AppError);
+    return expect(service.validateUser(invalidEmail, validPassword)).rejects.toThrow(AuthError);
   });
 
   test('Verifica se retorna um erro quando a senha não confere', async () => {
@@ -68,7 +68,7 @@ describe('Sequência de testes para o serviço de login', () => {
 
     jest.spyOn(bcrypt, 'compare').mockImplementation(() => false);
 
-    return expect(service.validateUser(validEmail, invalidPassword)).rejects.toThrow(AppError);
+    return expect(service.validateUser(validEmail, invalidPassword)).rejects.toThrow(AuthError);
   });
 
   test('Verifica mensagem de erro quando o usuário não é encontrado', async () => {
@@ -79,7 +79,7 @@ describe('Sequência de testes para o serviço de login', () => {
       await service.validateUser(invalidEmail, validPassword);
     } catch (e) {
       expect(e).toHaveProperty('errorInfo');
-      const error = e as AppError;
+      const error = e as AuthError;
       expect(error.errorInfo).toHaveProperty('message');
       expect(error.errorInfo).toHaveProperty('statusCode');
       expect(error.errorInfo.message).toMatch(errorMessages.USER_NOT_FOUND);
@@ -99,7 +99,7 @@ describe('Sequência de testes para o serviço de login', () => {
       await service.validateUser(validEmail, invalidPassword);
     } catch (e) {
       expect(e).toHaveProperty('errorInfo');
-      const error = e as AppError;
+      const error = e as AuthError;
       expect(error.errorInfo).toHaveProperty('message');
       expect(error.errorInfo).toHaveProperty('statusCode');
       expect(error.errorInfo.message).toMatch(errorMessages.MISS_MATCHED_PASSWORD);
