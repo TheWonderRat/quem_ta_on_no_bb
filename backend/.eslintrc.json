@@ -193,7 +193,7 @@
     "overrides": [
         {
             "files": [
-                "src/database/ORM/migrations/*"
+                "src/app/database/ORM/migrations/*"
             ],
             "rules": {
                 "max-lines-per-function": "off"

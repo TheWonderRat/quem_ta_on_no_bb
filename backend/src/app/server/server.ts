@@ -2,7 +2,7 @@
 import { Express } from 'express';
 
 // App
-import App from '../app/app';
+import App from '../app';
 
 // SSOT
 import { serverConfig } from '../SSOT/exporter';

@@ -2,13 +2,13 @@
 import express, { Express, Router } from 'express';
 
 // routes
-import * as routers from '../routes/exporter';
+import * as routers from './routes/exporter';
 
 // middleware
-import { ErrorMid } from '../middlewares/exporter';
+import { ErrorMid } from './middlewares/exporter';
 
 // SSOT
-import { pathNames } from '../SSOT/exporter';
+import { pathNames } from './SSOT/exporter';
 
 export default class App {
   // private properties

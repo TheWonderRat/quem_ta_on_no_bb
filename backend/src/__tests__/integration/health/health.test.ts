@@ -2,7 +2,7 @@
 import supertest from 'supertest';
 
 // App
-import App from '../../app/app';
+import App from '../../../app/app';
 
 describe('Sequência de testes para rota "/health"', () => {
   const OK: number = 200;
