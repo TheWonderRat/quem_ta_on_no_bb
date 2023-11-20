@@ -18,7 +18,7 @@ import JobLocation from './JobLocation';
 type UserCreationAttributes = Optional<migrationsTypes.User, 'id'>;
 
 export default class User extends Model<migrationsTypes.User, UserCreationAttributes> {
-  declare id: number;
+  declare id: string;
   declare pcd: boolean;
   declare ppp: boolean;
   declare name: string;
@@ -32,7 +32,7 @@ export default class User extends Model<migrationsTypes.User, UserCreationAttrib
 
 User.init(
   {
-    id: { primaryKey: true, type: DataTypes.INTEGER, defaultValue: DataTypes.UUIDV4 },
+    id: { primaryKey: true, type: DataTypes.UUIDV4, defaultValue: DataTypes.UUIDV4 },
     pcd: { type: DataTypes.BOOLEAN, allowNull: false },
     ppp: { type: DataTypes.BOOLEAN, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
@@ -42,8 +42,6 @@ User.init(
     classId: { type: DataTypes.INTEGER, allowNull: true },
     statusId: { type: DataTypes.INTEGER, allowNull: true },
     jobLocationId: { type: DataTypes.INTEGER, allowNull: true },
-    createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
-    updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
   },
   { sequelize, tableName: migrations.tableName.Users, underscored: true, timestamps: true },
 );

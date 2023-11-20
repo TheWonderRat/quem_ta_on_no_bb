@@ -1,14 +1,26 @@
-// // libraries
-// import { Router } from 'express';
-// import { celebrate, Joi, Segments } from 'celebrate';
+// libraries
+import { Router } from 'express';
 
-// // middlewares
-// import { AuthMid } from '../middlewares/exporter';
+// class imports
+import AbstractRouter from '../../classes/router.class';
 
-// // controllers
-// import AprovadoController from '../modules/controller/AprovadoController';
+// middlewares
+import { UserMid } from '../../middlewares/exporter';
 
-// const userRouter = Router();
+// Controller
+import { UserController } from '../../modules/controller/exporter';
+
+export default class UserRouter extends AbstractRouter<UserController> {
+  constructor() {
+    super(Router(), new UserController());
+    this.initRoutes();
+  }
+
+  // private methods
+  protected initRoutes(): void {
+    this.router.post(this.rootPath, UserMid.validateUserFields, this.controller.registerUser);
+  }
+}
 
 // // create user
 // userRouter.post(
@@ -68,5 +80,3 @@
 //   AuthMid.hasValidToken,
 //   AprovadoController.atualizarListas,
 // );
-
-// export default userRouter;

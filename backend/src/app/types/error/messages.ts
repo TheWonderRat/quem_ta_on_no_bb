@@ -1,7 +1,11 @@
 // Mensagens de error de requisição
+export type INVALID_PPP = 'Campo ppp deve ser booleano';
+export type INVALID_PCD = 'Campo pcd deve ser booleano';
 export type INVALID_EMAIL = 'Email fornecido tem formato inválido';
 export type MISSING_TOKEN = 'Token de identificação não foi encontrado!';
+export type INVALID_REGISTRY = 'Número de registro deve conter apenas números';
 export type MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado';
+export type MISSING_FIELD_REGISTER = 'Campo obrigatório (ppp/pcd/name/registry) não informado';
 
 export type RequestMessages = MISSING_FIELD_LOGIN | MISSING_TOKEN;
 

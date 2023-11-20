@@ -10,7 +10,7 @@ import { RequestError } from '../../../app/shared/utils/exporter';
 // Middleware
 import { LoginMid } from '../../../app/middlewares/exporter';
 
-describe('Sequência de testes sobre o middleware de login', () => {
+describe('Sequência de testes sobre o middleware Login', () => {
   // Configurações iniciais
   const req: Request = {} as Request;
   const res: Response = {} as Response;

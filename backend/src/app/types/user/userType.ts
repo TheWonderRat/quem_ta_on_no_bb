@@ -1,5 +1,4 @@
-export type User = {
-  id: string,
+export type UserRegister = {
   pcd: boolean,
   ppp: boolean,
   name: string,
@@ -11,17 +10,11 @@ export type User = {
   jobLocationId?: number,
 };
 
-export type UserMigration = {
-  id: string,
+export type UserRequest = {
   pcd: boolean,
   ppp: boolean,
   name: string,
   registry: number
-  passwordHash: string,
-  email: string,
-  classId: number,
-  statusId: number,
-  jobLocationId: number,
-  createdAt: Date,
-  updatedAt: Date,
 };
+
+export type UserSavedId = { id: string };

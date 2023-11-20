@@ -17,7 +17,7 @@ import { LoginRepository } from '../../../app/modules/repository/exporter';
 // Camada service a ser testada
 import { LoginService } from '../../../app/modules/service/exporter';
 
-describe('Sequência de testes para o serviço de login', () => {
+describe('Sequência de testes para o serviço Login', () => {
   // Configurações iniciais
   const service: LoginService = new LoginService();
 
@@ -30,7 +30,7 @@ describe('Sequência de testes para o serviço de login', () => {
 
   afterEach(() => { jest.clearAllMocks(); });
 
-  test('Verifica se retorna um token válido', async () => {
+  test('Se o método "validateUser" retorna um token válido', async () => {
     const spyJwt = jest.spyOn(jwt, 'sign').mockImplementation(() => 'valid_token');
     const spyBcrypt = jest.spyOn(bcrypt, 'compare').mockImplementation(() => true);
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
@@ -55,14 +55,14 @@ describe('Sequência de testes para o serviço de login', () => {
     expect(token.token).toMatch(/^valid_token$/);
   });
 
-  test('Verifica se retorna um erro quando o usuário não é encontrado', async () => {
+  test('Se o método "validateUser" retorna um erro quando o usuário não é encontrado', async () => {
     jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
       .mockImplementation(async () => null);
 
     return expect(service.validateUser(invalidEmail, validPassword)).rejects.toThrow(AuthError);
   });
 
-  test('Verifica se retorna um erro quando a senha não confere', async () => {
+  test('Se o método "validateUser" retorna um erro quando a senha não confere', async () => {
     jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
       .mockImplementation(async () => ({ email: validEmail, hash: validHash }));
 
@@ -71,7 +71,7 @@ describe('Sequência de testes para o serviço de login', () => {
     return expect(service.validateUser(validEmail, invalidPassword)).rejects.toThrow(AuthError);
   });
 
-  test('Verifica mensagem de erro quando o usuário não é encontrado', async () => {
+  test('Verifica a mensagem de erro quando o usuário não é encontrado', async () => {
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
       .mockImplementation(async () => null);
 
@@ -90,7 +90,7 @@ describe('Sequência de testes para o serviço de login', () => {
     expect(spyRepository).toHaveBeenCalledWith(invalidEmail);
   });
 
-  test('Verifica mensagem de erro quando a senha não confere', async () => {
+  test('Verifica a mensagem de erro quando a senha não confere', async () => {
     const spyBcrypt = jest.spyOn(bcrypt, 'compare').mockImplementation(() => false);
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
       .mockImplementation(async () => ({ email: validEmail, hash: validHash }));

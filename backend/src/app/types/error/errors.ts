@@ -21,11 +21,21 @@ export type AuthErrorTypes = UserNotFound
 | MissMatchedPassword;
 
 // Tipos de error para requisição
-type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.BadRequest>;
-type MissingFieldLogin = AppError<Messages.MISSING_FIELD_LOGIN, HttpStatus.BadRequest>;
+type InvalidPpp = AppError<Messages.INVALID_PPP, HttpStatus.BadRequest>;
+type InvalidPcd = AppError<Messages.INVALID_PCD, HttpStatus.BadRequest>;
 type InvalidEmail = AppError<Messages.INVALID_EMAIL, HttpStatus.BadRequest>;
+type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.BadRequest>;
+type InvalidRegistry = AppError<Messages.INVALID_REGISTRY, HttpStatus.BadRequest>;
+type MissingFieldLogin = AppError<Messages.MISSING_FIELD_LOGIN, HttpStatus.BadRequest>;
+type MissingFieldRegister = AppError<Messages.MISSING_FIELD_REGISTER, HttpStatus.BadRequest>;
 
-export type RequestErrorTypes = MissingToken | MissingFieldLogin | InvalidEmail;
+export type RequestErrorTypes = InvalidPpp
+| InvalidPcd
+| InvalidEmail
+| MissingToken
+| InvalidRegistry
+| MissingFieldLogin
+| MissingFieldRegister;
 
 // Tipos de error para servidor
 type DataBaseNotFound = AppError<Messages.DATABASE_NOT_FOUND, HttpStatus.NotFound>;

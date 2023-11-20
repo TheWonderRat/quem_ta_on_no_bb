@@ -10,7 +10,7 @@ import { User } from '../../../app/database/ORM/model/exporter';
 // Repository a ser testado
 import { LoginRepository } from '../../../app/modules/repository/exporter';
 
-describe('Sequência de testes para o repositório de login', () => {
+describe('Sequência de testes para o repositório Login', () => {
   // Configurações iniciais
   const repository: LoginRepository = new LoginRepository();
 

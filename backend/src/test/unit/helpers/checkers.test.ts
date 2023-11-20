@@ -18,7 +18,16 @@ describe('Sequência de testes sobre os métodos de checagem', () => {
   test('Verifica se o método "checkEmail" valida corretamente um email', () => {
     const validEmail = 'email.name@email.com';
     const invalidEmail = 'email.name@';
+
     expect(RequestChecks.checkEmail(validEmail)).toBeTruthy();
     expect(RequestChecks.checkEmail(invalidEmail)).toBeFalsy();
+  });
+
+  test('Verifica se o método "checkOnlyNumbers" valida corretamente uma string numérica', () => {
+    const validNumber = '123456';
+    const invalidNumber = '123456a';
+
+    expect(RequestChecks.checkOnlyNumbers(validNumber)).toBeTruthy();
+    expect(RequestChecks.checkOnlyNumbers(invalidNumber)).toBeFalsy();
   });
 });

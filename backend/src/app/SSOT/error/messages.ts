@@ -19,4 +19,14 @@ export const SERVER_SIDE_ERROR: messages
 export const MISSING_FIELD_LOGIN: messages
   .MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado';
 
+export const MISSING_FIELD_REGISTER: messages
+  .MISSING_FIELD_REGISTER = 'Campo obrigatório (ppp/pcd/name/registry) não informado';
+
 export const INVALID_EMAIL: messages.INVALID_EMAIL = 'Email fornecido tem formato inválido';
+
+export const INVALID_REGISTRY: messages
+  .INVALID_REGISTRY = 'Número de registro deve conter apenas números';
+
+export const INVALID_PPP: messages.INVALID_PPP = 'Campo ppp deve ser booleano';
+
+export const INVALID_PCD: messages.INVALID_PCD = 'Campo pcd deve ser booleano';

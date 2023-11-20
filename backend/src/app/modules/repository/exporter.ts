@@ -8,3 +8,4 @@
 // export { default as TipoListaRepository } from './TipoListaRepository';
 // export { default as TurmaRepository } from './TurmaRepository';
 export { default as LoginRepository } from './LoginRepository';
+export { default as UserRepository } from './UserRepository';

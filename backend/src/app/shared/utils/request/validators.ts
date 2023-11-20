@@ -1,5 +1,5 @@
-// types
-import { login, jwtTypes } from '../../../types/exporter';
+// Types
+import { login, jwtTypes, userTypes } from '../../../types/exporter';
 
 // SSOT
 import { errorMessages, httpStatus } from '../../../SSOT/exporter';
@@ -30,6 +30,45 @@ export default class Validators {
         });
       }
     });
+  }
+
+  public static userRegisterFields(body: userTypes.UserRequest): void {
+    ['pcd', 'ppp', 'name', 'registry'].forEach((field: string) => {
+      if (!RequestChecks.checkKeys<userTypes.UserRequest>(body, field)) {
+        throw new RequestError({
+          message: errorMessages.MISSING_FIELD_REGISTER,
+          statusCode: httpStatus.BAD_REQUEST,
+        });
+      }
+    });
+
+    if (RequestChecks.isEmpty(body.name)) {
+      throw new RequestError({
+        message: errorMessages.MISSING_FIELD_REGISTER,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (!RequestChecks.checkOnlyNumbers(body.registry.toString())) {
+      throw new RequestError({
+        message: errorMessages.INVALID_REGISTRY,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (typeof body.pcd !== 'boolean') {
+      throw new RequestError({
+        message: errorMessages.INVALID_PCD,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (typeof body.ppp !== 'boolean') {
+      throw new RequestError({
+        message: errorMessages.INVALID_PPP,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
   }
 
   public static authorizationField(headers: jwtTypes.authorization): void {

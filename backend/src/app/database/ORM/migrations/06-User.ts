@@ -9,7 +9,7 @@ import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrationsTypes.User>>(migrations.tableName.Users, {
+    queryInterface.createTable<Model<migrationsTypes.UserMigration>>(migrations.tableName.Users, {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,

@@ -1,5 +1,5 @@
 // types
-import { jwtTypes, login } from '../../../app/types/exporter';
+import { jwtTypes, login, userTypes } from '../../../app/types/exporter';
 
 // SSOT
 import { errorMessages, httpStatus } from '../../../app/SSOT/exporter';
@@ -11,7 +11,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
   const validEmail: string = 'valid.email@email.com';
   const validPassWord: string = 'validPassWord';
 
-  test('Verifica se lança um erro quando o campo authorization não é enviado', () => {
+  test('Se lança um erro caso o campo authorization não seja enviado', () => {
     const headers = {} as jwtTypes.authorization;
     expect(() => RequestValidators.authorizationField(headers)).toThrow(new RequestError({
       message: errorMessages.MISSING_TOKEN,
@@ -19,7 +19,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
     }));
   });
 
-  test('Verifica se lança um erro quando algum dos campos de login não são enviados', () => {
+  test('Se lança um erro caso algum dos campos de login não sejam enviados', () => {
     const bodyEmpty = {} as login.LoginRequest;
     expect(() => RequestValidators.loginFields(bodyEmpty)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_LOGIN,
@@ -41,7 +41,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
     }));
   });
 
-  test('Verifica se lança um erro quando algum dos campos de login estão vazios', () => {
+  test('Se lança um erro caso algum dos campos de login estejam vazios', () => {
     const bodyEmptyFields = { email: '', password: '' } as login.LoginRequest;
     expect(() => RequestValidators.loginFields(bodyEmptyFields)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_LOGIN,
@@ -59,6 +59,84 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
 
     expect(() => RequestValidators.loginFields(bodyEmailEmpty)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_LOGIN,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+  });
+
+  test('Se lança um erro caso algum dos campos de registro não sejam enviados', () => {
+    const bodyEmpty = {} as userTypes.UserRequest;
+    expect(() => RequestValidators.userRegisterFields(bodyEmpty)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyWithoutName = { pcd: true, ppp: true, registry: 123456 } as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyWithoutName)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyWithoutPcd = { name: 'validName', ppp: true, registry: 123456 } as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyWithoutPcd)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyWithoutPpp = { name: 'validName', pcd: true, registry: 123456 } as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyWithoutPpp)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyWithoutRegistry = { name: 'validName', pcd: true, ppp: true } as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyWithoutRegistry)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+  });
+
+  test('Se lança um erro caso algum dos campos de registro tenha formato inválido', () => {
+    const bodyNameEmpty: userTypes.UserRequest = { name: '', pcd: true, ppp: false, registry: 123456 };
+
+    expect(() => RequestValidators.userRegisterFields(bodyNameEmpty)).toThrow(new RequestError({
+      message: errorMessages.MISSING_FIELD_REGISTER,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyPcdInvalid = {
+      name: 'validName',
+      pcd: 'valor_não_booleano',
+      ppp: true,
+      registry: 123456 } as unknown as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyPcdInvalid)).toThrow(new RequestError({
+      message: errorMessages.INVALID_PCD,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyPppInvalid = {
+      name: 'validName',
+      pcd: true,
+      ppp: 'valor_não_booleano',
+      registry: 123456 } as unknown as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyPppInvalid)).toThrow(new RequestError({
+      message: errorMessages.INVALID_PPP,
+      statusCode: httpStatus.BAD_REQUEST,
+    }));
+
+    const bodyRegistryInvalid = {
+      name: 'validName',
+      pcd: true,
+      ppp: true,
+      registry: 'valor_8_inválido' } as unknown as userTypes.UserRequest;
+
+    expect(() => RequestValidators.userRegisterFields(bodyRegistryInvalid)).toThrow(new RequestError({
+      message: errorMessages.INVALID_REGISTRY,
       statusCode: httpStatus.BAD_REQUEST,
     }));
   });
