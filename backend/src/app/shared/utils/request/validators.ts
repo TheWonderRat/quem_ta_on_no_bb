@@ -11,9 +11,6 @@ import RequestError from '../error/requestError';
 import { RequestChecks } from '../../helpers/exporter';
 
 export default class Validators {
-  private static readonly invalidIdError: string = 'Only numbers accepted for id';
-  private static readonly emailOrPasswordError: string = 'Invalid email or password';
-
   // fields validators
   public static loginFields(body: login.LoginRequest): void {
     type KeyBody = keyof login.LoginRequest;
