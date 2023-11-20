@@ -30,13 +30,51 @@ describe('Sequência de testes na rota de login', () => {
   const invalidEmail: string = 'invalid_email@email.com';
   const invalidPassword: string = 'invalid_password';
 
+  const invalidEmailFormat: string = 'invalid_email_format';
+
   const validLoginInfo: login.LoginRequest = { email: validEmail, password: validPassword };
 
   const invalidLoginInfo: login.LoginRequest = { email: invalidEmail, password: invalidPassword };
 
   afterEach(() => { jest.clearAllMocks(); });
 
-  test('Verifica se retorna o status OK(200) e um token em caso de sucesso', async () => {
+  test('Se retorna BAD REQUEST(400) e mensagem de erro, caso faltem informações de login', async () => {
+    const response = await supertest(app).post(path).send({ email: validEmail });
+
+    expect(response.status).toBe(httpStatus.BAD_REQUEST);
+    expect(response.body).toHaveProperty('message');
+    expect(response.body.message).toBe(errorMessages.MISSING_FIELD_LOGIN);
+
+    const response2 = await supertest(app).post(path).send({ password: validPassword });
+
+    expect(response2.status).toBe(httpStatus.BAD_REQUEST);
+    expect(response2.body).toHaveProperty('message');
+    expect(response2.body.message).toBe(errorMessages.MISSING_FIELD_LOGIN);
+
+    const response3 = await supertest(app).post(path).send({ email: '', password: validPassword });
+
+    expect(response3.status).toBe(httpStatus.BAD_REQUEST);
+    expect(response3.body).toHaveProperty('message');
+    expect(response3.body.message).toBe(errorMessages.MISSING_FIELD_LOGIN);
+
+    const response4 = await supertest(app).post(path).send({ email: validEmail, password: '' });
+
+    expect(response4.status).toBe(httpStatus.BAD_REQUEST);
+    expect(response4.body).toHaveProperty('message');
+    expect(response4.body.message).toBe(errorMessages.MISSING_FIELD_LOGIN);
+  });
+
+  test('Se retorna BAD REQUEST(400) e mensagem de erro, caso o email tenha formato inválido', async () => {
+    const response = await supertest(app)
+      .post(path)
+      .send({ email: invalidEmailFormat, password: validPassword });
+
+    expect(response.status).toBe(httpStatus.BAD_REQUEST);
+    expect(response.body).toHaveProperty('message');
+    expect(response.body.message).toBe(errorMessages.INVALID_EMAIL);
+  });
+
+  test('Se retorna OK(200) e um token em caso de sucesso', async () => {
     const fakeUser = User.build(users[firstPosition]);
 
     const spyModel = jest.spyOn(User, 'findOne')
@@ -68,7 +106,7 @@ describe('Sequência de testes na rota de login', () => {
     expect(response.body.token).toBe(validToken);
   });
 
-  test('Verifica se retorna o status NOT FOUND(404) e uma mensagem de erro em caso de falha na autenticação', async () => {
+  test('Se retorna NOT FOUND(404) e mensagem de erro em caso não encontre o usuário', async () => {
     const spyModel = jest.spyOn(User, 'findOne').mockImplementation(async () => Promise.resolve(null));
 
     const response = await supertest(app).post(path).send(invalidLoginInfo);
@@ -81,7 +119,7 @@ describe('Sequência de testes na rota de login', () => {
     expect(response.body.message).toBe(errorMessages.USER_NOT_FOUND);
   });
 
-  test('Verifica se retorna o status UNAUTHORIZED(401) e uma mensagem de erro em caso de falha na autenticação', async () => {
+  test('Se retorna UNAUTHORIZED(401) e mensagem de erro em caso senha incorreta', async () => {
     const fakeUser = User.build(users[firstPosition]);
 
     const spyModel = jest.spyOn(User, 'findOne')
