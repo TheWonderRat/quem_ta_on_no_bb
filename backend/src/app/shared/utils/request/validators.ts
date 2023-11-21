@@ -100,7 +100,7 @@ export default class Validators {
       });
     }
 
-    if (body.pcdPosition && !RequestChecks.checkOnlyNumbers(body.pcdPosition.toString())) {
+    if (body.pppPosition && !RequestChecks.checkOnlyNumbers(body.pppPosition.toString())) {
       throw new RequestError({
         message: errorMessages.INVALID_PPP_POSITION,
         statusCode: httpStatus.BAD_REQUEST,

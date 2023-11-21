@@ -1,0 +1,61 @@
+{
+  "bodyFull": {
+    "name": "nome",
+    "pcd": true,
+    "ppp": false,
+    "registry": 123456,
+    "backupRegister": false,
+    "globalPosition": 10,
+    "pcdPosition": 50,
+    "pppPosition": 20
+  },
+  "bodyNoPcd": {
+    "name": "nome",
+    "ppp": false,
+    "registry": 123456,
+    "backupRegister": false,
+    "globalPosition": 10
+  },
+  "bodyNoPpp": {
+    "name": "nome",
+    "pcd": true,
+    "registry": 123456,
+    "backupRegister": false,
+    "globalPosition": 10
+  },
+  "bodyNoName": {
+    "pcd": true,
+    "ppp": false,
+    "registry": 123456,
+    "backupRegister": false,
+    "globalPosition": 10
+  },
+  
+  "bodyNoRegistry": {
+    "name": "nome",
+    "pcd": true,
+    "ppp": false,
+    "backupRegister": false,
+    "globalPosition": 10
+  },
+  
+  "bodyNoBackup": {
+    "name": "nome",
+    "pcd": true,
+    "ppp": false,
+    "registry": 123456,
+    "globalPosition": 10
+  },
+  
+  "bodyNoGlobal": {
+    "name": "nome",
+    "pcd": true,
+    "ppp": false,
+    "registry": 123456,
+    "backupRegister": false,
+    "globalPosition": 10
+  }
+}
+
+
+

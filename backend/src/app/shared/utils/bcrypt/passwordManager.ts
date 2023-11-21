@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { bcryptConfig } from '../../../SSOT/exporter';
 
 export default class PasswordManager {
-  public static async generateHash(password: string): Promise<string> {
+  public static generateHash(password: string): Promise<string> {
     return bcrypt.hash(password, bcryptConfig.BCRYPT_SALT_ROUNDS);
   }
 

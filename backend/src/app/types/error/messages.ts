@@ -7,7 +7,7 @@ export type INVALID_REGISTRY = 'Número de registro deve conter apenas números.
 export type MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado.';
 export type INVALID_PCD_POSITION = 'Posição na concorrência PCD deve conter apenas números.';
 export type INVALID_PPP_POSITION = 'Posição na concorrência PPP deve conter apenas números.';
-export type MISSING_FIELD_REGISTER = 'Campo obrigatório (ppp/pcd/name/registry) não informado.';
+export type MISSING_FIELD_REGISTER = 'Campo obrigatório não informado.';
 export type INVALID_BACKUP_REGISTER = 'Campo backupRegister deve ser booleano.';
 export type INVALID_GLOBAL_POSITION = 'Posição na ampla concorrência deve conter apenas números.';
 

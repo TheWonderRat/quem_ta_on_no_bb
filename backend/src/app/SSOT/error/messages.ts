@@ -20,7 +20,7 @@ export const MISSING_FIELD_LOGIN: messages
   .MISSING_FIELD_LOGIN = 'Campo obrigatório (usuário/senha) não informado.';
 
 export const MISSING_FIELD_REGISTER: messages
-  .MISSING_FIELD_REGISTER = 'Campo obrigatório (ppp/pcd/name/registry) não informado.';
+  .MISSING_FIELD_REGISTER = 'Campo obrigatório não informado.';
 
 export const INVALID_EMAIL: messages.INVALID_EMAIL = 'Email fornecido tem formato inválido!';
 
