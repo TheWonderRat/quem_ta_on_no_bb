@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 import { httpStatus } from '../../../app/SSOT/exporter';
 
 // Types
-import { userTypes } from '../../../app/types/exporter';
+import { requestTypes } from '../../../app/types/exporter';
 
 // Mocks
 import { users } from '../../mocks/exporter';
@@ -33,7 +33,7 @@ describe('Sequência de testes sobre a camada "UserController"', () => {
   const validUuid = 'valid_uuid';
   const firstPosition = 0;
 
-  const newUser: userTypes.UserRequest = {
+  const newUser: requestTypes.NewUserRequest = {
     name: users[firstPosition].name,
     pcd: users[firstPosition].pcd,
     ppp: users[firstPosition].ppp,

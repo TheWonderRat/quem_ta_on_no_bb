@@ -21,7 +21,7 @@ export default class PppRanking extends Model<migrationsTypes.Ranking, migration
 PppRanking.init(
   {
     position: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-    userId: { type: DataTypes.INTEGER, allowNull: false },
+    userId: { type: DataTypes.UUID, allowNull: false },
   },
   { sequelize, tableName: migrations.tableName.PppRanking, underscored: true, timestamps: false },
 );

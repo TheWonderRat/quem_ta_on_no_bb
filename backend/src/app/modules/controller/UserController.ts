@@ -1,14 +1,17 @@
 // libraries
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction as Next } from 'express';
+
+// Abstract Controller
+import AbstractController from '../../classes/controller.class';
 
 // types
-import { userTypes } from '../../types/exporter';
+import { requestTypes as RT } from '../../types/exporter';
 
 // SSOT
 import { httpStatus } from '../../SSOT/exporter';
 
-// Abstract Controller
-import AbstractController from '../../classes/controller.class';
+// Helpers
+import { UserHelper } from '../../shared/helpers/exporter';
 
 // Service
 import { UserService } from '../service/exporter';
@@ -16,12 +19,18 @@ import { UserService } from '../service/exporter';
 export default class AprovadoController extends AbstractController<UserService> {
   constructor() {
     super(new UserService());
-    this.registerUser = this.registerUser.bind(this);
+    this.registerUsers = this.registerUsers.bind(this);
   }
 
-  public async registerUser(request: Request, response:Response): Promise<Response> {
-    const newUser: userTypes.UserSavedId = await this.service.createUser(request.body);
-    return response.status(httpStatus.CREATED).send(newUser);
+  public async registerUsers(req: Request, res:Response, next: Next): Promise<Response | void> {
+    try {
+      const usersWithHash: RT.NewUserRecord[] = await UserHelper
+        .createHashedPassword(req.body);
+
+      const newUsers: RT.NewUserId[] = await this.service.createUsers(usersWithHash);
+
+      return res.status(httpStatus.CREATED).send(newUsers);
+    } catch (error) { return next(error); }
   }
 
   // public static async ativarConta(request: Request, response:Response): Promise<Response> {

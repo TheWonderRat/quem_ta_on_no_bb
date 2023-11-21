@@ -2,13 +2,13 @@
 import AbstractService from '../../classes/service.class';
 
 // types
-import { userTypes } from '../../types/exporter';
+import { requestTypes as RT } from '../../types/exporter';
 
 // SSOT
-import { jwtConfig } from '../../SSOT/exporter';
+import { errorMessages, httpStatus } from '../../SSOT/exporter';
 
 // utils
-import { PasswordManager } from '../../shared/utils/exporter';
+import { ServerError } from '../../shared/utils/exporter';
 
 // repository
 import { UserRepository } from '../repository/exporter';
@@ -19,10 +19,16 @@ export default class LoginService extends AbstractService<UserRepository> {
   }
 
   // public methods
-  public async createUser(newUser: userTypes.UserRequest): Promise<userTypes.UserSavedId> {
-    const passwordHash: string = await PasswordManager
-      .generateHash(`${newUser.registry}${newUser.name}${jwtConfig.JWT_SECRET}`);
+  public async createUsers(newUsers: RT.NewUserRecord[]): Promise<RT.NewUserId[]> {
+    const records: false | RT.NewUserId[] = await this.repository.populateUsers(newUsers);
 
-    return this.repository.createUser({ ...newUser, passwordHash });
+    if (!records) {
+      throw new ServerError({
+        message: errorMessages.DATABASE_NOT_FOUND,
+        statusCode: httpStatus.NOT_FOUND,
+      });
+    }
+
+    return records;
   }
 }

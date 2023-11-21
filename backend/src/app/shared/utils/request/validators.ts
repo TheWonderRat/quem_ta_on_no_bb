@@ -1,5 +1,5 @@
 // Types
-import { login, jwtTypes, userTypes } from '../../../types/exporter';
+import { login, jwtTypes, requestTypes } from '../../../types/exporter';
 
 // SSOT
 import { errorMessages, httpStatus } from '../../../SSOT/exporter';
@@ -32,9 +32,14 @@ export default class Validators {
     });
   }
 
-  public static userRegisterFields(body: userTypes.UserRequest): void {
-    ['pcd', 'ppp', 'name', 'registry'].forEach((field: string) => {
-      if (!RequestChecks.checkKeys<userTypes.UserRequest>(body, field)) {
+  public static userRegisterFields(body: requestTypes.NewUserRequest): void {
+    const mandatoryFields: string[] = [
+      'pcd', 'ppp', 'name', 'registry',
+      'backupRegister', 'globalPosition',
+    ];
+
+    mandatoryFields.forEach((field: string) => {
+      if (!RequestChecks.checkKeys<requestTypes.NewUserRequest>(body, field)) {
         throw new RequestError({
           message: errorMessages.MISSING_FIELD_REGISTER,
           statusCode: httpStatus.BAD_REQUEST,
@@ -48,14 +53,9 @@ export default class Validators {
         statusCode: httpStatus.BAD_REQUEST,
       });
     }
+  }
 
-    if (!RequestChecks.checkOnlyNumbers(body.registry.toString())) {
-      throw new RequestError({
-        message: errorMessages.INVALID_REGISTRY,
-        statusCode: httpStatus.BAD_REQUEST,
-      });
-    }
-
+  public static userRegisterBooleanFields(body: requestTypes.NewUserRequest): void {
     if (typeof body.pcd !== 'boolean') {
       throw new RequestError({
         message: errorMessages.INVALID_PCD,
@@ -66,6 +66,43 @@ export default class Validators {
     if (typeof body.ppp !== 'boolean') {
       throw new RequestError({
         message: errorMessages.INVALID_PPP,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (typeof body.backupRegister !== 'boolean') {
+      throw new RequestError({
+        message: errorMessages.INVALID_BACKUP_REGISTER,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+  }
+
+  public static userRegisterNumberFields(body: requestTypes.NewUserRequest): void {
+    if (!RequestChecks.checkOnlyNumbers(body.registry.toString())) {
+      throw new RequestError({
+        message: errorMessages.INVALID_REGISTRY,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (!RequestChecks.checkOnlyNumbers(body.globalPosition.toString())) {
+      throw new RequestError({
+        message: errorMessages.INVALID_GLOBAL_POSITION,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (body.pcdPosition && !RequestChecks.checkOnlyNumbers(body.pcdPosition.toString())) {
+      throw new RequestError({
+        message: errorMessages.INVALID_PCD_POSITION,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    if (body.pcdPosition && !RequestChecks.checkOnlyNumbers(body.pcdPosition.toString())) {
+      throw new RequestError({
+        message: errorMessages.INVALID_PPP_POSITION,
         statusCode: httpStatus.BAD_REQUEST,
       });
     }

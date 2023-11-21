@@ -21,7 +21,7 @@ export default class PcdRanking extends Model<migrationsTypes.Ranking, migration
 PcdRanking.init(
   {
     position: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-    userId: { type: DataTypes.INTEGER, allowNull: false },
+    userId: { type: DataTypes.UUID, allowNull: false },
   },
   { sequelize, tableName: migrations.tableName.PcdRanking, underscored: true, timestamps: false },
 );

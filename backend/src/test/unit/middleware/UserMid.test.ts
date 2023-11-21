@@ -5,7 +5,7 @@ import { NextFunction, Request, Response } from 'express';
 import { errorMessages, httpStatus } from '../../../app/SSOT/exporter';
 
 // Types
-import { userTypes } from '../../../app/types/exporter';
+import { requestTypes } from '../../../app/types/exporter';
 
 // Errors
 import { RequestError } from '../../../app/shared/utils/exporter';
@@ -19,7 +19,7 @@ describe('Sequência de testes sobre o middleware User', () => {
   const res: Response = {} as Response;
   let next: NextFunction;
 
-  const bodyFull: userTypes.UserRequest = {
+  const bodyFull: requestTypes.NewUserRequest = {
     name: 'nome',
     pcd: true,
     ppp: false,
@@ -46,7 +46,7 @@ describe('Sequência de testes sobre o middleware User', () => {
     const bodyNoRegistry = { name: 'nome', pcd: true, ppp: false } as typeof bodyFull;
 
     [bodyNoName, bodyNoPcd, bodyNoPpp, bodyNoRegistry]
-      .forEach((body: userTypes.UserRequest, index: number) => {
+      .forEach((body: requestTypes.NewUserRequest, index: number) => {
         const onePlus: number = 1;
 
         req.body = body;
@@ -62,7 +62,7 @@ describe('Sequência de testes sobre o middleware User', () => {
   });
 
   test('Verifica se o middleware lança um erro quando o campo "nome" é enviado vazio', () => {
-    const bodyEmptyName: userTypes.UserRequest = {
+    const bodyEmptyName: requestTypes.NewUserRequest = {
       name: '',
       pcd: true,
       ppp: false,

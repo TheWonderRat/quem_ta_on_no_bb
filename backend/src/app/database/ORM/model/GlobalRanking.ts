@@ -21,7 +21,7 @@ export default class GlobalRanking extends Model<migrationsTypes.Ranking, migrat
 GlobalRanking.init(
   {
     position: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-    userId: { type: DataTypes.INTEGER, allowNull: false },
+    userId: { type: DataTypes.UUID, allowNull: false },
   },
   {
     sequelize,

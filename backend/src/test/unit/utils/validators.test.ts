@@ -1,5 +1,5 @@
 // types
-import { jwtTypes, login, userTypes } from '../../../app/types/exporter';
+import { jwtTypes, login, requestTypes as RT } from '../../../app/types/exporter';
 
 // SSOT
 import { errorMessages, httpStatus } from '../../../app/SSOT/exporter';
@@ -64,34 +64,34 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
   });
 
   test('Se lança um erro caso algum dos campos de registro não sejam enviados', () => {
-    const bodyEmpty = {} as userTypes.UserRequest;
+    const bodyEmpty = {} as RT.NewUserRequest;
     expect(() => RequestValidators.userRegisterFields(bodyEmpty)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
       statusCode: httpStatus.BAD_REQUEST,
     }));
 
-    const bodyWithoutName = { pcd: true, ppp: true, registry: 123456 } as userTypes.UserRequest;
+    const bodyWithoutName = { pcd: true, ppp: true, registry: 123456 } as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyWithoutName)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
       statusCode: httpStatus.BAD_REQUEST,
     }));
 
-    const bodyWithoutPcd = { name: 'validName', ppp: true, registry: 123456 } as userTypes.UserRequest;
+    const bodyWithoutPcd = { name: 'validName', ppp: true, registry: 123456 } as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyWithoutPcd)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
       statusCode: httpStatus.BAD_REQUEST,
     }));
 
-    const bodyWithoutPpp = { name: 'validName', pcd: true, registry: 123456 } as userTypes.UserRequest;
+    const bodyWithoutPpp = { name: 'validName', pcd: true, registry: 123456 } as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyWithoutPpp)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
       statusCode: httpStatus.BAD_REQUEST,
     }));
 
-    const bodyWithoutRegistry = { name: 'validName', pcd: true, ppp: true } as userTypes.UserRequest;
+    const bodyWithoutRegistry = { name: 'validName', pcd: true, ppp: true } as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyWithoutRegistry)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
@@ -100,7 +100,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
   });
 
   test('Se lança um erro caso algum dos campos de registro tenha formato inválido', () => {
-    const bodyNameEmpty: userTypes.UserRequest = { name: '', pcd: true, ppp: false, registry: 123456 };
+    const bodyNameEmpty: RT.NewUserRequest = { name: '', pcd: true, ppp: false, registry: 123456 };
 
     expect(() => RequestValidators.userRegisterFields(bodyNameEmpty)).toThrow(new RequestError({
       message: errorMessages.MISSING_FIELD_REGISTER,
@@ -111,7 +111,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
       name: 'validName',
       pcd: 'valor_não_booleano',
       ppp: true,
-      registry: 123456 } as unknown as userTypes.UserRequest;
+      registry: 123456 } as unknown as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyPcdInvalid)).toThrow(new RequestError({
       message: errorMessages.INVALID_PCD,
@@ -122,7 +122,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
       name: 'validName',
       pcd: true,
       ppp: 'valor_não_booleano',
-      registry: 123456 } as unknown as userTypes.UserRequest;
+      registry: 123456 } as unknown as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyPppInvalid)).toThrow(new RequestError({
       message: errorMessages.INVALID_PPP,
@@ -133,7 +133,7 @@ describe('Sequência de testes sobre o utilitário RequestValidators', () => {
       name: 'validName',
       pcd: true,
       ppp: true,
-      registry: 'valor_8_inválido' } as unknown as userTypes.UserRequest;
+      registry: 'valor_8_inválido' } as unknown as RT.NewUserRequest;
 
     expect(() => RequestValidators.userRegisterFields(bodyRegistryInvalid)).toThrow(new RequestError({
       message: errorMessages.INVALID_REGISTRY,

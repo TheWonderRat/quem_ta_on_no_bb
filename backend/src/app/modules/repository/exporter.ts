@@ -7,5 +7,6 @@
 // export { default as SituacaoRepository } from './SituacaoRepository';
 // export { default as TipoListaRepository } from './TipoListaRepository';
 // export { default as TurmaRepository } from './TurmaRepository';
-export { default as LoginRepository } from './LoginRepository';
 export { default as UserRepository } from './UserRepository';
+export { default as LoginRepository } from './LoginRepository';
+export { default as RankingRepository } from './RankingRepository';

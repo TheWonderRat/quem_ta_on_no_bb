@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';
 
 // types
-import { userTypes } from '../../../app/types/exporter';
+import { requestTypes } from '../../../app/types/exporter';
 
 // SSOT
 import { jwtConfig, bcryptConfig } from '../../../app/SSOT/exporter';
@@ -23,7 +23,7 @@ describe('Sequência de testes para o serviço User', () => {
   const firstPosition: number = 0;
   const validUuid: string = 'valid_uuid';
 
-  const fakeUser: userTypes.UserRequest = {
+  const fakeUser: requestTypes.NewUserRequest = {
     name: users[firstPosition].name,
     registry: users[firstPosition].registry,
     pcd: users[firstPosition].pcd,
@@ -37,7 +37,7 @@ describe('Sequência de testes para o serviço User', () => {
     const spyRepository = jest.spyOn(UserRepository.prototype, 'createUser')
       .mockImplementation(async () => ({ id: validUuid }));
 
-    const newUser: userTypes.UserSavedId = await service.createUser(fakeUser);
+    const newUser: requestTypes.NewUserId = await service.createUsers(fakeUser);
 
     const passwordForHash = `${fakeUser.registry}${fakeUser.name}${jwtConfig.JWT_SECRET}`;
 

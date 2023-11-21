@@ -18,7 +18,7 @@ export default class UserRouter extends AbstractRouter<UserController> {
 
   // private methods
   protected initRoutes(): void {
-    this.router.post(this.rootPath, UserMid.validateUserFields, this.controller.registerUser);
+    this.router.post(this.rootPath, UserMid.validateUserFields, this.controller.registerUsers);
   }
 }
 

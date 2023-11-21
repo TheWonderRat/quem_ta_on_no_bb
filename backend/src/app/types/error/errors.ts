@@ -15,27 +15,13 @@ type UserNotAuthenticated = AppError<Messages.USER_NOT_AUTHENTICATED, HttpStatus
 
 type MissMatchedPassword = AppError<Messages.MISS_MATCHED_PASSWORD, HttpStatus.Unauthorized>;
 
-export type AuthErrorTypes = UserNotFound
+export type AuthError = UserNotFound
 | InvalidToken
 | UserNotAuthenticated
 | MissMatchedPassword;
 
 // Tipos de error para requisição
-type InvalidPpp = AppError<Messages.INVALID_PPP, HttpStatus.BadRequest>;
-type InvalidPcd = AppError<Messages.INVALID_PCD, HttpStatus.BadRequest>;
-type InvalidEmail = AppError<Messages.INVALID_EMAIL, HttpStatus.BadRequest>;
-type MissingToken = AppError<Messages.MISSING_TOKEN, HttpStatus.BadRequest>;
-type InvalidRegistry = AppError<Messages.INVALID_REGISTRY, HttpStatus.BadRequest>;
-type MissingFieldLogin = AppError<Messages.MISSING_FIELD_LOGIN, HttpStatus.BadRequest>;
-type MissingFieldRegister = AppError<Messages.MISSING_FIELD_REGISTER, HttpStatus.BadRequest>;
-
-export type RequestErrorTypes = InvalidPpp
-| InvalidPcd
-| InvalidEmail
-| MissingToken
-| InvalidRegistry
-| MissingFieldLogin
-| MissingFieldRegister;
+export type RequestError = AppError<Messages.RequestMessages, HttpStatus.BadRequest>;
 
 // Tipos de error para servidor
 type DataBaseNotFound = AppError<Messages.DATABASE_NOT_FOUND, HttpStatus.NotFound>;
@@ -45,6 +31,6 @@ Messages.SERVER_SIDE_ERROR,
 HttpStatus.InternalServerError
 >;
 
-export type ServerErrorTypes = DataBaseNotFound | ServerSideError;
+export type ServerError = DataBaseNotFound | ServerSideError;
 
-export type ErrorTypes = AuthErrorTypes | RequestErrorTypes | ServerErrorTypes;
+export type ErrorTypes = AuthError | RequestError | ServerError;

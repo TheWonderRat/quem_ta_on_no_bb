@@ -28,6 +28,12 @@ export default {
       },
       pcd: { type: DataTypes.BOOLEAN, allowNull: false },
       ppp: { type: DataTypes.BOOLEAN, allowNull: false },
+      backupRegister: {
+        type: DataTypes.BOOLEAN,
+        field: migrations.columnName.backupRegister,
+        allowNull: false,
+        defaultValue: false,
+      },
       email: { type: DataTypes.STRING, allowNull: true },
       classId: {
         allowNull: true,

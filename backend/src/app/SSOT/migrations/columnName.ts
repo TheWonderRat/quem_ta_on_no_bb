@@ -15,3 +15,4 @@ export const statusName: string = 'status_name';
 export const passwordHash: string = 'password_hash';
 export const directoryName: string = 'directory_name';
 export const departmentName: string = 'department_name';
+export const backupRegister: string = 'backup_register';

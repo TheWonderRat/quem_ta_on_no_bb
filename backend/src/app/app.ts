@@ -35,6 +35,7 @@ export default class App {
   }
 
   private initRoutes(): void {
+    this.routerManager.use(pathNames.user, new routers.UserRouter().router);
     this.routerManager.use(pathNames.login, new routers.LoginRouter().router);
     this.routerManager.use(pathNames.health, new routers.HealthRouter().router);
   }
