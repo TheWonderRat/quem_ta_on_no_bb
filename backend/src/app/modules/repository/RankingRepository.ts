@@ -35,9 +35,7 @@ export default class RankingRepository extends AbstractRepository<typeof GlobalR
       const oneUser: RT.NewUserRecord = newUsers
         .find((user: RT.NewUserRecord) => user.registry === registry) as RT.NewUserRecord;
 
-      if (pcd) {
-        userToPcd.push({ userId: id, position: oneUser.pcdPosition as number });
-      }
+      if (pcd) { userToPcd.push({ userId: id, position: oneUser.pcdPosition as number }); }
 
       if (ppp) { userToPpp.push({ userId: id, position: oneUser.pppPosition as number }); }
 

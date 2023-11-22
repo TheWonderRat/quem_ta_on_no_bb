@@ -1,93 +1,51 @@
 // library
-import bcrypt from 'bcrypt';
 import supertest from 'supertest';
-import jsonwebtoken from 'jsonwebtoken';
-
-// types
-import { login } from '../../../app/types/exporter';
+import { Transaction } from 'sequelize';
 
 // SSOT
 import { errorMessages, httpStatus, pathNames } from '../../../app/SSOT/exporter';
 
 // Mocks
-import { users, request } from '../../mocks/exporter';
+import { users } from '../../mocks/exporter';
 
 // model
 import { User } from '../../../app/database/ORM/model/exporter';
 
+// Sequelize
+import sequelize from '../../../app/database/ORM/connection';
+
 // Application
 import App from '../../../app/app';
 
-describe('Sequência de testes sobre os middlewares da rota de usuários', () => {
+describe('Sequência de testes sobre para os casos de erro da rota de usuários', () => {
   const { app }: App = new App();
   const path: string = pathNames.user;
 
+  const transaction: Transaction = {} as Transaction;
+
+  beforeEach(() => {
+    transaction.commit = jest.fn();
+    transaction.rollback = jest.fn();
+  });
+
   afterEach(() => { jest.clearAllMocks(); });
 
-  // test('Se retorna OK(200) e um token em caso de sucesso', async () => {
-  //   const fakeUser = User.build(users[firstPosition]);
+  test('Se retorna NOT FOUND(404) e mensagem de erro, caso não seja possível acessar o banco de dados', async () => {
+    const spySequelize = jest.spyOn(sequelize, 'transaction').mockResolvedValue(transaction);
 
-  //   const spyModel = jest.spyOn(User, 'findOne')
-  //     .mockImplementation(async () => Promise.resolve(fakeUser));
+    const spyModel = jest.spyOn(User, 'bulkCreate')
+      .mockRejectedValue(new Error());
 
-  //   const spyBcrypt = jest.spyOn(bcrypt, 'compare')
-  //     .mockImplementation(async () => Promise.resolve(true));
+    const response = await supertest(app).post(path).send(users);
 
-  //   const spyJsonwebtoken = jest.spyOn(jsonwebtoken, 'sign')
-  //     .mockImplementation(() => validToken);
+    expect(spyModel).toHaveBeenCalled();
+    expect(spySequelize).toHaveBeenCalled();
 
-  //   const response = await supertest(app).post(path).send(validLoginInfo);
+    expect(transaction.commit).not.toHaveBeenCalled();
+    expect(transaction.rollback).toHaveBeenCalled();
 
-  //   expect(spyModel).toHaveBeenCalled();
-  //   expect(spyModel).toHaveBeenCalledWith({ where: { email: validEmail } });
-
-  //   expect(spyBcrypt).toHaveBeenCalled();
-  //   expect(spyBcrypt).toHaveBeenCalledWith(validPassword, fakeUser.passwordHash);
-
-  //   expect(spyJsonwebtoken).toHaveBeenCalled();
-  //   expect(spyJsonwebtoken).toHaveBeenCalledWith(
-  //     { email: fakeUser.email, password: fakeUser.passwordHash },
-  //     jwtConfig.JWT_SECRET,
-  //     jwtConfig.JWT_SIGN_OPTIONS,
-  //   );
-
-  //   expect(response.status).toBe(httpStatus.OK);
-  //   expect(response.body).toHaveProperty('token');
-  //   expect(response.body.token).toBe(validToken);
-  // });
-
-  // test('Se retorna NOT FOUND(404) e mensagem de erro em caso não encontre o usuário', async () => {
-  //   const spyModel = jest.spyOn(User, 'findOne').mockImplementation(async () => Promise.resolve(null));
-
-  //   const response = await supertest(app).post(path).send(invalidLoginInfo);
-
-  //   expect(spyModel).toHaveBeenCalled();
-  //   expect(spyModel).toHaveBeenCalledWith({ where: { email: invalidEmail } });
-
-  //   expect(response.status).toBe(httpStatus.NOT_FOUND);
-  //   expect(response.body).toHaveProperty('message');
-  //   expect(response.body.message).toBe(errorMessages.USER_NOT_FOUND);
-  // });
-
-  // test('Se retorna UNAUTHORIZED(401) e mensagem de erro em caso senha incorreta', async () => {
-  //   const fakeUser = User.build(users[firstPosition]);
-
-  //   const spyModel = jest.spyOn(User, 'findOne')
-  //     .mockImplementation(async () => Promise.resolve(fakeUser));
-
-  //   const spyBcrypt = jest.spyOn(bcrypt, 'compare')
-  //     .mockImplementation(async () => Promise.resolve(false));
-
-  //   const response = await supertest(app).post(path).send(invalidLoginInfo);
-
-  //   expect(spyModel).toHaveBeenCalled();
-  //   expect(spyModel).toHaveBeenCalledWith({ where: { email: invalidEmail } });
-
-  //   expect(spyBcrypt).toHaveBeenCalled();
-  //   expect(spyBcrypt).toHaveBeenCalledWith(invalidPassword, fakeUser.passwordHash);
-
-  //   expect(response.status).toBe(httpStatus.UNAUTHORIZED);
-  //   expect(response.body).toHaveProperty('message');
-  //   expect(response.body.message).toBe(errorMessages.MISS_MATCHED_PASSWORD);
-  // });
+    expect(response.status).toBe(httpStatus.NOT_FOUND);
+    expect(response.body).toHaveProperty('message');
+    expect(response.body.message).toBe(errorMessages.DATABASE_NOT_FOUND);
+  });
 });
