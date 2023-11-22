@@ -7,7 +7,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import { login } from '../../../app/types/exporter';
 
 // SSOT
-import { errorMessages, httpStatus, jwtConfig } from '../../../app/SSOT/exporter';
+import { errorMessages, httpStatus, jwtConfig, pathNames } from '../../../app/SSOT/exporter';
 
 // Mocks
 import { users } from '../../mocks/exporter';
@@ -20,7 +20,7 @@ import App from '../../../app/app';
 
 describe('Sequência de testes na rota de login', () => {
   const { app }: App = new App();
-  const path: string = '/login';
+  const path: string = pathNames.login;
   const firstPosition: number = 0;
 
   const validEmail: string = 'valid_email@email.com';

@@ -10,10 +10,12 @@ export type INVALID_PPP_POSITION = 'Posição na concorrência PPP deve conter a
 export type MISSING_FIELD_REGISTER = 'Campo obrigatório não informado.';
 export type INVALID_BACKUP_REGISTER = 'Campo backupRegister deve ser booleano.';
 export type INVALID_GLOBAL_POSITION = 'Posição na ampla concorrência deve conter apenas números.';
+export type INVALID_FORMAT_REGISTER = 'O formato de registro deve ser um Array de objetos.';
 
 export type RequestMessages = INVALID_PPP | INVALID_PCD | INVALID_EMAIL | MISSING_TOKEN
 | INVALID_REGISTRY | MISSING_FIELD_LOGIN | INVALID_PCD_POSITION | INVALID_PPP_POSITION
-| MISSING_FIELD_REGISTER | INVALID_BACKUP_REGISTER | INVALID_REGISTRY | INVALID_GLOBAL_POSITION;
+| MISSING_FIELD_REGISTER | INVALID_BACKUP_REGISTER | INVALID_REGISTRY | INVALID_GLOBAL_POSITION
+| INVALID_FORMAT_REGISTER;
 
 // Mensagens de error para autenticação
 export type INVALID_TOKEN = 'Token inválido!';

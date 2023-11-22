@@ -11,6 +11,16 @@ import RequestError from '../error/requestError';
 import { RequestChecks } from '../../helpers/exporter';
 
 export default class Validators {
+  // Format validators
+  public static arrayValidator(body: []): void {
+    if (!Array.isArray(body)) {
+      throw new RequestError({
+        message: errorMessages.INVALID_FORMAT_REGISTER,
+        statusCode: httpStatus.BAD_REQUEST,
+      });
+    }
+  }
+
   // fields validators
   public static loginFields(body: login.LoginRequest): void {
     type KeyBody = keyof login.LoginRequest;

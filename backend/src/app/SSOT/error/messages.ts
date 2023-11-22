@@ -42,3 +42,6 @@ export const INVALID_PCD: messages.INVALID_PCD = 'Campo pcd deve ser booleano.';
 
 export const INVALID_BACKUP_REGISTER: messages
   .INVALID_BACKUP_REGISTER = 'Campo backupRegister deve ser booleano.';
+
+export const INVALID_FORMAT_REGISTER: messages
+  .INVALID_FORMAT_REGISTER = 'O formato de registro deve ser um Array de objetos.';
