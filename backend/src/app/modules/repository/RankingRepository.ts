@@ -35,7 +35,9 @@ export default class RankingRepository extends AbstractRepository<typeof GlobalR
       const oneUser: RT.NewUserRecord = newUsers
         .find((user: RT.NewUserRecord) => user.registry === registry) as RT.NewUserRecord;
 
-      if (pcd) { userToPcd.push({ userId: id, position: oneUser.pcdPosition as number }); }
+      if (pcd) {
+        userToPcd.push({ userId: id, position: oneUser.pcdPosition as number });
+      }
 
       if (ppp) { userToPpp.push({ userId: id, position: oneUser.pppPosition as number }); }
 
@@ -52,11 +54,11 @@ export default class RankingRepository extends AbstractRepository<typeof GlobalR
     return this.model.bulkCreate(info, { transaction: t });
   }
 
-  private async registerInPcd(info: MT.Ranking[], t: Transaction): Promise<PcdRanking[]> {
-    return this.modelPcd.bulkCreate(info, { transaction: t });
+  private async registerInPcd(info: MT.Ranking[], t: Transaction): Promise<PcdRanking[] | false> {
+    return (!!info.length) && this.modelPcd.bulkCreate(info, { transaction: t });
   }
 
-  private async registerInPpp(info: MT.Ranking[], t: Transaction): Promise<PppRanking[]> {
-    return this.modelPpp.bulkCreate(info, { transaction: t });
+  private async registerInPpp(info: MT.Ranking[], t: Transaction): Promise<PppRanking[] | false> {
+    return (!!info.length) && this.modelPpp.bulkCreate(info, { transaction: t });
   }
 }

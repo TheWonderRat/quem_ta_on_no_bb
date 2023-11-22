@@ -40,7 +40,7 @@ describe('Sequência de testes sobre a camada "LoginController"', () => {
     req.body = { email: validEmail, password: validPassword };
 
     const spy = jest.spyOn(LoginService.prototype, 'validateUser')
-      .mockImplementation(async () => ({ token: validToken }));
+      .mockResolvedValue({ token: validToken });
 
     await controller.login(req, res, next);
 

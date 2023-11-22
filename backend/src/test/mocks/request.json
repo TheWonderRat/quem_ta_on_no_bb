@@ -52,8 +52,7 @@
     "pcd": true,
     "ppp": false,
     "registry": 123456,
-    "backupRegister": false,
-    "globalPosition": 10
+    "backupRegister": false
   }
 }
 

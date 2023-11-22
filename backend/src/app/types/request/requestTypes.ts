@@ -13,3 +13,5 @@ export type NewUserRecord = Pick<User, 'pcd' | 'ppp' | 'name'
 export type NewUserRequest = Omit<NewUserRecord, 'passwordHash'>;
 
 export type NewUserId = { id: string };
+
+export type NewUserForTest = NewUserRecord & NewUserId;

@@ -28,6 +28,12 @@ export default class UserRepository extends AbstractRepository<typeof User> {
   // getter
   private get ranking(): RankingRepository { return this._ranking; }
 
+  // private methods
+  private async createUsers(users: RT.NewUserRecord[], transaction: Transaction): Promise<User[]> {
+    return this.model.bulkCreate(users, { transaction });
+  }
+
+  // public methods
   public async populateUsers(newUsers: RT.NewUserRecord[]): Promise<false | RT.NewUserId[]> {
     const transaction: Transaction = await sequelize.transaction();
 
@@ -44,9 +50,5 @@ export default class UserRepository extends AbstractRepository<typeof User> {
       console.log(error);
       return false;
     }
-  }
-
-  private async createUsers(users: RT.NewUserRecord[], transaction: Transaction): Promise<User[]> {
-    return this.model.bulkCreate(users, { transaction });
   }
 }

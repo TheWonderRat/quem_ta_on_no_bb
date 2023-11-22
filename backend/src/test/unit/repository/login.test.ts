@@ -20,7 +20,7 @@ describe('Sequência de testes para o repositório Login', () => {
     const firstPosition: number = 0;
     const userMock: User = User.build(users[firstPosition]);
     const spy = jest.spyOn(User, 'findOne')
-      .mockImplementation(async () => Promise.resolve(userMock));
+      .mockResolvedValue(Promise.resolve(userMock));
 
     const user: login.UserInfo | null = await repository.findUserByEmail(userMock.email);
 
@@ -33,7 +33,7 @@ describe('Sequência de testes para o repositório Login', () => {
   });
 
   test('Verifica se retorna nulo caso não encontre o usuário', async () => {
-    const spy = jest.spyOn(User, 'findOne').mockImplementation(async () => Promise.resolve(null));
+    const spy = jest.spyOn(User, 'findOne').mockResolvedValue(Promise.resolve(null));
 
     const user: login.UserInfo | null = await repository.findUserByEmail('usuário inválido');
 

@@ -1,11 +1,11 @@
-// library
-import bcrypt from 'bcrypt';
-
 // types
-import { requestTypes } from '../../../app/types/exporter';
+import { requestTypes as RT } from '../../../app/types/exporter';
 
 // SSOT
-import { jwtConfig, bcryptConfig } from '../../../app/SSOT/exporter';
+import { errorMessages, httpStatus } from '../../../app/SSOT/exporter';
+
+// Utils
+import { ServerError } from '../../../app/shared/utils/exporter';
 
 // Mocks
 import { users } from '../../mocks/exporter';
@@ -20,34 +20,41 @@ describe('Sequência de testes para o serviço User', () => {
   // Configurações iniciais
   const service: UserService = new UserService();
 
-  const firstPosition: number = 0;
-  const validUuid: string = 'valid_uuid';
-
-  const fakeUser: requestTypes.NewUserRequest = {
-    name: users[firstPosition].name,
-    registry: users[firstPosition].registry,
-    pcd: users[firstPosition].pcd,
-    ppp: users[firstPosition].ppp,
-  };
+  const fakeUsersIds: RT.NewUserId[] = users.map(({ id }: RT.NewUserId) => ({ id }));
 
   afterEach(() => { jest.clearAllMocks(); });
 
-  test('Se o método "createUser" retorna um UUID', async () => {
-    const spyBcrypt = jest.spyOn(bcrypt, 'hash').mockImplementation(() => 'valid_hash');
-    const spyRepository = jest.spyOn(UserRepository.prototype, 'createUser')
-      .mockImplementation(async () => ({ id: validUuid }));
+  test('Se o método "createUsers" retorna um UUID', async () => {
+    const spyRepository = jest.spyOn(UserRepository.prototype, 'populateUsers')
+      .mockResolvedValue(fakeUsersIds);
 
-    const newUser: requestTypes.NewUserId = await service.createUsers(fakeUser);
-
-    const passwordForHash = `${fakeUser.registry}${fakeUser.name}${jwtConfig.JWT_SECRET}`;
+    const newUser: RT.NewUserId[] = await service.createUsers(users);
 
     expect(spyRepository).toHaveBeenCalled();
-    expect(spyRepository).toHaveBeenCalledWith({ ...fakeUser, passwordHash: 'valid_hash' });
+    expect(spyRepository).toHaveBeenCalledWith(users);
 
-    expect(spyBcrypt).toHaveBeenCalled();
-    expect(spyBcrypt).toHaveBeenCalledWith(passwordForHash, bcryptConfig.BCRYPT_SALT_ROUNDS);
+    expect(newUser).toEqual(fakeUsersIds);
+  });
 
-    expect(newUser).toHaveProperty('id');
-    expect(newUser.id).toBe(validUuid);
+  test('Se o método "createUsers" lança um caso em caso de erro no cadastro', async () => {
+    jest.spyOn(UserRepository.prototype, 'populateUsers')
+      .mockResolvedValue(false);
+
+    return expect(service.createUsers(users)).rejects.toThrow(ServerError);
+  });
+
+  test('Se o método "createUsers" lança o erro com as informações corretas', async () => {
+    const spy = jest.spyOn(UserRepository.prototype, 'populateUsers')
+      .mockResolvedValue(false);
+
+    try {
+      await service.createUsers(users);
+    } catch (error) {
+      expect(spy).toHaveBeenCalled();
+      expect(error).toEqual(new ServerError({
+        message: errorMessages.DATABASE_NOT_FOUND,
+        statusCode: httpStatus.NOT_FOUND,
+      }));
+    }
   });
 });

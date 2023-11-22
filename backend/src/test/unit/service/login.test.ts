@@ -32,9 +32,12 @@ describe('Sequência de testes para o serviço Login', () => {
 
   test('Se o método "validateUser" retorna um token válido', async () => {
     const spyJwt = jest.spyOn(jwt, 'sign').mockImplementation(() => 'valid_token');
-    const spyBcrypt = jest.spyOn(bcrypt, 'compare').mockImplementation(() => true);
+
+    const spyBcrypt = jest.spyOn(bcrypt, 'compare')
+      .mockImplementation(async () => Promise.resolve(true));
+
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
-      .mockImplementation(async () => ({ email: validEmail, hash: validHash }));
+      .mockResolvedValue({ email: validEmail, hash: validHash });
 
     const token: jwtTypes.token = await service.validateUser(validEmail, validPassword);
 
@@ -57,23 +60,23 @@ describe('Sequência de testes para o serviço Login', () => {
 
   test('Se o método "validateUser" retorna um erro quando o usuário não é encontrado', async () => {
     jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
-      .mockImplementation(async () => null);
+      .mockResolvedValue(null);
 
     return expect(service.validateUser(invalidEmail, validPassword)).rejects.toThrow(AuthError);
   });
 
   test('Se o método "validateUser" retorna um erro quando a senha não confere', async () => {
     jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
-      .mockImplementation(async () => ({ email: validEmail, hash: validHash }));
+      .mockResolvedValue({ email: validEmail, hash: validHash });
 
-    jest.spyOn(bcrypt, 'compare').mockImplementation(() => false);
+    jest.spyOn(bcrypt, 'compare').mockImplementation(async () => Promise.resolve(false));
 
     return expect(service.validateUser(validEmail, invalidPassword)).rejects.toThrow(AuthError);
   });
 
   test('Verifica a mensagem de erro quando o usuário não é encontrado', async () => {
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
-      .mockImplementation(async () => null);
+      .mockResolvedValue(null);
 
     try {
       await service.validateUser(invalidEmail, validPassword);
@@ -91,19 +94,19 @@ describe('Sequência de testes para o serviço Login', () => {
   });
 
   test('Verifica a mensagem de erro quando a senha não confere', async () => {
-    const spyBcrypt = jest.spyOn(bcrypt, 'compare').mockImplementation(() => false);
+    const spyBcrypt = jest.spyOn(bcrypt, 'compare')
+      .mockImplementation(async () => Promise.resolve(false));
+
     const spyRepository = jest.spyOn(LoginRepository.prototype, 'findUserByEmail')
-      .mockImplementation(async () => ({ email: validEmail, hash: validHash }));
+      .mockResolvedValue({ email: validEmail, hash: validHash });
 
     try {
       await service.validateUser(validEmail, invalidPassword);
     } catch (e) {
-      expect(e).toHaveProperty('errorInfo');
-      const error = e as AuthError;
-      expect(error.errorInfo).toHaveProperty('message');
-      expect(error.errorInfo).toHaveProperty('statusCode');
-      expect(error.errorInfo.message).toMatch(errorMessages.MISS_MATCHED_PASSWORD);
-      expect(error.errorInfo.statusCode).toBe(httpStatus.UNAUTHORIZED);
+      expect(e).toEqual(new AuthError({
+        message: errorMessages.MISS_MATCHED_PASSWORD,
+        statusCode: httpStatus.UNAUTHORIZED,
+      }));
     }
     expect(spyRepository).toHaveBeenCalled();
     expect(spyRepository).toHaveBeenCalledWith(validEmail);
