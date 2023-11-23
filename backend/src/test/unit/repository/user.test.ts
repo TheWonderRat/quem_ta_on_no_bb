@@ -101,6 +101,7 @@ describe('Sequência de testes para o repositório User', () => {
     usersRegisters.forEach((eachUser: RT.NewUserId) => {
       expect(eachUser).not.toBeNull();
       expect(eachUser).toHaveProperty('id', eachUser.id);
+      expect(eachUser).toHaveProperty('registry', eachUser.registry);
     });
   });
 

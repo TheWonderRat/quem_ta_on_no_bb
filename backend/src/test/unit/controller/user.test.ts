@@ -62,10 +62,15 @@ describe('Sequência de testes sobre a camada "UserController"', () => {
   const usersWithHash: RT.NewUserRecord[] = newUsers
     .map((newUser: RT.NewUserRequest) => ({ ...newUser, passwordHash: 'hash' }));
 
-  test('Se o método "registerUser" retorna um id em caso de sucesso', async () => {
+  test('Se o método "registerUser" retorna um id e a matrícula em caso de sucesso', async () => {
+    const expectedResponse = [
+      { id: validUuid, registry: users[firstPosition].registry },
+      { id: validUuid, registry: users[secondPosition].registry },
+    ];
+
     const spyBcrypt = jest.spyOn(bcrypt, 'hash').mockImplementation(async () => 'hash');
     const spyService = jest.spyOn(UserService.prototype, 'createUsers')
-      .mockImplementation(async () => ([{ id: validUuid }, { id: validUuid }]));
+      .mockImplementation(async () => (expectedResponse));
 
     req.body = newUsers;
 
@@ -94,7 +99,7 @@ describe('Sequência de testes sobre a camada "UserController"', () => {
     expect(res.status).toHaveBeenCalledWith(httpStatus.CREATED);
 
     expect(res.send).toHaveBeenCalled();
-    expect(res.send).toHaveBeenCalledWith([{ id: validUuid }, { id: validUuid }]);
+    expect(res.send).toHaveBeenCalledWith(expectedResponse);
   });
 
   test('Se o método "registerUser" chama o "next" com o erro em caso de falha', async () => {

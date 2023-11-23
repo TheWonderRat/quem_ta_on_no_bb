@@ -20,7 +20,8 @@ describe('Sequência de testes para o serviço User', () => {
   // Configurações iniciais
   const service: UserService = new UserService();
 
-  const fakeUsersIds: RT.NewUserId[] = users.map(({ id }: RT.NewUserId) => ({ id }));
+  const fakeUsersIds: RT.NewUserId[] = users
+    .map(({ id, registry }: RT.NewUserId) => ({ id, registry }));
 
   afterEach(() => { jest.clearAllMocks(); });
 

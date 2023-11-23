@@ -47,7 +47,7 @@ describe('Sequência de testes sobre para os casos de sucesso da rota de usuári
   test('Se retorna CREATED(201) e retorne os id`s', async () => {
     const fakeUsers = User.bulkBuild(users);
 
-    const ids: RT.NewUserId[] = fakeUsers.map(({ id }: User) => ({ id }));
+    const ids: RT.NewUserId[] = fakeUsers.map(({ id, registry }: User) => ({ id, registry }));
 
     const spySequelize = jest.spyOn(sequelize, 'transaction').mockResolvedValue(transaction);
 

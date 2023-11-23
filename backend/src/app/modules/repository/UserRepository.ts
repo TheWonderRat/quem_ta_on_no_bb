@@ -44,7 +44,7 @@ export default class UserRepository extends AbstractRepository<typeof User> {
 
       await transaction.commit();
 
-      return usersRecords.map(({ id }: User) => ({ id }));
+      return usersRecords.map(({ id, registry }: User) => ({ id, registry }));
     } catch (error) {
       await transaction.rollback();
       console.log(error);
