@@ -6,7 +6,7 @@ import * as env from './environment';
 
 const sequelizeOptions: Options = {
   port: env.PORT,
-  host: env.HOST,
+  host: env.HOST_DB,
   database: env.DB_NAME,
   username: env.DB_USER,
   password: env.DB_PASSWORD,
