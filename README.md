@@ -170,10 +170,10 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 :busts_in_silhouette: Colaboradores:
 
   -  Felipe
-      - ![image](https://dcbadge.vercel.app/api/shield/555185291770593302) :: @sazanh
-    
       - ![image](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) :: @feliperaindo
-   
+
       - ![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) :: felipe.raindo+dev@gmail.com
-   
+        
       - ![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) :: @feliperaindo
+        
+      - ![image](https://dcbadge.vercel.app/api/shield/555185291770593302) :: @sazanh
