@@ -33,7 +33,8 @@ export default class RankingRepository extends AbstractRepository<typeof GlobalR
 
     const allUsers: MT.Ranking[] = usersRecords.map(({ id, registry, pcd, ppp }: User) => {
       const oneUser: RT.NewUserRecord = newUsers
-        .find((user: RT.NewUserRecord) => user.registry === registry) as RT.NewUserRecord;
+        .find((user: RT.NewUserRecord) =>
+          Number(user.registry) === Number(registry)) as RT.NewUserRecord;
 
       if (pcd) { userToPcd.push({ userId: id, position: oneUser.pcdPosition as number }); }
 

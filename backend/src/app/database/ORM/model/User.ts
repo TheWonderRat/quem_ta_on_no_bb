@@ -38,7 +38,7 @@ User.init(
     ppp: { type: DataTypes.BOOLEAN, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: true },
-    registry: { type: DataTypes.INTEGER, allowNull: false },
+    registry: { type: DataTypes.BIGINT, allowNull: false },
     passwordHash: { type: DataTypes.STRING, allowNull: false },
     backupRegister: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     classId: { type: DataTypes.INTEGER, allowNull: true },

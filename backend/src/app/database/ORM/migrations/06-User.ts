@@ -21,7 +21,7 @@ export default {
         field: migrations.columnName.passwordHash,
         allowNull: false,
       },
-      registry: { type: DataTypes.INTEGER, allowNull: false },
+      registry: { type: DataTypes.BIGINT, allowNull: false },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
