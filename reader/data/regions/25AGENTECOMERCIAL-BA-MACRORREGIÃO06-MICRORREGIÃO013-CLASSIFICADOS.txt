@@ -1,0 +1,16 @@
+Alex_de_Oliveira_Adorno;_570082295_-9;_84,5;_9_;_1_;_-_
+Calebe_Peixoto_da_Silva_Lima;_570569904_-7;_85,0;_6_;_-_;_-_
+Eduardo_da_Silva_Santos;_571222776_-7;_85,5;_4_;_-_;_-_
+Felipe_de_Santana_Miranda;_570106298_-7;_86,5;_3_;_-_;_2_
+Filipe_de_Oliveira_da_Silva;_570221759_-8;_82,5;_12_;_-_;_-_
+Gabriel_Silva_de_Souza;_570_407238_-6;_84,0;_11_;_-_;_3_
+Gildenor_Dantas_da_Silva_e_Silva_Junior;_570867356_-5;_71,0;_48_;_2_;_-_
+Ian_Robert_Santos_Sousa;_570008113_-0;_84,5;_8_;_-_;_-_
+Icaro_Santos_Lopes;_570523587_-5;_82,5;_13_;_-_;_4_
+Joao_Antonio_Souza_Pires_Coelho;_570417399_-2;_88,0_;_1_;_-_;_-_
+Lucas_Alves_da_Encarnacao_Oliveira;_570607953_-9;_84,0;_10_;_-_;_-_
+Lucas_Ramon_Bacelar_Pinto_da_Silva;_570480654_-9;_85,0;_5_;_-_;_-_
+Matheus_Souza_Dantas;_571202410_-0;_82,5;_15_;_-_;_5_
+Ricardo_Silva_Brasil;_572000384_-0;_87,0;_2_;_-_;_1_
+Vinic_ius_do_Lago_Silva;_571158677_-_2;_80,0;_32_;_-_;_6_
+Walas_Santos_de_Carvalho;_570685922_-4;_85,0;_7_;_-_;_-

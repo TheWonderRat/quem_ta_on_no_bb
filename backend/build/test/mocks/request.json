@@ -1,0 +1,134 @@
+{
+    "bodyFull": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyNoPcd": {
+        "name": "nome",
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10
+    },
+    "bodyNoPpp": {
+        "name": "nome",
+        "pcd": true,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10
+    },
+    "bodyNoName": {
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10
+    },
+    "bodyNoRegistry": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "backupRegister": false,
+        "globalPosition": 10
+    },
+    "bodyNoBackup": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "globalPosition": 10
+    },
+    "bodyNoGlobal": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false
+    },
+    "bodyInvalidName": {
+        "name": "",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidPcd": {
+        "name": "nome",
+        "pcd": "valor_não_booleano",
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidPpp": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": "valor_não_booleano",
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidRegistry": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": "valor_não_8_numérico",
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidBackup": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": "valor_não_booleano",
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidGlobal": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": "valor_não_8_numérico",
+        "pcdPosition": 50,
+        "pppPosition": 20
+    },
+    "bodyInvalidPcdPosition": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": "valor_não_8_numérico",
+        "pppPosition": 20
+    },
+    "bodyInvalidPppPosition": {
+        "name": "nome",
+        "pcd": true,
+        "ppp": false,
+        "registry": 123456,
+        "backupRegister": false,
+        "globalPosition": 10,
+        "pcdPosition": 50,
+        "pppPosition": "valor_não_8_numérico"
+    }
+}

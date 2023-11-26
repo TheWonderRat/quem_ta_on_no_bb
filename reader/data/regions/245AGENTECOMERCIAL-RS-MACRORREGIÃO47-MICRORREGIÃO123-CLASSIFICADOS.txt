@@ -1,0 +1,11 @@
+Andrey_Pacheco_Rottini;_570153957_-2;_82,5;_6_;_-_;_-_
+Cassio_Verginio_Taschetto;_570282862_-6;_72,5;_26_;_1_;_-_
+Eduardo_Fischer;_571554245_-7;_85,5;_3_;_-_;_-_
+Fabiano_Uggeri_Severo;_571481063_-6;_82,5;_7_;_-_;_-_
+Flavio_Cora_Nunes_do_Amaral;_570517910_-6;_83,5;_5_;_-_;_-_
+George_Schinestzki_Lazzari;_5_71600729_-8;_85,5;_2_;_-_;_-_
+Iuri_Pruni_Rodrigues;_571322408_-8;_73,5;_25_;_-_;_1_
+Pamela_Eduarda_Dias_Ferreira;_571249820_-6;_71,5;_28_;_-_;_2_
+Pedro_Alban;_570643453_-9;_83,5;_4_;_-_;_-_
+Rafael_Pellenz;_570957257_-1;_72,0;_27_;_2_;_-_
+Wagner_Possamai_Cainell_i;_570012858_-0;_90,0;_1_;_-_;_-

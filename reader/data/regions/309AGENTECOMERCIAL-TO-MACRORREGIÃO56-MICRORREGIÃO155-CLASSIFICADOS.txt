@@ -1,0 +1,7 @@
+Caio_Goncalves_Baliza;_570057740_-7;_71,0;_20_;_-_;_1_
+Luiz_Cezar_So_uza_Amaral;_570529996_-1;_78,0;_4_;_-_;_-_
+Matheus_Goncalves_de_Melo;_570772995_-1;_77,0;_5_;_-_;_-_
+Paulo_Jonas_Silva_Naves;_570819245_-7;_81,5;_2_;_-_;_-_
+Pedro_Igor_Almeida_Miranda_Reis;_571742194_-4;_78,0;_3_;_-_;_-_
+Vitor_Hugo_Lemos_de_Andrade;_571401680_-5;_76,5;_6_;_1_;_-_
+Wesley_Ferreira_Gama;_570832620_-7;_81,5;_1_;_-_;_-

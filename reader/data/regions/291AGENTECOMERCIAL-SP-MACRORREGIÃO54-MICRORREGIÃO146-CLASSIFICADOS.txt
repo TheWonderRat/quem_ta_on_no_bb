@@ -1,0 +1,14 @@
+Ana_Clara_Bonacina_Padilha_de_Oliveira;_571380875_-7;_76,5;_7_;_-_;_-_
+Gabriel_dos_Santos_Oliveira;_571010054_-5;_84,0;_1_;_-_;_-_
+Guilherme_Cenachi_Pires;_570388050_-3;_75,5;_9_;_-_;_-_
+Joao_Gabriel_Castro_Luz;_570581794_-8;_78,5;_5_;_-_;_-_
+Joao_Pedro_Sussel_Be_rtogna;_571766746_-1;_80,0;_4_;_-_;_-_
+Jose_Vitor_Coca_Gouvea;_571897498_-1;_71,0;_33_;_1_;_-_
+Magali_Alves_da_Rocha_Bonzanini;_570216977_-4;_72,5;_21_;_-_;_2_
+Maira_Conte_Chaves_Silva;_571128994_-6;_78,0;_6_;_-_;_-_
+Matheus_Felipe_da_Silva_e_Souza;_571339705_-1;_81,0;_3_;_-_;_-_
+Maxwell_Silva_Lapa;_571195633_-0;_75,5;_8_;_-_;_-_
+Maysa_Leandro_dos_Santos;_571227331_-6;_68,0;_34_;_-_;_3_
+Rodrigo_Shoiti_Simoes;_571340099_-3;_83,0;_2_;_-_;_-_
+Tamiris_Neves_Gomes_Yamane;_570341191_-8;_66,0;_38_;_2_;_-_
+Victor_Pierre_da_Silva_Pinto;_570153999_-6;_73,0;_19_;_-_;_1

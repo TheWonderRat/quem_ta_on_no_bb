@@ -1,0 +1,14 @@
+Allan_Vieira_Portugal;_571273308_-6;_67,0;_34_;_-_;_1_
+Bruno_Taiok;_57022_9579_-5;_83,5;_5_;_-_;_-_
+Clodoaldo_de_Meira_Azevedo_Junior;_571866543_-7;_88,0;_2_;_-_;_-_
+David_Kil;_571295328_-6;_83,5;_6_;_-_;_-_
+Douglas_Kaspzack;_571232683_-6;_71,5;_31_;_1_;_-_
+Fabio_David_Gehrke;_571029212_-4;_70,0;_32_;_2_;_-_
+Fernando_Lemos_Becker;_57_1224775_-6;_84,0;_4_;_-_;_-_
+Guilherme_Araszewski_Ormianin;_571115793_-7;_82,5;_9_;_-_;_-_
+Jose_Luiz_de_Andrade_Barbosa;_571226056_-9;_83,5;_7_;_-_;_-_
+Mary_Nice_Dias_Carneiro;_570972080_-5;_67,0;_35_;_-_;_2_
+Osmar_Mayer_Bueno;_570337059_-0;_88,5;_1_;_-_;_-_
+Rodolfo_Schaffer_Neto;_571917636_-9;_86,5;_3_;_-_;_-_
+Vinicius_Chamberlain_Meyer_e_Silva;_571549239_-1;_64,5;_39_;_-_;_3_
+William_Fernandes_de_Oliveira;_571513318_-7;_82,5;_8_;_-_;_-
