@@ -21,6 +21,8 @@ A entidades existentes no banco são:
   - Departamento (departamentos disponíveis para lotação do usuário convocado)
 
 Segue abaixo um diagrama de entidade e relacionamento:
+
+
   ![diagrama de entidade e relacionamento](./images/diagrama-de-entidade-e-relacionamento.png)
 
 ## Requisitos ##
