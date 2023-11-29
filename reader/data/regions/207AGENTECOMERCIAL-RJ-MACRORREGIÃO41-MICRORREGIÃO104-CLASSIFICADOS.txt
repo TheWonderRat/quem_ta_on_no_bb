@@ -1,0 +1,16 @@
+Antonio_Juliano_Silvera_Castro_Alves;_570173121_-5;_83,5;_6_;_-_;_-_
+Arthur_Stoduto_Faria;_570535552_-0;_83,5;_7_;_-_;_-_
+Caio_Costa_Alves;_570157891_-2;_87,0;_1_;_-_;_-_
+Caio_Oliveira_de_Azevedo;_571591161_-2;_81,5;_11_;_-_;_-_
+Diogo_Chrispim_de_Souza;_571564146_-7;_77,0;_33_;_-_;_2_
+Emilia_Rocha_da_Silva;_570337982_-3;_84,0;_4_;_-_;_-_
+Gabriela_do_Amaral_Rezende;_570974564_-5;_73,5;_41_;_2_;_-_
+Joao_Victor_Gomes_Martins_Muniz;_570053102_-5;_83,5;_5_;_-_;_-_
+Kleycila_Rodrigues_de_Oliveira;_571764649_-6;_82,5;_8_;_-_;_-_
+Laura_Laviola_Car_reiro_Leite;_571977018_-2;_76,0;_38_;_1_;_-_
+Marina_Freitas_Maia;_570751211_-2;_82,0;_9_;_-_;_-_
+Michel_Jose_Dias;_571377752_-7;_76,5;_37_;_-_;_3_
+Moises_Candido_de_Oliveira_Silva;_570723781_-2;_75,5;_39_;_-_;_4_
+Paulo_Felipe_da_Silva_Carreiro;_571367241_-9;_85_,5;_2_;_-_;_-_
+Paulo_Victor_Lopes_da_Silva;_570182626_-0;_84,5;_3_;_-_;_1_
+Pedro_Henrique_Cataldo_Pereira;_570594011_-5;_82,0;_10_;_-_;_-

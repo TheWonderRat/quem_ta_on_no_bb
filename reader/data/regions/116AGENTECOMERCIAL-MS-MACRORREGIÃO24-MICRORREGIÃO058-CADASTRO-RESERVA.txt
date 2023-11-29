@@ -1,0 +1,10 @@
+Anderson_Augusto_Yuasa_Artes;_570409059_-0;_77,5;_14_;_-_;_-_
+Fernando_Andrade_Guidorizzi;_571244505_-7;_77,5;_16_;_-_;_-_
+Jorge_Henrique_Cardoso_Maquerte;_570914041_-6;_59,5;_81_;_4_;_-_
+Leonardo_Carlos_Rocha;_570186682_-3;_60,5;_80_;_3_;_-_
+Lucas_de_Moraes_Lopes;_571508902_-6;_77,5;_15_;_-_;_-_
+Luis_Gustavo_dos_Santos;_571210351_-0;_68,5;_63_;_-_;_5_
+Nadia_Moura_Amitrano;_571327339_-7;_78,0;_12_;_-_;_-_
+Ricardo_de_Andrade_Haddad_Lane;_571704045_-0;_69,0;_62_;_-_;_4_
+Thiago_Ribeiro_Leme;_57031122_0-6;_78,0;_13_;_-_;_-_
+Vinicius_Araujo_Pereira;_571348879_-0;_77,5;_17_;_-_;_-

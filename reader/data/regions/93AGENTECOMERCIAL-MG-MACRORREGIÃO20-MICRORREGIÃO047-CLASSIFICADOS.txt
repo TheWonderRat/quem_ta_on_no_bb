@@ -1,0 +1,6 @@
+Euler_Rodrigues_dos_Santos;_570007046_-4;_87,0;_3_;_-_;_-_
+Hingridy_Goncalves_Veloso;_571202824_-5;_94,5;_1_;_-_;_-_
+Matheus_Silva_Rodrigues;_571524516_-4;_78,5;_14_;_1_;_-_
+Neiviton_Alexandre_Rocha_Bertolino;_571253446_-0;_85,5;_4_;_-_;_1_
+Rafael_Cardoso_Macedo;_571634477_-0;_91,0;_2_;_-_;_-_
+Robson_Gomes_Barbosa;_571954036_-0;_75,0;_17_;_-_;_2

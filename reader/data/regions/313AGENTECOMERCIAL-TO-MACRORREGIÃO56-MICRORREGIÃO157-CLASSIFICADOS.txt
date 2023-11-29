@@ -1,0 +1,10 @@
+Andre_Mendes_Rocha;_571161737_-7;_60,0;_34_;_1_;_-_
+Bruno_Coimbra_da_Cruz;_571318671_-6;_80,5;_2_;_-_;_-_
+Daniela_Bezerra_dos_Santos;_570833294_-5;_59,0;_35_;_2_;_-_
+Edson_Cardoso_Teixeira;_570156607_-6;_72,5;_7_;_-_;_1_
+Marco_Antonio_de_Carvalho_Rezende;_570341382_-0;_80,0;_3_;_-_;_-_
+Mayane_Reis_Pereira;_571251440_-4;_81,0;_1_;_-_;_-_
+Ramon_Barrozo_de_Jesus;_571825965_-6;_74,5;_6_;_-_;_-_
+Tagori_Santiago;_570010311_-5;_76,5;_4_;_-_;_-_
+Tulio_Barros_Ornelas;_570200011_-3;_68,5;_10_;_-_;_2_
+Wanessa_Miranda_Borges_Pinto;_571092113_-6;_75,0;_5_;_-_;_-

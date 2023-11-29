@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RankingRepository = exports.LoginRepository = exports.UserRepository = void 0;
+// export { default as AprovadosRepository } from './AprovadoRepository';
+// export { default as CidadeRepository } from './CidadeRepository';
+// export { default as DiretoriaRepository } from './DiretoriaRepository';
+// export { default as ListaRepository } from './ListaRepository';
+// export { default as LotacaoRepository } from './LotacaoRepository';
+// export { default as LotacaoEmRepository } from './LotadoEmRepository';
+// export { default as SituacaoRepository } from './SituacaoRepository';
+// export { default as TipoListaRepository } from './TipoListaRepository';
+// export { default as TurmaRepository } from './TurmaRepository';
+var UserRepository_1 = require("./UserRepository");
+Object.defineProperty(exports, "UserRepository", { enumerable: true, get: function () { return __importDefault(UserRepository_1).default; } });
+var LoginRepository_1 = require("./LoginRepository");
+Object.defineProperty(exports, "LoginRepository", { enumerable: true, get: function () { return __importDefault(LoginRepository_1).default; } });
+var RankingRepository_1 = require("./RankingRepository");
+Object.defineProperty(exports, "RankingRepository", { enumerable: true, get: function () { return __importDefault(RankingRepository_1).default; } });

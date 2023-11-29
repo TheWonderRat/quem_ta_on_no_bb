@@ -1,0 +1,7 @@
+Carlos_Eduardo_Sena_Pacheco;_571308843_-8;_80,0;_18_;_-_;_-_
+Fabine_Ferraz_Fernandes;_571651628_-3;_73,0;_67_;_4_;_12_
+Jessica_Kelly_Silva_Fonseca;_570005916_-6;_80,0;_20_;_-_;_-_
+Marcelo_Nascimento_Moutinho;_571651433_-9;_80,0;_21_;_-_;_-_
+Matheus_Chave_s_Venancio;_570013056_-6;_80,5;_16_;_-_;_-_
+Rodrigo_Souza_Martins;_570126216_-5;_80,0;_19_;_-_;_-_
+Victor_Assis_Gomes;_570071388_-6;_76,0;_58_;_-_;_7

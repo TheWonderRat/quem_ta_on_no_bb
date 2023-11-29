@@ -1,0 +1,11 @@
+Alaine_Franca_Benjamim;_571707240_-5;_61,5;_55_;_2_;_18_
+Alexandre_Vinn_icius_Moraes_Silva;_571215456_-1;_80,5;_3_;_-_;_-_
+Anderson_Batista_de_Carvalho;_570712493_-4;_79,5;_4_;_-_;_-_
+Arleson_Ariel_da_Silva_Peres_Gutierre;_570937792_-2;_72,0;_18_;_-_;_2_
+Ckewsyon_Kewver_Dhomyng_Queiroz_de_Souza;_570784414_-7;_83,5;_1_;_-_;_-_
+Eder_Luciano_Mochi;_570416613_-3;_80,5;_2_;_-_;_-_
+Marcos_da_Silva_Campos;_571306770_-9;_63,5;_50_;_1_;_14_
+Melissa_Postiglione_Reis;_571018755_-1;_76,5;_7_;_-_;_-_
+Pablo_Carvalho_de_Albuquerque;_571218854_-7;_70,5;_25_;_-_;_3_
+Rodrigo_Falcao_Gomes_Jardim;_5714086_95-3;_78,0;_5_;_-_;_-_
+Thiago_Maia_de_Menezes;_570510296_-5;_76,5;_6_;_-_;_1
