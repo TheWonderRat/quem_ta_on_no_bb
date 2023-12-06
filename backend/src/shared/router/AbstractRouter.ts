@@ -1,4 +1,7 @@
-export default abstract class AbstractRouter{
+
+
+export default abstract class AbstractRouter<RouterType>{
+  protected router: RouterType;
 
   //rootPath: deve incluid apenas o nome da rota, nao o nome dos antecessores
   constructor(rootPath: string){
@@ -6,7 +9,7 @@ export default abstract class AbstractRouter{
   }
 
   //inserir as rotas 
-  protected abstract initRoutes(): void;
+  protected abstract initRoutes(router: RouterType): void;
 
 
 }
