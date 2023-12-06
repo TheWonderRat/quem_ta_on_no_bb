@@ -1,17 +1,37 @@
 import * as messages from '../../types/error/messages';
 
-export const USER_NOT_FOUND: messages.USER_NOT_FOUND = 'O usuário nao foi encontrado';
+export enum AuthErrorMessage{
+  MissingToken = "O token nao foi fornecido" ,
+  TokenOutOfDate = "O token encontrado ja expirou",
+  InvalidToken = "O token encontrado e invalido",
+}
 
-export const MISSING_TOKEN: messages.MISSING_TOKEN = 'Token de identificação nao foi encontrado!';
+export enum AuthErrorCode{
+  MissingToken = 400,
+  TokenOutOfDate = 401,
+  InvalidToken = 402
+}
 
-export const USER_NOT_AUTHENTICATED: messages
-  .USER_NOT_AUTHENTICATED = 'A sessão do usuário expirou';
+export enum DBErrorMessage{
+  MissingToken = "Miau",
+  TokenOutOfDate = "miau",
+  InvalidToken = "miau" 
+}
+export enum DBErrorCode{
+  MissingToken = 400,
+  TokenOutOfDate = 401,
+  InvalidToken = 402
+}
 
-export const MISS_MATCHED_PASSWORD: messages
-  .MISS_MATCHED_PASSWORD = 'Combinação usuário/senha nao confere';
+export enum GenericErrorMessage{
+  MissingToken = "message 1",
+  TokenOutOfDate = "message 2",
+  InvalidToken = "message 3" 
+}
 
-export const DATABASE_NOT_FOUND: messages
-  .DATABASE_NOT_FOUND = 'Nao foi possível conectar com a base de dados';
+export enum GenericErrorCode{
+  MissingToken = 400,
+  TokenOutOfDate = 401,
+  InvalidToken = 402
+}
 
-export const SERVER_SIDE_ERROR: messages
-  .SERVER_SIDE_ERROR = 'Nao foi possível conectar com a base de dados';

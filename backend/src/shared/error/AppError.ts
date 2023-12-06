@@ -1,10 +1,11 @@
-export default abstract class AppError<ErrorMessageType, ErrorCodeType>{
-  public readonly message: ErrorMessageType;
-  public readonly code: ErrorCodeType;
+
+export default abstract class AppError{
+  public readonly message: string;
+  public readonly code: number;
 
   constructor(
-    message: ErrorMessageType,
-    code: ErrorCodeType
+    message: string,
+    code: number 
   ){
     this.message = message;
     this.code = code

@@ -1,4 +1,8 @@
-export default abstract class AbstractService<ParameterType, ReturnType>{
 
-  public abstract execute(parameters: ParameterType): ReturnType;
+import { ServiceRequestTypes, ServiceResponseTypes } from "src/types/services/service";
+
+
+export default abstract class AbstractService<ServiceRequestTypes, ServiceResponseTypes>{
+
+  public abstract execute(parameters: ServiceRequestTypes): ServiceResponseTypes;
 }
