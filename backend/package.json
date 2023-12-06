@@ -7,7 +7,7 @@
     "build": "tsc --project tsconfig.json",
     "db:up": "npx sequelize-cli db:migrate",
     "prestart": "npm run build && npm run db:up",
-    "start": "node .",
+    "start": "node ./build/server/server.js",
     "build-local": "env $(cat .env) tsc --project tsconfig.json",
     "migrate-local": "env $(cat .env) npx sequelize-cli db:migrate",
     "db:drop-local": "env $(cat .env) npx sequelize-cli db:drop",
@@ -24,9 +24,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
     "jsonwebtoken": "^9.0.2",
+    "node-gyp": "^10.0.1",
     "pg": "^8.11.3",
     "sequelize": "^6.35.0"
   },
