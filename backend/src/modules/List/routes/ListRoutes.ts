@@ -4,7 +4,7 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import ListController from "../controller/ListController";
 
 
-export default class ListRouter extends AbstractRouter<Router, ListController>{
+export default class ListRouter extends AbstractRouter< Router, ListController>{
   constructor(){
     //TODO:: criar nome de rota no SSOT
     super("listar", Router(),new ListController());
