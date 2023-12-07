@@ -235,7 +235,9 @@ Bibliotecas:
       ‼ Primeros passos !!
     </strong>
   </summary>
-  
+
+<br>
+
 1. Clone o repositório
    - Use o comando:
      - `git clone <url do repositório>`
