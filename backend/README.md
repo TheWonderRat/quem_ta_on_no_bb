@@ -352,7 +352,7 @@ Bibliotecas:
      - User os comandos abaixo para criar o banco de dados através do `Dockerfile` e iniciar uma `network`:
 
        ```
-       $ docker build .
+       $ docker build -t database .
        $ docker network create aprovados_bb
        $ docker run --name db --env-file .env -p 5432:5432 -v ./database:/docker-entrypoint-initdb.d/ --network=aprovados_bb -d database
        ```
