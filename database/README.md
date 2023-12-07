@@ -148,6 +148,8 @@ A entidades existentes no banco são:
   
 </details>
 
+<hr>
+
 ## Iniciando a aplicação ##
 
 <details>
