@@ -72,6 +72,10 @@ Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do
   - Estrutura:
     - POO - [(Progamação Orientada a Objeto)](https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos)
     - [API RESTful](https://aws.amazon.com/pt/what-is/restful-api/#:~:text=A%20API%20RESTful%20%C3%A9%20uma,terceiros%20para%20executar%20v%C3%A1rias%20tarefas.)
+    - [Arquitetura MVC](https://www.geeksforgeeks.org/mvc-framework-introduction/)
+      - Controller: camada responsável por receber e mapear as requisições feitas pelo cliente (comunicação restrita com camada service).
+      - Service: camada responsável por estabelecer e processar as regras de negócio (comunicação estrita com camada repository).
+      - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - Object-Relational Mapping).
   - Princípios:
     - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
@@ -131,7 +135,7 @@ Bibliotecas:
 1. Linguagem - [TypeScript](https://www.typescriptlang.org/docs/)
 2. Runtime - [Node.js](https://nodejs.org/docs/latest/api/)
 3. Web - [Express](https://expressjs.com/pt-br/starter/hello-world.html)
-4. ORM:
+4. ORM - Object-Relational Mapping:
    - [Sequelize](https://sequelize.org/)
    - [postgres](https://github.com/brianc/node-postgres)
 6. Criptografia:
