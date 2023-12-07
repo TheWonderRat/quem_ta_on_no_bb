@@ -200,7 +200,7 @@ A entidades existentes no banco são:
      - Para verificar o funcionando inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
      - Caso queria acessar via terminal use os comandos:
 
-           $ docker exec -i -t batabase sh
+           $ docker exec -i -t db sh
            $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
 
 </details>
