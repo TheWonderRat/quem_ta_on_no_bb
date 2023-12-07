@@ -441,6 +441,63 @@ Bibliotecas:
 
 <hr>
 
+## Comandos úteis ##
+
+<details>
+
+  <summary>
+    <strong>
+      <strong>🎛 Linter</strong>
+    </strong>
+  </summary>
+
+  <br>
+
+  Para garantir a qualidade do código, utilizamos neste projeto o `Eslint`.
+  Assim garantimos alinhamento com as boas práticas de desenvolvimento, legíbilidade do código e facilita a manutenção!
+  
+  Para poder executar o `Eslint` certifique-se que realizou a instalação das dependências do projeto.
+  Se você seguiu o passo-a-passo até aqui é esperado que tenha uma pasta com nome `node_modules` dentro do diretório `backend`.
+  
+  Caso tenha pulado alguma etapa, e não tenha a pasta acima mencionada dentro do diretório `backend`, execute o comando:
+  
+  ```
+  $ npm install
+  ```
+
+  Uma vez que os pacotes estão devidamente instalados, para executar localmente a avaliação do linter - `Eslint` - execute o comando abaixo:
+  
+  ```
+  $ npm run lint
+  ```
+
+  Se a análise do `Eslint` encontrar irregularidades no seu código, estas serão exibidas no
+seu terminal. Se a avaliação do `Eslint` não encontrar irregularidades nada será impresso no terminal.
+
+  Para váriar irregularidades apontadas pelo `Eslint`, essa biblioteca é capaz de consertá-las automaticamente, basta executar o comando abaixo:
+  
+  ```
+  $ npm run lint:fix
+  ```
+
+⚠️ **Observação**: Apesar da biblioteca ser capaz de consertar várias irregularidades automaticamente, **NÃO** quer dizer que ela seja capaz de consertar **TODAS**. Portanto, depois de realizar as correções, execute a avaliação do linter novamente!! E quando for o caso, será necessário que você **DESENVOLVEDOR** faça correções manualmente. ⚠️
+
+
+  Recomendação
+  ------------
+  
+  Recomendamos que você instale o plugin do `Eslint` na sua `IDE`. Todas as principais `IDE's` disponíveis no mercado tem plugins para `Eslint`. Segue abaixo links para instalação do puglin:
+  - [VSCODE](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  - [IntelliJ](https://plugins.jetbrains.com/plugin/7494-eslint)
+  - [PhpStorm](https://plugins.jetbrains.com/plugin/7494-eslint)
+  - [Eclipse](https://marketplace.eclipse.org/content/wild-web-developer-html-css-javascript-typescript-nodejs-angular-json-yaml-kubernetes-xml)
+  - para outras IDE's consulte a página oficial [nesse link](https://eslint.org/docs/latest/use/integrations)
+
+⚠️ **PULL REQUESTS COM IRREGULARIDADES DE LINTER (`Eslint`) NÃO SERÃO APROVADOS. ATENTE-SE PARA RESOLVER A IRREGULARIDADES ANTES
+DE SUBMETER AS ALTERAÇÕES!** ⚠️
+
+<hr>
+
 ## Contatos ##
 
 <details>
