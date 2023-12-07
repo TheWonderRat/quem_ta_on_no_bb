@@ -176,7 +176,7 @@ A entidades existentes no banco são:
    
       - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
-                 $ touch .env
+            $ touch .env
     
       - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
     
@@ -200,8 +200,8 @@ A entidades existentes no banco são:
      - Para verificar o funcionando inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
      - Caso queria acessar via terminal use os comandos:
 
-            $ docker exec -i -t batabase sh
-            $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
+           $ docker exec -i -t batabase sh
+           $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
 
 </details>
 
