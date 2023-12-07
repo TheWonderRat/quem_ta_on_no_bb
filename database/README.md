@@ -67,7 +67,6 @@ Especificações do banco de dados:
   - 3FN - (3ª forma normal), para mais informações sobre normalização de tabelas acesse [esse link](https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description)
 
 #### Qualquer alteração da modelagem do banco de dados deverá seguir as especificações acima mencionadas. ####
-  
 
 ## Estrutura ##
 O Banco está normalizado até a 3ª forma normal (3FN).
@@ -99,16 +98,22 @@ A entidades existentes no banco são:
       !! Requisitos obrigatórios !!
     </strong>
   </summary>
-
+  
+  <br>
+  
   1. Docker :red_circle::
 
        - Para verificar a instalação do `docker` execute no terminal:
-    
-             $ docker --version
+
+         ```
+         $ docker --version
+         ```
 
          caso o retorno seja algo como:
 
-             $ docker: command not found
+         ```
+         $ docker: command not found
+         ```
 
          siga pra este [link - Instalação do Docker Engine -](https://docs.docker.com/engine/install/) para realizar a instalação do Docker.
 
@@ -121,29 +126,41 @@ A entidades existentes no banco são:
     </strong>
   </summary>
 
+  <br>
+
   1. Node.js :green_circle::
      
       - Para verificar a instalação do `node` execute no terminal:
-        
-            $ node --version
+
+        ```
+        $ node --version
+        ```
 
         caso o retorno seja algo como:
 
-             $ Command 'node' not found, but can be installed with:
-             $ sudo apt install nodejs
+        ```
+        $ Command 'node' not found, but can be installed with:
+        $ sudo apt install nodejs
+        ```
 
         siga pra este [link - Inslação do Node através do NVM -](https://github.com/nvm-sh/nvm#installing-and-updating) para realizar a instalação do node.js.
-      
+
+  <br>
+  <br>
 
   2. Python versão 3 ou superior :green_circle::
 
        - Para verificar a instalção do `Python` execute no terminal:
-    
-             $ python3 --version
+
+         ```
+         $ python3 --version
+         ```
 
          caso o retorno seja algo como:
 
-             $ command not found: python
+         ```
+         $ command not found: python
+         ```
 
          siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
   
@@ -161,6 +178,7 @@ A entidades existentes no banco são:
      </strong>
    </summary>
 
+  <br>
 
    1. Clone o repositório
 
@@ -171,38 +189,53 @@ A entidades existentes no banco são:
       - Entre na pasta do banco de dados:
         - `cd database` 
 
+  <br>
+  <br>
    
   2. Crie um arquvivo `.env`:
    
       - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
-            $ touch .env
+        ```
+        $ touch .env
+        ```
     
       - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
-    
-            1.  PORT_DB=defina_uma_porta
-            2.  POSTGRES_USER=defina_um_usuário
-            3.  POSTGRES_PASSWORD=defina_uma_senha
-            4.  POSTGRES_DB=defina_o_nome_do_db
-        
+
+        ```
+        1.  PORT_DB=defina_uma_porta
+        2.  POSTGRES_USER=defina_um_usuário
+        3.  POSTGRES_PASSWORD=defina_uma_senha
+        4.  POSTGRES_DB=defina_o_nome_do_db
+        ```
 
       - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
-       
+
+  <br>
+  <br>
+  
   3. Inicie o conatainer do banco de dados com o Docker:
 
        - User os comandos:
-         
-             $ docker build .
-             $ docker run --name db --env-file .env -p 5432:5432 -v ./database:/docker-entrypoint-initdb.d/ -d database
 
+         ```
+         $ docker build -t database .
+         $ docker run --name db --env-file .env -p 5432:5432 -v ./data:/var/lib/postgresql/data --rm --network=aprovados_bb -d database
+         ```
+
+  <br>
+  <br>
+  
   4. Após todo o processamento, e esperado que o banco de dados esteja operacional.
-     - Para verificar o funcionando inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
+     - Para verificar o funcionando do service inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
      - Caso queria acessar via terminal use os comandos:
 
-           $ docker exec -i -t db sh
-           $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
-
+       ```
+       $ docker exec -i -t db sh
+       $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
+       ```
+           
 </details>
 
 <hr>
