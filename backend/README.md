@@ -627,6 +627,10 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   });
   ```
 
+  ⚠️ **Observação**: Lembre-se que para executar apenas **UM** teste ou apenas **UMA** "suitcase" de testes é necessário usar o comando `npm run test -t "número do teste"`. Caso use o comando `npm test` todas as "suitcases" serão executadas, pois a biblioteca JEST executa os testes em paralelo para otimizar o tempo de execução capacidade de processamento. ⚠️
+
+:books: Para mais informações sobre a biblioteca de testes [JEST](https://jestjs.io/pt-BR/) utilize a documentação oficial. :books:
+
 </details>
 
 <hr>
