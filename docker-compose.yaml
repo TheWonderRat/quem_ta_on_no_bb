@@ -27,7 +27,7 @@ services:
       - aprovados_bb
 
   db:
-    image: postgres:16
+    build: ./database
     container_name: db
     ports:
       - ${PORT_DB}:${PORT_DB}
@@ -44,7 +44,7 @@ services:
       retries: 5
       start_period: 30s
     volumes:
-      - ./database:/docker-entrypoint-initdb.d/
+      - ./database/data:/var/lib/postgresql/data
     networks:
       - aprovados_bb
 
