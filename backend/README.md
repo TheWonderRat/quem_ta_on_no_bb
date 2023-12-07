@@ -156,6 +156,8 @@ Bibliotecas:
     </strong>
   </summary>
 
+  <br>
+  
   1. Docker :red_circle::
 
        - Para verificar a instalação do `docker` execute no terminal:
@@ -171,6 +173,9 @@ Bibliotecas:
          ```
 
          siga pra este [link - Instalação do Docker Engine -](https://docs.docker.com/engine/install/) para realizar a instalação do Docker.
+
+  <br>
+  <br>
 
   2. Node.js :red_circle::
      
@@ -191,12 +196,16 @@ Bibliotecas:
 
 </details>
 
+<br>
+
 <details>
   <summary>
     <strong>
       !! Requisitos opcionais (desejáveis) !!
     </strong>
   </summary>
+
+  <br>
 
   1. Python versão 3 ou superior :green_circle::
 
