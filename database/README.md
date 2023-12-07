@@ -174,7 +174,9 @@ A entidades existentes no banco são:
    
   2. Crie um arquvivo `.env`:
    
-      - User o comando: `touch .env`
+      - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+
+                 $ touch .env
     
       - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
     
