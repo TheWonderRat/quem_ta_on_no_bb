@@ -407,6 +407,22 @@ Bibliotecas:
 
 </details>
 
+<br>
+
+<details>
+
+  <summary>
+    <strong>
+      ‼ Iniciando a aplicação backend !!
+    </strong>
+  </summary>
+
+  Uma vez o **banco de dados**
+  --------------- 
+
+</details>
+adfa
+
 <hr>
 
 ## Contatos ##
