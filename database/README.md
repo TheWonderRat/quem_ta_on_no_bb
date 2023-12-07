@@ -3,9 +3,70 @@
 
 Olá!! Bem vindo ao Banco de dados da nossa aplicação.
 
-O banco utilizado para o projeto escolhido foi o **Postgres**.
+Abaixo seguem informações sobre como foi montada a estrutura do banco de dados, que tem como objetivo ser um local seguro para armazenar os dados dos candidatos, e facilitar a consulta pelos demais servicos da aplicação!!
 
-O objetivo é um local seguro para armazenar os dados dos candidatos, e facilitar a consulta pelos demais servicos da aplicação!!
+<hr>
+
+## Como contribuir ##
+Cada um dos serviços precisa de manutenção, melhoraria de performance e implementação de novas funcionalidades!!
+Nos ajude fornecendo seu conhecimento e habilidades para implementar uma plataforma mais interessante e performática.
+
+  > Para contribuir:
+  >
+  > 1. Escolha um ou mais serviços que tenha interesse em participar,
+  >
+  > 2. Leia o README.md do(s) serviço(s),
+  >  
+  > 3. Se estiver de acordo com os padrões de projeto utilizado, pode começar a escrever código :thumbsup:
+
+:loudspeaker: **IMPORTANTE** :loudspeaker:
+
+:telephone: [Não se esqueca de entrar em contato conosco.](#contatos) :telephone:
+
+Informações sobre contato no menu abaixo :point_down::point_down::point_down:
+
+<hr>
+
+<details>
+
+  <summary>
+    <strong>
+      <h3>
+        Termos e acordos gerais
+      </h3>
+    </strong>
+  </summary>
+
+Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
+  - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
+  - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
+  - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
+  - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
+  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
+
+</details>
+
+<hr>
+
+<details>
+
+  <summary>
+    <strong>
+      <h3>
+        Termos e acordos do banco de dados
+      </h3>
+    </strong>
+  </summary>
+
+O banco utilizado para o projeto escolhido foi o **Postgres**.
+Especificações do banco de dados:
+  - Relacional,
+  - Primeira letra de cada tabela maiúscula
+  - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
+  - 3FN - (3ª forma normal), para mais informações sobre normalização de tabelas acesse [esse link](https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description)
+
+#### Qualquer alteração da modelagem do banco de dados deverá seguir as especificações acima mencionadas. ####
+  
 
 ## Estrutura ##
 O Banco está normalizado até a 3ª forma normal (3FN).
@@ -20,10 +81,13 @@ A entidades existentes no banco são:
   - Cidades (cidades disponíveis para lotação do usuário convocado)
   - Departamento (departamentos disponíveis para lotação do usuário convocado)
 
-Segue abaixo um diagrama de entidade e relacionamento:
-
+  Segue abaixo um diagrama de entidade e relacionamento:
 
   ![diagrama de entidade e relacionamento](./images/diagrama-de-entidade-e-relacionamento.png)
+  
+</details>
+
+<hr>
 
 ## Requisitos ##
 
@@ -134,33 +198,7 @@ Segue abaixo um diagrama de entidade e relacionamento:
             $ docker exec -i -t batabase sh
             $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
 
-## Termos e acordos ##
-Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
-  - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
-  - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
-  - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
-  - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
-  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
-
 </details>
-
-## Como contribuir ##
-Cada um dos serviços precisa de manutenção, melhoraria de performance e implementação de novas funcionalidades!!
-Nos ajude fornecendo seu conhecimento e habilidades para implementar uma plataforma mais interessante e performática.
-
-  > Para contribuir:
-  >
-  > 1. Escolha um ou mais serviços que tenha interesse em participar,
-  >
-  > 2. Leia o README.md do(s) serviço(s),
-  >  
-  > 3. Se estiver de acordo com os padrões de projeto utilizado, pode começar a escrever código :thumbsup:
-
-:loudspeaker: **IMPORTANTE** :loudspeaker:
-
-:telephone: [Não se esqueca de entrar em contato conosco.](#contatos) :telephone:
-
-Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 
 ## Contatos ##
 
@@ -175,7 +213,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 >
 > Nos ajude a fazer essa aplicação algo INCRÍVEL! :star_struck:
 
-:busts_in_silhouette: Colaboradores:
+Colaboradores :busts_in_silhouette: :
 
   -  Felipe
       - ![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) :: felipe.raindo+dev@gmail.com
