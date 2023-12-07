@@ -200,8 +200,12 @@ A entidades existentes no banco são:
 
 </details>
 
+<hr>
+
 ## Contatos ##
 
+<details>
+  
 ### **Envie** uma mensagem para os nossos colaboradores. ###
 >  Tire dúvidas!
 >
@@ -223,3 +227,6 @@ Colaboradores :busts_in_silhouette: :
       - ![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) :: @feliperaindo
         
       - ![image](https://dcbadge.vercel.app/api/shield/555185291770593302) :: @sazanh
+
+</details>
+
