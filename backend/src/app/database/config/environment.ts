@@ -11,4 +11,3 @@ export const DB_USER: string = process.env.POSTGRES_USER || dbConfig.DB_DEFAULT_
 export const DB_NAME: string = process.env.POSTGRES_DB || dbConfig.DB_DEFAULT_NAME;
 export const DB_DIALECT: Dialect = dbConfig.DB_DEFAULT_DIALECT;
 export const DB_PASSWORD: string = process.env.POSTGRES_PASSWORD || dbConfig.DB_DEFAULT_PASSWORD;
-
