@@ -101,6 +101,8 @@ Segue abaixo um diagrama de entidade e relacionamento:
         - `git clone <url do repositório>`
       - Entre na pasta do repositório que você acabou de clonar:
         - `cd <nome do repositório>`
+      - Entre na pasta do banco de dados:
+        - `cd database` 
 
    
   2. Crie um arquvivo `.env`:
@@ -109,34 +111,28 @@ Segue abaixo um diagrama de entidade e relacionamento:
     
       - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
     
-            1.  PORT_BACK=defina_uma_porta
-            2.  PORT_DB=defina_uma_porta
-            3.  PORT_FRONT=defina_uma_porta
-            4.  POSTGRES_USER=defina_um_usuário
-            5.  POSTGRES_PASSWORD=defina_uma_senha
-            6.  POSTGRES_DB=defina_o_nome_do_db
-            7.  HOST_BACK=defina_o_host
-            8.  JWT_SECRET=defina_uma_palavra_passe
-            9.  JWT_EXPIRATION=defina_um_intervalo_de_tempo
+            1.  PORT_DB=defina_uma_porta
+            2.  POSTGRES_USER=defina_um_usuário
+            3.  POSTGRES_PASSWORD=defina_uma_senha
+            4.  POSTGRES_DB=defina_o_nome_do_db
+        
 
       - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
-          - [JWT - Json Web Token](https://jwt.io/introduction) ou [jwt - for node](https://www.npmjs.com/package/jsonwebtoken)
        
-  3. Inicie os conatainers com o Docker:
+  3. Inicie o conatainer do banco de dados com o Docker:
 
-       - User o comando
+       - User os comandos:
          
-             $ docker compose up --build
+             $ docker build .
+             $ docker run --env-file .env -p 5432:5432 -v ./database/data:/var/lib/postgresql/data -d database
 
-       - Caso esteja usando uma versão mais antiga do Docker, e o comando acima resultar em erro, tente o comando abaixo:
+  4. Após todo o processamento, e esperado que o banco de dados esteja operacional.
+     - Para verificar o funcionando inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
+     - Caso queria acessar via terminal use os comandos:
 
-              $ docker-compose up --build
-
-  4. Após todo o processamento, e esperado que a aplicação esteja operacional.
-       - Para verificar o funcionando do fron-end acesse `http://localhost:{PORT_FRONT}`
-       - Para verificar o funcionamento do back_end acesse `http://{HOST_BACK}:{PORT_BACK}`
-       - Para verificar o banco de dados inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
+            $ docker exec -i -t batabase sh
+            $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
 
 ## Termos e acordos ##
 Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
