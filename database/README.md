@@ -194,7 +194,7 @@ A entidades existentes no banco são:
        - User os comandos:
          
              $ docker build .
-             $ docker run --env-file .env -p 5432:5432 -v ./database/data:/var/lib/postgresql/data -d database
+             $ docker run --env-file .env -p 5432:5432 -v ./database:/docker-entrypoint-initdb.d/ -d database
 
   4. Após todo o processamento, e esperado que o banco de dados esteja operacional.
      - Para verificar o funcionando inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
