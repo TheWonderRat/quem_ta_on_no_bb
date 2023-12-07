@@ -33,6 +33,27 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 
 <hr>
 
+<details>
+  
+  <summary>
+    <strong>
+      <h3>
+        Termos e acordos gerais
+      </h3>
+    </strong>
+  </summary>
+  
+  Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
+  - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
+  - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
+  - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
+  - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
+  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
+  
+</details>
+
+<hr>
+
 ## Requisitos ##
 
 <details>
@@ -92,6 +113,8 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
   
 </details>
 
+<hr>
+
 ## Iniciando a aplicação ##
 
 <details>
@@ -145,14 +168,6 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
        - Para verificar o funcionando do fron-end acesse `http://localhost:{PORT_FRONT}`
        - Para verificar o funcionamento do back_end acesse `http://{HOST_BACK}:{PORT_BACK}`
        - Para verificar o banco de dados inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
-
-## Termos e acordos ##
-Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
-  - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
-  - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
-  - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
-  - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
-  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
 
 </details>
 
