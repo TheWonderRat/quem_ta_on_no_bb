@@ -378,14 +378,16 @@ Bibliotecas:
 
        ```
        $ docker network create aprovados_bb
-       $ docker run --name db \
+       $ docker create --name db \
        --env-file .env \
        -p 5432:5432 \
        -v ${PWD}/../database/data:/var/lib/postgresql/data \
-       -v ${PWD}../database/uuid_install.sh:/docker-entrypoint-initdb.d/ \
        --rm \
        --network=aprovados_bb \
-       -d postgres:16
+       postgres:16
+
+
+
        ```
 
      </details>
@@ -417,11 +419,25 @@ Bibliotecas:
     </strong>
   </summary>
 
-  Uma vez o **banco de dados**
-  --------------- 
+  <br>
+
+  Uma vez o **banco de dados** está operacional, será possível iniciar o backend da aplicação. Ressaltamos que não é possível inicar o serviço backend sem a devida conexão a um banco de dados, em razão da integração entre a biblioteca de ORM - (Object-Relational Mapping) e o banco de dados (database/db).
+
+  Para iniciar a aplicação em ambiente de `desenvolvimento` use os seguintes comandos:
+    
+  ```
+  $ npm install
+  $ npm run dev
+  ```
+
+  Para iniciar a aplicação em ambiente de `produção` use os seguintes comandos:
+
+  ```
+  $ cd ..
+  $ docker compose up backend -d
+  ```
 
 </details>
-adfa
 
 <hr>
 
