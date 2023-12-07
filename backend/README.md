@@ -386,8 +386,8 @@ Bibliotecas:
        --network=aprovados_bb \
        postgres:16
 
-
-
+       $ docker cp ${PWD}/../database/uuid_install.sh:/docker-entrypoint-initdb.d/
+       $ docker start db
        ```
 
      </details>
