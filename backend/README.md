@@ -354,7 +354,7 @@ Bibliotecas:
        ```
        $ docker build -t database .
        $ docker network create aprovados_bb
-       $ docker run --name db --env-file .env -p 5432:5432 -v ./database:/docker-entrypoint-initdb.d/ --network=aprovados_bb -d database
+       $ docker run --name db --env-file .env -p 5432:5432 -v ./data:/var/lib/postgresql/data --rm --network=aprovados_bb -d database
        ```
 
      </details>
@@ -367,7 +367,14 @@ Bibliotecas:
 
        ```
        $ docker network create aprovados_bb
-       $ docker run --name db --env-file .env -p 5432:5432 -v ./database:/docker-entrypoint-initdb.d/ --network=aprovados_bb -d postgres:16
+       $ docker run --name db \
+       --env-file .env \
+       -p 5432:5432 \
+       -v ${PWD}/../database/data:/var/lib/postgresql/data \
+       -v ${PWD}../database/uuid_install.sh:/docker-entrypoint-initdb.d/ \
+       --rm \
+       --network=aprovados_bb \
+       -d postgres:16
        ```
 
      </details>
