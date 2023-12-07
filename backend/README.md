@@ -75,7 +75,7 @@ Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do
     - [Arquitetura MVC](https://www.geeksforgeeks.org/mvc-framework-introduction/)
       - Controller: camada responsável por receber e mapear as requisições feitas pelo cliente (comunicação restrita com camada service).
       - Service: camada responsável por estabelecer e processar as regras de negócio (comunicação estrita com camada repository).
-      - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - Object-Relational Mapping).
+      - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#)).
   - Princípios:
     - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
@@ -135,7 +135,7 @@ Bibliotecas:
 1. Linguagem - [TypeScript](https://www.typescriptlang.org/docs/)
 2. Runtime - [Node.js](https://nodejs.org/docs/latest/api/)
 3. Web - [Express](https://expressjs.com/pt-br/starter/hello-world.html)
-4. ORM - Object-Relational Mapping:
+4. ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#):
    - [Sequelize](https://sequelize.org/)
    - [postgres](https://github.com/brianc/node-postgres)
 6. Criptografia:
