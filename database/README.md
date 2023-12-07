@@ -63,6 +63,7 @@ Especificações do banco de dados:
   - Relacional,
   - Primeira letra de cada tabela maiúscula
   - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
+  - Todos os nomes das entidades, colunas, tabelas devem estar em inglês
   - 3FN - (3ª forma normal), para mais informações sobre normalização de tabelas acesse [esse link](https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description)
 
 #### Qualquer alteração da modelagem do banco de dados deverá seguir as especificações acima mencionadas. ####
@@ -231,4 +232,3 @@ Colaboradores :busts_in_silhouette: :
       - ![image](https://dcbadge.vercel.app/api/shield/555185291770593302) :: @sazanh
 
 </details>
-
