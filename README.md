@@ -13,6 +13,26 @@ A aplicação está estruturada em monorepositório, sendo que cada servico tem 
   - bot whatsapp
   - Daemon
 
+## Como contribuir ##
+Cada um dos serviços precisa de manutenção, melhoraria de performance e implementação de novas funcionalidades!!
+Nos ajude fornecendo seu conhecimento e habilidades para implementar uma plataforma mais interessante e performática.
+
+  > Para contribuir:
+  >
+  > 1. Escolha um ou mais serviços que tenha interesse em participar,
+  >
+  > 2. Leia o README.md do(s) serviço(s),
+  >  
+  > 3. Se estiver de acordo com os padrões de projeto utilizado, pode começar a escrever código :thumbsup:
+
+:loudspeaker: **IMPORTANTE** :loudspeaker:
+
+:telephone: [Não se esqueca de entrar em contato conosco.](#contatos) :telephone:
+
+Informações sobre contato no menu abaixo :point_down::point_down::point_down:
+
+<hr>
+
 ## Requisitos ##
 
 <details>
@@ -136,26 +156,12 @@ Aos interessados em particiar do projeto, segue abaixo as recomendações e regr
 
 </details>
 
-## Como contribuir ##
-Cada um dos serviços precisa de manutenção, melhoraria de performance e implementação de novas funcionalidades!!
-Nos ajude fornecendo seu conhecimento e habilidades para implementar uma plataforma mais interessante e performática.
-
-  > Para contribuir:
-  >
-  > 1. Escolha um ou mais serviços que tenha interesse em participar,
-  >
-  > 2. Leia o README.md do(s) serviço(s),
-  >  
-  > 3. Se estiver de acordo com os padrões de projeto utilizado, pode começar a escrever código :thumbsup:
-
-:loudspeaker: **IMPORTANTE** :loudspeaker:
-
-:telephone: [Não se esqueca de entrar em contato conosco.](#contatos) :telephone:
-
-Informações sobre contato no menu abaixo :point_down::point_down::point_down:
+<hr>
 
 ## Contatos ##
 
+<details>
+  
 ### **Envie** uma mensagem para os nossos colaboradores. ###
 >  Tire dúvidas!
 >
@@ -177,3 +183,5 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
       - ![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) :: @feliperaindo
         
       - ![image](https://dcbadge.vercel.app/api/shield/555185291770593302) :: @sazanh
+   
+</details>
