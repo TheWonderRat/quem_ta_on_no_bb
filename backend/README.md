@@ -5,7 +5,7 @@ Olá!! Bem vindo ao backend da nossa aplicação.
 
 Abaixo seguem informações sobre como foi montada a estrutura do backend, que tem como objetivo ser uma API de consulta para o frontend.
 
-Esse serviço será responsável pela lógica de consulta, inserção, atualização e deleção de dados dos aprovados no certame!!
+Esse serviço será responsável pela lógica de consulta, inserção, atualização e deleção ([CRUD](https://pt.wikipedia.org/wiki/CRUD)) de dados dos aprovados no certame!!
 
 <hr>
 
@@ -39,12 +39,12 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
     </strong>
   </summary>
 
-Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
+Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas pelos contribuidores.
   - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
   - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
   - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
   - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
-  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
+  - Pull requests seomente serão mergeados após aprovação de pelo menos 1 (um) outro colaborador.
 
 </details>
 
@@ -60,7 +60,7 @@ Aos interessados em particiar do projeto, segue abaixo as recomendações e regr
     </strong>
   </summary>
 
-Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do **NODE.JS**, para criar um API RESTful, responsável por receber requisições da aplicação frontend, e implementar as lógicas necessárias para realizar as consultas necessárias ao banco de dados.
+Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do **NODE.JS**, para criar um API RESTful, responsável por receber requisições da aplicação frontend, e implementar as lógicas e manipulações de dados necessárias para consultar ou modificar o banco de dados.
 
 <br>
 
@@ -108,10 +108,10 @@ Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do
 Qualquer alteração no código, seja uma pequena correção de bug ou desenvolvimento de uma nova funcionalidade, somente será aceita se
 </strong>
 ⚠️:
-  -  Sem erros de lint no código submetido.
+  -  Não houver erros de lint no código submetido.
   -  Aprovação em todos os testes preexistentes;
   -  Aprovação em todos os novos testes implementados;
-  -  taxa de cobertura do código, por testes, estiver acima do 90%;
+  -  Taxa de cobertura do código, por testes, estiver acima do 90%;
   
 </details>
 
@@ -127,9 +127,9 @@ Qualquer alteração no código, seja uma pequena correção de bug ou desenvolv
     </strong>
   </summary>
 
-  >Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `package.json`
+  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `package.json`
 
-Para novos contribuidores, acreditamos que será importante destacar quais são as principais bibliotecas de terceiros, frameworks e demais stacks que demandarão manutenção e conhecimento por aqueles que trabalharão diretamente no código da aplicação.
+Acreditamos que será importante destacar quais são as principais bibliotecas de terceiros, frameworks e demais stacks que demandarão manutenção e conhecimento por aqueles que trabalharão diretamente no código da aplicação.
 
 Assim como também documentar e deixar a disposição links úteis para consultas e aprendizados.
 
@@ -245,8 +245,10 @@ Bibliotecas:
 <br>
 
 1. Clone o repositório
-   - Use o comando:
-     - `git clone <url do repositório>`
+  
+   - Use um dos comandos abaixo:
+        - `git clone git@github.com:TheWonderRat/quem_ta_on_no_bb.git`
+        - `git clone https://github.com/TheWonderRat/quem_ta_on_no_bb.git`
    - Entre na pasta do repositório que você acabou de clonar:
      - `cd <nome do repositório>`
    - Entre na pasta do backend:
@@ -256,6 +258,7 @@ Bibliotecas:
 <br>
   
 2. Crie um arquvivo `.env`:
+   
    - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
      ```
@@ -283,6 +286,7 @@ Bibliotecas:
 <br>
   
 3. Inicie o conatainer do banco de dados com o Docker através de uma das opções abaixo:
+   
    - <details>
        <summary>
          Através do <code>docker compose</code> (Recomendado):
