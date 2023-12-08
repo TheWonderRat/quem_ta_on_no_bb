@@ -37,12 +37,12 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
     </strong>
   </summary>
 
-Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
+Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas pelos contribuidores.
   - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
   - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
   - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
   - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
-  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
+  - Pull requests seomente serão mergeados após aprovação de pelo menos 1 (um) outro colaborador.
 
 </details>
 
@@ -60,8 +60,9 @@ Aos interessados em particiar do projeto, segue abaixo as recomendações e regr
 
 O banco utilizado para o projeto escolhido foi o **Postgres**.
 Especificações do banco de dados:
-  - Relacional,
-  - Primeira letra de cada tabela maiúscula
+  - Relacional;
+  - Tabelas terão a primeira letra do nome maiúscula;
+  - Tabelas terão o nome no prefencialmente no plural;
   - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
   - Todos os nomes das entidades, colunas, tabelas devem estar em inglês
   - 3FN - (3ª forma normal), para mais informações sobre normalização de tabelas acesse [esse link](https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description)
@@ -71,15 +72,15 @@ Especificações do banco de dados:
 ## Estrutura ##
 O Banco está normalizado até a 3ª forma normal (3FN).
 A entidades existentes no banco são:
-  - Usuários (todos os aprovados no certame)
-  - ranking global (classificação de todos os usuários)
-  - ranking PCD (classificação exclusiva dos usuários PCD - Pessoa Com Deficiência)
-  - ranking PPP (classificação exclusiva dos usuários PPP - Pessoa Preta ou Parda)
-  - Status do usuário (ultimo status do usuário na lista de convocação)
-  - Lotação (departamente e localidade do usuário convocado)
-  - Turma (turma de ingresso do usuário para treinamento)
-  - Cidades (cidades disponíveis para lotação do usuário convocado)
-  - Departamento (departamentos disponíveis para lotação do usuário convocado)
+  - Usuários (todos os aprovados no certame) - `Users`;
+  - Ranking global (classificação de todos os usuários) - `Global_ranking`;
+  - Ranking PCD (classificação exclusiva dos usuários PCD - Pessoa Com Deficiência) - `Pcd_ranking`;
+  - Ranking PPP (classificação exclusiva dos usuários PPP - Pessoa Preta ou Parda) - `Ppp_ranking`;
+  - Status do usuário (ultimo status do usuário na lista de convocação) - `Status_users`
+  - Lotação (departamente e localidade do usuário convocado) - `Job_locations`
+  - Turma (turma de ingresso do usuário para treinamento) - `Classes`
+  - Cidades (cidades disponíveis para lotação do usuário convocado) - `Cities`
+  - Departamento (departamentos disponíveis para lotação do usuário convocado) - `Departments`
 
   Segue abaixo um diagrama de entidade e relacionamento:
 
@@ -181,11 +182,12 @@ A entidades existentes no banco são:
   <br>
 
    1. Clone o repositório
-
-      - Use o comando:
-        - `git clone <url do repositório>`
+      
+      - Use um dos comandos abaixo:
+        - `git clone git@github.com:TheWonderRat/quem_ta_on_no_bb.git`
+        - `git clone https://github.com/TheWonderRat/quem_ta_on_no_bb.git`
       - Entre na pasta do repositório que você acabou de clonar:
-        - `cd <nome do repositório>`
+        - `cd quem_ta_on_no_bb`
       - Entre na pasta do banco de dados:
         - `cd database` 
 
@@ -228,7 +230,7 @@ A entidades existentes no banco são:
   <br>
   
   4. Após todo o processamento, e esperado que o banco de dados esteja operacional.
-     - Para verificar o funcionando do service inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
+     - Para verificar o funcionando do service inicie alguma aplicação para acesso ao banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
      - Caso queria acessar via terminal use os comandos:
 
        ```
