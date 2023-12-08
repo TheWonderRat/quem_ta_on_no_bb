@@ -215,7 +215,7 @@ Bibliotecas:
 
   1. Python versão 3 ou superior :green_circle::
 
-       - Para verificar a instalção do `python` execute no terminal:
+       - Para verificar a instalção do `python3` execute no terminal:
          ```
          $ python3 --version
          ```
