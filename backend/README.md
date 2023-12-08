@@ -60,7 +60,7 @@ Aos interessados em particiar do projeto, segue abaixo as recomendações e regr
     </strong>
   </summary>
 
-Para o backend foi escolhida linguagem `TypeScript`, sendo executada através do **NODE.JS**, para criar um API RESTful, responsável por receber requisições da aplicação frontend, e implementar as lógicas e manipulações de dados necessárias para consultar ou modificar o banco de dados.
+Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através do **NODE.JS**, para criar um API RESTful, responsável por receber requisições da aplicação frontend, e implementar as lógicas e manipulações de dados necessárias para consultar ou modificar o banco de dados.
 
 <br>
 
