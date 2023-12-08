@@ -1,9 +1,34 @@
-# Directories to ignore
-/build
-/node_modules
-/coverage
+### Directories ###
 
-# Files to ignore
-.env.example
+# node
+/node_modules
+
+# jest
+/coverage
+/src/test
+
+# typescript
+/build
+
+### Files ###
+# lint files
 .eslintrc.json
 .eslintignore
+tsconfig.eslint.json
+
+# Enviroment variables
+.env.example
+.env
+
+# git
+.gitignore
+
+# jest
+jest.config.ts
+
+# readme
+README.md
+
+# docker
+Dockerfile
+.dockerignore
