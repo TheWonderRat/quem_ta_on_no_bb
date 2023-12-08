@@ -1,0 +1,10 @@
+Johnathan_Cardoso_Santos;_570554277_-2;_89,0;_2_;_-_;_-_
+Lucas_Cruz_Santos;_570854301_-0;_82,0;_15_;_-_;_2_
+Newton_dos_Santos;_570953832_-9;_87,5;_5_;_-_;_-_
+Paulo_Henrique_da_Graca_Silva;_572119009_-1;_57,0;_40_;_1_;_-_
+Pedro_Henrique_dos_Santos;_570237542_-0;_86,0;_7_;_-_;_-_
+Raissa_de_Jesus_Santana;_570349322_-8;_88,5;_3_;_-_;_-_
+Rayane_dos_Santos_Silva;_570953537_-1;_87,5;_6_;_-_;_-_
+Savio_Ravier_Rezende;_570014176_-6;_88,0;_4_;_-_;_-_
+Victor_Kleverton_Lima_Barreto_;_571110681_-8;_94,0;_1_;_-_;_-_
+Vinicius_Bomfim_Silva;_570220043_-4;_84,5;_10_;_-_;_1

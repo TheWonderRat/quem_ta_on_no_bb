@@ -1,0 +1,12 @@
+Alexandre_Mendes_de_Queiroz;_571231645_-1;_83,5;_3_;_-_;_-_
+Ana_Carolina_Ferreira_Guerreiro;_571226824_-9;_83,5;_2_;_-_;_-_
+Ana_Violeta_Freire_Tobaja;_571708618_-0;_79,0;_8_;_-_;_-_
+Gustavo_Matheus_de_Mani_Oliveira;_571464940_-4;_79,5;_6_;_-_;_-_
+Henrique_Augusto_Brilhante;_571378567_-8;_74,0;_28_;_-_;_1_
+Larissa_Suellen_de_Cassia_Camargo;_570077380_-2;_67,0;_33_;_1_;_-_
+Marcelo_Luis_Soares_Simoneti;_571825467_-9;_86,5;_1_;_-_;_-_
+Matheus_Daumichen_da_Cunha_Torres;_571027148_-9;_82,_5;_4_;_-_;_-_
+Natalia_Coelho_da_Silva;_570157028_-5;_82,0;_5_;_-_;_-_
+Natan_Vieira_de_Melo;_570891533_-4;_73,0;_29_;_-_;_2_
+Patricio_Holtz;_571357773_-0;_61,5;_39_;_2_;_-_
+Pedro_Henrique_Gouvea_de_Camargo;_571652196_-0;_79,5;_7_;_-_;_-

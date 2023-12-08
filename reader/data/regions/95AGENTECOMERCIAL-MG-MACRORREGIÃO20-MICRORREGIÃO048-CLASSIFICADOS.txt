@@ -1,0 +1,13 @@
+Alvaro_Dias_Pimenta_Filho;_571193936_-5;_80,0_;_9_;_-_;_-_
+Antonio_Leandro_de_Barros_Junior;_570606710_-8;_81,0;_8_;_-_;_-_
+Gabriel_Leite_Rangel;_571005403_-2;_66,0;_44_;_2_;_-_
+Inara_Borges_da_Silva_Jose;_571525009_-7;_81,0;_7_;_-_;_-_
+Joana_Amaral_Costa;_570955291_-2;_81,0;_6_;_-_;_-_
+Joao_Vitor_Ferreir_a_Quintal;_570139770_-6;_84,5;_2_;_-_;_-_
+Jose_Antonio_Lima_Santos;_571449689_-6;_83,0;_3_;_-_;_-_
+Lorenzzo_Matheus_Brito_Pereira;_570394440_-2;_76,0;_21_;_-_;_2_
+Luiz_Fernando_dos_Santos;_571259028_-4;_82,5;_4_;_-_;_-_
+Matheus_Luiz_dos_Santos;_571559681_-0;_86_,0;_1_;_-_;_-_
+Natan_Dias_Neves;_571018751_-9;_81,5;_5_;_-_;_-_
+Tarcisio_de_Oliveira_Rocha;_571224151_-3;_79,0;_11_;_-_;_1_
+Ygor_Sebastian_Teixeira_Lages_Pereira;_571438231_-2;_72,5;_36_;_1_;_-

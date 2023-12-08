@@ -1,0 +1,13 @@
+Alexandre_de_Souza_Branco;_571568487_-5;_79,5;_8_;_-_;_-_
+Andre_Bertoldi_de_Barros_Coelho;_571381540_-6;_77,5;_16_;_-_;_1_
+Antonio_Marcos_dos_Reis;_570747068_-0;_81,0;_5_;_-_;_-_
+Eduardo_Warmling;_571115600_-3;_81,0;_7_;_-_;_-_
+Evandro_Vogel;_571069421_-1;_8_2,0;_4_;_-_;_-_
+Felicio_Augusto_Lorenzi_Pedrini;_570337240_-0;_84,5;_2_;_-_;_-_
+Gabriel_Marian_Matter;_570152117_-0;_67,0;_36_;_1_;_-_
+Isaac_Breno_Santos_Ferraz;_571251811_-8;_83,5;_3_;_-_;_-_
+Jose_Alexandre_Moura_de_Almeida;_572025246_-4;_73,0;_31_;_-_;_2_
+Lu_ciana_Mattos_de_Farias;_570819932_-0;_79,5;_9_;_-_;_-_
+Maicon_Humberto_Zemke;_571745296_-4;_66,5;_37_;_2_;_-_
+Marcos_Cesar_Ulbinski_Novais_de_Oliveira;_571345338_-0;_91,0;_1_;_-_;_-_
+Thomas_Edson_Regis_de_Melo;_571644118_-4;_81,0;_6_;_-_;_-
