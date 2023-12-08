@@ -149,10 +149,11 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
    
    1. Clone o repositório
 
-      - Use o comando:
-        - `git clone <url do repositório>`
+      - Use um dos comandos abaixo:
+        - `git clone git@github.com:TheWonderRat/quem_ta_on_no_bb.git`
+        - `git clone https://github.com/TheWonderRat/quem_ta_on_no_bb.git`
       - Entre na pasta do repositório que você acabou de clonar:
-        - `cd <nome do repositório>`
+        - `cd quem_ta_on_no_bb`
 
 
   <br>
@@ -202,8 +203,8 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
   <br>
 
   4. Após todo o processamento, e esperado que a aplicação esteja operacional.
-       - Para verificar o funcionando do fron-end acesse `http://localhost:{PORT_FRONT}`
-       - Para verificar o funcionamento do back_end acesse `http://{HOST_BACK}:{PORT_BACK}`
+       - Para verificar o funcionando do frontend acesse `http://localhost:{PORT_FRONT}`
+       - Para verificar o funcionamento do backend acesse `http://{HOST_BACK}:{PORT_BACK}`
        - Para verificar o banco de dados inicie alguma aplicação para acesso a banco. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
 
 </details>
