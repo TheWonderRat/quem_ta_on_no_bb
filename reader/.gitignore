@@ -1,0 +1,13 @@
+### directories ###
+# venv
+.venv
+
+### files ###
+# Enviroments
+.env
+
+# pycache
+**/__pychache__
+
+# raw data
+/data/regions/*
