@@ -43,12 +43,12 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
     </strong>
   </summary>
   
-  Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas para os contribuidores.
+  Aos interessados em particiar do projeto, segue abaixo as recomendações e regras a serem seguidas pelos contribuidores.
   - Cada serviço tem suas regras e recomendações específicas, consulte o README.md de cada serviço para mais detalhes.
   - Padrões de projeto devem ser seguidos, a fim de se evitar conflitos.
   - Para todos os serviços utilizamos a estrutura de [Git](https://blog.rocketseat.com.br/iniciando-com-git-github/) e [Git Flow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04).
   - Todos os serviços se integram através de containers [docker](https://www.docker.com/) - para mais informações sobre containers [docker / docker compose / docker-cli](https://docs.docker.com/get-started/overview/) consulte a documentação.
-  - Aprovação e merge de cada pull requests deve ter aprovação de pelo menos 1 (um) outro colaborador.
+  - Pull requests seomente serão mergeados após aprovação de pelo menos 1 (um) outro colaborador.
   
 </details>
 
@@ -117,7 +117,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 
   2. Python versão 3 ou superior :green_circle::
 
-       - Para verificar a instalção do `Python` execute no terminal:
+       - Para verificar a instalção do `python3` execute no terminal:
 
          ```
          $ python3 --version
