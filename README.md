@@ -64,19 +64,27 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
     </strong>
   </summary>
 
+  <br>
+
   1. Docker :red_circle::
 
        - Para verificar a instalação do `docker` execute no terminal:
-    
-             $ docker --version
+
+         ```
+         $ docker --version
+         ```
 
          caso o retorno seja algo como:
 
-             $ docker: command not found
+         ```
+         $ docker: command not found
+         ``` 
 
          siga pra este [link - Instalação do Docker Engine -](https://docs.docker.com/engine/install/) para realizar a instalação do Docker.
 
 </details>
+
+<br>
 
 <details>
   <summary>
@@ -85,29 +93,41 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
     </strong>
   </summary>
 
+  <br>
+
   1. Node.js :green_circle::
      
       - Para verificar a instalação do `node` execute no terminal:
-        
-            $ node --version
+
+        ```
+        $ node --version
+        ```    
 
         caso o retorno seja algo como:
 
-             $ Command 'node' not found, but can be installed with:
-             $ sudo apt install nodejs
+        ```
+        $ Command 'node' not found, but can be installed with:
+        $ sudo apt install nodejs
+        ```
 
         siga pra este [link - Inslação do Node através do NVM -](https://github.com/nvm-sh/nvm#installing-and-updating) para realizar a instalação do node.js.
-      
+
+  <br>
+  <br>
 
   2. Python versão 3 ou superior :green_circle::
 
        - Para verificar a instalção do `Python` execute no terminal:
-    
-             $ python3 --version
+
+         ```
+         $ python3 --version
+         ```
 
          caso o retorno seja algo como:
 
-             $ command not found: python
+         ```
+         $ command not found: python
+         ```
 
          siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
   
@@ -125,7 +145,8 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
      </strong>
    </summary>
 
-
+   <br>
+   
    1. Clone o repositório
 
       - Use o comando:
@@ -133,36 +154,52 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
       - Entre na pasta do repositório que você acabou de clonar:
         - `cd <nome do repositório>`
 
+
+  <br>
    
   2. Crie um arquvivo `.env`:
    
-      - User o comando: `touch .env`
-    
+      - User o comando:
+
+        ```
+        $ touch .env
+        ```
+
       - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
-    
-            1.  PORT_BACK=defina_uma_porta
-            2.  PORT_DB=defina_uma_porta
-            3.  PORT_FRONT=defina_uma_porta
-            4.  POSTGRES_USER=defina_um_usuário
-            5.  POSTGRES_PASSWORD=defina_uma_senha
-            6.  POSTGRES_DB=defina_o_nome_do_db
-            7.  HOST_BACK=defina_o_host
-            8.  JWT_SECRET=defina_uma_palavra_passe
-            9.  JWT_EXPIRATION=defina_um_intervalo_de_tempo
+
+        ```
+        1.  PORT_BACK=defina_uma_porta
+        2.  PORT_DB=defina_uma_porta
+        3.  PORT_FRONT=defina_uma_porta
+        4.  POSTGRES_USER=defina_um_usuário
+        5.  POSTGRES_PASSWORD=defina_uma_senha
+        6.  POSTGRES_DB=defina_o_nome_do_db
+        7.  HOST_BACK=defina_o_host
+        8.  JWT_SECRET=defina_uma_palavra_passe
+        9.  JWT_EXPIRATION=defina_um_intervalo_de_tempo
+        ```
 
       - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
           - [JWT - Json Web Token](https://jwt.io/introduction) ou [jwt - for node](https://www.npmjs.com/package/jsonwebtoken)
-       
+
+  <br>
+  
   3. Inicie os conatainers com o Docker:
 
        - User o comando
-         
-             $ docker compose up --build
+
+         ```
+         $ docker compose up --build
+         ```
 
        - Caso esteja usando uma versão mais antiga do Docker, e o comando acima resultar em erro, tente o comando abaixo:
 
-              $ docker-compose up --build
+         ```
+         $ docker-compose up --build
+         ```
+
+  <br>
 
   4. Após todo o processamento, e esperado que a aplicação esteja operacional.
        - Para verificar o funcionando do fron-end acesse `http://localhost:{PORT_FRONT}`
@@ -188,7 +225,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
 >
 > Nos ajude a fazer essa aplicação algo INCRÍVEL! :star_struck:
 
-:busts_in_silhouette: Colaboradores:
+Colaboradores :busts_in_silhouette::
 
   -  Felipe
       - ![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) :: felipe.raindo+dev@gmail.com
