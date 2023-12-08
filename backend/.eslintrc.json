@@ -34,7 +34,10 @@
         "consistent-return": "off",
         "indent": [
             "error",
-            2
+            2,
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "error",
@@ -75,6 +78,31 @@
                 "exceptAfterSingleLine": true
             }
         ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/default-param-last": "error",
+        "@typescript-eslint/no-magic-numbers": [
+            "error",
+            {
+                "ignoreEnums": true,
+                "ignoreNumericLiteralTypes": true,
+                "ignoreReadonlyClassProperties": true
+            }
+        ],
+        "@typescript-eslint/typedef": [
+            "error",
+            {
+                "arrayDestructuring": true,
+                "arrowParameter": true,
+                "memberVariableDeclaration": true,
+                "objectDestructuring": true,
+                "parameter": true,
+                "propertyDeclaration": true,
+                "variableDeclaration": true,
+                "variableDeclarationIgnoreFunction": true
+            }
+        ],
+        "no-magic-numbers": "off",
+        "default-param-last": "off",
         "no-unused-vars": [
             "error",
             {
@@ -165,5 +193,37 @@
         "sonarjs/no-inverted-boolean-check": [
             "error"
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [
+                "src/app/database/ORM/migrations/*"
+            ],
+            "rules": {
+                "max-lines-per-function": "off"
+            }
+        },
+        {
+            "files": [
+                "**/*.test.ts"
+            ],
+            "rules": {
+                "max-lines-per-function": "off",
+                "max-len": "off",
+                "@typescript-eslint/typedef": [
+                    "error",
+                    {
+                        "arrayDestructuring": true,
+                        "arrowParameter": true,
+                        "memberVariableDeclaration": true,
+                        "objectDestructuring": true,
+                        "parameter": true,
+                        "propertyDeclaration": true,
+                        "variableDeclaration": false,
+                        "variableDeclarationIgnoreFunction": true
+                    }
+                ]
+            }
+        }
+    ]
 }

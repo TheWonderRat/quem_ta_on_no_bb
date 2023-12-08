@@ -1,30 +1,52 @@
+version: '3'
 services:
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "${PORT_FRONT}:${PORT_FRONT}"
+  #   depends_on:
+  #     - backend
   
   backend:
     build: ./backend
     container_name: backend
     ports:
-      - "3001:3001"
+      - "${PORT_BACK}:${PORT_BACK}"
     env_file:
       - ./backend/.env
+    environment:
+      HOST_DB: db
     depends_on:
-      - db
+      db: 
+        condition: service_healthy
     restart: on-failure
-  
+    tty: true
+    stdin_open: true
+    networks:
+      - aprovados_bb
+
   db:
     build: ./database
     container_name: db
     ports:
-      - "5432:5432"
+      - ${PORT_DB}:${PORT_DB}
+    environment:
+      PORT_DB: ${PORT_DB}
     env_file:
       - ./database/.env
+    restart: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      interval: 20s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
     volumes:
       - ./database/data:/var/lib/postgresql/data
-    restart: on-failure
+    networks:
+      - aprovados_bb
+
+networks:
+  aprovados_bb:
+    driver: bridge

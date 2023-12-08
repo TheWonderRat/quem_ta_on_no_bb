@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,linux,visualstudiocode,dotenv
 
@@ -210,4 +211,9 @@ dist
 .history
 .ionide
 
+### Project directories ###
+/database/data/*
+/backend/build/*
+
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,linux,visualstudiocode,dotenv
+>>>>>>>>> Temporary merge branch 2
