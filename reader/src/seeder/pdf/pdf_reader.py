@@ -17,5 +17,6 @@ class reader_pdf_file:
     def pages(self):
         return self.__reader.pages
 
+    # methods
     def content_at_index(self, index: int):
         return self.pages[index].extract_text()

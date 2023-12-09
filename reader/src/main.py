@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 
-from src.seeder.seeder import read_file_stream
-from src.requester.api_request import request_to_api
+from src.seeder.seeder import seeder
+from src.requester.http_requester import http_requester
 
 
 def generate_seeders():
-    read_file_stream()
+    seeder().create_seeds()
+
+
+def create_requests():
+    http_requester().create_requests()
 
 
 if __name__ == "__main__":
     generate_seeders()
+    create_requests()

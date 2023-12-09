@@ -39,21 +39,18 @@ class seeder:
     def index(self, new_index) -> None:
         self.__index = new_index
 
+    # methods
     def create_seeds(self) -> None:
-        self.read_file_stream()
+        for content in self.read_file_stream():
+            raw = regex.trim(content)
+            self.last_record = page_manager(raw, self.last_record).read_page()
 
     def read_file_stream(self):
-        with open("./data/dou_bb.pdf", "rb") as file:
+        with open(self.file_path, "rb") as file:
             bytes_stream = BytesIO(file.read())
 
         reader = reader_pdf_file(bytes_stream)
 
-        last_record: str = None
-
-        index: int = 1
-
-        while index < len(reader):
-            content = reader.content_at_index(index)
-            raw = regex.trim(content)
-            last_record = page_manager(raw, last_record).read_page()
-            index += 1
+        while self.index < len(reader):
+            yield reader.content_at_index(self.index)
+            self.index += 1
