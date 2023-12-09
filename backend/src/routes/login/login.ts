@@ -1,4 +1,5 @@
 // library imports
+/*
 import { Router } from 'express';
 
 // class imports
@@ -18,3 +19,4 @@ export default class LoginRouter extends AbstractRouter<LoginController> {
     this.router.post(this.rootPath, this.controller.login);
   }
 }
+*/
