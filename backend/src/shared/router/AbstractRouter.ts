@@ -1,6 +1,7 @@
+import { ControllerTypes, RouterTypes } from "src/types/router/router";
 
 
-export default abstract class AbstractRouter<RouterType, ControllerType>{
+export default abstract class AbstractRouter<RouterType extends RouterTypes, ControllerType extends ControllerTypes>{
   public readonly rootPath: string;
   public readonly router: RouterType;
   protected controller: ControllerType;
