@@ -12,7 +12,7 @@ export class SessionRouter extends AbstractRouter<Router, SessionController>{
   }
 
   
-  protected createLoginRouter(): void{
+  protected createLoginRoute(): void{
 
   }
 
