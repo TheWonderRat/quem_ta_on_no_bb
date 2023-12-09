@@ -169,7 +169,7 @@ Bibliotecas:
          $ docker: command not found
          ```
 
-         siga pra este [link - Instalação do Docker Engine -](https://docs.docker.com/engine/install/) para realizar a instalação do Docker.
+         siga pra este link - [Instalação do Docker Engine](https://docs.docker.com/engine/install/) - para realizar a instalação do Docker.
 
   <br>
   <br>
@@ -187,7 +187,7 @@ Bibliotecas:
          $ command not found: python
          ```
 
-         siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
+         siga para esse link - [Instalação do python](https://wiki.python.org/moin/BeginnersGuide/Download) - para realizar a instalação do python 3 ou superior.
 
 </details>
 
@@ -217,7 +217,7 @@ Bibliotecas:
         $ sudo apt install nodejs
         ```
 
-        siga pra este [link - Inslação do Node através do NVM -](https://github.com/nvm-sh/nvm#installing-and-updating) para realizar a instalação do node.js.
+        siga pra este link - [Inslação do Node através do NVM](https://github.com/nvm-sh/nvm#installing-and-updating) - para realizar a instalação do node.js.
   
 </details>
 
