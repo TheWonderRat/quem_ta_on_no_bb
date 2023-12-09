@@ -580,7 +580,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
 
 <br>
 
-  Utilizamos para o backend duas bibliotecas de testes, sendo elas o [Pytest](https://docs.pytest.org/en/7.4.x/) e o [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#).
+  Utilizamos para o Leitor - `reader` - duas bibliotecas de testes, sendo elas o [Pytest](https://docs.pytest.org/en/7.4.x/) e o [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#).
   
   A biblioteca de teste principal é o [Pytest](https://docs.pytest.org/en/7.4.x/), que está sendo utilizada para desenvolver testes unitários.
 
