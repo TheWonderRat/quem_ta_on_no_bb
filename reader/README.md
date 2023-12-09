@@ -119,7 +119,8 @@ Qualquer alteração no código, seja uma pequena correção de bug ou desenvolv
     </strong>
   </summary>
 
-  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `requirements.txt`
+  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações
+  > diretamente nos arquivos `requirements.txt` e `dev-requirements.txt`
 
 Acreditamos que será importante destacar quais são as principais bibliotecas de terceiros, frameworks e demais stacks que demandarão manutenção e conhecimento por aqueles que trabalharão diretamente no código da aplicação.
 
