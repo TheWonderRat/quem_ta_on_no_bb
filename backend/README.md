@@ -525,7 +525,7 @@ Bibliotecas:
   $ npm run lint:fix
   ```
 
-⚠️ **Observação**: Apesar da biblioteca ser capaz de consertar várias irregularidades automaticamente, **NÃO** quer dizer que ela seja capaz de consertar **TODAS**. Portanto, depois de executar o comando para autocorreção execute a avaliação novamente!! Para resolver as irregularidades remanescentes será necessário que você **DESENVOLVEDOR** realize as correções manualmente. ⚠️
+⚠️ **Observação**: Apesar da biblioteca ser capaz de consertar várias irregularidades automaticamente, **NÃO** quer dizer que ela seja capaz de consertar **TODAS**. Portanto, depois de executar o comando para autocorreção execute a avaliação novamente!! Se houverem irregularidades remanescentes será necessário que você **DESENVOLVEDOR** realize as correções manualmente. ⚠️
 
 <br>
 <br>
