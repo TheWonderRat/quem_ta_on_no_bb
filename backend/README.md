@@ -278,6 +278,8 @@ Bibliotecas:
      8.  JWT_EXPIRATION=tempo-de-expiracao
      ```
 
+   - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+     
    - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
      - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
      - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
@@ -318,10 +320,14 @@ Bibliotecas:
        3.  POSTGRES_PASSWORD=defina_uma_senha
        4.  PORT_DB=defina_uma_porta
        5.  PORT_BACK=defina_uma_porta
-       6.  HOST_BACK=defina_o_host
-       7.  JWT_SECRET=segredo-jwt
-       8.  JWT_EXPIRATION=tempo-de-expiracao
+       6.  PORT_FRONT=defina_uma_porta
+       7.  HOST_BACK=defina_o_host
+       8.  JWT_SECRET=segredo-jwt
+       9.  JWT_EXPIRATION=tempo-de-expiracao
+       10. SEED_ID=número_da_microrregião
        ```
+
+     - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
 
      **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
@@ -372,6 +378,8 @@ Bibliotecas:
        3.  POSTGRES_PASSWORD=defina_uma_senha
        4.  POSTGRES_DB=defina_o_nome_do_db
        ```
+
+     - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
        
      **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
