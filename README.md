@@ -180,6 +180,8 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
         9.  JWT_EXPIRATION=defina_um_intervalo_de_tempo
         ```
 
+      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+
       - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
           - [JWT - Json Web Token](https://jwt.io/introduction) ou [jwt - for node](https://www.npmjs.com/package/jsonwebtoken)
