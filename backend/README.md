@@ -82,14 +82,12 @@ Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através 
     - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
 <br>
-<br>
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
   - Linter:
     - [ESlint](https://eslint.org/)
     - [TypeScript-eslint](https://typescript-eslint.io/)
 
-<br>
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
@@ -100,7 +98,6 @@ Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através 
  - testes de integração:
      - biblioteca utilizada - [SuperTest](https://github.com/ladjs/supertest#readme)
 
-<br>
 <br>
 
 ⚠️
@@ -178,9 +175,8 @@ Bibliotecas:
          $ docker: command not found
          ```
 
-         siga pra este [link - Instalação do Docker Engine -](https://docs.docker.com/engine/install/) para realizar a instalação do Docker.
+         siga pra este link - [Instalação do Docker Engine](https://docs.docker.com/engine/install/) - para realizar a instalação do Docker.
 
-  <br>
   <br>
 
   2. Node.js :red_circle::
@@ -198,7 +194,7 @@ Bibliotecas:
         $ sudo apt install nodejs
         ```
 
-        siga pra este [link - Inslação do Node através do NVM -](https://github.com/nvm-sh/nvm#installing-and-updating) para realizar a instalação do node.js.
+        siga pra este link - [Inslação do Node através do NVM](https://github.com/nvm-sh/nvm#installing-and-updating) - para realizar a instalação do node.js.
 
 </details>
 
@@ -226,7 +222,7 @@ Bibliotecas:
          $ command not found: python
          ```
 
-         siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
+         siga para esse link - [Instalação do python](https://wiki.python.org/moin/BeginnersGuide/Download) - para realizar a instalação do python 3 ou superior.
   
 </details>
 
@@ -254,7 +250,6 @@ Bibliotecas:
    - Entre na pasta do backend:
      - `cd backend`
 
-<br>
 <br>
   
 2. Crie um arquvivo `.env`:
@@ -284,7 +279,6 @@ Bibliotecas:
      - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
      - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
 
-<br>
 <br>
   
 3. Inicie o conatainer do banco de dados com o Docker através de uma das opções abaixo:
@@ -428,7 +422,6 @@ Bibliotecas:
 
      </details>
 
-<br>
 <br>
 
 4. Após iniciado o banco, verifique se o container está ativo e operacional com uma das opções abaixo:
