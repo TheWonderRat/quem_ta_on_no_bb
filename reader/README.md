@@ -514,10 +514,10 @@ Bibliotecas:
 
   <br>
 
-  Para garantir a qualidade do código, utilizamos neste projeto o `Flake8` e o `Black`.
+  Para garantir a qualidade do código, utilizamos neste projeto o [`flake8`](https://github.com/pycqa/flake8) e o [`black`](https://black.readthedocs.io/en/stable/).
   Assim garantimos o alinhamento com as boas práticas de desenvolvimento, legíbilidade do código e facilita a manutenção!
   
-  Para poder executar o `Flake8` ou o `Black` certifique-se que realizou a instalação das dependências do projeto.
+  Para poder executar o `flake8` ou o `black` certifique-se que realizou a instalação das dependências do projeto.
   Espera-se que tenha um diretório de nome `.venv` dentro do serviço `reader`.
   
   Caso tenha pulado alguma etapa, e não tenha instalado as dependências, execute os comandos:
@@ -530,24 +530,24 @@ Bibliotecas:
 
   <br>
 
-  Uma vez que os pacotes estão devidamente instalados, para executar localmente a avaliação do linter - `Flake8` - execute o comando abaixo:
+  Uma vez que os pacotes estão devidamente instalados, para executar localmente a avaliação do linter - `flake8` - execute o comando abaixo:
   
   ```
-  $ npm run lint
+  $ python3 -m flake8
   ```
 
-  > Se a análise do `Eslint` encontrar irregularidades no seu código, estas serão exibidas no
-  > seu terminal. Se a avaliação do `Eslint` não encontrar irregularidades nada será impresso no terminal.
+  > Se a análise do `flake8` encontrar irregularidades no seu código, estas serão exibidas no
+  > seu terminal. Se a avaliação do `flake8` não encontrar irregularidades nada será impresso no terminal.
 
   <br>
 
-  A biblioteca `Eslint` é capaz de consertar automaticamente várias irregularidades. Para realizar a correção automática basta executar o comando abaixo:
+  A biblioteca `black` é capaz de consertar automaticamente várias irregularidades. Para realizar a correção automática basta executar o comando abaixo:
   
   ```
-  $ npm run lint:fix
+  $ python3 -m black src
   ```
 
-⚠️ **Observação**: Apesar da biblioteca ser capaz de consertar várias irregularidades automaticamente, **NÃO** quer dizer que ela seja capaz de consertar **TODAS**. Portanto, depois de executar o comando para autocorreção execute a avaliação novamente!! Para resolver as irregularidades remanescentes será necessário que você **DESENVOLVEDOR** realize as correções manualmente. ⚠️
+⚠️ **Observação**: Apesar da biblioteca ser capaz de consertar várias irregularidades automaticamente, **NÃO** quer dizer que ela seja capaz de consertar **TODAS**. Portanto, depois de executar o comando para autocorreção execute a avaliação novamente!! Se houverem irregularidades remanescentes será necessário que você **DESENVOLVEDOR** realize as correções manualmente. ⚠️
 
 <br>
 <br>
