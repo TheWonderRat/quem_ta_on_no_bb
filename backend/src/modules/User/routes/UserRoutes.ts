@@ -7,35 +7,69 @@
 
 // // controllers
 import UserController from '../controller/UserController';
+ import AbstractRouter from 'src/shared/router/AbstractRouter';
 
-const controller = new UserController();
 
- const userRouter = Router();
+export default class UserRouter extends AbstractRouter<Router, UserController>{
+  constructor(){
+     //TODO::inserir nome da rota no arquivo de constantes
+    super("user", Router(), new UserController())
+   }
 
- //rota para ativacao de conta
- userRouter.post(
-   '/ativar-conta',
-   celebrate({
-     [Segments.BODY]: {
-       login: Joi.number().required(),
-       senha: Joi.string().required(),
-       novaSenha: Joi.string().required(),
-     },
-   }),
-   //UserController.ativarConta,
- );
+  protected initRoutes(): void {
+     this.createUpdatePasswordRoute();
+  } 
+  
+   protected createUpdatePasswordRoute(): void{
+     //rota para atualizacao de conta
+     this.router.post(
+       //TODO: inserir constante
+       '/atualizar-senha',
+        //isAuthenticated,
+       celebrate({
+         [Segments.BODY]: {
+           login: Joi.number().required(),
+           senha: Joi.string().required(),
+           novaSenha: Joi.string().required(),
+         },
+       }),
+      this.controller.updatePassword
+     );
+   }
 
- //rota para atualizacao de conta
- userRouter.post(
-   '/atualizar-senha',
-    //isAuthenticated,
-   celebrate({
-     [Segments.BODY]: {
-       login: Joi.number().required(),
-       senha: Joi.string().required(),
-       novaSenha: Joi.string().required(),
-     },
-   }),
- );
+  protected activateAccountRoute(): void{
+     //rota para atualizacao de conta
+     this.router.post(
+       //TODO: inserir constante
+       '/ativar-conta',
+        //isAuthenticated,
+       celebrate({
+         [Segments.BODY]: {
+           login: Joi.number().required(),
+           senha: Joi.string().required(),
+           novaSenha: Joi.string().required(),
+         },
+       }),
+      this.controller.activateAccount
+     );
+   }
 
- export default userRouter;
+  protected deactivateAccountRoute(): void{
+     //rota para atualizacao de conta
+     this.router.delete(
+       //TODO: inserir constante
+       '/desativar-conta',
+        //isAuthenticated,
+       celebrate({
+         [Segments.BODY]: {
+           login: Joi.number().required(),
+           senha: Joi.string().required(),
+           novaSenha: Joi.string().required(),
+         },
+       }),
+      this.controller.deactivateAccount
+     );
+   }
+}
+
+
