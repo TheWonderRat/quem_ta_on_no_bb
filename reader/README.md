@@ -79,14 +79,12 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
      - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
 <br>
-<br>
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
    - Linter:
      - [Flake8](https://github.com/pycqa/flake8)
      - [Black](https://black.readthedocs.io/en/stable/)
 
-<br>
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
@@ -95,7 +93,6 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
    - testes de cobertura:
      - biblioteca utilizada - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
 
-<br>
 <br>
 
 ⚠️
