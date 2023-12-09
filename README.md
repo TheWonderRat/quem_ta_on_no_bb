@@ -37,6 +37,8 @@ A aplicação está estruturada em monorepositório, sendo que cada servico tem 
 
 </details>
 
+<br>
+
 <details>
   <summary>
     <strong>
@@ -44,6 +46,8 @@ A aplicação está estruturada em monorepositório, sendo que cada servico tem 
     </strong>
   </summary>
 
+  <br>
+  
   1. Node.js :green_circle::
      
       - Para verificar a instalação do `node` execute no terminal:
@@ -56,7 +60,8 @@ A aplicação está estruturada em monorepositório, sendo que cada servico tem 
              $ sudo apt install nodejs
 
         siga pra este link - [Inslação do Node através do NVM](https://github.com/nvm-sh/nvm#installing-and-updating) - para realizar a instalação do node.js.
-      
+
+  <br>
 
   2. Python versão 3 ou superior :green_circle::
 
