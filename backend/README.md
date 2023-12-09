@@ -347,7 +347,10 @@ Bibliotecas:
        ```
   
      </details>
-     
+
+     <br>
+     <br>
+
    - <details>
        <summary>
          Através do diretório <code>database</code>:
@@ -396,6 +399,9 @@ Bibliotecas:
        ```
 
      </details>
+     
+     <br>
+     <br>
      
    - <details>
        <summary>
