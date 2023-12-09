@@ -1,3 +1,4 @@
+/*
 // libraries
 import { Request, Response, NextFunction as Next } from 'express';
 
@@ -32,3 +33,4 @@ export default class AuthMid {
     }
   }
 }
+*/

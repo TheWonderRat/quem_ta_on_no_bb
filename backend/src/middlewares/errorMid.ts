@@ -1,7 +1,9 @@
 // library imports
+//
 import { Request, Response, NextFunction as Next } from 'express';
 
 // Types
+/*
 import AppError from '../shared/utils/error/errorConstructor';
 import { errorTypes } from '../types/exporter';
 
@@ -16,3 +18,4 @@ export default class ErrorMid {
     return res.status(statusCode).send(message);
   }
 }
+*/
