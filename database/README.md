@@ -196,7 +196,7 @@ A entidades existentes no banco são:
    
   2. Crie um arquvivo `.env`:
    
-      - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+      - Use o comando abaixo para criar um arquivo `.env` para definir as variáveis de ambiente:
 
         ```
         $ touch .env
@@ -221,7 +221,7 @@ A entidades existentes no banco são:
   
   3. Inicie o conatainer do banco de dados com o Docker:
 
-       - User os comandos:
+       - Use os comandos:
 
          ```
          $ docker build -t database .
