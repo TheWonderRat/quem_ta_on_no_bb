@@ -84,7 +84,7 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
    - Linter:
      - [Flake8](https://github.com/pycqa/flake8)
-     - [Black](https://github.com/psf/black)
+     - [Black](https://black.readthedocs.io/en/stable/)
 
 <br>
 <br>
@@ -137,7 +137,7 @@ Bibliotecas:
    - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
 5. Linter:
    - [Flake8](https://github.com/pycqa/flake8)
-   - [Black](https://github.com/psf/black)
+   - [Black](https://black.readthedocs.io/en/stable/)
   
 </details>
 
