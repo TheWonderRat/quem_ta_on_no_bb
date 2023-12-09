@@ -250,7 +250,7 @@ Bibliotecas:
         - `git clone git@github.com:TheWonderRat/quem_ta_on_no_bb.git`
         - `git clone https://github.com/TheWonderRat/quem_ta_on_no_bb.git`
    - Entre na pasta do repositório que você acabou de clonar:
-     - `cd <nome do repositório>`
+     - `cd quem_ta_on_no_bb`
    - Entre na pasta do backend:
      - `cd backend`
 
