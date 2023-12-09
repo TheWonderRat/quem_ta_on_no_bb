@@ -349,7 +349,7 @@ Bibliotecas:
      
    - <details>
        <summary>
-         Através do diretório do banco de dados:
+         Através do diretório <code>database</code>:
        </summary>
      
      <br>
