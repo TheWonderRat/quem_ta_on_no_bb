@@ -170,9 +170,8 @@ Bibliotecas:
          siga pra este link - [Instalação do Docker Engine](https://docs.docker.com/engine/install/) - para realizar a instalação do Docker.
 
   <br>
-  <br>
 
-  1. Python versão 3 ou superior :red_circle::
+  2. Python versão 3 ou superior :red_circle::
 
        - Para verificar a instalção do `python3` execute no terminal:
          ```
@@ -244,7 +243,6 @@ Bibliotecas:
      - `cd reader`
 
 <br>
-<br>
   
 2. Crie um arquvivo `.env`:
    
@@ -267,7 +265,6 @@ Bibliotecas:
      - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
      - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
 
-<br>
 <br>
   
 3. Inicie o conatainer do banco de dados com o Docker através de uma das opções abaixo:
