@@ -1,11 +1,13 @@
 
-# `Back-end - pessoas aprovados no Concurso do Banco do Brasil  2023`
+# `Leitor do DOU (Diário Oficial da União)`
 
-Olá!! Bem vindo ao backend da nossa aplicação.
+Olá!! Bem vindo ao Leitor - `reader` - da nossa aplicação.
 
-Abaixo seguem informações sobre como foi montada a estrutura do backend, que tem como objetivo ser uma API de consulta para o frontend.
+Abaixo seguem informações sobre como foi montada a estrutura do Leito, que tem como objetivo leitor dos dados divulgados no DOU - Diário Ofical da União.
 
-Esse serviço será responsável pela lógica de consulta, inserção, atualização e deleção ([CRUD](https://pt.wikipedia.org/wiki/CRUD)) de dados dos aprovados no certame!!
+Após ler os dados do DOU o `reader` separa os dados dos candidatos aprovados, e categoriza entre aqueles que compõe o cadastro de reserva e os demais classificados
+
+Uma vez segregados os dados, o `reader`, por fim, se utilizará dos servicos `backend` e `database` para inserir os aprovados no banco de dados, através de requisições HTTP!!
 
 <hr>
 
@@ -55,29 +57,24 @@ Aos interessados em particiar do projeto, segue abaixo as recomendações e regr
   <summary>
     <strong>
       <h3>
-        Termos e acordos do Back-end
+        Termos e acordos do Leitor
       </h3>
     </strong>
   </summary>
 
-Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através do **NODE.JS**, para criar um API RESTful, responsável por receber requisições da aplicação frontend, e implementar as lógicas e manipulações de dados necessárias para consultar ou modificar o banco de dados.
+O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável por segregar os dados divulgados no DOU - Diário Oficial da União -, e implementar as lógicas e manipulações de dados necessárias para inserir esses dados no banco de dados através de requsições HTTP.
 
 <br>
 
-1. Especificações **gerais** para novas implementações e manutenção do backend:
-  - linguagem - `TypeScript`,
+1. Especificações **gerais** para novas implementações e manutenção do Leitor:
+  - linguagem - `Python`,
   - padrão de escrita e linguagem:
-     - [Camel case](https://pt.wikipedia.org/wiki/CamelCase),
+     - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
      - Inglês para o código,
      - PT-BR para comentários,
   - Estrutura:
-    - POO - [(Progamação Orientada a Objeto)](https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos)
-    - [API RESTful](https://aws.amazon.com/pt/what-is/restful-api/#:~:text=A%20API%20RESTful%20%C3%A9%20uma,terceiros%20para%20executar%20v%C3%A1rias%20tarefas.)
-    - [SSOT - Single Source Of Truth](https://www.zup.com.br/blog/single-source-of-truth)
-    - [Arquitetura MVC](https://www.geeksforgeeks.org/mvc-framework-introduction/)
-      - Controller: camada responsável por receber e mapear as requisições feitas pelo cliente (comunicação restrita com camada service).
-      - Service: camada responsável por estabelecer e processar as regras de negócio (comunicação estrita com camada repository).
-      - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#)).
+    - Servico de leitura e segregação de dados - disponível no diretório `src/seeder`
+    - Servico de criação de requsições HTTP - disponível no diretório `src/requester`
   - Princípios:
     - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
@@ -86,19 +83,17 @@ Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através 
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
   - Linter:
-    - [ESlint](https://eslint.org/)
-    - [TypeScript-eslint](https://typescript-eslint.io/)
+    - [Flake8](https://github.com/pycqa/flake8)
+    - [Black](https://github.com/psf/black)
 
 <br>
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
  - testes unitários:
-     - biblioteca utilizada - [JEST](https://jestjs.io/pt-BR/)
+     - biblioteca utilizada - [Pytest](https://docs.pytest.org/en/7.4.x/)
  - testes de cobertura:
-     - biblioteca utilizada - [JEST](https://jestjs.io/pt-BR/)
- - testes de integração:
-     - biblioteca utilizada - [SuperTest](https://github.com/ladjs/supertest#readme)
+     - biblioteca utilizada - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
 
 <br>
 <br>
@@ -127,26 +122,22 @@ Qualquer alteração no código, seja uma pequena correção de bug ou desenvolv
     </strong>
   </summary>
 
-  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `package.json`
+  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `requirements.txt`
 
 Acreditamos que será importante destacar quais são as principais bibliotecas de terceiros, frameworks e demais stacks que demandarão manutenção e conhecimento por aqueles que trabalharão diretamente no código da aplicação.
 
 Assim como também documentar e deixar a disposição links úteis para consultas e aprendizados.
 
 Bibliotecas:
-1. Linguagem - [TypeScript](https://www.typescriptlang.org/docs/)
-2. Runtime - [Node.js](https://nodejs.org/docs/latest/api/)
-3. Web - [Express](https://expressjs.com/pt-br/starter/hello-world.html)
-4. ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#):
-   - [Sequelize](https://sequelize.org/)
-   - [postgres](https://github.com/brianc/node-postgres)
-6. Criptografia:
-   - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
-   - [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
+1. Linguagem - [Python](https://docs.python.org/3/)
+2. Web - [Requests](https://requests.readthedocs.io/en/latest/)
+6. Leitor PDF - [PyPDF2](https://pypdf2.readthedocs.io/en/latest/)
 7. Testes:
-   - [JEST](https://jestjs.io/pt-BR/)
-   - [SuperTest](https://github.com/ladjs/supertest#readme)
-8. Linter - [ESlint](https://eslint.org/)
+   - [Pytest](https://docs.pytest.org/en/7.4.x/)
+   - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
+8. Linter:
+   - [Flake8](https://github.com/pycqa/flake8)
+   - [Black](https://github.com/psf/black)
   
 </details>
 
