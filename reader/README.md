@@ -67,32 +67,32 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
 <br>
 
 1. Especificações **gerais** para novas implementações e manutenção do Leitor:
-  - linguagem - `Python`,
-  - padrão de escrita e linguagem:
-     - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
-     - Inglês para o código,
-     - PT-BR para comentários,
-  - Estrutura:
-    - Servico de leitura e segregação de dados - disponível no diretório `src/seeder`
-    - Servico de criação de requsições HTTP - disponível no diretório `src/requester`
-  - Princípios:
-    - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
+   - linguagem - `Python`,
+     - padrão de escrita e linguagem:
+       - [Snake case](https://en.wikipedia.org/wiki/Snake_case),
+       - Inglês para o código,
+       - PT-BR para comentários,
+   - Estrutura:
+     - Servico de leitura e segregação de dados - disponível no diretório `src/seeder`
+     - Servico de criação de requsições HTTP - disponível no diretório `src/requester`
+   - Princípios:
+     - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
 <br>
 <br>
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
-  - Linter:
-    - [Flake8](https://github.com/pycqa/flake8)
-    - [Black](https://github.com/psf/black)
+   - Linter:
+     - [Flake8](https://github.com/pycqa/flake8)
+     - [Black](https://github.com/psf/black)
 
 <br>
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
- - testes unitários:
+   - testes unitários:
      - biblioteca utilizada - [Pytest](https://docs.pytest.org/en/7.4.x/)
- - testes de cobertura:
+   - testes de cobertura:
      - biblioteca utilizada - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
 
 <br>
@@ -131,11 +131,11 @@ Assim como também documentar e deixar a disposição links úteis para consulta
 Bibliotecas:
 1. Linguagem - [Python](https://docs.python.org/3/)
 2. Web - [Requests](https://requests.readthedocs.io/en/latest/)
-6. Leitor PDF - [PyPDF2](https://pypdf2.readthedocs.io/en/latest/)
-7. Testes:
+3. Leitor PDF - [PyPDF2](https://pypdf2.readthedocs.io/en/latest/)
+4. Testes:
    - [Pytest](https://docs.pytest.org/en/7.4.x/)
    - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
-8. Linter:
+5. Linter:
    - [Flake8](https://github.com/pycqa/flake8)
    - [Black](https://github.com/psf/black)
   
@@ -174,7 +174,7 @@ Bibliotecas:
   <br>
   <br>
 
-  1. Python versão 3 ou superior :green_circle::
+  1. Python versão 3 ou superior :red_circle::
 
        - Para verificar a instalção do `python3` execute no terminal:
          ```
@@ -202,7 +202,7 @@ Bibliotecas:
 
   <br>
 
-  1. Node.js :red_circle::
+  1. Node.js :green_circle::
      
       - Para verificar a instalação do `node` execute no terminal:
 
