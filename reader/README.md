@@ -610,7 +610,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   Para testes de cobertura, execute o comando abaixo:
 
   ```
-  $ python3 -m pytest --cov=myproj tests/
+  $ python3 -m pytest --cov=src tests/
   ```
 
   **Observarção**: Para realizar a aferição da cobertura do código por testes, esse comando executará **TODOS** os testes. Portanto, é uma execução lenta e que consumirá muitos recursos da máquina. Ao final da avaliação será exibido, no terminal, todos os dados de cobertura de testes.
