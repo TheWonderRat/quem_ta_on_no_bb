@@ -120,6 +120,8 @@ A entidades existentes no banco são:
 
 </details>
 
+<br>
+
 <details>
   <summary>
     <strong>
@@ -146,7 +148,6 @@ A entidades existentes no banco são:
 
         siga pra este link - [Inslação do Node através do NVM](https://github.com/nvm-sh/nvm#installing-and-updating) - para realizar a instalação do node.js.
 
-  <br>
   <br>
 
   2. Python versão 3 ou superior :green_circle::
@@ -192,7 +193,6 @@ A entidades existentes no banco são:
         - `cd database` 
 
   <br>
-  <br>
    
   2. Crie um arquvivo `.env`:
    
@@ -217,7 +217,6 @@ A entidades existentes no banco são:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
 
   <br>
-  <br>
   
   3. Inicie o conatainer do banco de dados com o Docker:
 
@@ -228,7 +227,6 @@ A entidades existentes no banco são:
          $ docker run --name db --env-file .env -p 5432:5432 -v ./data:/var/lib/postgresql/data --rm --network=aprovados_bb -d database
          ```
 
-  <br>
   <br>
   
   4. Após todo o processamento, e esperado que o banco de dados esteja operacional.
