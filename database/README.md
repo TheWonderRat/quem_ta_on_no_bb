@@ -211,6 +211,8 @@ A entidades existentes no banco são:
         4.  POSTGRES_DB=defina_o_nome_do_db
         ```
 
+      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+        
       - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
           - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
 
