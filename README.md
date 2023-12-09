@@ -160,7 +160,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
    
   2. Crie um arquvivo `.env`:
    
-      - User o comando:
+      - Use o comando:
 
         ```
         $ touch .env
