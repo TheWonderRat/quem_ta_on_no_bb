@@ -1,6 +1,28 @@
-import { ListRequest, ListResponse } from "./list";
-import { LoginRequest, LoginResponse} from "./login";
-import { UserRequest, UserResponse } from "./user";
+import { 
+  ListRequest, ListResponse 
+} from "./list";
 
-export type ServiceRequestTypes = ListRequest | LoginRequest | UserRequest; 
-export type ServiceResponseTypes = ListResponse | LoginResponse | UserResponse; 
+import { 
+  CreateSessionRequest , CreateSessionResponse
+} from "./session";
+
+import { 
+  ActivateAccountRequest, ActivateAccountResponse,
+  UpdatePasswordRequest, UpdatePasswordResponse
+} from "./user";
+
+export type ServiceRequestTypes = 
+//list request types
+  ListRequest | 
+//user request types
+  UpdatePasswordRequest | ActivateAccountRequest |
+//session request types
+  CreateSessionRequest;
+
+export type ServiceResponseTypes = 
+//list response types
+  ListResponse |
+//user response types
+  UpdatePasswordResponse | ActivateAccountResponse |
+//session response types
+CreateSessionResponse;
