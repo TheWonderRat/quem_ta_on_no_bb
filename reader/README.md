@@ -243,7 +243,7 @@ Bibliotecas:
    - Entre na pasta do repositório que você acabou de clonar:
      - `cd quem_ta_on_no_bb`
    - Entre na pasta do backend:
-     - `cd backend`
+     - `cd reader`
 
 <br>
 <br>
@@ -259,14 +259,8 @@ Bibliotecas:
    - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
 
      ```
-     1.  POSTGRES_DB=defina_o_nome_do_db
-     2.  POSTGRES_USER=defina_um_usuário
-     3.  POSTGRES_PASSWORD=defina_uma_senha
-     4.  PORT_DB=defina_uma_porta
-     5.  PORT_BACK=defina_uma_porta
-     6.  HOST_BACK=defina_o_host
-     7.  JWT_SECRET=segredo-jwt
-     8.  JWT_EXPIRATION=tempo-de-expiracao
+     1.  PORT_BACK=porta_do_backend
+     2.  SEED_ID=número_da_microrregião
      ```
 
    - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
@@ -328,13 +322,13 @@ Bibliotecas:
      - Inicie o banco de dados através do comando:
 
        ```
-       $ docker compose up db -d
+       $ docker compose up backend -d
        ```
 
        Caso esteja usando uma versão mais antiga do Docker, e o comando acima resultar em erro, tente o comando abaixo:
 
        ```
-       $ docker-compose up db -d
+       $ docker-compose up backend -d
        ```
   
      </details>
@@ -344,7 +338,7 @@ Bibliotecas:
 
    - <details>
        <summary>
-         Através do diretório <code>database</code>:
+         Através dos diretórios <code>database</code> e <code>backend</code>:
        </summary>
      
      <br>
@@ -357,7 +351,7 @@ Bibliotecas:
 
      <br>
      
-     - Use o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+     - Use o comando abaixo para criar uma arquivo `.env` para definir as variáveis de ambiente:
 
        ```
        $ touch .env
@@ -373,11 +367,11 @@ Bibliotecas:
        3.  POSTGRES_PASSWORD=defina_uma_senha
        4.  POSTGRES_DB=defina_o_nome_do_db
        ```
-  
-       > ⚠️ **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas
-       > anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+  
+     - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
+       - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
 
      <br>
      
@@ -389,50 +383,71 @@ Bibliotecas:
        $ docker run --name db --env-file .env -p 5432:5432 -v ./data:/var/lib/postgresql/data --rm --network=aprovados_bb -d database
        ```
 
-     </details>
-     
      <br>
-     <br>
-     
-   - <details>
-       <summary>
-         Através da criação de containers manualmente:
-       </summary>
-     
-     <br>
-     
-     - Use o comando abaixo para criar um container para o banco de dados, criar uma `network`, e configurar as variáveis de ambinte:
-
-       ```
-       $ docker network create aprovados_bb
-       $ docker create --name db \
-       --env-file .env \
-       -p 5432:5432 \
-       -v ${PWD}/../database/data:/var/lib/postgresql/data \
-       --rm \
-       --network=aprovados_bb \
-       postgres:16
-
-       $ docker cp ${PWD}/../database/uuid_install.sh:/docker-entrypoint-initdb.d/
-       $ docker start db
-       ```
-
-     </details>
-
-<br>
-<br>
-
-4. Após iniciado o banco, verifique se o container está ativo e operacional com uma das opções abaixo:
-     - Inicie alguma aplicação para acesso ao postgres. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
        
-       ou
-   
-     - Acesse via terminal com os comandos:
+     - Após iniciado o banco, verifique se o container está ativo e operacional com uma das opções abaixo:
+       - Inicie alguma aplicação para acesso ao postgres. Ex.: [Dbeaver](https://dbeaver.io/download/), [pgAdmin](https://www.pgadmin.org/)
        
+         ou
+
+       - Acesse via terminal com os comandos:
+       
+         ```
+         $ docker exec -i -t db sh
+         $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
+         ```
+
+     <br>
+  
+     - Mude para o diretório `backend` com o comando:
+    
        ```
-       $ docker exec -i -t db sh
-       $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 5432 -W
+       $ cd ../backend
        ```
+
+     <br>
+  
+     - Use o comando abaixo para criar uma arquivo `.env` para definir as variáveis de ambiente:
+
+       ```
+       $ touch .env
+       ```
+
+     <br>
+     
+     - Abra o arquivo `.env` no editor de códido de sua preferência e defina as seguintes variáveis de ambiente:
+
+       ```
+       1.  POSTGRES_DB=defina_o_nome_do_db
+       2.  POSTGRES_USER=defina_um_usuário
+       3.  POSTGRES_PASSWORD=defina_uma_senha
+       4.  PORT_DB=defina_uma_porta
+       5.  PORT_BACK=defina_uma_porta
+       6.  HOST_BACK=defina_o_host
+       7.  JWT_SECRET=segredo-jwt
+       8.  JWT_EXPIRATION=tempo-de-expiracao
+       ```
+  
+       > ⚠️ **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas
+       > anteriormente no arquivo `.env` do diretório `database` criadas no passo anterior, e com as variáveis de ambiente
+       > definidas no arquivo `.env` criado no passo 2.
+  
+     - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+    
+     - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
+       - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
+       - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
+       
+     <br>
+
+     - Inicie a aplicação `backend` em ambiente de `desenvolvimento` com os comandos:
+    
+       ```
+       $ npm install
+       $ npm run dev
+       ```
+       
+     </details>
 
 </details>
 
@@ -442,7 +457,7 @@ Bibliotecas:
 
   <summary>
     <strong>
-      ‼ Iniciando a aplicação backend !!
+      ‼ Iniciando o Leitor - `reader` !!
     </strong>
   </summary>
 
