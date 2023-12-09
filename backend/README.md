@@ -65,37 +65,37 @@ Para o backend foi escolhida a linguagem `TypeScript`, sendo executada através 
 <br>
 
 1. Especificações **gerais** para novas implementações e manutenção do backend:
-  - linguagem - `TypeScript`,
-  - padrão de escrita e linguagem:
+   - linguagem - `TypeScript`,
+   - padrão de escrita e linguagem:
      - [Camel case](https://pt.wikipedia.org/wiki/CamelCase),
      - Inglês para o código,
      - PT-BR para comentários,
-  - Estrutura:
-    - POO - [(Progamação Orientada a Objeto)](https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos)
-    - [API RESTful](https://aws.amazon.com/pt/what-is/restful-api/#:~:text=A%20API%20RESTful%20%C3%A9%20uma,terceiros%20para%20executar%20v%C3%A1rias%20tarefas.)
-    - [SSOT - Single Source Of Truth](https://www.zup.com.br/blog/single-source-of-truth)
-    - [Arquitetura MVC](https://www.geeksforgeeks.org/mvc-framework-introduction/)
-      - Controller: camada responsável por receber e mapear as requisições feitas pelo cliente (comunicação restrita com camada service).
-      - Service: camada responsável por estabelecer e processar as regras de negócio (comunicação estrita com camada repository).
-      - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#)).
-  - Princípios:
-    - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
+   - Estrutura:
+     - POO - [(Progamação Orientada a Objeto)](https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos)
+     - [API RESTful](https://aws.amazon.com/pt/what-is/restful-api/#:~:text=A%20API%20RESTful%20%C3%A9%20uma,terceiros%20para%20executar%20v%C3%A1rias%20tarefas.)
+     - [SSOT - Single Source Of Truth](https://www.zup.com.br/blog/single-source-of-truth)
+     - [Arquitetura MVC](https://www.geeksforgeeks.org/mvc-framework-introduction/)
+       - Controller: camada responsável por receber e mapear as requisições feitas pelo cliente (comunicação restrita com camada service).
+       - Service: camada responsável por estabelecer e processar as regras de negócio (comunicação estrita com camada repository).
+       - Repository:  camada responsável por realizar a conexão com banco de dados (comunicação restrita com o ORM - [Object-Relational Mapping](https://blog.cubos.academy/orm-object-relational-mapper/#)).
+     - Princípios:
+       - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
 <br>
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
-  - Linter:
-    - [ESlint](https://eslint.org/)
-    - [TypeScript-eslint](https://typescript-eslint.io/)
+   - Linter:
+     - [ESlint](https://eslint.org/)
+     - [TypeScript-eslint](https://typescript-eslint.io/)
 
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
- - testes unitários:
+   - testes unitários:
      - biblioteca utilizada - [JEST](https://jestjs.io/pt-BR/)
- - testes de cobertura:
+   - testes de cobertura:
      - biblioteca utilizada - [JEST](https://jestjs.io/pt-BR/)
- - testes de integração:
+   - testes de integração:
      - biblioteca utilizada - [SuperTest](https://github.com/ladjs/supertest#readme)
 
 <br>
