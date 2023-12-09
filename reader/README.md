@@ -514,21 +514,23 @@ Bibliotecas:
 
   <br>
 
-  Para garantir a qualidade do código, utilizamos neste projeto o `Eslint`.
+  Para garantir a qualidade do código, utilizamos neste projeto o `Flake8` e o `Black`.
   Assim garantimos o alinhamento com as boas práticas de desenvolvimento, legíbilidade do código e facilita a manutenção!
   
-  Para poder executar o `Eslint` certifique-se que realizou a instalação das dependências do projeto.
-  Se você seguiu o passo-a-passo até aqui é esperado que tenha uma pasta com nome `node_modules` dentro do diretório `backend`.
+  Para poder executar o `Flake8` ou o `Black` certifique-se que realizou a instalação das dependências do projeto.
+  Espera-se que tenha um diretório de nome `.venv` dentro do serviço `reader`.
   
-  Caso tenha pulado alguma etapa, e não tenha a pasta acima mencionada dentro do diretório `backend`, execute o comando:
+  Caso tenha pulado alguma etapa, e não tenha instalado as dependências, execute os comandos:
   
   ```
-  $ npm install
+  $ python3 -m venv .venv
+  $ source .venv/bin/activate
+  $ python3 -m pip install -r dev-requirements.txt
   ```
 
   <br>
 
-  Uma vez que os pacotes estão devidamente instalados, para executar localmente a avaliação do linter - `Eslint` - execute o comando abaixo:
+  Uma vez que os pacotes estão devidamente instalados, para executar localmente a avaliação do linter - `Flake8` - execute o comando abaixo:
   
   ```
   $ npm run lint
