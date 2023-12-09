@@ -308,6 +308,10 @@ Bibliotecas:
 
      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
 
+     - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
+       - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
+       - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
+
      <br>
      
      - Inicie o banco de dados através do comando:
