@@ -191,7 +191,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
   
   3. Inicie os conatainers com o Docker:
 
-       - User o comando
+       - Use o comando
 
          ```
          $ docker compose up --build
