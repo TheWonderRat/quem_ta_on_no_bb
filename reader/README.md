@@ -174,7 +174,35 @@ Bibliotecas:
   <br>
   <br>
 
-  2. Node.js :red_circle::
+  1. Python versão 3 ou superior :green_circle::
+
+       - Para verificar a instalção do `python3` execute no terminal:
+         ```
+         $ python3 --version
+         ```
+
+         caso o retorno seja algo como:
+
+         ```
+         $ command not found: python
+         ```
+
+         siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
+
+</details>
+
+<br>
+
+<details>
+  <summary>
+    <strong>
+      !! Requisitos opcionais (desejáveis) !!
+    </strong>
+  </summary>
+
+  <br>
+
+  1. Node.js :red_circle::
      
       - Para verificar a instalação do `node` execute no terminal:
 
@@ -190,34 +218,6 @@ Bibliotecas:
         ```
 
         siga pra este [link - Inslação do Node através do NVM -](https://github.com/nvm-sh/nvm#installing-and-updating) para realizar a instalação do node.js.
-
-</details>
-
-<br>
-
-<details>
-  <summary>
-    <strong>
-      !! Requisitos opcionais (desejáveis) !!
-    </strong>
-  </summary>
-
-  <br>
-
-  1. Python versão 3 ou superior :green_circle::
-
-       - Para verificar a instalção do `python3` execute no terminal:
-         ```
-         $ python3 --version
-         ```
-
-         caso o retorno seja algo como:
-
-         ```
-         $ command not found: python
-         ```
-
-         siga para esse [link - Instalação do python -](https://wiki.python.org/moin/BeginnersGuide/Download) para realizar a instalação do python 3 ou superior.
   
 </details>
 
