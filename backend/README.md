@@ -259,7 +259,7 @@ Bibliotecas:
   
 2. Crie um arquvivo `.env`:
    
-   - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+   - Use o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
      ```
      $ touch .env
@@ -304,7 +304,7 @@ Bibliotecas:
      
      <br>
      
-     - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+     - Use o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
        ```
        $ touch .env
@@ -326,10 +326,11 @@ Bibliotecas:
        9.  JWT_EXPIRATION=tempo-de-expiracao
        10. SEED_ID=número_da_microrregião
        ```
+       
+       > ⚠️ **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas
+       > anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
-
-     **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      <br>
      
@@ -362,7 +363,7 @@ Bibliotecas:
 
      <br>
      
-     - User o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
+     - Use o comando abaixo para criar uma arquivo para definir as variáveis de ambiente:
 
        ```
        $ touch .env
@@ -378,10 +379,11 @@ Bibliotecas:
        3.  POSTGRES_PASSWORD=defina_uma_senha
        4.  POSTGRES_DB=defina_o_nome_do_db
        ```
+  
+       > ⚠️ **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas
+       > anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
-       
-     **Observação**: As variáveis de ambiente definidas neste arquivo **DEVEM** coincidir com as variáveis definidas anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      <br>
      
@@ -451,7 +453,8 @@ Bibliotecas:
 
   Uma vez que o **banco de dados** está operacional, será possível iniciar o backend da aplicação.
   
-  > Ressaltamos que não é possível inicar o serviço backend sem a devida conexão a um banco de dados, em razão da integração entre a biblioteca de ORM - (Object-Relational Mapping) e o banco de dados (database/db).
+  > Ressaltamos que não é possível inicar o serviço backend sem a devida conexão a um banco de dados,
+  > em razão da integração entre a biblioteca de ORM - (Object-Relational Mapping) e o banco de dados (database/db).
 
   <br>
   
