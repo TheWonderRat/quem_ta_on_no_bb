@@ -178,6 +178,7 @@ Informações sobre contato no menu abaixo :point_down::point_down::point_down:
         7.  HOST_BACK=defina_o_host
         8.  JWT_SECRET=defina_uma_palavra_passe
         9.  JWT_EXPIRATION=defina_um_intervalo_de_tempo
+        10. SEED_ID=número_da_microrregião
         ```
 
       - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
