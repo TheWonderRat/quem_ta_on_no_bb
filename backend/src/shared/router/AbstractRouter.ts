@@ -2,7 +2,7 @@
 
 export default abstract class AbstractRouter<RouterType, ControllerType>{
   public readonly rootPath: string;
-  protected router: RouterType;
+  public readonly router: RouterType;
   protected controller: ControllerType;
 
   //rootPath: deve incluid apenas o nome da rota, nao o nome dos antecessores
