@@ -23,6 +23,8 @@ A aplicação está estruturada em monorepositório, sendo que cada servico tem 
     </strong>
   </summary>
 
+  <br>
+
   1. Docker :red_circle::
 
        - Para verificar a instalação do `docker` execute no terminal:
