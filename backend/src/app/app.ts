@@ -1,14 +1,15 @@
 // library imports
 import express, { Express, Router } from 'express';
 
-// routes
-import * as routers from '../routes/exporter';
-
 // middleware
-import { ErrorMid } from '../middlewares/exporter';
+//TODO: criar middleware de erro depois
+//import { ErrorMid } from '../middlewares/exporter';
 
 // SSOT
 import { pathNames } from '../SSOT/exporter';
+import SessionRouter from 'src/modules/Session/routes/SessionRoutes';
+import ListRouter from 'src/modules/List/routes/ListRoutes';
+import UserRouter from 'src/modules/User/routes/UserRoutes';
 
 export default class App {
   // private properties
@@ -35,11 +36,14 @@ export default class App {
   }
 
   private initRoutes(): void {
-    this.routerManager.use(pathNames.login, new routers.LoginRouter().router);
-    this.routerManager.use(pathNames.health, new routers.HealthRouter().router);
+    this.routerManager.use(pathNames.login, new SessionRouter().router); 
+    this.routerManager.use(pathNames.login, new ListRouter().router); 
+    this.routerManager.use(pathNames.login, new UserRouter().router); 
+
+    //this.routerManager.use(pathNames.health, //new routers.HealthRouter().router);
   }
 
   private initErrorMid(): void {
-    this.app.use(ErrorMid.errorHandler);
+    //this.app.use(ErrorMid.errorHandler);
   }
 }
