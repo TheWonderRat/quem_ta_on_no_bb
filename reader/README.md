@@ -486,7 +486,7 @@ Bibliotecas:
   2. Instale as dependências com o comando:
 
      ```
-     $ python3 -m pip install -r requirements.txt
+     $ python3 -m pip install -r dev-requirements.txt
      ```
 
   <br>
