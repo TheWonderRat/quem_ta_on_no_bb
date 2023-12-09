@@ -1,8 +1,0 @@
-Adriel_Chester_Viana_Nasralla;_571159742_-2;_76,0;_14_;_-_;_-_
-Arthur_Heindrickson_Prudente_dos_Santos;_571083166_-9;_77,0;_12_;_-_;_-_
-Bruna_Bispo_Ribeiro;_571447096_-0;_77,5;_10_;_-_;_-_
-Leandro_Gomes_de_Asssis;_571061784_-6;_64,5;_52_;_3_;_-_
-Samuel_Pedroso_Rocha;_570227_650-3;_69,0;_46_;_-_;_4_
-Tiago_Miranda_da_Silva;_570009219_-6;_76,0;_13_;_-_;_-_
-Tierry_Wehren_Bairros;_571183925_-0;_77,5;_11_;_-_;_-_
-Yan_Silva_Ayres_da_Paixao;_571507706_-0;_70,5;_42_;_-_;_3

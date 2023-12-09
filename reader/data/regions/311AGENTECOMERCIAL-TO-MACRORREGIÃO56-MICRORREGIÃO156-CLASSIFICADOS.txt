@@ -1,7 +1,0 @@
-Amadeus_de_Sousa_Lima_Neto;_570017803_-9;_73,0;_8_;_-_;_2_
-Anderson_Vieira_de_Souza;_571932690_-1;_60,0;_31_;_1_;_-_
-Carlos_Andre_Arrais_Moura;_571308432_-7;_77,0;_3_;_-_;_-_
-Hiago_Quaresma_Silva;_570864740_-4;_79,0;_2_;_-_;_-_
-Jakelyne_Lima_de_Freitas;_570760842_-3;_74,5;_5_;_-_;_1_
-Joao_Pedro_Coutinho_Esmerio_Barros;_570887498_-0;_75,0;_4_;_-_;_-_
-Natan_ael_Quixaba_de_Carvalho_Silva;_570076181_-1;_82,0;_1_;_-_;_-

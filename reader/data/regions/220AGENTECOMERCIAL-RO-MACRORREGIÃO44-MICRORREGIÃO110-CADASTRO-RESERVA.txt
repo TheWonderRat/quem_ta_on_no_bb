@@ -1,6 +1,0 @@
-Edgar_Alfaia_Pereira;_571207347_-8;_76,0;_9_;_-_;_-_
-Gean_Oliveira_de_Matos;_570302384_-1;_75,5;_1_1_;_-_;_-_
-Joao_Bosco_Villar_do_Vale;_571591827_-3;_55,0;_61_;_3_;_-_
-Luca_Silveira_Pecanha_do_Carmo;_570876108_-8;_70,0;_32_;_-_;_4_
-Luiz_Roberto_Passos_Bezerra;_571059200_-0;_76,0;_8_;_-_;_-_
-Odalto_Massayuki_Yaguinuma_Junior;_570238990_-7;_75,5;_10_;_-_;_-

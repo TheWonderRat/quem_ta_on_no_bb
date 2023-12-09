@@ -1,7 +1,0 @@
-Alicia_Batista_Furtado;_570736203_-6;_52,0;_33_;_1_;_-_
-Andrey_Goncalves_Sobrinho;_571471069_-0;_74,0;_5_;_-_;_-_
-Cauan_Felipe_Girao_Amorim;_570093404_-8;_74,0;_4_;_-_;_-_
-Clenilson_Miranda_de_Sousa;_570215290_-8;_78,0;_2_;_-_;_-_
-Jeferson_Santos_da_Silva;_571544312_-5;_76,0;_3_;_-_;_-_
-Jerson_Ferreira_Sozinho;_571437390_-4;_79,5;_1_;_-_;_-_
-Vinnicius_de_Sousa_Custodio;_571245517_-9;_72,0;_8_;_-_;_1

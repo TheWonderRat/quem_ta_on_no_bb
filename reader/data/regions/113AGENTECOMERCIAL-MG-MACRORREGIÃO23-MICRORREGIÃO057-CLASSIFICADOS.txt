@@ -1,6 +1,0 @@
-Anna_Fernanda_Morais_Capistrano;_571212099_-1;_79,0;_3_;_-_;_-_
-Marcelo_Joao_Araujo_Lima;_571123247_-4;_78,0;_4_;_-_;_-_
-Marco_Octavio_de_Oliveira_Araujo;_570895873_-4;_81,5;_2_;_-_;_-_
-Rael_Renner_Rodrigues;_571428187_-3;_83,5;_1_;_-_;_-_
-Rafael_Omar_de_Souza_Silva;_572101648_-3;_65,5;_19_;_1_;_-_
-Vitor_Diniz_Ricardo_e_Silva;_571879687_-5;_71,0;_16_;_-_;_1

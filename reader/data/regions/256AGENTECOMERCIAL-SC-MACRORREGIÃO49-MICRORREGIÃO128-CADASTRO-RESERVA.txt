@@ -1,9 +1,0 @@
-Gustavo_Welter_Kolling;_570678068_-2;_77,5;_21_;_-_;_-_
-Jaime_Giehl;_571501831_-5;_60,5;_96_;_5_;_-_
-Leandro_Cassio_da_Silva_Fraga;_570651475_-6;_78,0;_20_;_-_;_-_
-Lucas_Avila_de_Oliveira;_571047521_-8;_69,0;_78_;_-_;_6
-_257_AGENTE_COMERCIAL_
-_S_C_
-_MACRORREGIÃO_49_-_MICRORREGIÃO_129_
-_CLASSIFICADOS:_Carlos_Henrique_Munaretto;_570678374_-0;_69,5;_2_;_-_;_-_
-Eduardo_Pereira_Luiz;_570285422_-9;_82,0;_1_;_-_;_-
