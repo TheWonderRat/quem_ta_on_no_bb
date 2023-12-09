@@ -10,8 +10,10 @@ COPY . .
 
 ENV SEED_ID=${SEED_ID}
 
-ENV HOST=${HOST}
+ENV HOST_BACK=${HOST_BACK}
 
-ENV PORT=${PORT}
+ENV PORT_BACK=${HOST_BACK}
 
-RUN ["python3", "-m", "src.main"]
+ENTRYPOINT [ "python3", "-m" ]
+
+CMD [ "src.main" ]

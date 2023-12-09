@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "db:up": "npx sequelize-cli db:migrate",
-    "prestart": "npm run db:up",
+    "db:drop": "npx sequelize-cli db:drop",
+    "db:create": "npx sequelize-cli db:create",
+    "prestart": "npm run db:drop && npm run db:create && npm run db:up",
     "start": "node .",
     "build-local": "env $(cat .env) tsc --project tsconfig.json",
     "migrate-local": "env $(cat .env) npx sequelize-cli db:migrate",

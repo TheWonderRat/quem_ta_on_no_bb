@@ -6,14 +6,14 @@ import requests
 
 
 # Modules
-from requester.seed_reader.read_file import file_reader
+from src.requester.seed_reader.read_file import file_reader
 
 
 class http_requester:
     def __init__(self) -> None:
         # Environment variables to connect with API
-        self.__host: str = os.environ.get('HOST', 'localhost')
-        self.__port: str = os.environ.get('PORT', '3001')
+        self.__host: str = os.environ.get('HOST_BACK', 'localhost')
+        self.__port: str = os.environ.get('PORT_BACK', '3001')
         self.__seed_id = os.environ.get('SEED_ID', '158')
 
     # getters

@@ -2,7 +2,7 @@
 import os
 
 # utils
-from utils.regex_helper import regex
+from src.utils.regex_helper import regex
 
 
 class file_reader:

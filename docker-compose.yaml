@@ -7,6 +7,18 @@ services:
   #     - "${PORT_FRONT}:${PORT_FRONT}"
   #   depends_on:
   #     - backend
+
+  reader:
+    build: ./reader
+    container_name: reader
+    environment:
+      HOST_BACK: backend
+    env_file:
+      - ./reader/.env
+    depends_on:
+      - backend
+    networks:
+      - aprovados_bb
   
   backend:
     build: ./backend
@@ -18,7 +30,7 @@ services:
     environment:
       HOST_DB: db
     depends_on:
-      db: 
+      db:
         condition: service_healthy
     restart: on-failure
     tty: true
