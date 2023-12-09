@@ -618,7 +618,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   $ python3 -m pytest --cov=myproj tests/
   ```
 
-  **Observarção**: Para realizar a aferição da cobertura do código por testes, esse comando executará **TODOS** os testes. Portanto, é uma execução lenta e que consumirá muitos recursos da máquina. Ao final da avaliação será exibido, no terminal, todos os dados de cobertura de testes, e será criado automaticamente um diretório de nome `coverage` que armazenará esses dados.
+  **Observarção**: Para realizar a aferição da cobertura do código por testes, esse comando executará **TODOS** os testes. Portanto, é uma execução lenta e que consumirá muitos recursos da máquina. Ao final da avaliação será exibido, no terminal, todos os dados de cobertura de testes.
 
 
 :books: Para mais informações sobre as bibliotecas de testes [Pytest](https://docs.pytest.org/en/7.4.x/) e [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#) utilize a documentação oficial. :books:
