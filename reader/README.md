@@ -457,32 +457,46 @@ Bibliotecas:
 
   <summary>
     <strong>
-      ‼ Iniciando o Leitor - `reader` !!
+      ‼ Iniciando o Leitor - <code>reader</code> !!
     </strong>
   </summary>
 
   <br>
 
-  Uma vez que o **banco de dados** está operacional, será possível iniciar o backend da aplicação.
+  Uma vez que o `database` e a aplicação `backend` estiverem operacionais será possível iniciar o Leitor - `reader`.
   
-  > Ressaltamos que não é possível inicar o serviço backend sem a devida conexão a um banco de dados,
-  > em razão da integração entre a biblioteca de ORM - (Object-Relational Mapping) e o banco de dados (database/db).
+  > Ressaltamos que não é possível inicar o serviço `reader` sem a devida conexão a com o banco de dados e com o backend,
+  > pois o `reader` realizará requisições diretamente para o `backend` que modificação o estado do `database`.
 
   <br>
   
-  Para iniciar a aplicação em ambiente de `desenvolvimento` use os seguintes comandos:
-    
-  ```
-  $ npm install
-  $ npm run dev
-  ```
+  Para iniciar o Leitor - `reader` - em ambiente de `desenvolvimento` siga os seguintes passos:
 
-  Para iniciar a aplicação em ambiente de `produção` use os seguintes comandos:
+  <br>
 
-  ```
-  $ cd ..
-  $ docker compose up backend -d
-  ```
+  1. Crie um ambiente virtual para desenvolvimento com os comandos:
+
+     ```
+     $ python3 -m venv .venv
+     $ source .venv/bin/activate
+     ```
+
+  <br>
+  
+  2. Instale as dependências com o comando:
+
+     ```
+     $ python3 -m pip install -r requirements.txt
+     ```
+
+  <br>
+
+  3. Inicie a aplicação com o comando:
+
+     ```
+     env $(cat .env) python3 -m src.main
+     ```
+
 
 </details>
 
