@@ -1,4 +1,13 @@
+# linter
 flake8
 black
+
+# Pdf to text
 PyPDF2
+
+# requests
 requests
+
+# testing
+pytest
+pytest-cov
