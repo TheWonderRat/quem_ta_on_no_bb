@@ -7,13 +7,13 @@ import re
 class regex:
     # getters
     def region_pattern() -> str:
-        return r'[\d\w+]+/_\w{2}_/[A-zÃ0-9]+-[A-zÃ0-9]+/[A-Z-_]+:_'
+        return r"[\d\w+]+/_\w{2}_/[A-zÃ0-9]+-[A-zÃ0-9]+/[A-Z-_]+:_"
 
     def whitespace_pattern() -> str:
-        return r'\s+'
+        return r"\s+"
 
     def file_id_pattern(id: str | int) -> str:
-        return fr'{id}-[\w-]*.txt'
+        return rf"{id}-[\w-]*.txt"
 
     def maintain_match_letter_pattern() -> str:
         return r" \1"
@@ -40,7 +40,7 @@ class regex:
         return regex.find_pattern(regex.file_id_pattern(id), file_name)
 
     def is_backup_register(text: str) -> bool:
-        result = regex.find_pattern('CADASTRO-RESERVA', text)
+        result = regex.find_pattern("CADASTRO-RESERVA", text)
         return True if result else False
 
     def find_numbers(text: str | int) -> str | bool:
@@ -51,17 +51,17 @@ class regex:
         return regex.split_by_pattern(regex.region_pattern(), text, 1)
 
     def split_user_info(text: str) -> list:
-        return regex.split_by_pattern(';', text)
+        return regex.split_by_pattern(";", text)
 
     # formatters and substitutions
     def subs_to_whitespaces(text: str) -> str:
-        return regex.sub_by_pattern('_', ' ', text)
+        return regex.sub_by_pattern("_", " ", text)
 
     def subs_remove_underscored(text: str) -> str:
-        return regex.sub_by_pattern('_', '', text)
+        return regex.sub_by_pattern("_", "", text)
 
     def insert_new_line(text: str) -> str:
-        return regex.sub_by_pattern('[/.]', '\n/', text)
+        return regex.sub_by_pattern("[/.]", "\n/", text)
 
     def trim(content: str) -> str:
-        return regex.sub_by_pattern(regex.whitespace_pattern(), '_', content)
+        return regex.sub_by_pattern(regex.whitespace_pattern(), "_", content)

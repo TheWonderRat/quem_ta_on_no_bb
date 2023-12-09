@@ -6,9 +6,9 @@ import os
 
 class file_manager:
     def __init__(self) -> None:
-        self.__file_name: str = ''
-        self.__relative_path: str = 'data/regions/'
-        self.__full_path: str = ''
+        self.__file_name: str = ""
+        self.__relative_path: str = "data/regions/"
+        self.__full_path: str = ""
 
     # getters
     @property
@@ -30,7 +30,7 @@ class file_manager:
         self.set_full_path()
 
     def set_full_path(self):
-        self.__full_path = f'{self.path}{self.file_name}'
+        self.__full_path = f"{self.path}{self.file_name}"
 
     # methods
     def registre(self, string_list: list):
@@ -39,9 +39,9 @@ class file_manager:
         return self.create_new_file(string_list)
 
     def create_new_file(self, strings_list: list):
-        with open(self.full_path, 'w') as new_file:
+        with open(self.full_path, "w") as new_file:
             new_file.writelines(strings_list)
 
     def amend_to_file(self, string_list: list):
-        with open(self.full_path, 'a') as amend_file:
+        with open(self.full_path, "a") as amend_file:
             amend_file.writelines(string_list)

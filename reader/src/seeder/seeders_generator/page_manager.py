@@ -75,21 +75,21 @@ class page_manager:
         self.set_last_record = self.region
 
     def separate_users(self):
-        if regex.find_pattern('WhatsApp', self.prev_users):
+        if regex.find_pattern("WhatsApp", self.prev_users):
             return
 
         if not len(self.prev_users):
             return
 
-        if regex.find_pattern('_VICE_-PRESIDÊNCIA_', self.prev_users):
+        if regex.find_pattern("_VICE_-PRESIDÊNCIA_", self.prev_users):
             self.remove_end()
 
         users_with_new_line = regex.insert_new_line(self.prev_users)
-        users_to_record = users_with_new_line.split('/')
+        users_to_record = users_with_new_line.split("/")
         self.registre_users(users_to_record)
 
     def remove_end(self):
-        users = regex.split_by_pattern('_VICE_', self.prev_users, 1)
+        users = regex.split_by_pattern("_VICE_", self.prev_users, 1)
         self.set_prev_users = users[0]
 
     def registre_users(self, user_to_record):
@@ -97,6 +97,6 @@ class page_manager:
         self.get_file_manager.registre(user_to_record)
 
     def format_file_name(self) -> str:
-        remove_backslash = regex.sub_by_pattern('/', '-', self.last_record)
+        remove_backslash = regex.sub_by_pattern("/", "-", self.last_record)
 
         return f'{regex.sub_by_pattern("[:_]", "", remove_backslash)}.txt'

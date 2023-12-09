@@ -2,6 +2,9 @@
 # venv
 .venv
 
+# tests
+/tests
+
 ### files ###
 # Git
 .gitignore
@@ -15,7 +18,7 @@ Dockerfile
 .env.example
 
 # pycache
-**/__pychache__
+__pychache__/
 
 # raw data
 /data/regions/*

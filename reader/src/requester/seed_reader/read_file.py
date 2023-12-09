@@ -9,7 +9,7 @@ from src.utils.regex_helper import regex
 
 class file_reader:
     def __init__(self, file_id) -> None:
-        self.__path: str = './data/regions'
+        self.__path: str = "./data/regions"
         self.__file_id: int | str = file_id
         self.__file_name: str = None
         self.__file_matches: list = []
@@ -33,7 +33,7 @@ class file_reader:
 
     @property
     def full_path(self):
-        return f'{self.path}/{self.file_name}'
+        return f"{self.path}/{self.file_name}"
 
     # setters
     @file_name.setter
@@ -55,14 +55,14 @@ class file_reader:
 
     def stream(self):
         if not len(self.file_matches):
-            return print('Nenhum arquivo encontrado')
+            return print("Nenhum arquivo encontrado")
 
         for each_file in self.file_matches:
             self.set_file_name = each_file
 
             backup_register = regex.is_backup_register(each_file)
 
-            with open(self.full_path, 'r') as file_info:
+            with open(self.full_path, "r") as file_info:
                 for line in file_info:
                     yield self.format_user(line, backup_register)
 
@@ -72,7 +72,7 @@ class file_reader:
         pcd, pcd_position = self.check_ppp_and_pcd(user_list_info[4])
         ppp, ppp_position = self.check_ppp_and_pcd(user_list_info[5])
 
-        registry = regex.sub_by_pattern('[-_]', '', user_list_info[1])
+        registry = regex.sub_by_pattern("[-_]", "", user_list_info[1])
 
         name = regex.subs_to_whitespaces(user_list_info[0])
 
@@ -86,7 +86,7 @@ class file_reader:
             "globalPosition": int(global_position),
             "pppPosition": ppp_position,
             "pcdPosition": pcd_position,
-            "backupRegister": backup_register
+            "backupRegister": backup_register,
         }
 
     def check_ppp_and_pcd(self, data_to_check: str) -> tuple:

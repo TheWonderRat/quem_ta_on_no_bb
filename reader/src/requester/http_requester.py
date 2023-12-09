@@ -12,9 +12,9 @@ from src.requester.seed_reader.read_file import file_reader
 class http_requester:
     def __init__(self) -> None:
         # Environment variables to connect with API
-        self.__host: str = os.environ.get('HOST_BACK', 'localhost')
-        self.__port: str = os.environ.get('PORT_BACK', '3001')
-        self.__seed_id = os.environ.get('SEED_ID', '158')
+        self.__host: str = os.environ.get("HOST_BACK", "localhost")
+        self.__port: str = os.environ.get("PORT_BACK", "3001")
+        self.__seed_id = os.environ.get("SEED_ID", "158")
 
     # getters
     @property
@@ -31,7 +31,7 @@ class http_requester:
 
     @property
     def url(self) -> str:
-        return f'http://{self.host}:{self.port}/user'
+        return f"http://{self.host}:{self.port}/user"
 
     # methods
     def create_requests(self):
@@ -60,8 +60,8 @@ class http_requester:
         response = requests.post(self.url, json=buffer)
 
         if response.status_code != 201:
-            print('Erro ao criar usuários. Corpo da resposta:')
+            print("Erro ao criar usuários. Corpo da resposta:")
             print(response.text)
         else:
-            success_message = 'Usuários criados com sucesso, status code:'
-            print(f'{success_message} {response.status_code}')
+            success_message = "Usuários criados com sucesso, status code:"
+            print(f"{success_message} {response.status_code}")
