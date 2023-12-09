@@ -555,16 +555,23 @@ Bibliotecas:
   Recomendação
   ------------
   
-  Recomendamos que você instale o plugin do `Eslint` na sua `IDE`. Todas as principais `IDE's` disponíveis no mercado tem plugins para `Eslint`. Segue abaixo links para instalação do puglin:
-  - [VSCODE](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-  - [IntelliJ](https://plugins.jetbrains.com/plugin/7494-eslint)
-  - [PhpStorm](https://plugins.jetbrains.com/plugin/7494-eslint)
-  - [Eclipse](https://marketplace.eclipse.org/content/wild-web-developer-html-css-javascript-typescript-nodejs-angular-json-yaml-kubernetes-xml)
-  - para outras IDE's consulte a página oficial [nesse link](https://eslint.org/docs/latest/use/integrations)
+  Recomendamos que você instale os plugins do `flake8` e do `black` na sua `IDE`. Todas as principais `IDE's` disponíveis no mercado tem plugins para ambas bibliotecas. Segue abaixo links para instalação do puglin:
+  - `flake8`:
+    - [VSCODE](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8)
+    - [IntelliJ](https://plugins.jetbrains.com/plugin/11563-flake8-support)
+    - [PyCharm](https://plugins.jetbrains.com/plugin/11563-flake8-support)
+    - [Sublime Text 3](https://packagecontrol.io/packages/SublimeLinter-flake8)
+    - [Vim](https://www.vim.org/scripts/script.php?script_id=3927)
+  - `black`:
+    - [VSCODE](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
+    - [IntelliJ](https://plugins.jetbrains.com/plugin/14321-blackconnect)
+    - [PyCharm](https://blog.jetbrains.com/pycharm/2023/07/2023-2-eap-5/)
+    - [Sublime Text 3](https://packagecontrol.io/packages/python-black)
+    - [Vim](https://vimawesome.com/plugin/black)
 
 <br>
 
-⚠️ **PULL REQUESTS COM IRREGULARIDADES DE LINTER (`Eslint`) NÃO SERÃO APROVADOS. ATENTE-SE PARA RESOLVER A IRREGULARIDADES ANTES
+⚠️ **PULL REQUESTS COM IRREGULARIDADES DE LINTER (`flake8`) NÃO SERÃO APROVADOS. ATENTE-SE PARA RESOLVER A IRREGULARIDADES ANTES
 DE SUBMETER AS ALTERAÇÕES!** ⚠️
   
 </details>
@@ -578,11 +585,11 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
 
 <br>
 
-  Utilizamos para o backend duas bibliotecas de testes, sendo elas o [JEST](https://jestjs.io/pt-BR/) e o [SuperTest](https://github.com/ladjs/supertest#readme).
+  Utilizamos para o backend duas bibliotecas de testes, sendo elas o [Pytest](https://docs.pytest.org/en/7.4.x/) e o [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#).
   
-  A biblioteca de teste principal é o [JEST](https://jestjs.io/pt-BR/), que está sendo utilizada para desenvolver testes unitários e testes de cobertura.
+  A biblioteca de teste principal é o [Pytest](https://docs.pytest.org/en/7.4.x/), que está sendo utilizada para desenvolver testes unitários.
 
-  A segunda biblioteca de teste - [SuperTest](https://github.com/ladjs/supertest#readme) - tem a função de realizar os testes de integração, uma vez essa biblioteca foi craida para simular requisições HTTP, e é plenamente integrável com o JEST.
+  A segunda biblioteca de teste - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#) - tem a função de realizar os testes de cobertura, pois, é plenamente integrável com o Pytest.
 
   Os testes estão dividos em baterias ("suitcases"), e numeradas de forma crescente, a fim de otimizar a realização de testes específicos.
 
@@ -591,7 +598,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   Para executar todos os testes execute o comando:
   
   ```
-  $ npm test
+  $ python3 -m pytest
   ```
 
   <br>
@@ -600,133 +607,21 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   Para executar apenas alguma bateria específica de testes execute o comando abaixo:
   
   ```
-  $ npm run test -t "número do arquivo de teste"
+  $ python3 -m pytest tests/nomedoarquivo.py
   ```
-
-  <br>
-
-  A numeração dos testes **UNITÁRIOS** está subdividada da seguinte forma:
-  
-  - `0x-testName.test.ts`: Testes unitários referentes à camada controller;
-  - `1x-testName.test.ts`: Testes unitários referentes à camada service;
-  - `2x-testName.test.ts`: Testes unitários referentes à camada repository;
-  - `3x-testName.test.ts`: Testes unitários referentes aos middlewares;
-  - `4x-testName.test.ts`: Testes unitários referentes aos utilitários (utils);
-  - `5x-testName.test.ts`: Testes unitários referentes aos helpers;
-
-  A numeração dos tests **DE INTEGRAÇÃO** está subdividada da seguinte forma:
-  
-  - `eox-testName.test.ts`: Teste de integração referente à rota "/health";
-  - `e1x-testName.test.ts`: Teste de integração referente à rota "/login";
-  - `e2x-testName.test.ts`: Teste de integração referente à rota "/user";
 
   <br>
 
   Para testes de cobertura, execute o comando abaixo:
 
   ```
-  $ npm run test:coverage
+  $ python3 -m pytest --cov=myproj tests/
   ```
 
   **Observarção**: Para realizar a aferição da cobertura do código por testes, esse comando executará **TODOS** os testes. Portanto, é uma execução lenta e que consumirá muitos recursos da máquina. Ao final da avaliação será exibido, no terminal, todos os dados de cobertura de testes, e será criado automaticamente um diretório de nome `coverage` que armazenará esses dados.
 
-  <br>
-  <br>
 
-  Executando apenas **UM** teste, ou pulando algum teste.
-  -------------------------------------------------------
-
-  Ainda quanto à execuções individuais de testes, a biblioteca do [JEST](https://jestjs.io/pt-BR/) detêm 2 palavras reservadas, sendo elas `only` e `skip`.
-  
-  Utilizando dessas palavras é possível executar apenas **UM** caso específico de teste, como no exemplo abaixo:
-
-  ```
-  test.only('it is raining', () => {
-
-    // ... Esse teste será executado
-
-    expect(inchesOfRain()).toBeGreaterThan(0);
-  });
-
-  test('it is not snowing', () => {
-
-    // ... Esse teste será ignorado.
-
-    expect(inchesOfSnow()).toBe(0);
-  });
-  ```
-
-  Ou executar apenas **UMA** "suitcase" específica, como no exemplo abaixo:
-
-  ```
-  describe.only('my beverage', () => {
-
-    // ... Essa suitcase será executada
-
-    test('is delicious', () => {
-      expect(myBeverage.delicious).toBeTruthy();
-    });
-
-    test('is not sour', () => {
-      expect(myBeverage.sour).toBeFalsy();
-    });
-  });
-
-  describe('my other beverage', () => {
-
-    // ... Esta suitcase será ignorada
-
-  });
-  ```
-
-  A outra palavra reservada, `skip`, pulará o teste ou "suitcase". Como nos exemplos a seguir:
-
-  Caso em que **UM** teste é pulado:
-  
-  ```
-  test('it is raining', () => {
-
-    // ... Esse teste será executado
-
-    expect(inchesOfRain()).toBeGreaterThan(0);
-  });
-
-  test.skip('it is not snowing', () => {
-
-    // ... Esse teste será ignorado
-
-    expect(inchesOfSnow()).toBe(0);
-  });
-  ```
-
-  Caso em que **UMA** "suitcase" de teste é pulada:
-
-  ```
-  describe('my beverage', () => {
-
-    // ... Essa suitcase será executada
-
-    test('is delicious', () => {
-      expect(myBeverage.delicious).toBeTruthy();
-    });
-
-    test('is not sour', () => {
-      expect(myBeverage.sour).toBeFalsy();
-    });
-  });
-
-  describe.skip('my other beverage', () => {
-
-    // ... Essa suitcase será ignorada
-
-  });
-  ```
-
-  ⚠️ **Observação**: Lembre-se que para executar apenas **UM** teste ou apenas **UMA** "suitcase" de testes é necessário usar o comando `npm run test -t "número do teste"`. Caso use o comando `npm test` todas as "suitcases" serão executadas, pois a biblioteca JEST executa os testes em paralelo para otimizar o tempo de execução e capacidade de processamento. ⚠️
-
-<br>
-
-:books: Para mais informações sobre a biblioteca de testes [JEST](https://jestjs.io/pt-BR/) utilize a documentação oficial. :books:
+:books: Para mais informações sobre as bibliotecas de testes [Pytest](https://docs.pytest.org/en/7.4.x/) e [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#) utilize a documentação oficial. :books:
 
 </details>
 
