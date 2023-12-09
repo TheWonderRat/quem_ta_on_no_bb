@@ -19,6 +19,7 @@ services:
       - backend
     networks:
       - aprovados_bb
+    tty: true
   
   backend:
     build: ./backend

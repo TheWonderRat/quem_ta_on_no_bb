@@ -60,6 +60,8 @@ class http_requester:
         response = requests.post(self.url, json=buffer)
 
         if response.status_code != 201:
+            print('Erro ao criar usuários. Corpo da resposta:')
             print(response.text)
         else:
-            print(response.status_code)
+            success_message = 'Usuários criados com sucesso, status code:'
+            print(f'{success_message} {response.status_code}')
