@@ -1,32 +1,21 @@
 // types
-import { Express } from 'express';
-
-// App
-import App from '../app/app';
+import express,{ Express } from 'express';
+import cors from 'cors';
+import { errors } from 'celebrate';
+//import routes from ''
 
 // SSOT
 import { serverConfig } from '../SSOT/exporter';
 
-class Server {
-  // private properties
-  private readonly _app: Express;
-  private readonly _port: number;
+const app = express();
+app.use(cors());
+app.use(express.json());
+//app.use(routes);
+app.use(errors())
 
-  constructor() {
-    this._app = new App().app;
-    this._port = serverConfig.PORT_BACK;
-  }
-
-  // getters
-  public get app(): Express { return this._app; }
-
-  public get port(): number { return this._port; }
 
   // public methods
-  public start(): void {
-    this.app.listen(this.port, () =>
-      console.log(`server started on ${serverConfig.HOST_BACK}:${this.port}`));
-  }
-}
+app.listen(serverConfig.PORT_BACK, () => {
+  console.log(`server started on ${serverConfig.HOST_BACK}:${serverConfig.PORT_BACK}`);
+});
 
-new Server().start();
