@@ -129,7 +129,7 @@ Assim como também documentar e deixar a disposição links úteis para consulta
 Bibliotecas:
 1. Linguagem - [Python](https://docs.python.org/3/)
 2. Web - [Requests](https://requests.readthedocs.io/en/latest/)
-3. Leitor PDF - [PyPDF2](https://pypdf2.readthedocs.io/en/latest/)
+3. Leitor PDF - [Pdfplumber](https://github.com/jsvine/pdfplumber)
 4. Testes:
    - [Pytest](https://docs.pytest.org/en/7.4.x/)
    - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
