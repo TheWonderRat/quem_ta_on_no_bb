@@ -7,22 +7,13 @@
 
 // // controllers
 import UserController from '../controller/UserController';
- import AbstractRouter from 'src/shared/router/AbstractRouter';
 
+ const userRouter = Router();
+ const userController = new UserController();
 
-export default class UserRouter extends AbstractRouter<Router, UserController>{
-  constructor(){
-     //TODO::inserir nome da rota no arquivo de constantes
-    super("user", Router(), new UserController())
-   }
-
-  protected initRoutes(): void {
-     this.createUpdatePasswordRoute();
-  } 
   
-   protected createUpdatePasswordRoute(): void{
      //rota para atualizacao de conta
-     this.router.post(
+     userRouter.post(
        //TODO: inserir constante
        '/atualizar-senha',
         //isAuthenticated,
@@ -33,13 +24,11 @@ export default class UserRouter extends AbstractRouter<Router, UserController>{
            novaSenha: Joi.string().required(),
          },
        }),
-      this.controller.updatePassword
+      userController.updatePassword
      );
-   }
 
-  protected activateAccountRoute(): void{
      //rota para atualizacao de conta
-     this.router.post(
+     userRouter.post(
        //TODO: inserir constante
        '/ativar-conta',
         //isAuthenticated,
@@ -50,13 +39,11 @@ export default class UserRouter extends AbstractRouter<Router, UserController>{
            novaSenha: Joi.string().required(),
          },
        }),
-      this.controller.activateAccount
+      userController.activateAccount
      );
-   }
 
-  protected deactivateAccountRoute(): void{
      //rota para atualizacao de conta
-     this.router.delete(
+     userRouter.delete(
        //TODO: inserir constante
        '/desativar-conta',
         //isAuthenticated,
@@ -67,9 +54,7 @@ export default class UserRouter extends AbstractRouter<Router, UserController>{
            novaSenha: Joi.string().required(),
          },
        }),
-      this.controller.deactivateAccount
+      userController.deactivateAccount
      );
-   }
-}
 
 

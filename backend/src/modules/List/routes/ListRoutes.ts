@@ -1,22 +1,11 @@
-import AbstractRouter from "src/shared/router/AbstractRouter";
 import { Router } from "express";
 import { celebrate, Joi, Segments } from 'celebrate';
 import ListController from "../controller/ListController";
 
+const listRouter = Router();
+const listController = new ListController();
 
-export default class ListRouter extends AbstractRouter< Router, ListController>{
-  constructor(){
-    //TODO:: criar nome de rota no SSOT
-    super("listar", Router(),new ListController());
-
-  }
-
-  protected initRoutes(): void{
-    this.createListRoute();
-  }
-
-  protected createListRoute(): void {
-    this.router.get(
+    listRouter.get(
      '/:candidatos?/:pagina?/:lista?/:cidade?/:diretoria?/:turma?',
      celebrate({
        [Segments.QUERY]: {
@@ -30,8 +19,7 @@ export default class ListRouter extends AbstractRouter< Router, ListController>{
        },
      }),
       //is autenticated aqui,
-      this.controller.listar,
+    listController.listar,
    );   
-  }
-}
 
+export default listRouter;
