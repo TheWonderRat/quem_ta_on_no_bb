@@ -1,5 +1,5 @@
-import AbstractService from "src/shared/service/AbstractService";
-import {  UpdatePasswordRequest, UpdatePasswordResponse } from "src/types/services/user";
+import AbstractService from "../../../shared/service/AbstractService";
+import {  UpdatePasswordRequest, UpdatePasswordResponse } from "../../../types/services/user";
 
 
 

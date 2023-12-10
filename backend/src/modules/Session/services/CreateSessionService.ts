@@ -1,5 +1,5 @@
-import AbstractService from "src/shared/service/AbstractService";
-import { CreateSessionRequest, CreateSessionResponse} from "src/types/services/session";
+import AbstractService from "../../../shared/service/AbstractService";
+import { CreateSessionRequest, CreateSessionResponse} from "../../../types/services/session";
 
 export default class CreateSessionService extends AbstractService<CreateSessionRequest, CreateSessionResponse>{
 

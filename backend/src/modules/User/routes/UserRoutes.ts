@@ -36,7 +36,6 @@ import UserController from '../controller/UserController';
          [Segments.BODY]: {
            login: Joi.number().required(),
            senha: Joi.string().required(),
-           novaSenha: Joi.string().required(),
          },
        }),
       userController.activateAccount
@@ -51,7 +50,6 @@ import UserController from '../controller/UserController';
          [Segments.BODY]: {
            login: Joi.number().required(),
            senha: Joi.string().required(),
-           novaSenha: Joi.string().required(),
          },
        }),
       userController.deactivateAccount

@@ -1,5 +1,5 @@
-import AbstractService from "src/shared/service/AbstractService";
-import { ListRequest, ListResponse } from 'src/types/services/list'
+import AbstractService from "../../../shared/service/AbstractService";
+import { ListRequest, ListResponse } from '../../../types/services/list'
 
 
 export default class ListService extends AbstractService<ListRequest, ListResponse>{
