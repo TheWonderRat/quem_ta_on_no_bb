@@ -25,7 +25,7 @@ class file_manager:
 
     # setters
     @file_name.setter
-    def set_file_name(self, file_name: str):
+    def file_name(self, file_name: str):
         self.__file_name = file_name
         self.set_full_path()
 

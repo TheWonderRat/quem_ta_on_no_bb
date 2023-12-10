@@ -6,7 +6,8 @@ import pdfplumber
 
 class reader_pdf_file:
     def __init__(self, bytes_to_read) -> None:
-        self.__reader = pdfplumber.open(bytes_to_read)
+        with pdfplumber.open(bytes_to_read) as pdf_page:
+            self.__reader = pdf_page
 
     # Magic methods
     def __len__(self):
