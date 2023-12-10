@@ -79,14 +79,12 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
      - [SOLID](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 
 <br>
-<br>
 
 2. Para garantir a padronização são utilizadas as seguintes ferramentas para verificação de código estático:
    - Linter:
      - [Flake8](https://github.com/pycqa/flake8)
      - [Black](https://black.readthedocs.io/en/stable/)
 
-<br>
 <br>
 
 3. Para garantir a confiabailidade é **obrigatória** a implementação de testes. Os testes deverão seguir as seguintes especificações:
@@ -95,7 +93,6 @@ O `reader` - Leitor - foi desenvolvido na linguagem `Python`. Será responsável
    - testes de cobertura:
      - biblioteca utilizada - [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#)
 
-<br>
 <br>
 
 ⚠️
@@ -122,7 +119,8 @@ Qualquer alteração no código, seja uma pequena correção de bug ou desenvolv
     </strong>
   </summary>
 
-  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações diretamente no arquivo `requirements.txt`
+  > Para informações detalhadas sobre todas as bibliotecas de terceiros utilizadas nesse projeto acesse as informações
+  > diretamente nos arquivos `requirements.txt` e `dev-requirements.txt`
 
 Acreditamos que será importante destacar quais são as principais bibliotecas de terceiros, frameworks e demais stacks que demandarão manutenção e conhecimento por aqueles que trabalharão diretamente no código da aplicação.
 
@@ -172,9 +170,8 @@ Bibliotecas:
          siga pra este link - [Instalação do Docker Engine](https://docs.docker.com/engine/install/) - para realizar a instalação do Docker.
 
   <br>
-  <br>
 
-  1. Python versão 3 ou superior :red_circle::
+  2. Python versão 3 ou superior :red_circle::
 
        - Para verificar a instalção do `python3` execute no terminal:
          ```
@@ -246,7 +243,6 @@ Bibliotecas:
      - `cd reader`
 
 <br>
-<br>
   
 2. Crie um arquvivo `.env`:
    
@@ -264,12 +260,7 @@ Bibliotecas:
      ```
 
    - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
-     
-   - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
-     - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
-     - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
 
-<br>
 <br>
   
 3. Inicie o conatainer do banco de dados com o Docker através de uma das opções abaixo:
@@ -316,6 +307,10 @@ Bibliotecas:
        > anteriormente no arquivo `.env` do diretório `backend` criadas no passo 2.
 
      - dentro do diretório há um arquivo de nome `.env.example` a título ilustrativo.
+
+     - caso não tenha familiaridae com alguma das variáveis de ambiente citadas acima consulte:
+       - [PostgresSQL](https://www.postgresql.org/docs/16/tutorial.html) ou [docker-postgres](https://hub.docker.com/_/postgres)
+       - [JWT - Json Web Token](https://github.com/auth0/node-jsonwebtoken)
 
      <br>
      
@@ -585,7 +580,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
 
 <br>
 
-  Utilizamos para o backend duas bibliotecas de testes, sendo elas o [Pytest](https://docs.pytest.org/en/7.4.x/) e o [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#).
+  Utilizamos para o Leitor - `reader` - duas bibliotecas de testes, sendo elas o [Pytest](https://docs.pytest.org/en/7.4.x/) e o [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#).
   
   A biblioteca de teste principal é o [Pytest](https://docs.pytest.org/en/7.4.x/), que está sendo utilizada para desenvolver testes unitários.
 
@@ -615,7 +610,7 @@ DE SUBMETER AS ALTERAÇÕES!** ⚠️
   Para testes de cobertura, execute o comando abaixo:
 
   ```
-  $ python3 -m pytest --cov=myproj tests/
+  $ python3 -m pytest --cov=src tests/
   ```
 
   **Observarção**: Para realizar a aferição da cobertura do código por testes, esse comando executará **TODOS** os testes. Portanto, é uma execução lenta e que consumirá muitos recursos da máquina. Ao final da avaliação será exibido, no terminal, todos os dados de cobertura de testes.
