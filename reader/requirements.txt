@@ -1,5 +1,5 @@
 # Pdf to text
-PyPDF2
+pdfplumber
 
 # requests
 requests

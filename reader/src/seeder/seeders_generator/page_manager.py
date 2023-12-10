@@ -81,7 +81,7 @@ class page_manager:
         if not len(self.prev_users):
             return
 
-        if regex.find_pattern("_VICE_-PRESIDÊNCIA_", self.prev_users):
+        if regex.find_pattern("_VICE-PRESIDÊNCIA_", self.prev_users):
             self.remove_end()
 
         users_with_new_line = regex.insert_new_line(self.prev_users)
@@ -89,7 +89,7 @@ class page_manager:
         self.registre_users(users_to_record)
 
     def remove_end(self):
-        users = regex.split_by_pattern("_VICE_", self.prev_users, 1)
+        users = regex.split_by_pattern("_VICE", self.prev_users, 1)
         self.set_prev_users = users[0]
 
     def registre_users(self, user_to_record):

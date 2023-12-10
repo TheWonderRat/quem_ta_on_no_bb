@@ -14,4 +14,4 @@ def create_requests():
 
 if __name__ == "__main__":
     generate_seeders()
-    create_requests()
+    # create_requests()
