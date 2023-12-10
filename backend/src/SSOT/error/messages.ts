@@ -1,4 +1,3 @@
-import * as messages from '../../types/error/messages';
 
 export enum AuthErrorMessage{
   MissingToken = "O token nao foi fornecido" ,
@@ -7,14 +6,14 @@ export enum AuthErrorMessage{
 }
 
 export enum DBErrorMessage{
-  MissingToken = 400,
-  TokenOutOfDate = 401,
-  InvalidToken = 402
+  MissingToken = "miau",
+  TokenOutOfDate = "miau",
+  InvalidToken = "miau" 
 }
 
 export enum GenericErrorMessage{
-  MissingToken = 400,
-  TokenOutOfDate = 401,
-  InvalidToken = 402
+  MissingToken = "miau",
+  TokenOutOfDate = "miau",
+  InvalidToken = "miau" 
 }
 
