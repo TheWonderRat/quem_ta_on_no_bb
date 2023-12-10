@@ -1,7 +1,6 @@
 
 import { Request, Response } from 'express';
 import ActivateAccountService from '../services/ActivateAccountService';
-import DeactivateAccountService from '../services/DeactivateAccountService';
 import UpdatePasswordService from '../services/UpdatePasswordService';
 
 

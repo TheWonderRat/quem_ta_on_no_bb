@@ -57,4 +57,5 @@ import UserController from '../controller/UserController';
       userController.deactivateAccount
      );
 
+ export default userRouter;
 
