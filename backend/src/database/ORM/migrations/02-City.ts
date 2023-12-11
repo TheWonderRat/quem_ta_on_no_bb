@@ -9,7 +9,7 @@ import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrationsTypes.City>>(migrations.tableName.Cities, {
+    queryInterface.createTable<Model<migrationsTypes.City>>(migrations.nomeDasTabelas.Cities, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,11 +17,11 @@ export default {
         allowNull: false,
       },
       cityName: {
-        field: migrations.columnName.cityName,
+        field: migrations.nomeDasColunas.cityName,
         type: DataTypes.STRING,
         allowNull: false,
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableName.Cities, {}),
+    .dropTable(migrations.nomeDasTabelas.Cities, {}),
 };

@@ -1,4 +1,5 @@
 // libraries
+/*
 import { Model, DataTypes, QueryInterface } from 'sequelize';
 
 // SSOT
@@ -10,7 +11,7 @@ import { migrationsTypes } from '../../../types/exporter';
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
     queryInterface.createTable<Model<migrationsTypes.JobLocation>>(
-      migrations.tableName.JobLocations,
+      migrations.nomeDasTabelas.JobLocations,
       {
         id: {
           type: DataTypes.INTEGER,
@@ -20,25 +21,26 @@ export default {
         },
         directoryName: {
           type: DataTypes.STRING,
-          field: migrations.columnName.directoryName,
+          field: migrations.nomeDasColunas.directoryName,
           allowNull: false,
         },
         cityId: {
           allowNull: false,
           type: DataTypes.INTEGER,
-          references: { model: migrations.tableName.Cities, key: migrations.columnName.idKey },
+          references: { model: migrations.nomeDasTabelas.Cities, key: migrations.nomeDasColunas.idKey },
         },
         departmentId: {
           allowNull: false,
-          field: migrations.columnName.departmentId,
+          field: migrations.nomeDasColunas.departmentId,
           type: DataTypes.INTEGER,
           references: {
-            model: migrations.tableName.Departments,
-            key: migrations.columnName.idKey,
+            model: migrations.nomeDasTabelas.Departments,
+            key: migrations.nomeDasColunas.idKey,
           },
         },
       },
     ),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableName.JobLocations, {}),
+    .dropTable(migrations.nomeDasTabelas.JobLocations, {}),
 };
+*/

@@ -9,26 +9,26 @@ import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrationsTypes.Class>>(migrations.tableName.Classes, {
+    queryInterface.createTable<Model<migrationsTypes.Class>>(migrations.nomeDasTabelas.Classes, {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
       },
       createdAt: {
-        field: migrations.columnName.createdAt,
+        field: migrations.nomeDasColunas.createdAt,
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
+        defaultValue: Sequelize.literal(migrations.emComum.currentTimestamp),
 
       },
       updatedAt: {
-        field: migrations.columnName.updatedAt,
+        field: migrations.nomeDasColunas.updatedAt,
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
+        defaultValue: Sequelize.literal(migrations.emComum.currentTimestamp),
       },
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableName.Classes, {}),
+    .dropTable(migrations.nomeDasTabelas.Classes, {}),
 };

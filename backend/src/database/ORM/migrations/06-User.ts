@@ -9,13 +9,14 @@ import { migrationsTypes } from '../../../types/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>
-    queryInterface.createTable<Model<migrationsTypes.User>>(migrations.tableName.Users, {
-      id: {
-        type: DataTypes.UUID,
+    queryInterface.createTable<Model<migrationsTypes.User>>(migrations.nomeDasTabelas.Users, {
+      inscricao: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        defaultValue: Sequelize.literal(migrations.common.UUID),
+        //defaultValue: Sequelize.literal(migrations.emComum.UUID),
         allowNull: false,
       },
+      /*
       passwordHash: {
         type: DataTypes.STRING,
         field: migrations.columnName.passwordHash,
@@ -59,7 +60,8 @@ export default {
         allowNull: false,
         defaultValue: Sequelize.literal(migrations.common.currentTimestamp),
       },
+      */
     }),
   down: async (queryInterface: QueryInterface): Promise<void> => queryInterface
-    .dropTable(migrations.tableName.Users, {}),
+    .dropTable(migrations.nomeDasTabelas.Users, {}),
 };

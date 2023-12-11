@@ -1,5 +1,6 @@
 export type User = {
-  id: string,
+  inscricao: string,
+  /*
   pcd: boolean,
   ppp: boolean,
   name: string,
@@ -11,4 +12,5 @@ export type User = {
   jobLocationId: number,
   createdAt: Date,
   updatedAt: Date,
+  */
 };
