@@ -1,10 +1,12 @@
 import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
-import { ListRequest, ListResponse } from '../../../types/services/list'
+import { RequisicaoParaListarORanking, RespostaParaListarORanking} from '../../../tipos/servicos/ranking'
 
 
-export class ServicoParaListarORanking extends ServicoAbstrato<ListRequest, ListResponse>{
+export class ServicoParaListarORanking extends ServicoAbstrato<
+  RequisicaoParaListarORanking, RespostaParaListarORanking
+>{
 
-  public async executar(parameters: ListRequest): Promise<ListResponse>{
+  public async executar(parameters: RequisicaoParaListarORanking): Promise<RespostaParaListarORanking>{
     return { email: "called on list request"}    
   }
 

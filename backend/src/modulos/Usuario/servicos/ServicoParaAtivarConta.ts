@@ -1,11 +1,11 @@
 import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
-import {  ActivateAccountRequest, ActivateAccountResponse } from "../../../types/services/user";
+import {  RequisicaoParaAtivarConta, RespostaParaAtivarConta } from "../../../tipos/servicos/usuario";
 
 
 
-export default class ServicoParaAtivarConta extends ServicoAbstrato<ActivateAccountRequest, ActivateAccountResponse>{
+export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoParaAtivarConta, RespostaParaAtivarConta>{
 
-  public async executar(parameters: ActivateAccountRequest): Promise<ActivateAccountResponse>{
+  public async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta>{
     return { email: "called on activate account service" }
   }
 }

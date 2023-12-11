@@ -1,13 +1,13 @@
 
-export default abstract class AppError{
-  public readonly message: string;
-  public readonly code: number;
+export default abstract class ErroDoApp{
+  public readonly mensagem: string;
+  public readonly codigo: number;
 
   constructor(
-    message: string,
-    code: number 
+    mensagem: string,
+    codigo: number 
   ){
-    this.message = message;
-    this.code = code
+    this.mensagem = mensagem;
+    this.codigo = codigo 
   }
 }

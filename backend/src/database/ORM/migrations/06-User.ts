@@ -5,7 +5,7 @@ import { Model, DataTypes, QueryInterface, Sequelize } from 'sequelize';
 import { migrations } from '../../../SSOT/exporter';
 
 // types
-import { migrationsTypes } from '../../../types/exporter';
+import { migrationsTypes } from '../../../tipos/exporter';
 
 export default {
   up: async (queryInterface: QueryInterface): Promise<void> =>

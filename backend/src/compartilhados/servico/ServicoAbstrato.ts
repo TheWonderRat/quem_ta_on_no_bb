@@ -1,5 +1,5 @@
 
-import { ServiceRequestTypes, ServiceResponseTypes } from "src/types/services/service";
+import { ServiceRequestTypes, ServiceResponseTypes } from "../../tipos/servicos/servico";
 
 
 export default abstract class ServicoAbstrato< 

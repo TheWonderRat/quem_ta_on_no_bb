@@ -1,11 +1,11 @@
 import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
-import {  UpdatePasswordRequest, UpdatePasswordResponse } from "../../../types/services/user";
+import {  RequisicaoParaAtualizarSenha, RespostaParaAtualizarSenha} from "../../../tipos/servicos/usuario";
 
 
 
-export default class ServicoParaAtualizarSenha extends ServicoAbstrato<UpdatePasswordRequest, UpdatePasswordResponse>{
+export default class ServicoParaAtualizarSenha extends ServicoAbstrato<RequisicaoParaAtualizarSenha,RespostaParaAtualizarSenha>{
 
-  public async executar(parameters: UpdatePasswordRequest): Promise<UpdatePasswordResponse>{
+  public async executar(parameters: RequisicaoParaAtualizarSenha): Promise<RespostaParaAtualizarSenha>{
     return { email: "called on update password service" }
       
   }

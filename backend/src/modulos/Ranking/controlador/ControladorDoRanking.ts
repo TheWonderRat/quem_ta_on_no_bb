@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ListResponse } from "src/types/services/list";
 import { ServicoParaListarORanking } from "../servicos/ServicoParaListarORanking";
 
 

@@ -2,7 +2,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 
 // types
-import { migrationsTypes } from '../../../types/exporter';
+import { migrationsTypes } from '../../../tipos/exporter';
 
 // SSOT
 import { migrations } from '../../../SSOT/exporter';

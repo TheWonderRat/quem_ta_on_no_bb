@@ -2,7 +2,7 @@
 import { DataTypes, ForeignKey, Model } from 'sequelize';
 
 // types
-import { migrationsTypes } from '../../../types/exporter';
+import { migrationsTypes } from '../../../tipos/exporter';
 
 // SSOT
 import { migrations, models } from '../../../SSOT/exporter';
