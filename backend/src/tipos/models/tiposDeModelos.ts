@@ -6,12 +6,15 @@ import { Sequelize } from 'sequelize';
 import * as models from '../../database/ORM/modelo/exporter';
 
 export type ModelsTypes = Sequelize
-| models.User
-| models.City
-| models.Class
-| models.Department
-| models.JobLocation
-| models.StatusUser
-| models.PcdRanking
-| models.PppRanking
-| models.GlobalRanking;
+| models.Cidade
+| models.Contato
+| models.Diretoria
+| models.Estado
+| models.Lotacao
+| models.LotadoEm
+| models.Ranking
+| models.Situacao
+| models.Turma
+| models.Usuario
+;
+

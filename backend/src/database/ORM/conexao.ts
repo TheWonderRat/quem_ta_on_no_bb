@@ -1,3 +1,4 @@
+/*
 import { Sequelize } from 'sequelize';
 
 import sequelizeOptions from '../config/config';
@@ -18,3 +19,4 @@ async function conectarComODB(): Promise<void> {
 conectarComODB();
 
 export default sequelize;
+*/
