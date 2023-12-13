@@ -1,9 +1,16 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, } from 'typeorm'
+import { Entity, Column, PrimaryColumn, ManyToMany, OneToMany, JoinColumn, } from 'typeorm'
+import { Cidade } from './exporter';
+import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
 
 //TODO:: inserir no arquivo de constantes
-@Entity('aprovado')
-export default class Aprovado{
+@Entity(entidades.Estado)
+export default class Estado{
 
-  @PrimaryColumn()
+  @PrimaryColumn({name: atributos.Estado.Nome})
   nome: string;
+
+  /*-----------------------------join------------------------*/
+  @OneToMany(() => Cidade,(cidade) => cidade.estadoVinculado)
+//TODO:: inserir no arquivo de constantes
+  cidadesVinculadas: Cidade[]
 }

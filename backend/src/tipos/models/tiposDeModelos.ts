@@ -15,6 +15,6 @@ export type ModelsTypes = Sequelize
 | models.Ranking
 | models.Situacao
 | models.Turma
-| models.Usuario
+| models.Aprovado
 ;
 

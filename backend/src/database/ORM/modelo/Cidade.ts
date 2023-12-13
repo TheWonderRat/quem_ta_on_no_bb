@@ -1,12 +1,24 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, } from 'typeorm'
+import { Estado, Lotacao } from '../modelo/exporter';
+import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToMany, JoinColumn, } from 'typeorm'
+import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
 
 //TODO:: inserir no arquivo de constantes
-@Entity('aprovado')
-export default class Aprovado{
+@Entity(entidades.Cidade)
+export default class Cidade{
 
-  @PrimaryColumn()
+  @PrimaryColumn({name: atributos.Cidade.Nome})
   nome: string;
 
-  @Column()
+//TODO:: inserir no arquivo de constantes
+  @PrimaryColumn({name: atributos.Cidade.Estado})
   estado: string;
+
+  //-------------------------joins-------------------------------//
+
+  @OneToMany(() => Lotacao, (lotacao) => lotacao.cidadeVinculada )
+  lotacoes: Lotacao[]
+
+  @ManyToOne(() => Estado, (estado) => estado.cidadesVinculadas)
+  @JoinColumn({name: atributos.Cidade.Estado, referencedColumnName: atributos.Estado.Nome})
+  estadoVinculado: Estado
 }

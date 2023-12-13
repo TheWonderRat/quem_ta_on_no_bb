@@ -10,7 +10,7 @@ import {
   Situacao, 
   TipoRanking, 
   Turma, 
-  Usuario 
+  Aprovado 
 } from '../ORM/modelo/exporter';
 
 import { DataSource } from 'typeorm';
@@ -42,7 +42,7 @@ const dataSource = new DataSource({
     Situacao, 
     TipoRanking, 
     Turma, 
-    Usuario
+    Aprovado 
   ],
   migrations: [
     '../ORM/modelo/*.ts'

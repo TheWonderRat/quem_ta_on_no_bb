@@ -7,6 +7,6 @@ export const LotadoEm: string = 'LotadoEm';
 export const Ranking: string = 'Ranking';
 export const TipoRanking: string = 'TipoRanking';
 export const Situacao: string = 'Situacao';
-export const Turma: string = 'turma';
-export const Usuario: string = 'Usuario';
+export const Turma: string = 'Turma';
+export const Aprovado: string = 'Aprovado';
 

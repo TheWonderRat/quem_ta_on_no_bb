@@ -8,7 +8,7 @@ export enum Cidade{
 }
 
 export enum Contato{
-  Inscricao = "inscricao",
+  Inscricao = "inscricao_vinculada",
   Celular = "celular",
   Email = "email",
   CriadoEm = "criado_em",
@@ -31,54 +31,52 @@ export enum Lotacao{
   Cidade = "cidade",
   Estado = "estado",
   Diretoria = "diretoria",
-  Unidade = "unidade",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
 
 export enum LotadoEm{
   Inscricao = "inscricao",
-  Cidade = "cidade",
-  Estado = "estado",
-  Diretoria = "diretoria",
-  Unidade = "unidade",
+  Cidade = "cidade_vinculada",
+  Estado = "estado_vinculado",
+  Diretoria = "diretoria_vinculada",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
 
 export enum Ranking{
-  Inscricao = "inscricao",
-  TipoRanking = "tipo_ranking",
+  Inscricao = "inscricao_vinculada",
+  TipoRanking = "tipo",
   Posicao = "posicao",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
 
 export enum TipoRanking{
-  Nome = "nome",
+  Nome = "tipo",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em" 
 }
 
 export enum Situacao{
-  Nome = "nome",
+  Nome = "nome_situacao",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
 
 export enum Turma{
-  Numero = "numero",
+  Numero = "numero_turma",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
 
-export enum Usuario{
+export enum Aprovado{
   Inscricao = "inscricao",
-  Nome = "nome",
-  Senha = "senha",
-  Situacao = "situacao",
-  Turma = "turma",
-  Ativo = "estado_ativo",
+  Nome = "nome_aprovado",
+  Senha = "senha_aprovado",
+  Situacao = "situacao_aprovado",
+  Turma = "turma_aprovado",
+  Ativo = "ativo",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }

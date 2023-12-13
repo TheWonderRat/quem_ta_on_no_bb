@@ -8,6 +8,6 @@ export { default as Ranking } from './Ranking';
 export { default as TipoRanking } from './TipoRanking';
 export { default as Situacao } from './Situacao';
 export { default as Turma } from './Turma'
-export { default as Usuario } from './Usuario'
+export { default as Aprovado } from './Aprovado'
 
 
