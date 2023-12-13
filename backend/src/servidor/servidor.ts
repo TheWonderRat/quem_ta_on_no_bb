@@ -1,4 +1,5 @@
 // types
+import 'reflect-metadata'
 import express from 'express';
 import { errors } from 'celebrate';
 import appRoutes from '../rotas/rotas';
