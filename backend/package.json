@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "start": "node ./build/servidor/servidor.js",
+    "production":"npm run build ; npm run start",
     "build-local": "env $(cat .env) tsc --project tsconfig.json",
     "migrate-local": "env $(cat .env) npx sequelize-cli db:migrate",
     "db:drop-local": "env $(cat .env) npx sequelize-cli db:drop",

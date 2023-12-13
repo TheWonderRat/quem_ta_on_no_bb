@@ -24,4 +24,4 @@ ENV POSTGRES_DB=${POSTGRES_DB}
 
 ENTRYPOINT [ "npm", "run" ]
 
-CMD [ "start" ]
+CMD [ "production"]
