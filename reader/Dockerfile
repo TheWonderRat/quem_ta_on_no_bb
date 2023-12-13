@@ -2,8 +2,6 @@ FROM python:3 as py
 
 WORKDIR /app
 
-VOLUME [ "/docker-data" ]
-
 COPY requirements.txt .
 
 RUN ["python3", "-m", "pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
@@ -12,12 +10,10 @@ COPY . .
 
 ENV SEED_ID=${SEED_ID}
 
-ENV HOST=${HOST}
+ENV HOST_BACK=${HOST_BACK}
 
-ENV PORT=${PORT}
+ENV PORT_BACK=${HOST_BACK}
 
-RUN ["python3", "src/seeder.py"]
+ENTRYPOINT [ "python3", "-m" ]
 
-ENTRYPOINT [ "python3" ]
-
-CMD [ ".src/api_request.py" ]
+CMD [ "src.main" ]

@@ -1,7 +1,0 @@
-Ana_Clara_Tomazia_Oliveira;_571247205_-0;_83,5;_5_;_-_;_-_
-Gleicy_do_Carmo_Silva;_571889762_-8;_90,5;_2_;_-_;_-_
-Jhonatas_Rocha_Rodrigues_da_Mata;_571327252_-0;_83,5;_4_;_-_;_-_
-Joao_Paulo_de_Goes_Evangelista;_571967686_-0;_90,5;_1_;_-_;_-_
-Maur_o_Costa_Rocha;_571112438_-8;_83,5;_3_;_-_;_-_
-Pablo_Augusto_de_Souza_Araujo;_572064869_-3;_74,5;_19_;_1_;_-_
-Paulo_Alvaro_Machado_dos_Santos;_571531552_-2;_82,0;_7_;_-_;_1

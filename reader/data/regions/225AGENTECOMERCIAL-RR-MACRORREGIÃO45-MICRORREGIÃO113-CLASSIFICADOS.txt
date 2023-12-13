@@ -1,8 +1,0 @@
-Angelo_Rafael_Abreu_Sousa;_570748953_-6;_77,5;_4_;_-_;_-_
-Fabio_Felipe_dos_Santos_Nogueira;_5_71989189_-8;_63,5;_28_;_1_;_-_
-Iohan_Peter_Cavalcante_Goncalves;_570625760_-2;_82,0;_2_;_-_;_-_
-Luiz_Gustavo_de_Castro_Rosa_Souza;_571003160_-3;_85,0;_1_;_-_;_-_
-Nyckolas_Barbosa_Cadete;_570002784_-6;_72,5;_11_;_-_;_1_
-Paulo_Ricardo_Ferreira_de_Sa;_570275760_-3;_80,5;_3_;_-_;_-_
-Paulo_Vinicius_Santos_da_Silva;_571473184_-3;_71,5;_12_;_-_;_2_
-Ulisses_Lima_de_Sousa;_571324501_-0;_76,5;_5_;_-_;_-

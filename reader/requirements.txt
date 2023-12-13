@@ -1,4 +1,6 @@
-flake8
-black
-PyPDF2
+# Pdf to text
+pdfplumber
+
+# requests
 requests
+

@@ -1,8 +1,0 @@
-Ana_Paula_Magni;_571149061_-4;_79,5;_14_;_-_;_-_
-Andressa_Tassotti;_570117326_-9;_78,5;_18_;_-_;_-_
-Diego_Magaiver_Jahn;_570073669_-6;_79,0;_16_;_-_;_-_
-Elisiane_Fernandes_dos_Santos;_571419679_-0;_67,5;_62_;_-_;_5_
-Jaisson_Dalcin_Martins;_571352445_-4;_79,0;_15_;_-_;_-_
-Lucas_Edson_Occhi;_571644333_-2;_67,5;_63_;_4_;_-_
-Rubens_Scartazzini_Tasca;_571939883_-5;_79,0;_17_;_-_;_-_
-Suelen_Cristina_de_Oliveira_Federisse;_570005395_-6;_64,5;_64_;_-_;_6

@@ -1,7 +1,0 @@
-Bernardo_Petronilho_Rossi_Mol;_570354869_-2;_82,5;_4_;_-_;_-_
-Cleverton_Gomes_Vieira;_570565669_-6;_62,0;_38_;_1_;_-_
-Joao_Victor_Lourenco_Rodrigues;_571199404_-1;_81,0;_5_;_-_;_-_
-Matheus_de_Oliveira_Claudino;_571769891_-3;_74,5;_12_;_-_;_1_
-Matheus_Santana_Salvador_Pereira;_570681170_-0;_86,5;_1_;_-_;_-_
-Raf_hael_Freitas_Cupertino;_571546481_-0;_86,0;_2_;_-_;_-_
-Tassio_Matos_Santos;_571712319_-2;_83,5;_3_;_-_;_-

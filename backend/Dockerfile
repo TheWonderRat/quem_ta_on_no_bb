@@ -1,12 +1,29 @@
-FROM node:21 AS backend
+FROM node:21 AS builder
 
-COPY ./package.json ./
+WORKDIR /app
 
-COPY ./package-lock.json ./
+COPY ./package.json .
+
+COPY ./package-lock.json .
 
 RUN ["npm", "install"]
 
 COPY . .
+
+RUN ["npm", "run", "build"]
+
+
+FROM node:21-alpine as production
+
+WORKDIR /app
+
+COPY --from=builder /app/build ./build/
+
+COPY --from=builder /app/package.json .
+
+COPY --from=builder /app/package-lock.json .
+
+COPY --from=builder /app/.sequelizerc .
 
 EXPOSE 3001:3001
 
@@ -20,6 +37,8 @@ ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
 ENV POSTGRES_DB=${POSTGRES_DB}
 
-ENTRYPOINT [ "npm" ]
+RUN ["npm", "install", "--production"]
+
+ENTRYPOINT [ "npm", "run" ]
 
 CMD [ "start" ]

@@ -1,6 +1,0 @@
-Diego_Moreira_Roque;_571213031_-9;_76,0;_19_;_-_;_1_
-Eduardo_Barros_da_Cunha;_570994654_-5;_83,5;_3_;_-_;_-_
-Giovane_Alexandre_Paes_Donato_da_Silva;_570335925_-0;_71,5;_21_;_1_;_-_
-Marilia_Bosenbecker_Leitzke;_571010992_-0;_85,0;_2_;_-_;_-_
-Stefano_Carlo_Dall_Oglio_Terres;_571363596_-2;_92,5;_1_;_-_;_-_
-Tieissa_Fonseca_da_Silva;_571223144_-2;_82,5;_4_;_-_;_-

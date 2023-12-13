@@ -1,0 +1,24 @@
+### directories ###
+# venv
+.venv
+
+# tests
+/tests
+
+### files ###
+# Git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Enviroments
+.env
+.env.example
+
+# pycache
+__pychache__/
+
+# raw data
+/data/regions/*

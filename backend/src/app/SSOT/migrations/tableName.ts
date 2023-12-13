@@ -1,0 +1,9 @@
+export const Users: string = 'Users';
+export const Cities: string = 'Cities';
+export const Classes: string = 'Classes';
+export const PcdRanking: string = 'Pcd_ranking';
+export const PppRanking: string = 'Ppp_ranking';
+export const Departments: string = 'Departments';
+export const StatusUsers: string = 'Status_users';
+export const JobLocations: string = 'Job_locations';
+export const GlobalRanking: string = 'Global_ranking';

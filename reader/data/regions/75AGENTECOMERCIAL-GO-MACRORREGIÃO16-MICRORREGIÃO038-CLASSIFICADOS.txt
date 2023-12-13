@@ -1,8 +1,0 @@
-Carlos_Valim_de_Andrade_Junior;_571724036_-5;_66,0;_25_;_1_;_-_
-Davi_Ferreira_Cruz_Teixeira;_571600550_-4;_82,5;_1_;_-_;_-_
-Lincoln_Vieira_da_Silva;_571369728_-3;_73,5;_14_;_-_;_1_
-Lucas_Fellipe_Cardoso_dos_Santos;_571096284_-4;_79,5;_4_;_-_;_-_
-Luiz_Otavio_Calixto_Campos;_570743814_-6;_78,5;_5_;_-_;_-_
-Matheus_Henrique_Reis_dos_Santos;_571592846_-2;_81,0;_2_;_-_;_-_
-Miguel_Arcanjo_da_Trindade_Junior;_571644408_-0;_79,5;_3_;_-_;_-_
-Samuel_Felipe_de_Oliveira_Costa;_571094775_-7;_73,5;_15_;_-_;_2

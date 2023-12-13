@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "status_name": "convocado"
+  },
+  {
+    "id": 2,
+    "status_name": "Não Convocado"
+  },
+  {
+    "id": 3,
+    "status_name": "Cancelado por prazo"
+  },
+  {
+    "id": 4,
+    "status_name": "Desistente"
+  },
+  {
+    "id": 5,
+    "status_name": "Empossado"
+  }
+]
