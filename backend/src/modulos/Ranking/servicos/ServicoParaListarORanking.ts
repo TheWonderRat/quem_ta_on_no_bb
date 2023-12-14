@@ -9,5 +9,4 @@ export class ServicoParaListarORanking extends ServicoAbstrato<
   public async executar(parameters: RequisicaoParaListarORanking): Promise<RespostaParaListarORanking>{
     return { email: "called on list request"}    
   }
-
 }
