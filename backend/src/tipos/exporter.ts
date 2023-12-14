@@ -1,4 +1,6 @@
 export * as migrationsTypes from './migrations/exporter';
+//export * as erroHTTP from './http/erros';
+//export * as okHTTP from './http/ok';
 
 /*
 export * as login from './login/login';
