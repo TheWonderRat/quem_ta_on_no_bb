@@ -25,7 +25,7 @@ import {
 const dataSource = new DataSource({
   //TODO:: criar tipo para os tipos de base de dados
   type: 'postgres',
-  host: BD_HOST_PADRAO,
+  host: process.env.DB_HOST,
   port: BD_PORTA_PADRAO,
   username: BD_USUARIO_PADRAO,
   password: BD_SENHA_PADRAO,
