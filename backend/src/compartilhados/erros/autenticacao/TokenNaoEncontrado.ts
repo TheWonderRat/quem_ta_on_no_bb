@@ -1,7 +1,7 @@
-import ErroDeAutorizacao from "./ErroDeAutorizacao";
+import { ErroDeAutenticacao } from "./ErroDeAutenticacao";
 import { mensagemErroHTTP, codigoErroHTTP } from "../../../SSOT/exporter";
 
-export default class SenhaIncompativel extends ErroDeAutorizacao{
+export default class SenhaIncompativel extends ErroDeAutenticacao{
 
   constructor(){
     const message = mensagemErroHTTP.ErroAutenticacao.TokenNaoEncontrado;

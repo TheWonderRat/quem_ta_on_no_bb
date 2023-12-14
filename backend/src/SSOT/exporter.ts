@@ -12,7 +12,9 @@ export * as migrations from './migracoes/exporter';
 export * as caminhos from './rotas/nomeDosCaminhos';
 
 // http
-export * as mensagemErroHTTP from './http/erro';
+export * as mensagemErroHTTP from './http/erro/mensagem';
+export * as codigoErroHTTP from './http/erro/codigo';
 
-export * as okHTTP from './http/ok';
+export * as mensagemOKHTTP from './http/ok/mensagem';
+export * as codigoOKHTTP from './http/ok/codigo';
 
