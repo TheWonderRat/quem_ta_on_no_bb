@@ -9,8 +9,10 @@ export * as models from './modelos/nomeDasColunas';
 export * as migrations from './migracoes/exporter';
 
 // Routes
-export * as pathNames from './rotas/nomeDosCaminhos';
+export * as caminhos from './rotas/nomeDosCaminhos';
 
 // http
-export * as httpStatus from './http/status';
-export * as errorMessages from './erros/mensagens';
+export * as mensagemErroHTTP from './http/erro';
+
+export * as okHTTP from './http/ok';
+
