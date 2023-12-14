@@ -16,7 +16,8 @@ services:
     env_file:
       - ./backend/.env
     environment:
-      HOST: db
+      DB_HOST: db
+      PORT: ${PORT_BACK}
     depends_on:
       db: 
         condition: service_healthy
