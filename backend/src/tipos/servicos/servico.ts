@@ -10,20 +10,22 @@ import {
   RequisicaoParaAtivarConta, RespostaParaAtivarConta,
   RequisicaoParaDesativarConta, RespostaParaDesativarConta,
   RequisicaoParaAtualizarSenha, RespostaParaAtualizarSenha
-} from "./usuario";
+} from "./aprovado";
 
+//A validacao celebrate deve obedecer aos tipos
 export type ServiceRequestTypes = 
-//list request types
+  //list request types
   RequisicaoParaListarORanking | 
-//user request types
+  //user request types
   RequisicaoParaAtualizarSenha | RequisicaoParaAtivarConta | RequisicaoParaDesativarConta |
-//session request types
+  //session request types
   RequisicaoParaCriarSessao;
 
+//A validacao celebrate deve obedecer aos tipos
 export type ServiceResponseTypes = 
-//list response types
+  //list response types
   RespostaParaListarORanking |
-//user response types
+  //user response types
   RespostaParaAtualizarSenha | RespostaParaAtivarConta | RespostaParaDesativarConta | 
-//session response types
+  //session response types
   RespostaParaCriarSessao;
