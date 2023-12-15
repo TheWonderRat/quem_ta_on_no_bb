@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, OneToMany, JoinColumn, } from 'typeorm'
+import { Entity, PrimaryColumn, OneToMany } from 'typeorm'
 import { Cidade } from './exporter';
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Estado)
