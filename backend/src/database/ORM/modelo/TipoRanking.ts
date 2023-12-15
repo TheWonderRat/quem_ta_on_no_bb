@@ -1,6 +1,6 @@
 import { Ranking } from './exporter';
 import { Entity, Column, PrimaryColumn, ManyToMany, OneToMany, JoinColumn, } from 'typeorm'
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.TipoRanking)
@@ -11,7 +11,7 @@ export default class TipoRanking{
 
   /*----------------------------------join----------------------------*/
 
-  @OneToMany(() => Ranking,(ranking) => ranking.rankingVinculado)
-  rankings: Ranking[]
+  @OneToMany(() => Ranking,(ranking) => ranking.tipoVinculado )
+  rankingsVinculados: Ranking[]
 
 }
