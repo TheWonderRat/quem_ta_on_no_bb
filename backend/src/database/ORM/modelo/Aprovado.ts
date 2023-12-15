@@ -1,6 +1,6 @@
 import { Contato, LotadoEm, Situacao, Turma, Ranking } from '../modelo/exporter';
-import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, JoinColumn, OneToOne, OneToMany, } from 'typeorm'
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, OneToOne, OneToMany, } from 'typeorm'
+import { atributos, entidades } from '../../../SSOT/base_de_dados//exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Aprovado)
@@ -25,24 +25,25 @@ export default class Aprovado{
   ativado: boolean
 
   /*-------------------------------joins------------------------------*/
+  //as joins devem ter exatamente o mesmo nome das contantes de SSOT/base_de_dados/relacionamentos
   @OneToOne(() => LotadoEm, (lotadoEm) => lotadoEm.aprovadoVinculado)
   //TODO:: inserir os nomes dos atributos no SSOT
   lotadoEm: LotadoEm
 
-  @ManyToOne(() => Situacao,(situacao)=> situacao.usuariosNaSituacao)
+  @ManyToOne(() => Situacao,(situacao)=> situacao.aprovadosNaSituacao)
   //TODO:: inserir os nomes dos atributos no SSOT
   @JoinColumn({name: atributos.Aprovado.Situacao})
   situacaoVinculada: Situacao 
 
-  @ManyToOne(() => Turma,(turma)=> turma.usuariosDaTurma)
+  @ManyToOne(() => Turma,(turma)=> turma.aprovadosDaTurma)
   //TODO:: inserir os nomes dos atributos no SSOT
   @JoinColumn({name: atributos.Aprovado.Turma})
   turmaVinculada: Turma 
 
   @OneToOne(() => Contato, (contato) => contato.usuarioVinculado)
   //TODO:: inserir os nomes dos atributos no SSOT
-  contato: Contato
+  contatoDoAprovado: Contato
 
-  @OneToMany(() => Ranking, (ranking) => ranking.aprovado )
+  @OneToMany(() => Ranking, (ranking) => ranking.aprovadoVinculado )
   rankingsDoAprovado: Ranking[]
 }
