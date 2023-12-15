@@ -1,6 +1,6 @@
 import { Lotacao } from '../modelo/exporter';
-import { Entity, Column, PrimaryColumn, ManyToMany, OneToMany, } from 'typeorm'
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { Entity, PrimaryColumn, OneToMany, } from 'typeorm'
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Diretoria)
