@@ -1,5 +1,5 @@
 import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
-import {  RequisicaoParaAtualizarSenha, RespostaParaAtualizarSenha} from "../../../tipos/servicos/usuario";
+import {  RequisicaoParaAtualizarSenha, RespostaParaAtualizarSenha} from "../../../tipos/servicos/aprovado";
 
 
 

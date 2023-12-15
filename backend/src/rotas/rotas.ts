@@ -1,7 +1,7 @@
 import { Router } from "express";
 import rotasDeRanking from "../modulos/Ranking/rotas/RotasDeRanking";
 import rotasDeSessao from "../modulos/Sessao/rotas/RotasDeSessao";
-import rotasDeUsuario from "../modulos/Usuario/rotas/RotasDeUsuario";
+import rotasDeUsuario from "../modulos/Aprovado/rotas/RotasDeUsuario";
 import { caminhos } from "../SSOT/exporter";
 
 

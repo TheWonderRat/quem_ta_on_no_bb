@@ -1,5 +1,5 @@
 import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
-import {  RequisicaoParaDesativarConta, RespostaParaDesativarConta} from "src/tipos/servicos/usuario";
+import {  RequisicaoParaDesativarConta, RespostaParaDesativarConta} from "src/tipos/servicos/aprovado";
 
 
 
