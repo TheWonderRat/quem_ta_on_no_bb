@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, OneToOne, JoinColumn, } from 'typeorm'
+import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn, } from 'typeorm'
 import Aprovado from './Aprovado';
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Contato)
@@ -17,7 +17,7 @@ export default class Contato{
 
   /*--------------------------------join---------------------------------------*/ 
 
-  @OneToOne(() => Aprovado,(usuario) => usuario.contato)
+  @OneToOne(() => Aprovado,(usuario) => usuario.contatoDoAprovado)
   @JoinColumn({name: atributos.Contato.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
   usuarioVinculado: Aprovado 
 }
