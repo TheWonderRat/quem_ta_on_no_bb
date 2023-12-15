@@ -2,6 +2,6 @@
 
 
 //A validacao celebrate deve obedecer aos tipos
-export type RequisicaoParaCriarSessao = { email: string }
+export type RequisicaoParaCriarSessao = { login: number, senha: string }
 //A validacao celebrate deve obedecer aos tipos
-export type RespostaParaCriarSessao = { email: string}
+export type RespostaParaCriarSessao = { mensagem: string, token: string }
