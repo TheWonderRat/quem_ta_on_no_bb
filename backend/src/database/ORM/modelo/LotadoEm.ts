@@ -1,7 +1,7 @@
 import { Lotacao } from './exporter';
 import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToOne, JoinColumn} from 'typeorm';
 import { Aprovado } from './exporter';
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 
 //TODO:: Inserir nome no arquivo de constantes
@@ -33,6 +33,6 @@ export default class LotadoEm{
     {name: atributos.LotadoEm.Estado,referencedColumnName: atributos.Lotacao.Estado},
     {name: atributos.LotadoEm.Diretoria,referencedColumnName: atributos.Lotacao.Diretoria},
   ])
-  lotacao: Lotacao
+  lotacaoVinculada: Lotacao
 
 }
