@@ -20,7 +20,7 @@ import {
   BD_BASE_PADRAO, 
   BD_SENHA_PADRAO, 
   BD_USUARIO_PADRAO,
-} from '../../SSOT/baseDeDados/configuracao'; 
+} from '../../SSOT/base_de_dados/configuracao'; 
 
 const dataSource = new DataSource({
   //TODO:: criar tipo para os tipos de base de dados
