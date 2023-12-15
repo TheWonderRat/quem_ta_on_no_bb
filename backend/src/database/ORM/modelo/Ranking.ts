@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, } from 'typeorm'
 import { Aprovado, TipoRanking } from './exporter';
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Ranking)
@@ -18,9 +18,9 @@ export default class Ranking{
   /*------------------------------------join--------------------------------*/
   @ManyToOne(() => Aprovado, (aprovado) => aprovado.rankingsDoAprovado)
   @JoinColumn({name: atributos.Ranking.Inscricao })
-  aprovado: Aprovado
+  aprovadoVinculado: Aprovado
 
-  @ManyToOne(() => TipoRanking, (tipo) => tipo.rankings )
+  @ManyToOne(() => TipoRanking, (tipo) => tipo.rankingsVinculados )
   @JoinColumn({name: atributos.Ranking.TipoRanking})
-  rankingVinculado: TipoRanking 
+  tipoVinculado: TipoRanking 
 }
