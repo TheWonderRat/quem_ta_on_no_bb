@@ -16,3 +16,8 @@ export enum ErroAutorizacao{
 export enum ErroBD {
   ConexaoNaoEncontrada = "Nao foi possivel realizar a conexao com o Banco de Dados",
 }
+
+export enum ErroDeAtivacao{
+  ContaEstaInativa = "Essa conta ja esta inativa!",
+  ContaEstaAtiva = "Essa conta ja foi ativada!"
+}

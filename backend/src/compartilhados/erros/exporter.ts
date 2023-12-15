@@ -11,3 +11,6 @@ export { default as UsuarioNaoExiste } from './autorizacao/UsuarioNaoExiste';
 export { default as ErroDaBaseDeDados } from './base_de_dados/ErroDaBaseDeDados';
 //erros desconhecidos 
 export { default as ErroNoServidor } from './desconhecido/ErroNoServidor';
+//erros de ativacao de conta
+export { default as ContaEstaAtiva } from './ativacao/ContaEstaAtiva';
+export { default as ContaEstaInativa } from './ativacao/ContaEstaInativa';

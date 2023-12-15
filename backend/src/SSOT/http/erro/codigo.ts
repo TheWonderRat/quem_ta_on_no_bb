@@ -16,3 +16,8 @@ export enum ErroAutorizacao{
 export enum ErroBD {
   ConexaoNaoEncontrada = 500,
 }
+
+export enum ErroDeAtivacao{
+  ContaEstaInativa = 400,
+  ContaEstaAtiva
+}
