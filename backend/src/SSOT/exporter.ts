@@ -1,12 +1,12 @@
 // configs
 export * as jwtConfig from './jwt/jwt';
-export * as dbConfig from './baseDeDados/configuracao';
+export * as dbConfig from './base_de_dados/configuracao';
 export * as serverConfig from './servidor/configuracao';
 export * as bcryptConfig from './bcrypt/bcrypt';
 
 // ORM
-export * as models from './modelos/nomeDasColunas';
-export * as migrations from './migracoes/exporter';
+export * as entidades from './base_de_dados/entidades';
+export * as atributos from './base_de_dados/atributos';
 
 // Routes
 export * as caminhos from './rotas/nomeDosCaminhos';
