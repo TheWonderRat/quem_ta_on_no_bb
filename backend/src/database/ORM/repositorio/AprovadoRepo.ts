@@ -5,10 +5,15 @@
 import dataSource from '../../config';
   //entity
 //relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 import { Aprovado } from '../modelo/exporter';
 
  class AprovadoRepo extends Repository<Aprovado> {
+
+  public async buscarPorLogin(inscricao: number): Promise<Aprovado | null>{
+      const user = await this.findOne({ where: { inscricao } });
+
+      return user;
+  }
 
   public async cadastrarAprovado(
       inscricao: number,

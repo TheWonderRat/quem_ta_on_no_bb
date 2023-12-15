@@ -24,10 +24,10 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
     return ranking;
   }
 
-   public async findByLista(
+   public async buscarByLista(
      pagina: number,
      candidatos: number,
-     ranking?: string,
+     ranking: string,
      situacao?: string,
      cidade?: string,
      diretoria?: string,
