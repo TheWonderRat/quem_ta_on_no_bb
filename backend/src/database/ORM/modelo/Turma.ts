@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, OneToMany, } from 'typeorm'
+import { Entity, PrimaryColumn, OneToMany, } from 'typeorm'
 import { Aprovado } from './exporter';
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Turma)
@@ -12,7 +12,7 @@ export default class Turma{
   /*----------------------------------join----------------------------*/
 
   @OneToMany(() => Aprovado, (usuario) => usuario.turmaVinculada)
-  usuariosDaTurma: Aprovado[];
+  aprovadosDaTurma: Aprovado[];
   
 
 }
