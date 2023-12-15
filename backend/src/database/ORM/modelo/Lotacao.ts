@@ -1,6 +1,6 @@
 import { Cidade, Diretoria, LotadoEm } from './exporter';
-import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToOne, JoinColumn, OneToMany, } from 'typeorm'
-import { atributos, entidades } from '../../../SSOT/migracoes/exporter';
+import { Entity, PrimaryColumn, ManyToOne, JoinColumn, OneToMany, } from 'typeorm'
+import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 @Entity(entidades.Lotacao)
 export default class Lotacao{
@@ -16,10 +16,10 @@ export default class Lotacao{
 
   /*-----------------------------joins----------------------------------*/
 
-  @OneToMany(() => LotadoEm, (lotadoEm) => lotadoEm.lotacao)
+  @OneToMany(() => LotadoEm, (lotadoEm) => lotadoEm.lotacaoVinculada)
   aprovadosNaLotacao: LotadoEm[] 
 
-  @ManyToOne(() => Cidade, (cidade) => cidade.lotacoes )
+  @ManyToOne(() => Cidade, (cidade) => cidade.lotacoesVinculadas )
   //TODO:: criar constantes para as joins tambem
   @JoinColumn([
     {name: atributos.Lotacao.Cidade, referencedColumnName: atributos.Cidade.Nome},
