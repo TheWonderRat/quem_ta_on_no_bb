@@ -1,4 +1,5 @@
-import ServicoAbstrato from "../../../compartilhados/servico/ServicoAbstrato";
+import { RankingRepo } from "../../../database/ORM/repositorio/exporter";
+import { ServicoAbstrato } from "../../../compartilhados/servico/exporter";
 import { RequisicaoParaListarORanking, RespostaParaListarORanking} from '../../../tipos/servicos/ranking'
 
 
@@ -7,6 +8,17 @@ export class ServicoParaListarORanking extends ServicoAbstrato<
 >{
 
   public async executar(parameters: RequisicaoParaListarORanking): Promise<RespostaParaListarORanking>{
-    return { email: "called on list request"}    
+
+    const aprovados = await RankingRepo.buscarByLista(
+      parameters.aprovados,
+      parameters.pagina,
+      parameters.tipoRanking,
+      parameters.situacao,
+      parameters.cidade,
+      parameters.diretoria,
+      parameters.turma,
+    )
+
+    return { mensagem: "called on list request"}    
   }
 }

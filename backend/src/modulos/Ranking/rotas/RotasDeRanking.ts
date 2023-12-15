@@ -9,7 +9,7 @@ const controladorDoRanking = new ControladorDoRanking();
      '/:candidatos?/:pagina?/:lista?/:cidade?/:diretoria?/:turma?',
      celebrate({
        [Segments.QUERY]: {
-         candidatos: Joi.number().required(),
+         aprovados: Joi.number().required(),
          pagina: Joi.string().required(),
          lista: Joi.string().required(),
          cidade: Joi.string(),
