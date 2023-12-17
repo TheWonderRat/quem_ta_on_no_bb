@@ -100,37 +100,55 @@ function gerarListaDeConvocacao(
 ): TipoRanking[]{
 
   //ordena as listas conforme a posicao do aprovado;
-  const todos = listaCompleta.sort((a,b) => a.posicaoAmpla - b.posicaoAmpla );
+  const todos = listaCompleta.sort((a,b) => {
+    return a.posicaoAmpla < b.posicaoAmpla ? -1 : a.posicaoAmpla > b.posicaoAmpla ? 1 : 0;
+  });
   //os classificados na ampla sao todas as pessoas entre os primeiros 1500
 
-  const ampla = todos.filter((a) => a.posicaoAmpla <= 1500 && a.posicaoPCD !== null );
-  //PPP sao todos os que nao estao entre os 1500 primeiros e atendem a condicao de PPP
-  const ppp = todos.filter((a) => a.posicaoAmpla > 1500 && a.posicaoPPP !== null);
-  //PCD sao todos os que nao estao entre os 1500 primeiros e atendem a condicao de PCD
-  const pcd = todos.filter((a) => a.posicaoPCD !== null);
 
-  let i_ampla = 1, i_ppp = 1, i_pcd = 1;
+  const ampla = todos.filter((a) => {
+    const ppp = a.posicaoAmpla <= 1500 && a.posicaoPPP !== null;
+    const pcd = a.posicaoAmpla <= 1500 && a.posicaoPCD !== null;
+    const pAmpla = a.posicaoPPP === null && a.posicaoPCD === null;
+
+    //return !pppAmpla && !pcdAmpla;
+    return ppp || pcd || pAmpla;
+  });
+  //PPP sao todos os que nao estao entre os 1500 primeiros e atendem a condicao de PPP
+  const ppp = todos.filter((a) => a.posicaoAmpla > 1500 && a.posicaoPPP !== null && a.posicaoPCD === null );
+  //PCD sao todos os que nao estao entre os 1500 primeiros e atendem a condicao de PCD
+  const pcd = todos.filter((a) => a.posicaoAmpla > 1500 && a.posicaoPCD !== null);
+  
+  let i = 1;
   let listaOrdenada: TipoRanking[] = [];
 
+
   while (ampla.length > 0|| ppp.length > 0|| pcd.length > 0){
-    const amplaUm = { inscricao: ampla[0].inscricao,posicao: i_ampla,tipo: 'lista_de_chamada'};
-    i_ampla += 1;ampla.splice(0,1);
-    console.log(ampla[0]);
-    const amplaDo = { inscricao: ampla[0].inscricao,posicao: i_ampla,tipo: 'lista_de_chamada'};
-    i_ampla += 1;ampla.splice(0,1);
-    const amplaTr = {inscricao: ampla[0].inscricao,posicao:i_ampla,tipo:'lista_de_chamada'}
-    i_ampla += 1;ampla.splice(0,1);
+    if(ampla.length > 0){
+      const amplaUm = { inscricao: ampla[0].inscricao,posicao: i,tipo: 'lista_de_chamada'};
+      i += 1;ampla.splice(0,1); listaOrdenada.push(amplaUm)
+    }
+    if(ampla.length > 0){
+      const amplaDo = { inscricao: ampla[0].inscricao,posicao: i,tipo: 'lista_de_chamada'};
+      i += 1;ampla.splice(0,1);
+      listaOrdenada.push(amplaDo);
+    }
+    if(ampla.length > 0){
+      const amplaTr = {inscricao: ampla[0].inscricao,posicao:i,tipo:'lista_de_chamada'}
+      i += 1;ampla.splice(0,1);
+      listaOrdenada.push(amplaTr);
+    }
 
-    const pppUm = { inscricao: ppp[0].inscricao,posicao: i_ppp,tipo: 'lista_de_chamada'};
-    i_ppp += 1;ppp.splice(0,1);
-    const pcdUm = { inscricao: pcd[0].inscricao,posicao: i_pcd,tipo: 'lista_de_chamada'}
-    i_pcd += 1;pcd.splice(0,1);
-
-    listaOrdenada.push(amplaUm);
-    listaOrdenada.push(amplaDo);
-    listaOrdenada.push(amplaTr);
-    listaOrdenada.push(pppUm);
-    listaOrdenada.push(pcdUm);
+    if(ppp.length > 0){
+      const pppUm = { inscricao: ppp[0].inscricao,posicao: i,tipo: 'lista_de_chamada'};
+      i += 1;ppp.splice(0,1);
+      listaOrdenada.push(pppUm);
+    }
+    if(pcd.length > 0){
+      const pcdUm = { inscricao: pcd[0].inscricao,posicao: i,tipo: 'lista_de_chamada'}
+      i += 1;pcd.splice(0,1);
+      listaOrdenada.push(pcdUm);
+    }
   }
 
   return listaOrdenada;
@@ -168,9 +186,9 @@ const LOTACOES = [
 
 const TURMAS = [1,2,3];
 const TIPOS_RANKING = [
-  'ampla_concorrencia',
-  'diretas',
-  'cadastro_reserva',
+  'lista_ampla_completa',
+  'lista_ampla_diretas',
+  'lista_ampla_cr',
 
   'lista_ppp_completa',
   'lista_ppp_diretas',
@@ -188,8 +206,8 @@ async function carregarEstados(
   estados: string[] = ESTADOS
 ): Promise<void>{
 
-    for await (const e of estados){
-      await EstadoRepo.cadastrarEstado(e)
+    for await (const estado of estados){
+      await EstadoRepo.cadastrarEstado(estado)
         .catch((e) => { throw(`\n\nerro no carregamento dos Estados:\n${e}`)})
     }
 }
@@ -271,11 +289,12 @@ async function carregarRanking(
 ){
   for await (const a of aprovados){
     await RankingRepo.cadastrarRanking(a.inscricao,a.posicao,a.tipo)
-      .catch((e) => { throw(`\n\nErro no carregamento dos aprovados:\n${e}`)})
+      .catch((e) => { throw(`\n\nErro no carregamento dos rankings:\n${e}`)})
   }
 }
 
 async function carregarDados(){
+/*
   const camadaUm = Promise.all([
     await carregarEstados(),
     await carregarDiretorias(),
@@ -283,18 +302,17 @@ async function carregarDados(){
     await carregarTipoRanking(),
     await carregarTurma(),
   ]);
-
   const camadaDois = Promise.all([
     await carregarCidades(),
     await carregarAprovados()
   ]);
-
   const camadaTres = Promise.all([
     await carregarLotacao(),
   ]);
+  */
 
   const camadaQuatro = Promise.all([
-
+    /*
     await carregarRanking(LISTA_AMPLA_COMPLETA),
     await carregarRanking(LISTA_AMPLA_DIRETAS),
     await carregarRanking(LISTA_AMPLA_CR),
@@ -306,20 +324,24 @@ async function carregarDados(){
     //await carregarRanking(LISTA_PCD_COMPLETA),
     await carregarRanking(LISTA_PCD_DIRETAS),
     await carregarRanking(LISTA_PCD_CR),
+    */
 
     await carregarRanking(LISTA_ORDENADA_DE_CONVOCACAO),
   ]);
 
+  /*
   await camadaUm.then(async () => { 
     await camadaDois.then( async () =>{
       await camadaTres.then( async () => {
+        */
         await camadaQuatro.then(async () =>{
-           () =>{ console.log("HADOOUUUKEN!!")};
+           console.log("HADOOUUUKEN!!")
         })
+  /*
       })
     }).catch(e => { throw(e)})
   }).catch(e => { throw(e) });
-
+*/
 }
 
 async function executar(){
@@ -329,5 +351,5 @@ async function executar(){
     await carregarDados();
   }
 }
-
 executar().then(() => console.log("Dados devidamente carregados!")).catch((e) => console.log(`ERRO!:\n${e}`))
+
