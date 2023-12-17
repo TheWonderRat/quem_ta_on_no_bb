@@ -9,7 +9,7 @@ import { Aprovado, Estado, Ranking } from '../modelo/exporter'
 import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 
  class EstadoRepo extends Repository<Estado> {
-  public async cadastrarRanking(nome: string): Promise<void>{
+  public async cadastrarEstado(nome: string): Promise<void>{
     const ranking = this.criarEstado(nome);
     await this.manager.save(ranking);
   }

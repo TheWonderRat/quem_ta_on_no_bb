@@ -22,8 +22,11 @@ export default class LotadoEm{
 
   /*-----------------------------join-------------------------------*/
 
+  //@OneToOne(() => Aprovado, (aprovado) => aprovado.lotadoEm)
+  //@JoinColumn({name: atributos.LotadoEm.Inscricao ,referencedColumnName: atributos.Aprovado.Inscricao})
   @OneToOne(() => Aprovado, (aprovado) => aprovado.lotadoEm)
-  @JoinColumn({name: atributos.LotadoEm.Inscricao ,referencedColumnName: atributos.Aprovado.Inscricao})
+  //@JoinColumn({name: atributos.LotadoEm.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
+  @JoinColumn({name: atributos.LotadoEm.Inscricao,referencedColumnName: atributos.Aprovado.Inscricao})
   aprovadoVinculado: Aprovado
 
   @ManyToOne(() => Lotacao, (lotacao) => lotacao.aprovadosNaLotacao ) 

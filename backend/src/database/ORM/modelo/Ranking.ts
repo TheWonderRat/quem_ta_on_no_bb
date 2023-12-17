@@ -17,7 +17,7 @@ export default class Ranking{
 
   /*------------------------------------join--------------------------------*/
   @ManyToOne(() => Aprovado, (aprovado) => aprovado.rankingsDoAprovado)
-  @JoinColumn({name: atributos.Ranking.Inscricao })
+  @JoinColumn({name: atributos.Ranking.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
   aprovadoVinculado: Aprovado
 
   @ManyToOne(() => TipoRanking, (tipo) => tipo.rankingsVinculados )

@@ -18,10 +18,10 @@ import { Aprovado } from '../modelo/exporter';
   public async cadastrarAprovado(
       inscricao: number,
       nome: string,
-      senha?: string,
-      situacao?: string,
-      turma?: number,
-      ativado?: boolean
+      senha: string,
+      situacao: string,
+      turma: number,
+      ativado: boolean
     ): Promise<void>{
 
       const aprovado = this.criarAprovado(inscricao,nome,senha,situacao,turma,ativado);
@@ -31,27 +31,19 @@ import { Aprovado } from '../modelo/exporter';
   public criarAprovado(
       inscricao: number,
       nome: string,
-      senha?: string,
-      situacao?: string,
-      turma?: number,
-      ativado?: boolean
+      senha: string,
+      situacao: string,
+      turma: number,
+      ativado: boolean
     ): Aprovado{
       const aprovado = this.manager.create(Aprovado);
       aprovado.inscricao = inscricao;
       aprovado.nome = nome;
-      if(senha){
-          aprovado.senha = senha;
-      }
-      if(turma){
-        aprovado.turma = turma;
-      }
-      if(situacao){
-        aprovado.situacao = situacao;
-      }
-      if(ativado){
-        aprovado.ativado = ativado;
-      }
-    return aprovado;
+      aprovado.senha = senha;
+      aprovado.turma = turma;
+      aprovado.situacao = situacao;
+      aprovado.ativado = ativado;
+      return aprovado;
   }
 }
 

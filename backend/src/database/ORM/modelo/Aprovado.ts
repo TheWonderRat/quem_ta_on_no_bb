@@ -6,7 +6,7 @@ import { atributos, entidades } from '../../../SSOT/base_de_dados//exporter';
 @Entity(entidades.Aprovado)
 export default class Aprovado{
 
-  @PrimaryColumn({name: atributos.Aprovado.Inscricao})
+  @PrimaryColumn({name: atributos.Aprovado.Inscricao, type: 'bigint'})
   inscricao: number;
 
   @Column({name: atributos.Aprovado.Nome})
