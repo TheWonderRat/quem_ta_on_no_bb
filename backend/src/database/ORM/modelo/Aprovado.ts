@@ -18,7 +18,7 @@ export default class Aprovado{
   @Column({name: atributos.Aprovado.Situacao})
   situacao: string
 
-  @Column({nullable: true})
+  @Column({name: atributos.Aprovado.Turma,nullable: true})
   turma?: number
 
   @Column()

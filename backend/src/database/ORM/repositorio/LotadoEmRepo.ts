@@ -7,7 +7,15 @@ import dataSource from '../../config';
 import { LotadoEm } from '../modelo/exporter'
 
  class LotadoEmRepo extends Repository<LotadoEm> {
-  public async cadastrarRanking(
+
+  public async buscarPorPosicaoAmpla(posicao: number): Promise<LotadoEm | null>{
+      const lotadoEm = await this.findOne({ where: { posicao } });
+
+      return lotadoEm; 
+  }
+
+
+  public async cadastrarLotadoEm(
     diretoria: string,
     posicaoAmpla: number,
     cidade: string,

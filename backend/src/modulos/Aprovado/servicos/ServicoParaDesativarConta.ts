@@ -13,7 +13,7 @@ export default class ServicoParaDesativarConta extends ServicoAbstrato<Requisica
     const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(login);
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
-    if(!aprovado){
+    if( !aprovado ){
       throw new UsuarioNaoExiste()
     }
 

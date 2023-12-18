@@ -1,3 +1,4 @@
+
 export const raiz: string = '/';
 export const usuario: string = '/usuario';
 export const ranking: string = '/ranking';

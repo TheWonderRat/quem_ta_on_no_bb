@@ -38,7 +38,7 @@ const ARQUIVO_CR = require(path.join(__dirname,'..','..','..','dados_dos_aprovad
 
 const DIRETAS: TipoAprovado[] = ARQUIVO_DIRETAS;
 const CADASTRO_RESERVA : TipoAprovado[] = ARQUIVO_CR
-const TODOS_OS_APROVADOS: TipoAprovado[] = [...DIRETAS,...CADASTRO_RESERVA];
+const TODOS_OS_APROVADOS: TipoAprovado[] = DIRETAS.concat(CADASTRO_RESERVA);
 
 
 const LISTA_AMPLA_COMPLETA: TipoRanking[] = TODOS_OS_APROVADOS 
@@ -180,7 +180,7 @@ const CIDADES = [
   ['Brasilia','DF']
 ]
 const DIRETORIAS = [
-  'DITEC','UAN','UDF'
+  'DITEC','UAN','UCF'
 ]
 const SITUACOES = [
   'fila_de_espera',
@@ -202,7 +202,7 @@ const LOTACOES = [
   ['DITEC','Sao Paulo','SP'],
   ['DITEC','Brasilia', 'DF'],
   ['UAN','Brasilia','DF'],
-  ['UDF','Brasilia','DF'],
+  ['UCF','Brasilia','DF'],
 ]
 
 const TURMAS = [1,2,3];

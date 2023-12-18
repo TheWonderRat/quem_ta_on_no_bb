@@ -9,7 +9,7 @@ export class ServicoParaListarORanking extends ServicoAbstrato<
 
   public async executar(parameters: RequisicaoParaListarORanking): Promise<RespostaParaListarORanking>{
 
-    const aprovados = await RankingRepo.buscarByLista(
+    const aprovados = await RankingRepo.buscarPorRanking(
       parameters.aprovados,
       parameters.pagina,
       parameters.tipoRanking,
