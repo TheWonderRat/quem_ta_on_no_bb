@@ -19,6 +19,6 @@ export class ServicoParaListarORanking extends ServicoAbstrato<
       parameters.turma,
     )
 
-    return { mensagem: "called on list request"}    
+    return { mensagem: "called on list request", aprovados }    
   }
 }

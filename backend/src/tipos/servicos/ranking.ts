@@ -9,4 +9,5 @@ export type RequisicaoParaListarORanking = {
   situacao?: string
 }
 //A validacao celebrate deve obedecer aos tipos
-export type RespostaParaListarORanking = { mensagem: string }
+//TODO:: criar os tipos de resposta depois
+export type RespostaParaListarORanking = { mensagem: string , aprovados: any}

@@ -10,12 +10,13 @@ import UserController from '../controlador/ControladorDeUsuario';
 
  const rotasDeUsuario = Router();
  const controladorDeUsuario = new UserController();
+ import {caminhos} from '../../../SSOT/exporter'
 
   
      //rota para atualizacao de conta
      rotasDeUsuario.post(
        //TODO: inserir constante
-       '/atualizar-senha',
+        caminhos.Aprovado.AtualizarSenha,
         //isAuthenticated,
        celebrate({
          [Segments.BODY]: {
@@ -30,7 +31,7 @@ import UserController from '../controlador/ControladorDeUsuario';
      //rota para atualizacao de conta
      rotasDeUsuario.post(
        //TODO: inserir constante
-       '/ativar-conta',
+        caminhos.Aprovado.AtivarConta ,
         //isAuthenticated,
        celebrate({
          [Segments.BODY]: {
@@ -44,7 +45,7 @@ import UserController from '../controlador/ControladorDeUsuario';
      //rota para atualizacao de conta
      rotasDeUsuario.delete(
        //TODO: inserir constante
-       '/desativar-conta',
+        caminhos.Aprovado.DesativarConta ,
         //isAuthenticated,
        celebrate({
          [Segments.BODY]: {

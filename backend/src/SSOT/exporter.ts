@@ -10,6 +10,7 @@ export * as atributos from './base_de_dados/atributos';
 
 // Routes
 export * as caminhos from './rotas/nomeDosCaminhos';
+export * as parametrosDeRota from './rotas/parametrosDeRota';
 
 // http
 export * as mensagemErroHTTP from './http/erro/mensagem';
