@@ -9,17 +9,17 @@ import { Aprovado, Ranking } from '../modelo/exporter'
 import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 
  class RankingRepo extends Repository<Ranking> {
-  public async cadastrarRanking(inscricao: number,posicao: number,tipoRanking: string): Promise<void>{
-    const ranking = this.criarRanking(inscricao, posicao, tipoRanking);
+  public async cadastrarRanking(posicaoAmpla: number,posicao: number,tipoRanking: string): Promise<void>{
+    const ranking = this.criarRanking(posicaoAmpla, posicao, tipoRanking);
     await this.manager.save(ranking);
   }
 
-  public criarRanking(inscricao: number,posicao: number,tipoRanking: string): Ranking{
+  public criarRanking(posicaoAmpla: number,posicao: number,tipoRanking: string): Ranking{
     const ranking = dataSource.manager.create(Ranking);
 
-    ranking.inscricao = inscricao;
+    ranking.posicaoAmpla= posicaoAmpla;
     ranking.tipoRanking = tipoRanking;
-    ranking.posicao = posicao;
+    ranking.posicaoNoRanking = posicao;
 
     return ranking;
   }
@@ -33,7 +33,15 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
      diretoria?: string,
      turma?: number,
    ): Promise<Aprovado[]> {
-     const params = ['apr.nome', 'apr.ppp', 'apr.pcd', 'lista.posicao', 'lista.tipo'];
+
+      const ALIAS_APROVADO = 'apr'
+     const params = [
+        `${ALIAS_APROVADO}.${atributos.Aprovado.Nome}`,
+        `${ALIAS_APROVADO}.${atributos.Aprovado.PPP}`,
+        `${ALIAS_APROVADO}.${atributos.Aprovado.PCD}`,
+        `${entidades.Ranking}.${atributos.Ranking.Posicao}`,
+        `${entidades.Ranking}.${atributos.Ranking.TipoRanking}`,
+      ];
 
       //todas as joins devem estar antes de where
      let qr = dataSource 
@@ -42,14 +50,14 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
        .innerJoinAndSelect(
             `apr.${relacionamentos.Aprovado.RankingsDoAprovado}`,
             `apr.${entidades.Ranking}`,
-            `apr.${atributos.Aprovado.Inscricao} = ${entidades.Ranking}.${atributos.Ranking.Inscricao}`,
+            `apr.${atributos.Aprovado.PosicaoAmpla} = ${entidades.Ranking}.${atributos.Ranking.PosicaoAmpla}`,
        );
 
      if (cidade || diretoria) {
        qr = qr.innerJoinAndSelect(
           `apr.${relacionamentos.Aprovado.LotadoEm}`,
           `${entidades.LotadoEm}`,
-          `apr.${atributos.Aprovado.Inscricao} = ${entidades.LotadoEm}.${atributos.LotadoEm.Inscricao}`,
+          `apr.${atributos.Aprovado.PosicaoAmpla} = ${entidades.LotadoEm}.${atributos.LotadoEm.PosicaoAmpla}`,
        );
 
        if (diretoria) {

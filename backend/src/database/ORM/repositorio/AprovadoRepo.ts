@@ -9,8 +9,8 @@ import { Aprovado } from '../modelo/exporter';
 
  class AprovadoRepo extends Repository<Aprovado> {
 
-  public async buscarPorLogin(inscricao: number): Promise<Aprovado | null>{
-      const user = await this.findOne({ where: { inscricao } });
+  public async buscarPorPosicaoAmpla(posicao: number): Promise<Aprovado | null>{
+      const user = await this.findOne({ where: { posicao } });
 
       return user;
   }
@@ -21,28 +21,34 @@ import { Aprovado } from '../modelo/exporter';
       senha: string,
       situacao: string,
       turma: number,
-      ativado: boolean
+      ppp: boolean,
+      pcd: boolean,
+      ativado: boolean,
     ): Promise<void>{
 
-      const aprovado = this.criarAprovado(inscricao,nome,senha,situacao,turma,ativado);
+      const aprovado = this.criarAprovado(inscricao,nome,senha,situacao,turma,ativado, ppp, pcd);
       await this.manager.save(aprovado);
   }
 
   public criarAprovado(
-      inscricao: number,
+      posicaoAmpla: number,
       nome: string,
       senha: string,
       situacao: string,
       turma: number,
+      ppp: boolean,
+      pcd: boolean,
       ativado: boolean
     ): Aprovado{
       const aprovado = this.manager.create(Aprovado);
-      aprovado.inscricao = inscricao;
+      aprovado.posicao = posicaoAmpla;
       aprovado.nome = nome;
       aprovado.senha = senha;
       aprovado.turma = turma;
       aprovado.situacao = situacao;
       aprovado.ativado = ativado;
+      aprovado.ppp = ppp;
+      aprovado.pcd = pcd;
       return aprovado;
   }
 }

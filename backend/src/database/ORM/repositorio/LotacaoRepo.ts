@@ -5,8 +5,6 @@
 import dataSource from '../../config';
   //entity
 import { Aprovado, Lotacao, Ranking } from '../modelo/exporter'
-//relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 
  class LotacaoRepo extends Repository<Lotacao> {
 

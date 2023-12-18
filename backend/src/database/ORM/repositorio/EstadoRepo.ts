@@ -5,8 +5,6 @@
 import dataSource from '../../config';
   //entity
 import { Aprovado, Estado, Ranking } from '../modelo/exporter'
-//relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 
  class EstadoRepo extends Repository<Estado> {
   public async cadastrarEstado(nome: string): Promise<void>{

@@ -4,9 +4,7 @@
   //ORM
 import dataSource from '../../config';
   //entity
-import { Aprovado, Contato, Ranking } from '../modelo/exporter'
-//relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
+import { Contato } from '../modelo/exporter'
 
  class ContatoRepo extends Repository<Contato> {
   public async cadastrarContato(inscricao: number,email: string,celular: number): Promise<void>{
@@ -16,7 +14,7 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
 
   public criarContato(inscricao: number,email: string,celular: number): Contato{
     const contato = dataSource.manager.create(Contato);
-    contato.inscricao = inscricao;
+    contato.posicao = inscricao;
     contato.email = email;
     contato.celular = celular;
 

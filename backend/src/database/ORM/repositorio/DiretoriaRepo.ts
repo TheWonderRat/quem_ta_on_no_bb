@@ -5,8 +5,6 @@
 import dataSource from '../../config';
   //entity
 import { Diretoria } from '../modelo/exporter'
-//relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
 
  class DiretoriaRepo extends Repository<Diretoria> {
   public async cadastrarDiretoria(nome: string): Promise<void>{

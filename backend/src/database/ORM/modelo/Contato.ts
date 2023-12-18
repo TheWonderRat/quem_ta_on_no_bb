@@ -6,8 +6,8 @@ import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 @Entity(entidades.Contato)
 export default class Contato{
 
-  @PrimaryColumn({name: atributos.Contato.Inscricao})
-  inscricao: number;
+  @PrimaryColumn({name: atributos.Contato.PosicaoAmpla})
+  posicao: number;
 
   @Column({name: atributos.Contato.Celular})
   celular: number;
@@ -18,6 +18,6 @@ export default class Contato{
   /*--------------------------------join---------------------------------------*/ 
 
   @OneToOne(() => Aprovado,(usuario) => usuario.contatoDoAprovado)
-  @JoinColumn({name: atributos.Contato.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
+  @JoinColumn({name: atributos.Contato.PosicaoAmpla, referencedColumnName: atributos.Aprovado.PosicaoAmpla})
   usuarioVinculado: Aprovado 
 }

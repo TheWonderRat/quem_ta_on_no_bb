@@ -8,8 +8,8 @@ import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 @Entity(entidades.LotadoEm)
 export default class LotadoEm{
 
-  @PrimaryColumn({name: atributos.LotadoEm.Inscricao})
-  inscricao:number 
+  @PrimaryColumn({name: atributos.LotadoEm.PosicaoAmpla})
+  posicao:number 
 
   @PrimaryColumn({name: atributos.LotadoEm.Cidade})
   cidade: string
@@ -25,8 +25,7 @@ export default class LotadoEm{
   //@OneToOne(() => Aprovado, (aprovado) => aprovado.lotadoEm)
   //@JoinColumn({name: atributos.LotadoEm.Inscricao ,referencedColumnName: atributos.Aprovado.Inscricao})
   @OneToOne(() => Aprovado, (aprovado) => aprovado.lotadoEm)
-  //@JoinColumn({name: atributos.LotadoEm.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
-  @JoinColumn({name: atributos.LotadoEm.Inscricao,referencedColumnName: atributos.Aprovado.Inscricao})
+  @JoinColumn({name: atributos.LotadoEm.PosicaoAmpla,referencedColumnName: atributos.Aprovado.PosicaoAmpla})
   aprovadoVinculado: Aprovado
 
   @ManyToOne(() => Lotacao, (lotacao) => lotacao.aprovadosNaLotacao ) 

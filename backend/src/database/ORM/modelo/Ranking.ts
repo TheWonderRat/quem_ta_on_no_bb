@@ -9,15 +9,15 @@ export default class Ranking{
   @PrimaryColumn({name: atributos.Ranking.TipoRanking})
   tipoRanking: string;
 
-  @PrimaryColumn({name: atributos.Ranking.Inscricao})
-  inscricao: number;
+  @PrimaryColumn({name: atributos.Ranking.PosicaoAmpla})
+  posicaoAmpla: number;
 
   @Column({name: atributos.Ranking.Posicao})
-  posicao: number
+  posicaoNoRanking: number
 
   /*------------------------------------join--------------------------------*/
   @ManyToOne(() => Aprovado, (aprovado) => aprovado.rankingsDoAprovado)
-  @JoinColumn({name: atributos.Ranking.Inscricao, referencedColumnName: atributos.Aprovado.Inscricao})
+  @JoinColumn({name: atributos.Ranking.PosicaoAmpla, referencedColumnName: atributos.Aprovado.PosicaoAmpla})
   aprovadoVinculado: Aprovado
 
   @ManyToOne(() => TipoRanking, (tipo) => tipo.rankingsVinculados )

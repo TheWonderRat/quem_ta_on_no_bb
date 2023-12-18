@@ -4,30 +4,28 @@
   //ORM
 import dataSource from '../../config';
   //entity
-import { Aprovado, LotadoEm, Ranking } from '../modelo/exporter'
-//relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
+import { LotadoEm } from '../modelo/exporter'
 
  class LotadoEmRepo extends Repository<LotadoEm> {
   public async cadastrarRanking(
     diretoria: string,
-    inscricao: number,
+    posicaoAmpla: number,
     cidade: string,
     estado: string
   ): Promise<void>{
-    const lotadoEm = this.criarLotadoEm(diretoria, inscricao, cidade, estado);
+    const lotadoEm = this.criarLotadoEm(diretoria, posicaoAmpla, cidade, estado);
     await this.manager.save(lotadoEm);
   }
 
   public criarLotadoEm(
     diretoria: string,
-    inscricao: number,
+    posicaoAmpla: number,
     cidade: string,
     estado: string
   ): LotadoEm{
     const lotadoEm = dataSource.manager.create(LotadoEm);
 
-      lotadoEm.inscricao = inscricao;
+      lotadoEm.posicao= posicaoAmpla;
       lotadoEm.diretoria = diretoria;
       lotadoEm.cidade = cidade;
       lotadoEm.estado = estado;

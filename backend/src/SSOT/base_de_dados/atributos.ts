@@ -8,7 +8,7 @@ export enum Cidade{
 }
 
 export enum Contato{
-  Inscricao = "inscricao_vinculada",
+  PosicaoAmpla = 'posicao',
   Celular = "celular",
   Email = "email",
   CriadoEm = "criado_em",
@@ -36,7 +36,7 @@ export enum Lotacao{
 }
 
 export enum LotadoEm{
-  Inscricao = "inscricao",
+  PosicaoAmpla = "posicao",
   Cidade = "cidade_vinculada",
   Estado = "estado_vinculado",
   Diretoria = "diretoria_vinculada",
@@ -45,9 +45,9 @@ export enum LotadoEm{
 }
 
 export enum Ranking{
-  Inscricao = "inscricao_vinculada",
+  PosicaoAmpla = 'posicao',
   TipoRanking = "tipo",
-  Posicao = "posicao",
+  Posicao = "posicao_no_ranking",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"
 }
@@ -71,10 +71,12 @@ export enum Turma{
 }
 
 export enum Aprovado{
-  Inscricao = "inscricao",
+  PosicaoAmpla = 'posicao',
   Nome = "nome_aprovado",
   Senha = "senha_aprovado",
   Situacao = "situacao_aprovado",
+  PPP = 'ppp',
+  PCD = 'pcd',
   Turma = "turma_aprovado",
   Ativo = "ativo",
   CriadoEm = "criado_em",

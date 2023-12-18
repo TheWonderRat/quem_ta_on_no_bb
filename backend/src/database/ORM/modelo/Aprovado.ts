@@ -6,8 +6,8 @@ import { atributos, entidades } from '../../../SSOT/base_de_dados//exporter';
 @Entity(entidades.Aprovado)
 export default class Aprovado{
 
-  @PrimaryColumn({name: atributos.Aprovado.Inscricao, type: 'bigint'})
-  inscricao: number;
+  @PrimaryColumn({name: atributos.Aprovado.PosicaoAmpla , type: 'smallint'})
+  posicao: number;
 
   @Column({name: atributos.Aprovado.Nome})
   nome: string;
@@ -20,6 +20,12 @@ export default class Aprovado{
 
   @Column()
   turma: number
+
+  @Column()
+  ppp: boolean
+
+  @Column()
+  pcd: boolean
 
   @Column()
   ativado: boolean
