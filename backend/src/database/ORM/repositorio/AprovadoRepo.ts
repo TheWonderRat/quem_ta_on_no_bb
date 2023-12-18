@@ -20,13 +20,13 @@ import { Aprovado } from '../modelo/exporter';
       nome: string,
       senha: string,
       situacao: string,
-      turma: number,
       ppp: boolean,
       pcd: boolean,
       ativado: boolean,
+      turma?: number
     ): Promise<void>{
 
-      const aprovado = this.criarAprovado(inscricao,nome,senha,situacao,turma,ativado, ppp, pcd);
+      const aprovado = this.criarAprovado(inscricao,nome,senha,situacao,ativado, ppp, pcd,turma);
       await this.manager.save(aprovado);
   }
 
@@ -35,10 +35,10 @@ import { Aprovado } from '../modelo/exporter';
       nome: string,
       senha: string,
       situacao: string,
-      turma: number,
       ppp: boolean,
       pcd: boolean,
-      ativado: boolean
+      ativado: boolean,
+      turma?: number
     ): Aprovado{
       const aprovado = this.manager.create(Aprovado);
       aprovado.posicao = posicaoAmpla;

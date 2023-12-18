@@ -305,10 +305,9 @@ async function carregarAprovados(
       a.nome,
       a.senha,
       "fila_de_espera",
-      1,
       a.posicaoPPP !== null
       ,a.posicaoPCD !== null,
-      false
+      false,
     )
       .catch((e) => { throw(`\n\nErro no carregamento dos aprovados:\n${e}`)})
   }
@@ -380,4 +379,5 @@ async function executar(){
   }
 }
 executar().then(() => console.log("Dados devidamente carregados!")).catch((e) => console.log(`ERRO!:\n${e}`))
+
 
