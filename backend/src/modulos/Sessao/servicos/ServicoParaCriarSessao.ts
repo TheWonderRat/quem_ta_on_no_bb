@@ -7,9 +7,9 @@ export default class ServicoParaCriarSessao extends AbstractService<RequisicaoPa
 
   public async executar(parameters: RequisicaoParaCriarSessao): Promise<RespostaParaCriarSessao>{
 
-    const login = parameters.login ;
+    const login= parameters.login;
     //checa se o usuario existe na base de dados
-    const aprovado = await AprovadoRepo.buscarPorLogin(login);
+    const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(login);
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
     if(!aprovado){

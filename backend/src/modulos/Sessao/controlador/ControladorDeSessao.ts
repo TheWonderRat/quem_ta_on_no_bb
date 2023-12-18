@@ -8,7 +8,7 @@ export default class ControladorDeSessao{
 
     const sessionService = new ServicoParaCriarSessao()
     const { login, senha } = request.body;
-    const result = await sessionService.executar({login: Number(login), senha});
+    const result = await sessionService.executar({ login: Number(login), senha});
     return response.json(result)
   }
 }

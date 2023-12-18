@@ -9,9 +9,9 @@ export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoPa
   //deveria pedir ou email ou senha na requisicao""
   public async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta>{
 
-    const login = parameters.inscricao ;
+    const login = parameters.login;
     //checa se o usuario existe na base de dados
-    const aprovado = await AprovadoRepo.buscarPorLogin(login);
+    const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(login);
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
     if(!aprovado){

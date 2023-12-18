@@ -9,9 +9,9 @@ export default class ServicoParaAtualizarSenha extends ServicoAbstrato<Requisica
 
   public async executar(parameters: RequisicaoParaAtualizarSenha): Promise<RespostaParaAtualizarSenha>{
 
-    const login = parameters.inscricao ;
+    const login = parameters.login;
     //checa se o usuario existe na base de dados
-    const aprovado = await AprovadoRepo.buscarPorLogin(login);
+    const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(login);
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
     if(!aprovado){

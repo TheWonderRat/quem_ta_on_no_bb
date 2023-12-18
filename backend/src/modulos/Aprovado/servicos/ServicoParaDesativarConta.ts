@@ -8,9 +8,9 @@ import { UsuarioNaoExiste,SenhaIncompativel,ContaEstaInativa } from "../../../co
 export default class ServicoParaDesativarConta extends ServicoAbstrato<RequisicaoParaDesativarConta, RespostaParaDesativarConta>{
 
   public async executar(parameters: RequisicaoParaDesativarConta): Promise<RespostaParaDesativarConta>{
-    const login = parameters.inscricao ;
+    const login = parameters.login;
     //checa se o usuario existe na base de dados
-    const aprovado = await AprovadoRepo.buscarPorLogin(login);
+    const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(login);
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
     if(!aprovado){

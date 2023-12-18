@@ -34,7 +34,7 @@ import UserController from '../controlador/ControladorDeUsuario';
         //isAuthenticated,
        celebrate({
          [Segments.BODY]: {
-           inscricao: Joi.number().required(),
+           login: Joi.number().required(),
            senha: Joi.string().required(),
          },
        }),
