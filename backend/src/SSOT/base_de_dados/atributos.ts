@@ -72,12 +72,12 @@ export enum Turma{
 
 export enum Aprovado{
   PosicaoAmpla = 'posicao',
-  Nome = "nome_aprovado",
+  Nome = "nome",
   Senha = "senha_aprovado",
-  Situacao = "situacao_aprovado",
+  Situacao = "situacao",
   PPP = 'ppp',
   PCD = 'pcd',
-  Turma = "turma_aprovado",
+  Turma = "turma",
   Ativo = "ativo",
   CriadoEm = "criado_em",
   AtualizadoEm = "atualizado_em"

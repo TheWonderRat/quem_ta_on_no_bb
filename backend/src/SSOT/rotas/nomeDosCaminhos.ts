@@ -10,7 +10,7 @@ export enum Raiz{
 
 export enum Aprovado{
   Raiz = '/usuario',
-  AtualizarSenha = `/atualizar-senha`,
+  AtualizarSenha = '/atualizar-senha',
   AtivarConta = '/ativar-conta',
   DesativarConta = '/desativar-conta'
 }
@@ -21,5 +21,5 @@ export enum Ranking{
 
 export enum Sessao{
   Raiz = '/sessao',
-  CriarSessao = 'criar-sessao',
+  CriarSessao = '/criar-sessao',
 }
