@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments } from 'celebrate';
 import { ControladorDoRanking } from "../controlador/ControladorDoRanking";
-import { estaAutenticado } from "../../../funcoes/middlewares/middlewareAutenticar";
+import { GerenciadorDeAutenticacao } from "../../../compartilhados/utilitarios/exporter";
 
 const rotasDeRanking = Router();
 const controladorDoRanking = new ControladorDoRanking();
@@ -10,6 +10,7 @@ const controladorDoRanking = new ControladorDoRanking();
     //optei por nao usar constantes nesse caso
     rotasDeRanking.get(
      '/:aprovados?/:pagina?/:lista?/:cidade?/:diretoria?/:turma?',
+    GerenciadorDeAutenticacao.verificarAutenticacao,
      celebrate({
        [Segments.QUERY]: {
          aprovados: Joi.number().required(),
@@ -21,7 +22,6 @@ const controladorDoRanking = new ControladorDoRanking();
          situacao: Joi.string(),
        },
      }),
-    estaAutenticado,
       //is autenticated aqui,
     controladorDoRanking.listarRanking,
    );   
