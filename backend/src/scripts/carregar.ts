@@ -15,6 +15,7 @@ import dataSource from "../database/config";
 
 import { atributosScript } from "../SSOT/exporter"
 import { TipoAprovado, TipoRanking } from '../tipos/exporter';
+import { GerenciadorDeSenha } from '../compartilhados/utilitarios/exporter';
 
 async function carregarEstados(
   estados: string[] = atributosScript.ESTADOS
@@ -88,13 +89,15 @@ async function carregarAprovados(
 ){
 
   for await (const a of aprovados){
+    const senha = await GerenciadorDeSenha.criptografarSenha(a.posicaoAmpla.toString());
+
     await AprovadoRepo.cadastrarAprovado(
       a.posicaoAmpla,
       a.nome,
-      a.senha,
+      senha,
       atributosScript.SITUACAO_PADRAO,
-      a.posicaoPPP !== null
-      ,a.posicaoPCD !== null,
+      a.posicaoPPP !== null,
+      a.posicaoPCD !== null,
       false,
     )
       .catch((e) => { throw(`\n\nErro no carregamento dos aprovados:\n${e}`)})
