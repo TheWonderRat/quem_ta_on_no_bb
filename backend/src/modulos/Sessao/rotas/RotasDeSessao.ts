@@ -1,7 +1,7 @@
 import { Router } from "express";
 import ControladorDeSessao from "../controlador/ControladorDeSessao";
- import { celebrate, Joi, Segments } from 'celebrate';
-import { caminhos } from "src/SSOT/exporter";
+import { celebrate, Joi, Segments } from 'celebrate';
+import { caminhos } from "../../../SSOT/exporter";
 
 
 const rotasDeSessao = Router();
