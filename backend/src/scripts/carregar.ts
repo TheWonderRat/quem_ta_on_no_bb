@@ -9,109 +9,137 @@ import {
   SituacaoRepo,
   TurmaRepo,
   TipoRankingRepo,
-  RankingRepo
+  RankingRepo,
+  LotadoEmRepo
 } from "../database/ORM/repositorio/exporter";
+import { 
+  Estado,
+  Cidade, 
+  Diretoria,
+  Lotacao,
+  Situacao,
+  Aprovado,
+  Ranking
+} from '../database/ORM/modelo/exporter';
 import dataSource from "../database/config";
 
 import { atributosScript } from "../SSOT/exporter"
-import { TipoAprovado, TipoRanking } from '../tipos/exporter';
-import { GerenciadorDeSenha } from '../compartilhados/utilitarios/exporter';
+import { TipoAprovado, TipoRanking, TipoSituacao } from '../tipos/exporter';
+import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
 
 async function carregarEstados(
   estados: string[] = atributosScript.ESTADOS
 ): Promise<void>{
 
-    for await (const estado of estados){
-      await EstadoRepo.cadastrarEstado(estado)
-        .catch((e) => { throw(`\n\nerro no carregamento dos Estados:\n${e}`)})
-    }
+  const est: Estado[] = estados.map((e) => EstadoRepo.criarEstado(e));
+  await EstadoRepo.insert(est);
+
 }
 
 async function carregarCidades(
   cidades: string[][] = atributosScript.CIDADES
 ){
-    for await (const [cidade,estado] of cidades){
-      await CidadeRepo.cadastrarCidade(cidade,estado)
-        .catch( e => { throw(`\n\nErro no carregamento das cidades:\n${e}`)})
-    }
+  let cds = cidades.map(([c,e]) => CidadeRepo.criarCidade(c,e));
+  await CidadeRepo.insert(cds);
 }
 
 async function carregarDiretorias(
   diretorias: string[] = atributosScript.DIRETORIAS
 ){
 
-  for await (const diretoria of diretorias){
-    await DiretoriaRepo.cadastrarDiretoria(diretoria)
-      .catch( e => { throw(`\n\nErro no carregamento das diretorias:\n${e}`) })
-  }
+  let dts: Diretoria[] = diretorias.map((d) => DiretoriaRepo.criarDiretoria(d));
+  await DiretoriaRepo.insert(dts)
 }
 
 async function carregarLotacao(
   lotacoes: string[][] = atributosScript.LOTACOES
 ){
-    for await (const[diretoria, cidade, estado] of lotacoes){
-      await LotacaoRepo.cadastrarLotacao(diretoria,cidade,estado)
-        .catch((e) => { throw(`\n\nErro no carregamento das lotacoes:\n${e}`)})
-    }
-
+  let ltc: Lotacao[] = lotacoes.map(([d,c,e]) => LotacaoRepo.criarLotacao(d,c,e));
+  await LotacaoRepo.insert(ltc);
 }
 
 async function carregarSituacao(
   situacoes: string[] = atributosScript.SITUACOES
 ){
 
-    for await (const situacao of situacoes){
-      await SituacaoRepo.cadastrarSituacao(situacao)
-        .catch((e) => { throw(`\n\nErro no carregamento dasa situacoes:\n${e}`)})
-  }
+  const sts: Situacao[] = situacoes.map((s) => SituacaoRepo.criarSituacao(s));
+  await SituacaoRepo.insert(sts)
 }
 
 async function carregarTurma(
   turmas: number[] = atributosScript.TURMAS
 ){
-  for await (const turma of turmas){
-    await TurmaRepo.cadastrarTurma(turma)
-      .catch((e) => { throw(`\n\nErro no carregamento das turmas:\n${e}`)})
-  }
+  const tms = turmas.map((t) => TurmaRepo.criarTurma(t));
+  await TurmaRepo.insert(tms);
 }
 
 async function carregarTipoRanking(
   tiposDeRanking: string[] = atributosScript.TIPOS_RANKING
 ){
-  for await (const tipo of tiposDeRanking){
-      await TipoRankingRepo.cadastrarTipoRanking(tipo)
-        .catch((e) => { throw(`error:\n${e}`)})
-  }
+  const trks = tiposDeRanking.map((t) => TipoRankingRepo.criarTipoRanking(t));
+  await TipoRankingRepo.insert(trks);
 }
 
 async function carregarAprovados(
   aprovados: TipoAprovado[] = atributosScript.TODOS_OS_APROVADOS 
 ){
-
-  for await (const a of aprovados){
-    const senha = await GerenciadorDeSenha.criptografarSenha(a.posicaoAmpla.toString());
-
-    await AprovadoRepo.cadastrarAprovado(
+  const aprs: Aprovado[] = aprovados.map((a) => {
+    return AprovadoRepo.criarAprovado(
       a.posicaoAmpla,
       a.nome,
-      senha,
+      a.senha,
       atributosScript.SITUACAO_PADRAO,
       a.posicaoPPP !== null,
       a.posicaoPCD !== null,
       false,
-    )
-      .catch((e) => { throw(`\n\nErro no carregamento dos aprovados:\n${e}`)})
-  }
+    );
+  });
+
+  await AprovadoRepo.save(aprs);
 }
 
 async function carregarRanking(
   aprovados: TipoRanking[]
 ){
-  for await (const a of aprovados){
-    await RankingRepo.cadastrarRanking(a.posicaoAmpla,a.posicaoRanking,a.tipo)
-      .catch((e) => { throw(`\n\nErro no carregamento dos rankings:\n${e}`)})
-  }
+  const rks: Ranking[] = aprovados.map((a) => RankingRepo.criarRanking(a.posicaoAmpla,a.posicaoRanking,a.tipo));
+  await RankingRepo.insert(rks);
 }
+
+
+async function atualizarAprovado(
+  situacoes: TipoSituacao[] = SITUACAO_APROVADOS
+){
+  let aprovados: Aprovado[] = []; 
+
+  for await (const st of situacoes){
+    const a = await AprovadoRepo.buscarPorPosicaoAmpla(st.posicao);
+    if(a){
+      a.situacao = st.situacao;
+      a.turma= st.turma;
+      aprovados.push(a)
+    } else {
+      throw(`A posicao do candidato ${st.posicao} nao existe no bd`);
+    }
+  }
+
+  await AprovadoRepo.save(aprovados);
+}
+
+async function atualizarLotacao(
+  situacoes: TipoSituacao[] = SITUACAO_APROVADOS
+){
+  let sts = situacoes
+    .filter((s) => s.diretoria && s.cidade)
+    .map((s) =>{
+      //  problematico se houvesse mais de uma cidade...
+      //  problematiso se nao fosse o filter...
+      const estado = s.cidade === 'Brasilia' ? 'DF' : 'SP';
+      return LotadoEmRepo.criarLotadoEm(s.diretoria!!,s.posicao,s.cidade!!,estado);
+  });
+
+  await LotadoEmRepo.insert(sts)
+}
+
 
 async function carregarDados(){
 
@@ -146,13 +174,20 @@ async function carregarDados(){
     await carregarRanking(atributosScript.LISTA_ORDENADA_DE_CONVOCACAO),
   ]);
 
+  const camadaCinco = Promise.all([
+    await atualizarAprovado(),
+    await atualizarLotacao()
+  ]);
+
   await camadaUm.then(async () => { 
     await camadaDois.then( async () =>{
       await camadaTres.then( async () => {
         await camadaQuatro.then(async () =>{
+          await camadaCinco.then(async() =>{
            console.log("HADOOUUUKEN!!")
-        })
-      })
+          }).catch((e) => { throw(e)})
+        }).catch((e) =>{ throw(e)})
+      }).catch((e) => { throw(e)})
     }).catch(e => { throw(e)})
   }).catch(e => { throw(e) });
 }
@@ -160,15 +195,16 @@ async function carregarDados(){
 async function executar(){
   if(!dataSource.isInitialized){
     await dataSource.initialize()
-      .then(async () => 
-        await carregarDados()
-    ).catch((e) => 
-      console.log(e)
-    )
+      .then(async () => {
+        await carregarDados().catch((e) => { throw(e) })
+    }).catch((e) => {
+      console.log(e);
+    });
   } else {
-    await carregarDados();
+    await carregarDados().then(() => console.log("properly loaded data!")).catch((e) => console.log(e));
   }
 }
+
 executar().then(() => console.log("Dados devidamente carregados!")).catch((e) => console.log(`ERRO!:\n${e}`))
 
 

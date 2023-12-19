@@ -34,6 +34,7 @@ export default class ServicoParaDesativarConta extends ServicoAbstrato<Requisica
     //  TODO:: apagar os dados de contato do aprovado
 
     aprovado.ativado = false;
+    aprovado.senha = await GerenciadorDeSenha.criptografarSenha(aprovado.posicao.toString());
     await AprovadoRepo.save(aprovado);
     //  Deveria apagar os dados do alem do contato na plataforma? 
     return { mensagem: 'A conta foi desativada, seus dados foram apagados!' }

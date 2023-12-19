@@ -4,46 +4,55 @@ import LotadoEmRepo from '../database/ORM/repositorio/LotadoEmRepo';
 
 import { TipoSituacao } from '../tipos/exporter';
 import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
+import { Aprovado } from '../database/ORM/modelo/exporter';
 
 
 async function atualizarAprovado(
-  st: TipoSituacao
+  situacoes: TipoSituacao[]
 ){
-  const aprovado = await AprovadoRepo.buscarPorPosicaoAmpla(st.posicao);
-  if(aprovado !== null){
-    aprovado.situacao = st.situacao;
-    aprovado.turma= st.turma;
-    await AprovadoRepo.save(aprovado);
-  } else {
-    console.log(st);
-    console.log(`A posicao do candidato ${st.posicao} nao existe no bd`);
+  let aprovados: Aprovado[] = []; 
+
+  for await (const st of situacoes){
+    const a = await AprovadoRepo.buscarPorPosicaoAmpla(st.posicao);
+    if(a){
+      a.situacao = st.situacao;
+      a.turma= st.turma;
+      aprovados.push(a)
+    } else {
+      throw(`A posicao do candidato ${st.posicao} nao existe no bd`);
+    }
   }
+
+  await AprovadoRepo.save(aprovados);
 }
 
 async function atualizarLotacao(
-  st: TipoSituacao
+  situacoes: TipoSituacao[]
 ){
-  if(st.diretoria && st.cidade){
-  //  seria um problema se houvessem mais cidades, mas o arquivo esta normalizado
-  const estado = st.cidade === 'Brasilia' ? 'DF' : 'SP';
-    await LotadoEmRepo.cadastrarLotadoEm(st.diretoria,st.posicao,st.cidade,estado);
-  }
+  let sts = situacoes
+    .filter((s) => s.diretoria && s.cidade)
+    .map((s) =>{
+      //  problematico se houvesse mais de uma cidade...
+      //  problematiso se nao fosse o filter...
+      const estado = s.cidade === 'Brasilia' ? 'DF' : 'SP';
+      return LotadoEmRepo.criarLotadoEm(s.diretoria!!,s.posicao,s.cidade!!,estado);
+  });
+
+  await LotadoEmRepo.insert(sts)
 }
 
 async function carregarDados(
   data: TipoSituacao[] = SITUACAO_APROVADOS
 ){
-  for await(const st of data){
-      await atualizarAprovado(st).catch((e) => { throw(e) });
-      await atualizarLotacao(st).catch((e) => { throw(e) });
-  }
+  await atualizarAprovado(data).catch((e) => { throw(e) });
+  await atualizarLotacao(data).catch((e) => { throw(e) });
 }
 
 async function executar(){
   if(!dataSource.isInitialized){
     await dataSource.initialize()
       .then(async () => 
-        await carregarDados()
+        await carregarDados().then((e) => console.log("Everything went well")).catch((e) => { throw(e)})
     ).catch((e) => console.log(e))
   } else {
     await carregarDados();

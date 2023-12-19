@@ -6,10 +6,11 @@ import path from "path";
 import { TipoAprovado,TipoRanking } from '../../tipos/exporter'
 //TODO:: passar tudo para o SSOT depois
 const ARQUIVO_DIRETAS = require(path.join(__dirname,'..','..','..','dados_dos_aprovados','diretas.json'));
-const ARQUIVO_CR = require(path.join(__dirname,'..','..','..','dados_dos_aprovados','cadastroReserva.json'));
+const ARQUIVO_CR =      require(path.join(__dirname,'..','..','..','dados_dos_aprovados','cadastroReserva.json'));
 
 const DIRETAS: TipoAprovado[] = ARQUIVO_DIRETAS;
 const CADASTRO_RESERVA : TipoAprovado[] = ARQUIVO_CR
+export const TODOS_OS_APROVADOS: TipoAprovado[] = [...DIRETAS,...CADASTRO_RESERVA];
 
 enum TiposLista{
   ListaAmplaCompleta= 'lista_ampla_completa',
@@ -25,9 +26,8 @@ enum TiposLista{
   ListaPCDCR = 'lista_pcd_cr',
 
   ListaDeChamada = 'lista_de_chamada'
-}
+};
 
-export const TODOS_OS_APROVADOS: TipoAprovado[] = [...DIRETAS,...CADASTRO_RESERVA];
 
 export const LISTA_AMPLA_COMPLETA: TipoRanking[] = TODOS_OS_APROVADOS 
   .map((a) => {

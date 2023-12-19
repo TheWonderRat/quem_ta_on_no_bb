@@ -8,11 +8,11 @@ import { TipoRanking } from '../modelo/exporter'
 
  class TipoRankingRepo extends Repository<TipoRanking> {
   public async cadastrarTipoRanking(numeroTurma: string): Promise<void>{
-    const turma = this.criarTurma(numeroTurma);
+    const turma = this.criarTipoRanking(numeroTurma);
     await this.manager.save(turma);
   }
 
-  public criarTurma(numeroTurma: string): TipoRanking{
+  public criarTipoRanking(numeroTurma: string): TipoRanking{
     const tipoRanking= dataSource.manager.create(TipoRanking);
 
     tipoRanking.nome = numeroTurma;
