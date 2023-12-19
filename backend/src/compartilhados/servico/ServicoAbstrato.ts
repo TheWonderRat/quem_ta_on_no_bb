@@ -1,6 +1,6 @@
 
-import { ServiceRequestTypes, ServiceResponseTypes } from "../../tipos/servicos/servico";
-import AppError from "../erros/AppError";
+import { ServiceRequestTypes, ServiceResponseTypes } from '../../tipos/servicos/servico';
+import AppError from '../erros/AppError';
 
 
 export default abstract class ServicoAbstrato< 

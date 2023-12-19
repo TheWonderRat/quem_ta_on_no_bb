@@ -6,18 +6,16 @@ class GerenciadorDeAutenticacao{
   public async verificarAutenticacao(request: Request, __response: Response, next: NextFunction): Promise<void | AppError>{
     const authHeader = request.headers.authorization;
 
-
     try{
-    if(!authHeader){
-      throw new TokenNaoEncontrado();
-    }
+      if(!authHeader){
+        throw new TokenNaoEncontrado();
+      }
+      const [,token] = authHeader.split(' ');
+      const isAuthenticated = AutenticacaoJWT.validarToken(token);
 
-    const [,token] = authHeader.split(' ');
-    const isAuthenticated = AutenticacaoJWT.validarToken(token);
-
-    if(!isAuthenticated){
-      throw new TokenInvalido();
-    }
+      if(!isAuthenticated){
+        throw new TokenInvalido();
+      }
     } catch(E){
       next(E);
     }
@@ -29,7 +27,7 @@ class GerenciadorDeAutenticacao{
     return AutenticacaoJWT.gerarToken(parameters);
   } 
 
-  //refresh
+  //  refresh
   protected atualizarToken(){
 
 

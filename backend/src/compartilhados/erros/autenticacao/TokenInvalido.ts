@@ -1,5 +1,5 @@
-import { mensagemErroHTTP, codigoErroHTTP } from "../../../SSOT/exporter";
-import { ErroDeAutenticacao } from "./ErroDeAutenticacao";
+import { mensagemErroHTTP, codigoErroHTTP } from '../../../SSOT/exporter';
+import { ErroDeAutenticacao } from './ErroDeAutenticacao';
 
 export default class TokenInvalido extends ErroDeAutenticacao{
 

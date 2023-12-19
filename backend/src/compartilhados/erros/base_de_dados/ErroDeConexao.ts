@@ -1,5 +1,5 @@
-import { mensagemErroHTTP, codigoErroHTTP } from "../../../SSOT/exporter";
-import ErroDaBaseDeDados from "./ErroDaBaseDeDados";
+import { mensagemErroHTTP, codigoErroHTTP } from '../../../SSOT/exporter';
+import ErroDaBaseDeDados from './ErroDaBaseDeDados';
 
 
 export default abstract class ErroDeConexao extends ErroDaBaseDeDados{ 

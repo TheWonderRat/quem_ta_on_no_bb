@@ -1,9 +1,6 @@
-// library imports
-//
 import { NextFunction, Request, Response } from 'express';
-import AppError from "../erros/AppError";
-import { codigoErroHTTP } from "../../SSOT/exporter";
-import GerenciadorDeAutenticacao from './GerenciadorDeAutenticacao';
+import AppError from '../erros/AppError';
+import { codigoErroHTTP } from '../../SSOT/exporter';
 
 
 
