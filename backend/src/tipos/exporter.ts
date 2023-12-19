@@ -1,4 +1,4 @@
-export * as migrationsTypes from './migrations/exporter';
+export {TipoAprovado,TipoRanking,TipoSituacao} from './script/scripts'
 //export * as erroHTTP from './http/erros';
 //export * as okHTTP from './http/ok';
 

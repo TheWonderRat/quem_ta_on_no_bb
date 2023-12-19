@@ -1,4 +1,4 @@
-export type TipoAprovado = { 
+export type TipoAprovado = {
   inscricao: number,
   nome: string,
   senha: string,
@@ -6,13 +6,13 @@ export type TipoAprovado = {
   posicaoAmpla: number,
   posicaoPPP: number,
   posicaoPCD: number,
-}
+};
 
 export type TipoRanking = {
   posicaoAmpla: number,
   posicaoRanking: number,
   tipo: string,
-}
+};
 
 export type TipoSituacao = {
   posicao: number,
@@ -21,4 +21,4 @@ export type TipoSituacao = {
   diretoria?: string
   dataPosse?: Date,
   turma?: number
-}
+};
