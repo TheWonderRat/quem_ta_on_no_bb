@@ -6,56 +6,54 @@
 
 // // controllers
 import UserController from '../controlador/ControladorDeUsuario';
- import { estaAutenticado } from '../../../funcoes/middlewares/middlewareAutenticar';
+import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/exporter';
 
  const rotasDeUsuario = Router();
  const controladorDeUsuario = new UserController();
  import {caminhos} from '../../../SSOT/exporter'
 
-  
-     //rota para atualizacao de conta
-     rotasDeUsuario.post(
-       //TODO: inserir constante
-      caminhos.Aprovado.AtualizarSenha,
-       celebrate({
-         [Segments.BODY]: {
-           login: Joi.number().required(),
-           senha: Joi.string().required(),
-           novaSenha: Joi.string().required(),
-         },
-       }),
-      estaAutenticado,
-      controladorDeUsuario.atualizarSenha
-     );
 
-     //rota para atualizacao de conta
-     rotasDeUsuario.post(
-       //TODO: inserir constante
-      caminhos.Aprovado.AtivarConta ,
-      celebrate({
-         [Segments.BODY]: {
-           login: Joi.number().required(),
-           senha: Joi.string().required(),
-         },
-       }),
-      estaAutenticado,
-      controladorDeUsuario.ativarConta
-     );
+   //rota para atualizacao de conta
+   rotasDeUsuario.post(
+     //TODO: inserir constante
+    caminhos.Aprovado.AtualizarSenha,
+    GerenciadorDeAutenticacao.verificarAutenticacao,
+     celebrate({
+       [Segments.BODY]: {
+         login: Joi.number().required(),
+         senha: Joi.string().required(),
+         novaSenha: Joi.string().required(),
+       },
+     }),
+    controladorDeUsuario.atualizarSenha
+   );
 
-     //rota para atualizacao de conta
-     rotasDeUsuario.delete(
-       //TODO: inserir constante
-      caminhos.Aprovado.DesativarConta ,
-      estaAutenticado,
-       celebrate({
-         [Segments.BODY]: {
-           login: Joi.number().required(),
-           senha: Joi.string().required(),
-         },
-       }),
-      estaAutenticado,
-      controladorDeUsuario.desativarConta
-     );
+   //rota para atualizacao de conta
+   rotasDeUsuario.post(
+     //TODO: inserir constante
+    caminhos.Aprovado.AtivarConta,
+    celebrate({
+       [Segments.BODY]: {
+         login: Joi.number().required(),
+         senha: Joi.string().required(),
+       },
+     }),
+    controladorDeUsuario.ativarConta
+   );
+
+   //rota para atualizacao de conta
+   rotasDeUsuario.delete(
+     //TODO: inserir constante
+    caminhos.Aprovado.DesativarConta ,
+    GerenciadorDeAutenticacao.verificarAutenticacao,
+    celebrate({
+       [Segments.BODY]: {
+         login: Joi.number().required(),
+         senha: Joi.string().required(),
+       },
+     }),
+    controladorDeUsuario.desativarConta
+   );
 
  export default rotasDeUsuario;
 

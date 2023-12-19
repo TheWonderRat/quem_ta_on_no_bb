@@ -2,7 +2,7 @@ import { AprovadoRepo } from "../../../database/ORM/repositorio/exporter";
 import { ServicoAbstrato } from "../../../compartilhados/servico/exporter";
 import {  RequisicaoParaAtivarConta, RespostaParaAtivarConta } from "../../../tipos/servicos/aprovado";
 import { UsuarioNaoExiste, SenhaIncompativel, ContaEstaAtiva, AppError } from "../../../compartilhados/erros/exporter";
-import { senhaUtils } from "../../../funcoes/exporter";
+import { GerenciadorDeSenha } from "../../../compartilhados/utilitarios/exporter";
 
 
 
@@ -19,7 +19,7 @@ export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoPa
       return new UsuarioNaoExiste()
     }
 
-    const senhaConfere = await senhaUtils.compararSenha(aprovado.senha, parameters.senha);
+    const senhaConfere = await GerenciadorDeSenha.compararSenha(aprovado.senha, parameters.senha);
 
     //checa se a senha do aprovado confere 
     //se nao existe, a aplicacao retorna um erro

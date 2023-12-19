@@ -2,7 +2,7 @@ import {  RequisicaoParaDesativarConta, RespostaParaDesativarConta} from "src/ti
 import { AprovadoRepo } from "../../../database/ORM/repositorio/exporter";
 import { ServicoAbstrato } from "../../../compartilhados/servico/exporter";
 import { UsuarioNaoExiste,SenhaIncompativel,ContaEstaInativa, AppError } from "../../../compartilhados/erros/exporter";
-import { senhaUtils } from "../../../funcoes/exporter";
+import { GerenciadorDeSenha} from "../../../compartilhados/utilitarios/exporter";
 
 
 
@@ -20,7 +20,7 @@ export default class ServicoParaDesativarConta extends ServicoAbstrato<Requisica
 
     //checa se a senha do aprovado confere 
     //se nao existe, a aplicacao retorna um erro
-    const senhaConfere = await senhaUtils.compararSenha(aprovado.senha, parameters.senha)
+    const senhaConfere = await GerenciadorDeSenha.compararSenha(aprovado.senha, parameters.senha)
 
     if(!senhaConfere){
       return new SenhaIncompativel()
