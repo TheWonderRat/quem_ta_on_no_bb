@@ -10,7 +10,7 @@ export default class Ranking{
   tipoRanking: string;
 
   @PrimaryColumn({name: atributos.Ranking.PosicaoAmpla})
-  posicaoAmpla: number;
+  posicao: number;
 
   @Column({name: atributos.Ranking.Posicao})
   posicaoNoRanking: number

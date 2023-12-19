@@ -17,15 +17,15 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
   public criarRanking(posicaoAmpla: number,posicao: number,tipoRanking: string): Ranking{
     const ranking = dataSource.manager.create(Ranking);
 
-    ranking.posicaoAmpla= posicaoAmpla;
+    ranking.posicao= posicaoAmpla;
     ranking.tipoRanking = tipoRanking;
     ranking.posicaoNoRanking = posicao;
 
     return ranking;
   }
 
-  public async buscarPorPosicaoAmpla(posicaoAmpla: number): Promise<Ranking | null>{
-      const user = await this.findOne({ where: { posicaoAmpla } });
+  public async buscarPorPosicaoAmpla(posicao: number): Promise<Ranking | null>{
+      const user = await this.findOne({ where: { posicao } });
 
       return user 
   }
@@ -40,7 +40,7 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
      turma?: number,
    ): Promise<Aprovado[]> {
 
-      const ALIAS_APROVADO = 'apr'
+    const ALIAS_APROVADO = 'apr'
      const params = [
         `${ALIAS_APROVADO}.${atributos.Aprovado.Nome}`,
         `${ALIAS_APROVADO}.${atributos.Aprovado.PPP}`,
@@ -55,7 +55,7 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
        .createQueryBuilder(Aprovado, 'apr')
        .innerJoinAndSelect(
             `apr.${relacionamentos.Aprovado.RankingsDoAprovado}`,
-            `apr.${entidades.Ranking}`,
+            `${entidades.Ranking}`,
             `apr.${atributos.Aprovado.PosicaoAmpla} = ${entidades.Ranking}.${atributos.Ranking.PosicaoAmpla}`,
        );
 
