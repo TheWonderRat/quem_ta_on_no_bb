@@ -1,13 +1,13 @@
-import { Router } from "express";
+import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { ControladorDoRanking } from "../controlador/ControladorDoRanking";
-import { GerenciadorDeAutenticacao } from "../../../compartilhados/utilitarios/exporter";
+import { ControladorDoRanking } from '../controlador/ControladorDoRanking';
+import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/exporter';
 
 const rotasDeRanking = Router();
 const controladorDoRanking = new ControladorDoRanking();
 
-    //como as constantes devem ser validads logo em seguida e devem ter exatamente o mesmo nome,
-    //optei por nao usar constantes nesse caso
+    //  como as constantes devem ser validads logo em seguida e devem ter exatamente o mesmo nome,
+    //  optei por nao usar constantes nesse caso
     rotasDeRanking.get(
      '/:aprovados?/:pagina?/:lista?/:cidade?/:diretoria?/:turma?',
     GerenciadorDeAutenticacao.verificarAutenticacao,
@@ -22,7 +22,7 @@ const controladorDoRanking = new ControladorDoRanking();
          situacao: Joi.string(),
        },
      }),
-      //is autenticated aqui,
+      //  is autenticated aqui,
     controladorDoRanking.listarRanking,
    );   
 

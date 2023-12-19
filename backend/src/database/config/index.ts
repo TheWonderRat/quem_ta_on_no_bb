@@ -1,16 +1,16 @@
 
 import { 
-  Cidade, 
-  Contato, 
-  Diretoria, 
-  Estado, 
-  Lotacao, 
-  LotadoEm, 
-  Ranking, 
-  Situacao, 
-  TipoRanking, 
-  Turma, 
-  Aprovado 
+  Cidade,
+  Contato,
+  Diretoria,
+  Estado,
+  Lotacao,
+  LotadoEm,
+  Ranking,
+  Situacao,
+  TipoRanking,
+  Turma,
+  Aprovado
 } from '../ORM/modelo/exporter';
 
 import { DataSource } from 'typeorm';
@@ -47,12 +47,12 @@ const dataSource = new DataSource({
   migrations: [
     '../ORM/modelo/*.ts'
   ]
-})
+});
 
 dataSource.initialize()
   .then((e) =>{
     console.log("Devidamente chamado!")
-  })
+})
 
 
 export default dataSource;

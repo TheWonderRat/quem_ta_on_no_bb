@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { ServicoParaListarORanking } from "../servicos/ServicoParaListarORanking";
+import { Request, Response } from 'express';
+import { ServicoParaListarORanking } from '../servicos/ServicoParaListarORanking';
 
 
 
 export class ControladorDoRanking{
-  //todo:: criar e declarar declarar o tipo de retorno
+  //  TODO:: criar e declarar declarar o tipo de retorno
   public async listarRanking(request: Request, response: Response){
 
     const { aprovados, pagina, lista, situacao, cidade, diretoria, turma } = request.query;
@@ -14,7 +14,7 @@ export class ControladorDoRanking{
     const result = await service.executar({
       aprovados: Number(aprovados), 
       pagina: Number(pagina), 
-      //possivel pois o celebrate faz a validaxao
+      //  possivel pois o celebrate faz a validaxao
       tipoRanking: lista!!.toString(), 
       situacao: situacao?.toString(), 
       cidade: cidade?.toString(), 
@@ -23,6 +23,5 @@ export class ControladorDoRanking{
     });
 
     return response.json(result)
-
   }
 }

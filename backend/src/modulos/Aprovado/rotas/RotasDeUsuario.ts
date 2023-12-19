@@ -1,10 +1,7 @@
+import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 
- import { Router } from 'express';
- import { celebrate, Joi, Segments } from 'celebrate';
-// // middlewares
-//import { AuthMid } from '../middlewares/exporter';
-
-// // controllers
+// controllers
 import UserController from '../controlador/ControladorDeUsuario';
 import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/exporter';
 
@@ -15,7 +12,7 @@ import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/e
 
    //rota para atualizacao de conta
    rotasDeUsuario.post(
-     //TODO: inserir constante
+     // TODO: inserir constante
     caminhos.Aprovado.AtualizarSenha,
     GerenciadorDeAutenticacao.verificarAutenticacao,
      celebrate({
@@ -30,7 +27,7 @@ import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/e
 
    //rota para atualizacao de conta
    rotasDeUsuario.post(
-     //TODO: inserir constante
+     // TODO: inserir constante
     caminhos.Aprovado.AtivarConta,
     celebrate({
        [Segments.BODY]: {
@@ -41,9 +38,9 @@ import { GerenciadorDeAutenticacao } from '../../../compartilhados/utilitarios/e
     controladorDeUsuario.ativarConta
    );
 
-   //rota para atualizacao de conta
+   // rota para atualizacao de conta
    rotasDeUsuario.delete(
-     //TODO: inserir constante
+  // TODO: inserir constante
     caminhos.Aprovado.DesativarConta ,
     GerenciadorDeAutenticacao.verificarAutenticacao,
     celebrate({

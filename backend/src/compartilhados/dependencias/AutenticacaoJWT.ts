@@ -1,10 +1,8 @@
-
 import jsonwebtoken from 'jsonwebtoken';
-import { JWT_SECRET,JWT_SIGN_OPTIONS } from "../../SSOT/jwt/jwt";
+import { JWT_SECRET,JWT_SIGN_OPTIONS } from '../../SSOT/jwt/jwt';
 
 
 class AutenticacaoJWT{
-
   public gerarToken(parameters: string): string{
     const token = jsonwebtoken.sign(
       { login: parameters },
@@ -27,7 +25,7 @@ class AutenticacaoJWT{
     return true;
   }
 
-  //refresh
+  //  refresh
   public atualizarToken(){
 
 
@@ -35,4 +33,3 @@ class AutenticacaoJWT{
 }
 
 export default new AutenticacaoJWT();
-

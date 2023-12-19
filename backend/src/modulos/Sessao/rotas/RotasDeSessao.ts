@@ -1,12 +1,11 @@
-import { Router } from "express";
-import ControladorDeSessao from "../controlador/ControladorDeSessao";
+import { Router } from 'express';
+import ControladorDeSessao from '../controlador/ControladorDeSessao';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { caminhos } from "../../../SSOT/exporter";
+import { caminhos } from '../../../SSOT/exporter';
 
 
 const rotasDeSessao = Router();
 const controladorDeSessao = new ControladorDeSessao();
-
 
   
 rotasDeSessao.post(

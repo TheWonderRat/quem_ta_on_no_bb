@@ -1,8 +1,8 @@
-import { RankingRepo } from "../../../database/ORM/repositorio/exporter";
-import { ServicoAbstrato } from "../../../compartilhados/servico/exporter";
-import { RequisicaoParaListarORanking, RespostaParaListarORanking} from '../../../tipos/servicos/ranking'
+import { RankingRepo } from '../../../database/ORM/repositorio/exporter';
+import { ServicoAbstrato } from '../../../compartilhados/servico/exporter';
+import { RequisicaoParaListarORanking, RespostaParaListarORanking} from '../../../tipos/servicos/ranking';
 
-import AppError from "../../../compartilhados/erros/AppError";
+import AppError from '../../../compartilhados/erros/AppError';
 
 export class ServicoParaListarORanking extends ServicoAbstrato<
   RequisicaoParaListarORanking, RespostaParaListarORanking
@@ -21,6 +21,6 @@ export class ServicoParaListarORanking extends ServicoAbstrato<
     )
 
 
-    return { mensagem: "called on list request", aprovados }    
+    return { mensagem: 'called on list request', aprovados }    
   }
 }

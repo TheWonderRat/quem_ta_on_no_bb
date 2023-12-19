@@ -1,10 +1,9 @@
-import dataSource from "../database/config";
-import path from "path";
-import AprovadoRepo from "../database/ORM/repositorio/AprovadoRepo";
-import LotadoEmRepo from "../database/ORM/repositorio/LotadoEmRepo";
+import dataSource from '../database/config';
+import AprovadoRepo from '../database/ORM/repositorio/AprovadoRepo';
+import LotadoEmRepo from '../database/ORM/repositorio/LotadoEmRepo';
 
-import { TipoSituacao } from '../tipos/exporter'
-import { SITUACAO_APROVADOS } from "../SSOT/scripts/script";
+import { TipoSituacao } from '../tipos/exporter';
+import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
 
 
 async function atualizarAprovado(
@@ -25,7 +24,7 @@ async function atualizarLotacao(
   st: TipoSituacao
 ){
   if(st.diretoria && st.cidade){
-  //seria um problema se houvessem mais cidades, mas o arquivo esta normalizado
+  //  seria um problema se houvessem mais cidades, mas o arquivo esta normalizado
   const estado = st.cidade === 'Brasilia' ? 'DF' : 'SP';
     await LotadoEmRepo.cadastrarLotadoEm(st.diretoria,st.posicao,st.cidade,estado);
   }
@@ -45,13 +44,9 @@ async function executar(){
     await dataSource.initialize()
       .then(async () => 
         await carregarDados()
-    ).catch((e) => 
-      console.log(e)
-    )
+    ).catch((e) => console.log(e))
   } else {
     await carregarDados();
   }
 }
-executar().then(() => console.log("Script inicializado!")).catch((e) => console.log(`ERRO!:\n${e}`))
-
-
+executar().then(()=> console.log('Script inicializado!')).catch((e) => console.log(`ERRO!:\n${e}`));
