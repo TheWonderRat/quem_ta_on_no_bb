@@ -7,16 +7,18 @@ export class ControladorDoRanking{
   //todo:: criar e declarar declarar o tipo de retorno
   public async listarRanking(request: Request, response: Response){
 
-    const { aprovados, pagina, tipoRanking, situacao, cidade, diretoria, turma } = request.params;
+    const { aprovados, pagina, lista, situacao, cidade, diretoria, turma } = request.query;
 
     const service = new ServicoParaListarORanking();
+
     const result = await service.executar({
       aprovados: Number(aprovados), 
       pagina: Number(pagina), 
-      tipoRanking, 
-      situacao, 
-      cidade, 
-      diretoria, 
+      //possivel pois o celebrate faz a validaxao
+      tipoRanking: lista!!.toString(), 
+      situacao: situacao?.toString(), 
+      cidade: cidade?.toString(), 
+      diretoria: diretoria?.toString(), 
       turma: Number(turma)
     });
 
