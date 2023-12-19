@@ -1,19 +1,11 @@
-import dataSource from "../config";
+import dataSource from "../database/config";
 import path from "path";
-import AprovadoRepo from "../ORM/repositorio/AprovadoRepo";
-import RankingRepo from "../ORM/repositorio/RankingRepo";
-import LotadoEmRepo from "../ORM/repositorio/LotadoEmRepo";
+import AprovadoRepo from "../database/ORM/repositorio/AprovadoRepo";
+import LotadoEmRepo from "../database/ORM/repositorio/LotadoEmRepo";
 
+import { TipoSituacao } from '../tipos/exporter'
+import { SITUACAO_APROVADOS } from "../SSOT/scripts/script";
 
-const SITUACAO_APROVADOS = require(path.join(__dirname,'..','..','..','dados_dos_aprovados','situacaoAprovados.json'));
-type TipoSituacao = {
-  posicao: number,
-  situacao: string,
-  cidade?: string,
-  diretoria?: string
-  dataPosse?: Date,
-  turma?: number
-}
 
 async function atualizarAprovado(
   st: TipoSituacao
@@ -33,7 +25,7 @@ async function atualizarLotacao(
   st: TipoSituacao
 ){
   if(st.diretoria && st.cidade){
-  //seria um problema se houvessem mais cidades
+  //seria um problema se houvessem mais cidades, mas o arquivo esta normalizado
   const estado = st.cidade === 'Brasilia' ? 'DF' : 'SP';
     await LotadoEmRepo.cadastrarLotadoEm(st.diretoria,st.posicao,st.cidade,estado);
   }
