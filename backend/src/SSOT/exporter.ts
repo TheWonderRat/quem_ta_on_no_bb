@@ -19,3 +19,4 @@ export * as codigoErroHTTP from './http/erro/codigo';
 export * as mensagemOKHTTP from './http/ok/mensagem';
 export * as codigoOKHTTP from './http/ok/codigo';
 
+export * as atributosScript from './scripts/script';
