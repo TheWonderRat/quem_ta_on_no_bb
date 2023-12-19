@@ -22,7 +22,7 @@ async function atualizarAprovado(
   if(aprovado !== null){
     aprovado.situacao = st.situacao;
     aprovado.turma= st.turma;
-    //await AprovadoRepo.save(aprovado);
+    await AprovadoRepo.save(aprovado);
   } else {
     console.log(st);
     console.log(`A posicao do candidato ${st.posicao} nao existe no bd`);
@@ -43,8 +43,8 @@ async function carregarDados(
   data: TipoSituacao[] = SITUACAO_APROVADOS
 ){
   for await(const st of data){
-    await atualizarAprovado(st).catch((e) => { throw(e) });
-    await atualizarLotacao(st).catch((e) => { throw(e) });
+      await atualizarAprovado(st).catch((e) => { throw(e) });
+      await atualizarLotacao(st).catch((e) => { throw(e) });
   }
 }
 

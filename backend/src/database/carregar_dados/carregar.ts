@@ -205,7 +205,7 @@ const LOTACOES = [
   ['UCF','Brasilia','DF'],
 ]
 
-const TURMAS = [1,2,3];
+const TURMAS = Array(100).fill(0).map((_,i) => i);
 const TIPOS_RANKING = [
   'lista_ampla_completa',
   'lista_ampla_diretas',
