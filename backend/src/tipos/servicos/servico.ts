@@ -1,31 +1,31 @@
-import { 
-  RequisicaoParaListarORanking,RespostaParaListarORanking 
-} from "./ranking";
+import {
+  RequisicaoParaListarORanking,
+  RespostaParaListarORanking,
+} from './ranking';
 
-import { 
-  RequisicaoParaCriarSessao, RespostaParaCriarSessao 
-} from "./sessao";
+import {
+  RequisicaoParaCriarSessao,
+  RespostaParaCriarSessao,
+} from './sessao';
 
-import { 
-  RequisicaoParaAtivarConta, RespostaParaAtivarConta,
-  RequisicaoParaDesativarConta, RespostaParaDesativarConta,
-  RequisicaoParaAtualizarSenha, RespostaParaAtualizarSenha
-} from "./aprovado";
+import {
+  RequisicaoParaAtivarConta,
+  RespostaParaAtivarConta,
+  RequisicaoParaDesativarConta,
+  RespostaParaDesativarConta,
+  RequisicaoParaAtualizarSenha,
+  RespostaParaAtualizarSenha,
+} from './aprovado';
 
-//A validacao celebrate deve obedecer aos tipos
-export type ServiceRequestTypes = 
-  //list request types
-  RequisicaoParaListarORanking | 
-  //user request types
-  RequisicaoParaAtualizarSenha | RequisicaoParaAtivarConta | RequisicaoParaDesativarConta |
-  //session request types
-  RequisicaoParaCriarSessao;
-
-//A validacao celebrate deve obedecer aos tipos
-export type ServiceResponseTypes = 
-  //list response types
-  RespostaParaListarORanking |
-  //user response types
-  RespostaParaAtualizarSenha | RespostaParaAtivarConta | RespostaParaDesativarConta | 
-  //session response types
-  RespostaParaCriarSessao;
+export type ServiceRequestTypes =
+  RequisicaoParaListarORanking
+  | RequisicaoParaAtualizarSenha
+  | RequisicaoParaAtivarConta
+  | RequisicaoParaDesativarConta
+  | RequisicaoParaCriarSessao;
+export type ServiceResponseTypes =
+  RespostaParaListarORanking
+  | RespostaParaAtualizarSenha
+  | RespostaParaAtivarConta
+  | RespostaParaDesativarConta
+  | RespostaParaCriarSessao;
