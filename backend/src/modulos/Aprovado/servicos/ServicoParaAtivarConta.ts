@@ -1,13 +1,14 @@
 import { AprovadoRepo } from "../../../database/ORM/repositorio/exporter";
 import { ServicoAbstrato } from "../../../compartilhados/servico/exporter";
 import {  RequisicaoParaAtivarConta, RespostaParaAtivarConta } from "../../../tipos/servicos/aprovado";
-import { UsuarioNaoExiste, SenhaIncompativel, ContaEstaAtiva } from "../../../compartilhados/erros/exporter";
+import { UsuarioNaoExiste, SenhaIncompativel, ContaEstaAtiva, AppError } from "../../../compartilhados/erros/exporter";
+import { senhaUtils } from "../../../funcoes/exporter";
 
 
 
 export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoParaAtivarConta, RespostaParaAtivarConta>{
   //deveria pedir ou email ou senha na requisicao""
-  public async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta>{
+  public async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta | AppError>{
 
     const login = parameters.login;
     //checa se o usuario existe na base de dados
@@ -15,20 +16,20 @@ export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoPa
     //checa se o usuario existe na base de dados
     //se nao existe, a aplicacao retorna um erro
     if(!aprovado){
-      throw new UsuarioNaoExiste()
+      return new UsuarioNaoExiste()
     }
 
-    const senha = parameters.senha;
+    const senhaConfere = await senhaUtils.compararSenha(aprovado.senha, parameters.senha);
 
     //checa se a senha do aprovado confere 
     //se nao existe, a aplicacao retorna um erro
-    if(aprovado.senha !== senha ){
-      throw new SenhaIncompativel()
+    if(!senhaConfere){
+      return new SenhaIncompativel()
     }
 
 
     if(aprovado.ativado){
-      throw new ContaEstaAtiva()
+      return new ContaEstaAtiva()
     }
 
     //caso nenhum dos erros acima ocorra, ativa a conta
