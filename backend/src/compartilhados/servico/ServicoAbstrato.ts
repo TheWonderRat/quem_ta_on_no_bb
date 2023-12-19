@@ -1,5 +1,6 @@
 
 import { ServiceRequestTypes, ServiceResponseTypes } from "../../tipos/servicos/servico";
+import AppError from "../erros/AppError";
 
 
 export default abstract class ServicoAbstrato< 
@@ -7,5 +8,5 @@ export default abstract class ServicoAbstrato<
   ServiceResponseType extends ServiceResponseTypes 
 >{
 
-  public abstract executar(parameters: ServiceRequestType): Promise<ServiceResponseType>;
+  public abstract executar(parameters: ServiceRequestType): Promise<ServiceResponseType | AppError>;
 }
