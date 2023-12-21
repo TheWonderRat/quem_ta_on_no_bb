@@ -8,7 +8,7 @@ import { GerenciadorDeSenha } from '../../../compartilhados/utilitarios/exporter
 
 export default class ServicoParaAtivarConta extends ServicoAbstrato<RequisicaoParaAtivarConta, RespostaParaAtivarConta>{
   //  deveria pedir ou email ou senha na requisicao''
-  public async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta | AppError>{
+  public override async executar(parameters: RequisicaoParaAtivarConta): Promise<RespostaParaAtivarConta | AppError>{
 
     const login = parameters.login;
     //  checa se o usuario existe na base de dados

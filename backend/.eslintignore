@@ -1,4 +1,8 @@
 build/
 node_modules/
+src/tipos/servicos/ranking.ts
+src/tipos/script/scripts.ts
+src/scripts/carregarSituacao.ts
+src/scripts/carregar.ts
 jest.config.js
 .sequelizerc

@@ -82,13 +82,13 @@
             "ignoreNumericLiteralTypes": true
         }],
         "@typescript-eslint/typedef": ["error", {
-            "arrayDestructuring": true,
-            "arrowParameter": true,
+            "arrayDestructuring": false,
+            "arrowParameter": false,
             "memberVariableDeclaration": true,
-            "objectDestructuring": true,
+            "objectDestructuring": false,
             "parameter": true,
             "propertyDeclaration": true,
-            "variableDeclaration": true,
+            "variableDeclaration": false,
             "variableDeclarationIgnoreFunction": true
         }],
         "no-magic-numbers": "off",

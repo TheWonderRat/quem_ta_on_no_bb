@@ -16,8 +16,6 @@ app.use(appRoutes);
 app.use(errors());
 app.use(GerenciadorDeErros.gerenciar);
 
-
-
 // public methods
 app.listen(serverConfig.PORT_BACK, () => {
   console.log('called before');

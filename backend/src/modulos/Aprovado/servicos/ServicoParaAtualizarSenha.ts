@@ -8,7 +8,7 @@ import { GerenciadorDeSenha } from '../../../compartilhados/utilitarios/exporter
 
 export default class ServicoParaAtualizarSenha extends ServicoAbstrato<RequisicaoParaAtualizarSenha,RespostaParaAtualizarSenha>{
 
-  public async executar(parameters: RequisicaoParaAtualizarSenha): Promise<RespostaParaAtualizarSenha | AppError>{
+  public override async executar(parameters: RequisicaoParaAtualizarSenha): Promise<RespostaParaAtualizarSenha | AppError>{
 
     const login = parameters.login;
     //  checa se o usuario existe na base de dados
