@@ -41,17 +41,19 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
    ): Promise<Aprovado[]> {
 
     const ALIAS_APROVADO = 'apr'
+      // TODO:: criar constantes para obedecer aos tipos de resposta
      const params = [
-        `${ALIAS_APROVADO}.${atributos.Aprovado.Nome}`,
-        `${ALIAS_APROVADO}.${atributos.Aprovado.PPP}`,
-        `${ALIAS_APROVADO}.${atributos.Aprovado.PCD}`,
-        `${entidades.Ranking}.${atributos.Ranking.Posicao}`,
-        `${entidades.Ranking}.${atributos.Ranking.TipoRanking}`,
+        `${ALIAS_APROVADO}.${atributos.Aprovado.Nome} as nome`,
+        `${ALIAS_APROVADO}.${atributos.Aprovado.PPP} as ppp`,
+        `${ALIAS_APROVADO}.${atributos.Aprovado.PCD} as pcd`,
+        `${entidades.Ranking}.${atributos.Ranking.Posicao} as posicao`,
+        `${entidades.Ranking}.${atributos.Ranking.TipoRanking} as ranking`,
       ];
 
       //todas as joins devem estar antes de where
      let qr = dataSource 
         //apr e o alias da entidade "Aprovado" na query, nao e necessario usar template literals
+       //.createQueryBuilder(Aprovado, 'apr')
        .createQueryBuilder(Aprovado, 'apr')
        .innerJoinAndSelect(
             `apr.${relacionamentos.Aprovado.RankingsDoAprovado}`,
@@ -67,18 +69,22 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
        );
 
        if (diretoria) {
-         params.push(`${entidades.LotadoEm}.${atributos.LotadoEm.Diretoria}`);
+      // TODO:: criar constantes para obedecer aos tipos de resposta
+         params.push(`${entidades.LotadoEm}.${atributos.LotadoEm.Diretoria} as diretoria`);
        }
        if (cidade) {
-         params.push(`${entidades.LotadoEm}.${atributos.LotadoEm.Cidade}`);
+      // TODO:: criar constantes para obedecer aos tipos de resposta
+         params.push(`${entidades.LotadoEm}.${atributos.LotadoEm.Cidade} as cidade`);
        }
      }
 
      if (turma) {
-       params.push(`apr.${atributos.Aprovado.Turma}`);
+      // TODO:: criar constantes para obedecer aos tipos de resposta
+      params.push(`apr.${atributos.Aprovado.Turma} as turma`);
      }
      if (situacao) {
-       params.push(`apr.${atributos.Aprovado.Situacao}`);
+      // TODO:: criar constantes para obedecer aos tipos de resposta
+       params.push(`apr.${atributos.Aprovado.Situacao} as situacao`);
      }
       //deve haver pelo menos um where antes de cada andWhere
      qr = qr.select(params).where(`${atributos.Ranking.TipoRanking } = :ranking`, { ranking });
