@@ -1,11 +1,13 @@
   //libraries
- import { Repository } from 'typeorm';
+ import { TipoTurma } from '../../../tipos/repositorios/turma';
+import { Repository } from 'typeorm';
 
   //ORM
 import dataSource from '../../config';
   //entity
 //relacionamentos
 import { Aprovado } from '../modelo/exporter';
+import TurmaRepo from './TurmaRepo';
 
  class AprovadoRepo extends Repository<Aprovado> {
 
@@ -51,6 +53,19 @@ import { Aprovado } from '../modelo/exporter';
       aprovado.pcd = pcd;
       return aprovado;
   }
+
+    public async buscarPorTurma( 
+      turma : TipoTurma
+    ): Promise<Aprovado[]> {
+
+      if (turma === "ultima") {
+        const turma = await TurmaRepo.buscarTurma("ultima");
+        return await this.find({ where: { turma: turma?.numero }})
+      }
+
+    return await this.find({ where: { turma: turma }});
+    }
+
 }
 
  export default new AprovadoRepo(Aprovado, dataSource.manager);
