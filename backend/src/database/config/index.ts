@@ -53,5 +53,4 @@ dataSource.initialize()
     console.log('Devidamente chamado!')
 });
 
-
 export default dataSource;
