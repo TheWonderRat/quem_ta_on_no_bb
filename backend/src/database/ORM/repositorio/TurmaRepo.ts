@@ -1,6 +1,5 @@
   //libraries
- import { TipoTurma } from '../../../tipos/repositorios/turma';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
   //ORM
 import dataSource from '../../config';
@@ -21,13 +20,11 @@ import { Turma } from '../modelo/exporter'
     return turma;
   }
 
-    public async buscarTurma(turma: TipoTurma): Promise<Turma| null >{
-      if (turma === "ultima") {
-        return await this.createQueryBuilder().select("MAX(numero)").getOne();
-      } 
-
-      return await this.findOne({ where: { numero: turma}});
-    }
-
+  public async buscarTurma(turma?: number): Promise<Turma| null >{
+    if (turma) {
+      return await this.createQueryBuilder().select("MAX(numero)").getOne();
+    } 
+    return await this.findOne({ where: { numero: turma}});
+  }
 }
  export default new TurmaRepo(Turma, dataSource.manager);
