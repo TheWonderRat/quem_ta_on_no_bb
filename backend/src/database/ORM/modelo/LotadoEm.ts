@@ -1,5 +1,16 @@
 import { Lotacao } from './exporter';
-import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToOne, JoinColumn} from 'typeorm';
+import { 
+  Entity, 
+  Column, 
+  PrimaryColumn, 
+  ManyToMany, 
+  ManyToOne, 
+  OneToOne, 
+  JoinColumn, 
+  CreateDateColumn, 
+  UpdateDateColumn, 
+  DeleteDateColumn
+} from 'typeorm';
 import { Aprovado } from './exporter';
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
@@ -19,6 +30,15 @@ export default class LotadoEm{
 
   @PrimaryColumn({name: atributos.LotadoEm.Diretoria})
   diretoria: string
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @DeleteDateColumn()
+  deletedAt: Date
 
   /*-----------------------------join-------------------------------*/
 
