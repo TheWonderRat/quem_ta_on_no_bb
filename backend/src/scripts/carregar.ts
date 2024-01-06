@@ -81,6 +81,7 @@ async function carregarAprovados(
   const aprs: Aprovado[] = aprovados.map((a) =>
     AprovadoRepo.criarAprovado(
       a.posicaoAmpla,
+      a.inscricao,
       a.nome,
       a.senha,
       atributosScript.SITUACAO_PADRAO,
