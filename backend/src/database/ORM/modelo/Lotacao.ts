@@ -1,5 +1,5 @@
 import { Cidade, Diretoria, LotadoEm } from './exporter';
-import { Entity, PrimaryColumn, ManyToOne, JoinColumn, OneToMany, } from 'typeorm'
+import { Entity, PrimaryColumn, ManyToOne, JoinColumn, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn} from 'typeorm'
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 @Entity(entidades.Lotacao)
