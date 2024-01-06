@@ -71,6 +71,7 @@ export enum Turma{
 
 export enum Aprovado{
   PosicaoAmpla = 'posicao',
+  Inscricao = 'inscricao',
   Nome = 'nome',
   Senha = 'senha_aprovado',
   Situacao = 'situacao',
@@ -81,4 +82,3 @@ export enum Aprovado{
   CriadoEm = 'criado_em',
   AtualizadoEm = 'atualizado_em'
 };
-
