@@ -1,5 +1,5 @@
 import { Estado, Lotacao } from '../modelo/exporter';
-import { Entity, PrimaryColumn, ManyToOne, OneToMany, JoinColumn, } from 'typeorm'
+import { Entity, PrimaryColumn, ManyToOne, OneToMany, JoinColumn, CreateDateColumn,UpdateDateColumn,DeleteDateColumn} from 'typeorm'
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
@@ -12,6 +12,15 @@ export default class Cidade{
 //TODO:: inserir no arquivo de constantes
   @PrimaryColumn({name: atributos.Cidade.Estado})
   estado: string;
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @DeleteDateColumn()
+  deletedAt: Date
 
   //-------------------------joins-------------------------------//
 
