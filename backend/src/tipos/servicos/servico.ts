@@ -17,15 +17,27 @@ import {
   RespostaParaAtualizarSenha,
 } from './aprovado';
 
+import {
+  RequisicaoAtualizarTodos,
+  RespostaAtualizarTodos,
+  RequisicaoAtualizarEmMudanca,
+  RespostaAtualizarEmMudanca,
+} from './atualizacao'
+
 export type ServiceRequestTypes =
   RequisicaoParaListarORanking
   | RequisicaoParaAtualizarSenha
   | RequisicaoParaAtivarConta
   | RequisicaoParaDesativarConta
-  | RequisicaoParaCriarSessao;
+  | RequisicaoParaCriarSessao
+  | RequisicaoAtualizarEmMudanca
+  | RequisicaoAtualizarTodos;
+
 export type ServiceResponseTypes =
   RespostaParaListarORanking
   | RespostaParaAtualizarSenha
   | RespostaParaAtivarConta
   | RespostaParaDesativarConta
-  | RespostaParaCriarSessao;
+  | RespostaParaCriarSessao
+  | RespostaAtualizarEmMudanca
+  | RespostaAtualizarTodos;
