@@ -6,3 +6,4 @@ export enum ListarRanking{
   Diretoria = 'diretoria',
   Turma = 'turma'
 }
+
