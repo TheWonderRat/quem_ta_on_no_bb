@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToOne, OneToMany, JoinColumn, } from 'typeorm'
+import { Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, OneToOne, OneToMany, JoinColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn} from 'typeorm'
 import { Aprovado } from './exporter';
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
@@ -9,6 +9,14 @@ export default class Situacao{
   @PrimaryColumn({name: atributos.Situacao.Nome})
   nome: string;
 
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @DeleteDateColumn()
+  deletedAt: Date
   /*----------------------------------join----------------------------*/
 
   @OneToMany(() => Aprovado, (usuario) => usuario.situacaoVinculada)
