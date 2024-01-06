@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, OneToMany } from 'typeorm'
+import { Entity, PrimaryColumn, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm'
 import { Cidade } from './exporter';
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
@@ -13,4 +13,13 @@ export default class Estado{
   @OneToMany(() => Cidade,(cidade) => cidade.estadoVinculado)
 //TODO:: inserir no arquivo de constantes
   cidadesVinculadas: Cidade[]
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @DeleteDateColumn()
+  deletedAt: Date
 }
