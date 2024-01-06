@@ -18,6 +18,8 @@ services:
     environment:
       DB_HOST: db
       PORT: ${PORT_BACK} 
+    cap_add:
+      - "SYS_ADMIN"
     depends_on:
       db: 
         condition: service_healthy
