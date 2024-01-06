@@ -18,5 +18,9 @@ import { Aprovado, Ranking, Situacao } from '../modelo/exporter'
 
     return situacao;
   }
+
+    public async buscarPorNome(nome: string): Promise<Situacao | null>{
+      return await this.findOneBy({ nome });
+    }
 }
  export default new SituacaoRepo(Situacao, dataSource.manager);
