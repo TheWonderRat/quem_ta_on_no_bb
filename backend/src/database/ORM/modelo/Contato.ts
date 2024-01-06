@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn, } from 'typeorm'
+import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn, CreateDateColumn,UpdateDateColumn,DeleteDateColumn} from 'typeorm'
 import Aprovado from './Aprovado';
 import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
 
@@ -14,6 +14,15 @@ export default class Contato{
 
   @Column({name: atributos.Contato.Email})
   email: string
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+  @DeleteDateColumn()
+  deletedAt: Date
 
   /*--------------------------------join---------------------------------------*/ 
 
