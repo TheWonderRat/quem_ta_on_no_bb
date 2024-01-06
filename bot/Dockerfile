@@ -1,0 +1,28 @@
+FROM puppeteer:latest AS backend
+
+WORKDIR /app
+
+COPY ./package.json .
+
+COPY ./package-lock.json .
+
+RUN ["npm","install"] 
+
+COPY . .
+
+EXPOSE 3001:3001
+
+ENV JWT_SECRET=${JWT_SECRET}
+
+ENV JWT_EXPIRATION=${JWT_EXPIRATION}
+
+ENV POSTGRES_USER=${POSTGRES_USER}
+
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+ENV POSTGRES_DB=${POSTGRES_DB}
+
+ENTRYPOINT [ "npm", "run" ]
+
+CMD [ "start"]
+
