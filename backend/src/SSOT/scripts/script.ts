@@ -4,6 +4,7 @@ import path from "path";
 //TODO:: criar o tipo no diretorio depois
 
 import { TipoAprovado,TipoRanking } from '../../tipos/exporter'
+import { valoresPadrao } from "../base_de_dados/exporter";
 //TODO:: passar tudo para o SSOT depois
 const ARQUIVO_DIRETAS = require(path.join(__dirname,'..','..','..','dados_dos_aprovados','diretas.json'));
 const ARQUIVO_CR =      require(path.join(__dirname,'..','..','..','dados_dos_aprovados','cadastroReserva.json'));
@@ -181,18 +182,18 @@ export const DIRETORIAS = [
   'DITEC','UAN','UCF'
 ]
 export const SITUACOES = [
-  'fila_de_espera',
-  'em_preparacao',
-  'convocacao_autorizada',
-  'convocacao_expedida',
-  'em_qualificacao',
-  'qualificado',
-  'empossado',
-  'desistente',
-  'cancelado_por_prazo',
-  'inapto_outros_motivos',
-  'nao_convocado',
-]
+  valoresPadrao.Situacao.FilaDeEspera,
+  valoresPadrao.Situacao.EmPreparacao, 
+  valoresPadrao.Situacao.ConvocacaoAutorizada,
+  valoresPadrao.Situacao.ConvocacaoExpedida, 
+  valoresPadrao.Situacao.EmQualificacao,
+  valoresPadrao.Situacao.Qualificado,
+  valoresPadrao.Situacao.Empossado,
+  valoresPadrao.Situacao.Desistente,
+  valoresPadrao.Situacao.CanceladoPorPrazo,
+  valoresPadrao.Situacao.Inapto,
+  valoresPadrao.Situacao.NaoConvocado,
+];
 
 export enum TiposEstado{
   'SP','DF'
