@@ -10,7 +10,10 @@ import {
   Situacao,
   TipoRanking,
   Turma,
-  Aprovado
+  Aprovado,
+  Conversa,
+  Sugestao,
+  ErroDeAtualizacao
 } from '../ORM/modelo/exporter';
 
 import { DataSource } from 'typeorm';
@@ -41,7 +44,10 @@ const dataSource = new DataSource({
     Situacao, 
     TipoRanking, 
     Turma, 
-    Aprovado 
+    Aprovado,
+    Conversa,
+    Sugestao,
+    ErroDeAtualizacao
   ],
   migrations: [
     '../ORM/modelo/*.ts'
@@ -51,6 +57,9 @@ const dataSource = new DataSource({
 dataSource.initialize()
   .then(() =>{
     console.log('Devidamente chamado!')
-});
+  })
+  .catch((e) => {
+    console.log(e)
+  })
 
 export default dataSource;

@@ -1,5 +1,5 @@
   //libraries
- import { Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
   //ORM
 import dataSource from '../../config';
@@ -41,5 +41,7 @@ import { LotadoEm } from '../modelo/exporter'
 
     return lotadoEm;
   }
+  // WARNING:: ficou estrano concertar depois
+
 }
  export default new LotadoEmRepo(LotadoEm, dataSource.manager);

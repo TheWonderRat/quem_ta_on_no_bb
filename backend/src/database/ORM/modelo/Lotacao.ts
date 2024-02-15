@@ -12,8 +12,16 @@ export default class Lotacao{
   estado: string;
 
   @PrimaryColumn({name: atributos.Lotacao.Diretoria})
-  diretoria: string
+  diretoria: string;
 
+  @CreateDateColumn()
+  criadoEm: Date;
+
+  @UpdateDateColumn()
+  atualizadoEm: Date;
+
+  @DeleteDateColumn()
+  excluidoEm: Date;
   /*-----------------------------joins----------------------------------*/
 
   @OneToMany(() => LotadoEm, (lotadoEm) => lotadoEm.lotacaoVinculada)

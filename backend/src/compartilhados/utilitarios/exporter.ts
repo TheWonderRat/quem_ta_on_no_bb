@@ -3,3 +3,4 @@ export { default as GerenciadorDeSenha } from './GerenciadorDeSenha';
 export { default as GerenciadorDeAutenticacao} from './GerenciadorDeAutenticacao';
 export { default as GerenciadorDeBots } from './GerenciadorDeBots';
 export { default as GerenciadorDeAtualizacoes } from './GerenciadorDeAtualizacoes'
+export { default as GerenciadorDeMensagens } from './GerenciadorDeMensagens'

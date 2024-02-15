@@ -1,6 +1,7 @@
 # Directories to ignore
-/build
 /node_modules
+/src/scripts
+/src/SSOT/scripts
 
 # Files to ignore
 .env.example

@@ -8,7 +8,7 @@ export enum Cidade{
 
 export enum Contato{
   PosicaoAmpla = 'posicao',
-  Celular = 'celular',
+  UUIDWhatsapp= 'celular',
   Email = 'email',
   CriadoEm = 'criado_em',
   AtualizadoEm = 'atualizado_em'
@@ -69,12 +69,19 @@ export enum Turma{
   AtualizadoEm = 'atualizado_em'
 };
 
+export enum ErroAtualizacao{
+  PosicaoDoAprovado = 'posicao_do_aprovado',
+  Tipo = 'tipo',
+  Log = 'log',
+}
+
 export enum Aprovado{
   PosicaoAmpla = 'posicao',
   Inscricao = 'inscricao',
   Nome = 'nome',
   Senha = 'senha_aprovado',
   Situacao = 'situacao',
+  DataPosse = 'data_posse',
   PPP = 'ppp',
   PCD = 'pcd',
   Turma = 'turma',
@@ -82,3 +89,10 @@ export enum Aprovado{
   CriadoEm = 'criado_em',
   AtualizadoEm = 'atualizado_em'
 };
+
+
+export enum Notificacao{
+  PosicaoDoAprovado = 'posicao',
+  Tipo = 'tipo',
+  Ativado = 'ativado',
+}

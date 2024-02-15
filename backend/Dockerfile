@@ -24,9 +24,9 @@ RUN npm install \
     && chown -R pptruser:pptruser /package.json \
     && chown -R pptruser:pptruser /package-lock.json
 
-COPY . .
+COPY ./build ./build
 
-
+COPY ./auth_info_baileys ./auth_info_baileys
 
 EXPOSE 3001:3001
 
@@ -42,5 +42,5 @@ ENV POSTGRES_DB=${POSTGRES_DB}
 
 ENTRYPOINT [ "npm", "run" ]
 
-CMD [ "production"]
+CMD ["start"]
 

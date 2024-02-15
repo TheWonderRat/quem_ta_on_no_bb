@@ -26,5 +26,9 @@ import { Turma } from '../modelo/exporter'
     } 
     return await this.findOne({ where: { numero: turma}});
   }
+
+  public async buscarTodos(): Promise<Turma[]>{
+    return await this.find();
+  }
 }
  export default new TurmaRepo(Turma, dataSource.manager);

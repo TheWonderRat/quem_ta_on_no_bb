@@ -10,13 +10,13 @@ export default class TipoRanking{
   nome: string;
 
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date
 
   /*----------------------------------join----------------------------*/
 

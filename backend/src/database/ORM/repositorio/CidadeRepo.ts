@@ -1,9 +1,9 @@
-  //libraries
+  //  libraries
  import { Repository } from 'typeorm';
 
-  //ORM
+  //  ORM
 import dataSource from '../../config';
-  //entity
+  //  entity
 import { Cidade } from '../modelo/exporter'
 
  class CidadeRepo extends Repository<Cidade> {
@@ -21,4 +21,4 @@ import { Cidade } from '../modelo/exporter'
     return cidade;
   }
 }
- export default new CidadeRepo(Cidade, dataSource.manager);
+export default new CidadeRepo(Cidade, dataSource.manager);

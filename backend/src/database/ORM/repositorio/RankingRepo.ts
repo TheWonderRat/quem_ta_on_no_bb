@@ -6,7 +6,7 @@ import dataSource from '../../config';
   //entity
 import { Aprovado, Ranking } from '../modelo/exporter'
 //relacionamentos
-import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dados/exporter';
+import { atributos, entidades, relacionamentos, valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
  class RankingRepo extends Repository<Ranking> {
   public async cadastrarRanking(posicaoAmpla: number,posicao: number,tipoRanking: string): Promise<void>{
@@ -24,19 +24,27 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
     return ranking;
   }
 
-  public async buscarPorPosicaoAmpla(posicao: number): Promise<Ranking | null>{
-      const user = await this.findOne({ where: { posicao } });
+  public async buscarPorPosicaoAmpla(posicao: number): Promise<Ranking[] | null>{
+      const rankings = await this.find({ where: { posicao } });
 
-      return user 
+      return rankings 
   }
 
+
+  public async buscarPorPosicaoAmplaELista(posicao: number, tipoRanking: valoresPadrao.TipoRanking): Promise<Ranking | null>{
+      const ranking = await this.findOne({ where: { posicao , tipoRanking } });
+
+      return ranking 
+  }
+  
+
    public async buscarPorRanking(
-     pagina: number,
-     candidatos: number,
      ranking: string,
+     pagina?: number,
+     candidatos?: number,
      situacao?: string,
-     cidade?: string,
      diretoria?: string,
+     cidade?: string,
      turma?: number,
    ): Promise<Aprovado[]> {
 
@@ -105,17 +113,47 @@ import { atributos, entidades, relacionamentos } from '../../../SSOT/base_de_dad
       //criterios de ordenacao nao podem vir antes das outras clausulas
       //ou os filtros nao funcionarao
       //considerando que a consulta depende da conexao e as queries funcional, o maximo que acontece
+      qr = qr.orderBy(`${atributos.Ranking.Posicao}`, 'ASC');
+
+      if ( pagina && candidatos ){
+        qr = qr
+          .offset(candidatos * pagina)
+          .limit(candidatos);
+      }
+
+
      const aprovados: Aprovado[] = await qr
-       .orderBy(`${atributos.Ranking.Posicao}`, 'ASC')
-       .offset(candidatos * pagina)
-       .limit(candidatos)
        .getRawMany();
+       // .offset(candidatos * pagina)
+       // .limit(candidatos)
 
       //usa-se getMany() para que o orm serialize cada uma das instancias da join
       //seria possivel consultar mais de uma lista simultaneamente
 
      return aprovados;
    }
+  public async buscarTotalDeEmpossados(){
+
+    }
+
+  public async buscarUltimaPessoaEmpossada(): Promise<Ranking | null>{
+    return await this 
+        //apr e o alias da entidade "Aprovado" na query, nao e necessario usar template literals
+       //.createQueryBuilder(Aprovado, 'apr')
+       .createQueryBuilder('rk')
+       .innerJoinAndSelect(
+            `rk.${relacionamentos.Ranking.AprovadoVinculado}`,
+            `${entidades.Aprovado}`,
+            `rk.${atributos.Ranking.PosicaoAmpla} = ${entidades.Aprovado}.${atributos.Aprovado.PosicaoAmpla}`,
+     )
+    .where(`${entidades.Aprovado}.${atributos.Aprovado.Situacao} =:situacao`, { situacao: valoresPadrao.Situacao.Empossado })
+    //  reposicionar caso alguma coisa mude
+    //.andWhere(`rk.${atributos.Ranking.TipoRanking} =:ranking`,{ ranking: valoresPadrao.TipoRanking.ListaDeChamada })
+    .andWhere(`rk.${atributos.Ranking.TipoRanking} =:ranking`,{ ranking: valoresPadrao.TipoRanking.ListaDeChamada2 })
+    .orderBy(`${atributos.Ranking.Posicao}`, 'DESC')
+    .getOne();
+  }
+
  }
 
  export default new RankingRepo(Ranking, dataSource.manager);

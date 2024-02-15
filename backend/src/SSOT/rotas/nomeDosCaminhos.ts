@@ -3,6 +3,7 @@ export const usuario: string = '/usuario';
 export const ranking: string = '/ranking';
 export const sessao: string = '/sessao';
 export const atualizacao: string = '/atualizacao';
+export const mensagem: string = '/mensagem'
 
 export enum Raiz{
   Raiz = '/',
@@ -27,4 +28,10 @@ export enum Sessao{
 export enum Atualizacao{
   EmMudanca = '/em-mudanca',
   Todos = '/todos',
+  PorPosicaoAmpla = '/por-posicao',
+  PorSituacoes = '/por-situacoes',
+}
+
+export enum Mensagem{
+  Interagir = '/interagir',
 }

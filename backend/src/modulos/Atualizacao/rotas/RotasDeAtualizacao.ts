@@ -33,4 +33,32 @@ rotasDeAtualizacao.post(
   controladorDeAtualizacao.atualizarTodos
 );
 
+rotasDeAtualizacao.post(
+  caminhos.Atualizacao.PorPosicaoAmpla,
+  //  WARNING:: Descomentar essa linha quando colocar em producao
+  //  GerenciadorDeAutenticacao.verificarAutenticacao,
+  celebrate({
+    [Segments.BODY]: {
+      captcha: Joi.string().required(),
+      aprovados: Joi.array().required(),
+      userAgent: Joi.string()
+    },
+  }),
+  controladorDeAtualizacao.atualizarPorPosicaoAmpla
+);
+
+rotasDeAtualizacao.post(
+  caminhos.Atualizacao.PorSituacoes ,
+  //  WARNING:: Descomentar essa linha quando colocar em producao
+  //  GerenciadorDeAutenticacao.verificarAutenticacao,
+  celebrate({
+    [Segments.BODY]: {
+      captcha: Joi.string().required(),
+      situacoes: Joi.array().required(),
+      userAgent: Joi.string()
+    },
+  }),
+  controladorDeAtualizacao.atualizarPorPosicaoAmpla
+);
+
 export default rotasDeAtualizacao;

@@ -16,7 +16,7 @@ import { Contato } from '../modelo/exporter'
     const contato = dataSource.manager.create(Contato);
     contato.posicao = inscricao;
     contato.email = email;
-    contato.celular = celular;
+    //contato.celular = celular;
 
 
     return contato;

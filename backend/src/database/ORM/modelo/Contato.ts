@@ -9,24 +9,24 @@ export default class Contato{
   @PrimaryColumn({name: atributos.Contato.PosicaoAmpla})
   posicao: number;
 
-  @Column({name: atributos.Contato.Celular})
-  celular: number;
+  @Column({name: atributos.Contato.UUIDWhatsapp})
+  uuidWhatsapp: number;
 
   @Column({name: atributos.Contato.Email})
   email: string
 
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date
 
   /*--------------------------------join---------------------------------------*/ 
 
   @OneToOne(() => Aprovado,(usuario) => usuario.contatoDoAprovado)
   @JoinColumn({name: atributos.Contato.PosicaoAmpla, referencedColumnName: atributos.Aprovado.PosicaoAmpla})
-  usuarioVinculado: Aprovado 
+  aprovadoVinculado: Aprovado 
 }

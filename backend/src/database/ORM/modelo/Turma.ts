@@ -1,6 +1,17 @@
-import { Entity, PrimaryColumn, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn} from 'typeorm'
+import { 
+  Entity, 
+  PrimaryColumn, 
+  OneToMany, 
+  Column,
+  CreateDateColumn, 
+  UpdateDateColumn, 
+  DeleteDateColumn
+} from 'typeorm'
 import { Aprovado } from './exporter';
-import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
+import { 
+  atributos, 
+  entidades 
+} from '../../../SSOT/base_de_dados/exporter';
 
 //TODO:: inserir no arquivo de constantes
 @Entity(entidades.Turma)
@@ -8,21 +19,22 @@ export default class Turma{
 
   @PrimaryColumn({name: atributos.Turma.Numero})
   numero: number;
-
+  /*
+  @Column()
+  dataQuestionario: Date
+  */
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date
 
   /*----------------------------------join----------------------------*/
 
   @OneToMany(() => Aprovado, (usuario) => usuario.turmaVinculada)
   aprovadosDaTurma: Aprovado[];
-  
-
 }
 

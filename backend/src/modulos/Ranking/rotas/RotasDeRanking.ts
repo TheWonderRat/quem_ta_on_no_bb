@@ -13,8 +13,8 @@ rotasDeRanking.get(
   GerenciadorDeAutenticacao.verificarAutenticacao,
   celebrate({
     [Segments.QUERY]: {
-      aprovados: Joi.number().required(),
-      pagina: Joi.string().required(),
+      aprovados: Joi.number(),
+      pagina: Joi.string(),
       lista: Joi.string().required(),
       cidade: Joi.string(),
       diretoria: Joi.string(),

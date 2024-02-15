@@ -19,12 +19,12 @@ export default class ServicoParaListarORanking extends
   Promise<RespostaParaListarORanking | AppError> {
 
     const aprovados = await RankingRepo.buscarPorRanking(
+      parameters.tipoRanking,
       parameters.pagina,
       parameters.aprovados,
-      parameters.tipoRanking,
       parameters.situacao,
-      parameters.cidade,
       parameters.diretoria,
+      parameters.cidade,
       parameters.turma,
     );
     return { mensagem: 'called on list request', aprovados };

@@ -22,6 +22,8 @@ import {
   RespostaAtualizarTodos,
   RequisicaoAtualizarEmMudanca,
   RespostaAtualizarEmMudanca,
+  RequisicaoAtualizarPorSituacao,
+  RespostaAtualizarPorSituacao,
 } from './atualizacao'
 
 export type ServiceRequestTypes =
@@ -31,7 +33,8 @@ export type ServiceRequestTypes =
   | RequisicaoParaDesativarConta
   | RequisicaoParaCriarSessao
   | RequisicaoAtualizarEmMudanca
-  | RequisicaoAtualizarTodos;
+  | RequisicaoAtualizarTodos
+  | RequisicaoAtualizarPorSituacao;
 
 export type ServiceResponseTypes =
   RespostaParaListarORanking
@@ -40,4 +43,5 @@ export type ServiceResponseTypes =
   | RespostaParaDesativarConta
   | RespostaParaCriarSessao
   | RespostaAtualizarEmMudanca
-  | RespostaAtualizarTodos;
+  | RespostaAtualizarTodos
+  | RespostaAtualizarPorSituacao;

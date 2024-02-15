@@ -8,8 +8,6 @@ import {
   RespostaAtualizarEmMudanca
 } from '../../../tipos/servicos/atualizacao';
 import { GerenciadorDeBots } from '../../../compartilhados/utilitarios/exporter';
-import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
-import { Aprovado } from 'src/SSOT/base_de_dados/entidades';
 
 
 //  ERROS: tipo de situacao nao existe

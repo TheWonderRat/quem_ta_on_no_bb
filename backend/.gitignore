@@ -96,6 +96,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+auth_info_baileys/
+.wwebjs_cache/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

@@ -30,13 +30,13 @@ export default class Ranking{
   posicaoNoRanking: number
 
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date
 
   /*------------------------------------join--------------------------------*/
   @ManyToOne(() => Aprovado, (aprovado) => aprovado.rankingsDoAprovado)

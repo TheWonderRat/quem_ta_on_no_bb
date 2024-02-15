@@ -15,11 +15,11 @@ export default class Estado{
   cidadesVinculadas: Cidade[]
 
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date
 }

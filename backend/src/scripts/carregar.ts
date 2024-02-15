@@ -22,9 +22,10 @@ import {
 } from '../database/ORM/modelo/exporter';
 import dataSource from '../database/config';
 
-import { atributosScript } from '../SSOT/exporter';
+import * as atributosScript from './constantes';
+
 import { TipoAprovado, TipoRanking, TipoSituacao } from '../tipos/exporter';
-import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
+//  import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
 
 async function carregarEstados(
   estados: string[] = atributosScript.ESTADOS,
@@ -103,7 +104,7 @@ async function carregarRanking(
   ));
   await RankingRepo.insert(rks);
 }
-
+/*
 async function atualizarAprovado(
   situacoes: TipoSituacao[] = SITUACAO_APROVADOS,
 ): Promise<void> {
@@ -111,7 +112,7 @@ async function atualizarAprovado(
 
   for await (const st of situacoes) {
     const a = await AprovadoRepo.buscarPorPosicaoAmpla(st.posicao);
-    if (a) {
+    if ( a ) {
       a.situacao = st.situacao;
       a.turma = st.turma;
       aprovados.push(a);
@@ -136,8 +137,10 @@ async function atualizarLotacao(
 
   await LotadoEmRepo.insert(sts);
 }
+*/
 
 async function carregarDados(): Promise<void> {
+  /*
   const camadaUm = Promise.all([
     await carregarEstados(),
     await carregarDiretorias(),
@@ -152,7 +155,12 @@ async function carregarDados(): Promise<void> {
   const camadaTres = Promise.all([
     await carregarLotacao(),
   ]);
+  */
   const camadaQuatro = Promise.all([
+    /*
+    await carregarRanking(atributosScript.LISTA_COMPLETA),
+    await carregarRanking(atributosScript.LISTA_COMPLETA_DIRETAS),
+    await carregarRanking(atributosScript.LISTA_COMPLETA_CR),
     await carregarRanking(atributosScript.LISTA_AMPLA_COMPLETA),
     await carregarRanking(atributosScript.LISTA_AMPLA_DIRETAS),
     await carregarRanking(atributosScript.LISTA_AMPLA_CR),
@@ -162,25 +170,31 @@ async function carregarDados(): Promise<void> {
     await carregarRanking(atributosScript.LISTA_PCD_COMPLETA),
     await carregarRanking(atributosScript.LISTA_PCD_DIRETAS),
     await carregarRanking(atributosScript.LISTA_PCD_CR),
-    await carregarRanking(atributosScript.LISTA_ORDENADA_DE_CONVOCACAO),
+    */
+    //await carregarRanking(atributosScript.LISTA_ORDENADA_DE_CONVOCACAO),
+    await carregarRanking(atributosScript.LISTA_ORDENADA_DE_CONVOCACAO_2),
   ]);
 
+  /*
   const camadaCinco = Promise.all([
     await atualizarAprovado(),
     await atualizarLotacao(),
   ]);
+  */
 
+  /*
   await camadaUm.then(async () => {
     await camadaDois.then(async () => {
       await camadaTres.then(async () => {
+        */
         await camadaQuatro.then(async () => {
-          await camadaCinco.then(async () => {
             console.log('HADOOUUUKEN!!');
-          }).catch((e) => { throw e; });
         }).catch((e) => { throw e; });
+/*
       }).catch((e) => { throw e; });
     }).catch((e) => { throw e; });
   }).catch((e) => { throw e; });
+*/
 }
 
 async function executar(): Promise<void> {

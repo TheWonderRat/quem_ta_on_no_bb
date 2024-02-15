@@ -82,7 +82,7 @@
             "ignoreNumericLiteralTypes": true
         }],
         "@typescript-eslint/typedef": ["error", {
-            "arrayDestructuring": false,
+            "arrayDestructuring": ,
             "arrowParameter": false,
             "memberVariableDeclaration": true,
             "objectDestructuring": false,

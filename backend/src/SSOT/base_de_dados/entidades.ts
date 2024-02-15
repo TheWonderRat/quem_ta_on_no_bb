@@ -9,4 +9,7 @@ export const TipoRanking: string = 'TipoRanking';
 export const Situacao: string = 'Situacao';
 export const Turma: string = 'Turma';
 export const Aprovado: string = 'Aprovado';
-
+export const Sugestao: string = 'Sugestao';
+export const Conversa: string = 'Conversa';
+export const ErroDeAtualizacao: string = 'ErroDeAtualizacao';
+export const Notificacao: string = 'Notificacao'

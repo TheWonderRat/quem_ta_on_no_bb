@@ -3,7 +3,7 @@ import AprovadoRepo from '../database/ORM/repositorio/AprovadoRepo';
 import LotadoEmRepo from '../database/ORM/repositorio/LotadoEmRepo';
 
 import { TipoSituacao } from '../tipos/exporter';
-import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
+//  import { SITUACAO_APROVADOS } from '../SSOT/scripts/script';
 import { Aprovado } from '../database/ORM/modelo/exporter';
 
 async function atualizarAprovado(
@@ -11,10 +11,10 @@ async function atualizarAprovado(
 ): Promise<void> {
   let aprovados: Aprovado[] = [];
 
-  for await (const st of situacoes) {
+  for await ( const st of situacoes ) {
     const a = await AprovadoRepo.buscarPorPosicaoAmpla(st.posicao);
     if (a) {
-      a.situacao = st.situacao;
+      //  a.situacao = st.situacao;
       a.turma = st.turma;
       aprovados.push(a);
     } else {
@@ -27,18 +27,32 @@ async function atualizarAprovado(
 async function atualizarLotacao(
   situacoes: TipoSituacao[],
 ): Promise<void> {
+  /*
   const sts = situacoes
-    .filter((s) => s.diretoria && s.cidade)
+    .filter((s) => s.diretoria !== null && s.diretoria !== undefined )
     .map((s) => {
       //  problematico se houvesse mais de uma cidade...
       //  problematiso se nao fosse o filter...
-      const estado = s.cidade === 'Brasilia' ? 'DF' : 'SP';
-      return LotadoEmRepo.criarLotadoEm(s.diretoria!!, s.posicao, s.cidade!!, estado);
+      //const estado = s.cidade === 'Brasilia' ? 'DF' : 'SP';
+      //return LotadoEmRepo.criarLotadoEm(s.diretoria!!, s.posicao, "Brasilia", "DF");
+      await LotadoEmRepo.cadastrarLotadoEm(s.diretoria!!, s.posicao, "Brasilia", "DF");
     });
+  */
+  let i = 0;
+  for await ( const s of situacoes ){
 
-  await LotadoEmRepo.insert(sts);
+    try{
+      await LotadoEmRepo.cadastrarLotadoEm(s.diretoria!!, s.posicao, "Brasilia", "DF");
+      console.log(s)
+    } catch(err){
+      console.log(`err: ${err} st: ${s} i: ${i}`)
+    }
+    i++
+  }
+
+  //await LotadoEmRepo.save(sts);
 }
-
+/*
 async function carregarDados(
   data: TipoSituacao[] = SITUACAO_APROVADOS,
 ): Promise<void> {
@@ -63,8 +77,10 @@ async function executar():Promise<void> {
     await carregarDados();
   }
 }
+
 executar().then(() => {
   console.log('Script inicializado!');
 }).catch((e) => {
   console.log(`ERRO!:\n${e}`);
 });
+*/

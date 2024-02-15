@@ -20,74 +20,104 @@ import {
   LotadoEm, 
   Situacao, 
   Turma,
-  Ranking 
+  Ranking,
+  Sugestao,
+  Conversa,
+  ErroDeAtualizacao,
+  //Notificacoes,
 } from '../modelo/exporter';
 
 //TODO:: inserir no arquivo de constantes
-@Entity(entidades.Aprovado)
+@Entity( entidades.Aprovado )
 export default class Aprovado{
 
   @PrimaryColumn({name: atributos.Aprovado.PosicaoAmpla , type: 'smallint'})
   posicao: number;
 
-  @Column({name: atributos.Aprovado.Inscricao,unique: true, type: 'bigint'})
-  inscricao: number;
+  @Column({name: atributos.Aprovado.Inscricao, unique: true, type: 'varchar'})
+  inscricao: string;
 
   @Column({name: atributos.Aprovado.Nome})
   nome: string;
 
   @Column({name: atributos.Aprovado.Senha})
-  senha: string
+  senha: string;
 
   @Column({name: atributos.Aprovado.Situacao})
-  situacao: string
+  situacao: string;
 
   @Column({name: atributos.Aprovado.Turma,nullable: true})
-  turma?: number
+  turma?: number;
 
-  @Column()
-  ppp: boolean
+  @Column({ name: atributos.Aprovado.DataPosse, nullable: true })
+  dataPosse: Date;
 
-  @Column()
-  pcd: boolean
+  @Column({ name: atributos.Aprovado.PPP })
+  ppp: boolean;
 
+  @Column({ name: atributos.Aprovado.PCD })
+  pcd: boolean;
+  
+  //  serve para receber notificacoes
   @Column()
-  ativado: boolean
+  ativado: boolean;
 
   @CreateDateColumn()
-  createdAt: Date
+  criadoEm: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date
+  atualizadoEm: Date;
 
   @DeleteDateColumn()
-  deletedAt: Date
+  excluidoEm: Date;
 
 
   /*-------------------------------joins------------------------------*/
   //as joins devem ter exatamente o mesmo nome das contantes de SSOT/base_de_dados/relacionamentos
   @OneToOne(() => LotadoEm, (lotadoEm) => lotadoEm.aprovadoVinculado)
   //TODO:: inserir os nomes dos atributos no SSOT
-  lotadoEm: LotadoEm
+  lotadoEm: LotadoEm;
 
   @ManyToOne(() => Situacao,(situacao)=> situacao.aprovadosNaSituacao)
   //TODO:: inserir os nomes dos atributos no SSOT
   @JoinColumn({name: atributos.Aprovado.Situacao})
-  situacaoVinculada: Situacao 
+  situacaoVinculada: Situacao;
 
   @ManyToOne(() => Turma,(turma)=> turma.aprovadosDaTurma)
   //TODO:: inserir os nomes dos atributos no SSOT
   @JoinColumn({name: atributos.Aprovado.Turma})
-  turmaVinculada: Turma 
+  turmaVinculada: Turma;
 
-  @OneToOne(() => Contato, (contato) => contato.usuarioVinculado)
+  @OneToOne(() => Contato, (contato) => contato.aprovadoVinculado)
   //TODO:: inserir os nomes dos atributos no SSOT
-  contatoDoAprovado: Contato
+  contatoDoAprovado: Contato;
 
-  @OneToMany(() => Ranking, (ranking) => ranking.aprovadoVinculado )
-  rankingsDoAprovado: Ranking[]
+  @OneToMany(() => Ranking, (ranking) => ranking.aprovadoVinculado)
+  rankingsDoAprovado: Ranking[];
+
+  @OneToMany(() => Sugestao, (sugestao) => sugestao.aprovadoVinculado)
+  sugestoesDoAprovado: Sugestao[];
+
+  @OneToMany(() => Conversa, (conversa) => conversa.aprovadoVinculado)
+  conversasDoAprovado: Conversa[];
+
+  @OneToMany(() => ErroDeAtualizacao, (erro) => erro.aprovadoVinculado)
+  errosDeAtualizacao: Conversa[];
+
+  /*
+  @OneToMany(() => Notificacao, (notificacao) => notificacao.aprovadoVinculado)
+  notificacoes: Notificacao[];
+  */
 
   //-------------------------------------getters/setters
+  public setDataPosse( data: Date ){
+    this.dataPosse = data;
+  }
+
+  public getDataPosse(): Date{
+    return this.dataPosse
+  }
+
   public getNome(): string{
     return this.nome;
   }
@@ -99,4 +129,20 @@ export default class Aprovado{
   public setSituacao(situacao: valoresPadrao.Situacao){
     this.situacao = situacao;
   }
+
+  public getSenha(): string{
+    return this.senha;
+  }
+
+  public setSenha( senha: string ){
+    this.senha = senha;
+  }
+
+  //------------------------------------outros metodos
+
+  /*
+  public async enviarNotificacoes(){
+    this.notificacoes.forEach( async (n) => n.notificar()) 
+  }
+  */
 }

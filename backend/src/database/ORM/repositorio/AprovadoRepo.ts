@@ -1,5 +1,5 @@
 //  libraries
-import { In, LessThan, MoreThan, Not,Repository } from 'typeorm';
+import { In, LessThan, Not,Repository } from 'typeorm';
 
 //ORM
 import dataSource from '../../config';
@@ -11,7 +11,7 @@ import TurmaRepo from './TurmaRepo';
 import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
  class AprovadoRepo extends Repository<Aprovado> {
-
+  //-----------------------------------buscar por Lotacao
   public async buscarPorPosicaoAmpla(posicao: number): Promise<Aprovado | null>{
       const user = await this.findOne({ where: { posicao } });
 
@@ -20,7 +20,7 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
   public async cadastrarAprovado(
       posicao: number,
-      inscricao: number,
+      inscricao: string,
       nome: string,
       senha: string,
       situacao: string,
@@ -36,7 +36,7 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
   public criarAprovado(
       posicaoAmpla: number,
-      inscricao: number,
+      inscricao: string,
       nome: string,
       senha: string,
       situacao: string,
@@ -48,7 +48,7 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
       const aprovado = this.manager.create(Aprovado);
       aprovado.posicao = posicaoAmpla;
       aprovado.inscricao = inscricao;
-      aprovado.nome = nome;
+      aprovado.nome = nome.toLowerCase();
       aprovado.senha = senha;
       aprovado.turma = turma;
       aprovado.situacao = situacao;
@@ -58,6 +58,30 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
       return aprovado;
   }
 //---------------------------------------buscar todos
+
+  public async buscarPorNome(nome: string): Promise<Aprovado[]>{
+      const user = await this
+      .createQueryBuilder("apr")
+      .where('apr.nome = LOWER(:nome)',{ nome })
+      .getMany()
+
+      return user;
+  }
+
+
+  public async buscarPorPosicoes(
+    posicao: number[],
+  ): Promise<Aprovado[]>{
+    //  pessoas atualizadas ha menos de um dia nao serao atualizadas novamente
+
+    return await this
+      .findBy({ 
+        situacao: In([
+          valoresPadrao.Situacao.Empossado
+        ]),
+      });
+  }
+
 
   public async buscarEmMudanca(
     diasAntes: number = 1
@@ -73,30 +97,18 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
           valoresPadrao.Situacao.ConvocacaoExpedida,
           valoresPadrao.Situacao.EmQualificacao
         ]),
-        updatedAt: LessThan(date) 
+        atualizadoEm: LessThan(date) 
       });
   }
 
   public async buscarTodos(
-    diasAntes: number = 1
+    //diasAntes: number = 0
   ):Promise<Aprovado[]>{
-   
-    const date = new Date();
-    date.setTime(date.getTime() - diasAntes * 86_400_000)
-
-    return this.findBy({
-      /*
-      situacao: Not(
-        In([
-          valoresPadrao.Situacao.Empossado,
-          valoresPadrao.Situacao.Desistente,
-          valoresPadrao.Situacao.Inapto ,
-          valoresPadrao.Situacao.CanceladoPorPrazo,
-        ])
-      ),
-      */
-      updatedAt: LessThan(date)
-    });
+    return await this
+      .createQueryBuilder('apr')
+      .select()
+      .orderBy('apr.posicao')
+      .getMany()
   }
 
 //---------------------------------------busca por situacao
@@ -105,10 +117,10 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
     situacao: string 
   ): Promise<Aprovado[]> {
     
-    return await this.findBy({ situacao: Not(situacao)})
+    return await this.findBy({ situacao: situacao })
   }
 
-  public async buscarPorSitucoes(
+  public async buscarPorSituacoes(
     situacoes: string[],
   ): Promise<Aprovado[]>{
 
@@ -136,12 +148,10 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
   ): Promise<Aprovado[]> {
     
     const turmaSelecionada = await TurmaRepo.buscarTurma(turma);
-
+    //  TODO::retornar apenas a turma de maior numero
     if( !turmaSelecionada ){
       return [];
     }
-    
-
     return await this.find({ where: { turma: turmaSelecionada.numero }});
   }
 
