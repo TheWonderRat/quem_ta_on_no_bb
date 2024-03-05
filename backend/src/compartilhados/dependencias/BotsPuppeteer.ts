@@ -29,7 +29,7 @@ class BotsPuppeteer{
   //  TODO:: criar propriedade com uma instancia do puppeteer
   protected async gerarBrowser(): Promise<Browser>{
     const browser = await this.botManager.launch({ 
-      headless: "new",
+      headless: false,
       //  entender origem desse bug depois
        args: [
         '--no-sandbox',
@@ -130,6 +130,7 @@ class BotsPuppeteer{
 
     //  clica em cada um dos seletores com nomes repetidos
     //  checa se e a pessoa certa pelo numero da inscricao
+    console.log(tagIds)
     for ( let id of tagIds ){
       id = `[id='${id}']`
       //  tenta encontrar o usuario checando o nome da inscricao e o nome
@@ -145,17 +146,24 @@ class BotsPuppeteer{
         const inscricaoPagina = await page.$eval(seletorInscricao, el => el.innerHTML.split(' ')[1]);
         const inscricaoAprovado = aprovado.inscricao.split('-')[0].replaceAll(' ','');
 
+
         if( inscricaoAprovado === inscricaoPagina ) {
           await this.atualizarPorNome(page, seletorSituacao,aprovado,timeoutAtualizar)
           break;
+        } else {
+          //  se os nomes estao repetidos o bot volta para a pagina anterior
+          //  corrigindo os nomes
+          await page.goBack() 
         }
       //  e possivel que exista mais de um aprovado com o mesmo nome
         //  como e um erro possivel e o bot tem erros (exceto os de conexao) nesse ponto
         //  nao vou inserir esses logs na base de dados
       } catch(e){
-
+        console.log(e)
       }
     }
+
+    console.log('after')
   }
 
   //  talvez seja uma boa ideia receber o user agent do cliente que resolveu a requisicao
@@ -230,8 +238,6 @@ class BotsPuppeteer{
             valoresPadrao.ErroDeAtualizacao.Puppeteer,
             aprovados[i].posicao
           )
-          console.log(`erro!: ${e} i: ${i}`)
-          console.log(aprovados[i]);
           //  TODO: armazenar logs de erros
         }
       }
