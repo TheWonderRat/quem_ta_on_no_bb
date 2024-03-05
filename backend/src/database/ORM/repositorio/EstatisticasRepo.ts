@@ -29,7 +29,7 @@ class EstatisticasRepo {
     ]);
 
     // TODO:: refazer a query do servico de ranking para aceitar parametros em array
-    const ampla = aprovados.filter((ap) => ( !ap.pcd && !ap.ppp ) || ( ap.ppp && ap.posicao <= 1500)).length;
+    const ampla = aprovados.filter((ap) => ( !ap.pcd && !ap.ppp ) || ( ap.ppp && ap.posicao <= 1500 && !ap.pcd) ).length;
 
     const ppp = aprovados.filter((ap) => ap.ppp && ap.posicao > 1500 && !ap.pcd ).length;
 

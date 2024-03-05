@@ -70,15 +70,13 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
 
   public async buscarPorPosicoes(
-    posicao: number[],
+    posicoes: number[],
   ): Promise<Aprovado[]>{
     //  pessoas atualizadas ha menos de um dia nao serao atualizadas novamente
 
     return await this
       .findBy({ 
-        situacao: In([
-          valoresPadrao.Situacao.Empossado
-        ]),
+        posicao: In(posicoes),
       });
   }
 

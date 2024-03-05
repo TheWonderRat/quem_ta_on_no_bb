@@ -23,7 +23,6 @@ export class ServicoAtualizarPorPosicaoAmpla extends AbstractService
     //  TODO:: selecionar apenas os que foram atualizados a mais de um dia
     const aprovadosP = await AprovadoRepo.buscarPorPosicoes( aprovados );
 
-
     // passa para o bot
     //  TODO:: buscar melhores formas de tratamento de erros
     GerenciadorDeBots.atualizarListas( captcha, aprovadosP, userAgent)
