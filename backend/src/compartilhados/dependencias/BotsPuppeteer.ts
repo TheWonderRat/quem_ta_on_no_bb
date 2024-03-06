@@ -29,7 +29,7 @@ class BotsPuppeteer{
   //  TODO:: criar propriedade com uma instancia do puppeteer
   protected async gerarBrowser(): Promise<Browser>{
     const browser = await this.botManager.launch({ 
-      headless: false,
+      headless: "new",
       //  entender origem desse bug depois
        args: [
         '--no-sandbox',
