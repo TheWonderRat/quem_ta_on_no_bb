@@ -2,7 +2,8 @@ import { valoresPadrao } from "../../SSOT/base_de_dados/exporter";
 import {  Aprovado } from "../../database/ORM/modelo/exporter";
 import {  
   AprovadoRepo,
-  LotadoEmRepo 
+  LotadoEmRepo,
+  ErroDeAtualizacaoRepo
 } from "../../database/ORM/repositorio/exporter";
 import GerenciadorDeBots from "./GerenciadorDeBots";
 import { BotsPuppeteer } from "../dependencias/exporter";
@@ -47,11 +48,16 @@ class GerenciadorDeAtualizacoes{
         situacao = st.value;
       }
     }
-    console.log(aprovado)
 
     if( !situacao ){
       //  TODO:: salvar logs de erros na base de dados
       console.log(`erro na situacao do aprovado ${aprovado.nome}\n dado: ${dado}\n`)
+      await ErroDeAtualizacaoRepo.cadastrarErroDeAtualizacao(
+        'erro apos tentar buscar aprovados com nomes iguais num mesmo concurso',
+        valoresPadrao.ErroDeAtualizacao.Puppeteer,
+        aprovado.posicao
+      );
+
     } 
     if ( situacao === valoresPadrao.Situacao.Empossado ) {
       for ( const lt of GerenciadorDeAtualizacoes.lotacoesPossiveis ){

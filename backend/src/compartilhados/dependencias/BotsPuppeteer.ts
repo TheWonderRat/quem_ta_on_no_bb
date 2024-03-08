@@ -1,5 +1,5 @@
 import puppeteer,{ PuppeteerNode, Browser, Page } from 'puppeteer';
-import ErroDeAtualizacaoRepo from '../../database/ORM/repositorio/ErroDeAtualizacaoRepo';
+import { ErroDeAtualizacaoRepo } from '../../database/ORM/repositorio/exporter';
 import { valoresPadrao } from '../../SSOT/base_de_dados/exporter';
 import Aprovado from '../../database/ORM/modelo/Aprovado';
 import { GerenciadorDeAtualizacoes } from '../utilitarios/exporter';
@@ -130,7 +130,6 @@ class BotsPuppeteer{
 
     //  clica em cada um dos seletores com nomes repetidos
     //  checa se e a pessoa certa pelo numero da inscricao
-    console.log(tagIds)
     for ( let id of tagIds ){
       id = `[id='${id}']`
       //  tenta encontrar o usuario checando o nome da inscricao e o nome
@@ -159,11 +158,15 @@ class BotsPuppeteer{
         //  como e um erro possivel e o bot tem erros (exceto os de conexao) nesse ponto
         //  nao vou inserir esses logs na base de dados
       } catch(e){
-        console.log(e)
+        //
+        await ErroDeAtualizacaoRepo.cadastrarErroDeAtualizacao(
+          'erro apos tentar buscar aprovados com nomes iguais num mesmo concurso',
+          valoresPadrao.ErroDeAtualizacao.Puppeteer,
+          aprovado.posicao
+        );
       }
     }
 
-    console.log('after')
   }
 
   //  talvez seja uma boa ideia receber o user agent do cliente que resolveu a requisicao
@@ -237,7 +240,7 @@ class BotsPuppeteer{
             'erro apos tentar buscar aprovados com nomes iguais num mesmo concurso',
             valoresPadrao.ErroDeAtualizacao.Puppeteer,
             aprovados[i].posicao
-          )
+          );
           //  TODO: armazenar logs de erros
         }
       }
