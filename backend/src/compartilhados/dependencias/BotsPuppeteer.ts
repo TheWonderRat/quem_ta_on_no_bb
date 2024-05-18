@@ -233,6 +233,7 @@ class BotsPuppeteer{
         */
         //  nao tenho certeza se vale a pena armazenas esse logs...
         //  e comum encontrar mais de um aprovado com o mesmo nome
+        console.log(e);
         try {
           await this.buscarEntreNomesRepetidos(page,nomesRepetidos,tdInscricao,situation,aprovados[i],4_000);
         } catch(e) {

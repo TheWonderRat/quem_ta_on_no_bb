@@ -34,6 +34,7 @@ class GerenciadorDeAtualizacoes{
   protected resolucaoPendente: Promise<boolean>[] ;
 
   public async atualizarAprovado(dado: string,aprovado: Aprovado){
+    console.log(aprovado)
     //  normalizando a situacao
     //  TODO:: permitir qu exista apenas uma instancia do puppeteer atuando por vez
     const dadoLower = dado.toLowerCase();

@@ -16,3 +16,5 @@ export { default as EstatisticasSituacao} from './EstatisticasSituacao'
 export { default as Sugestao } from './Sugestao';
 export { default as Conversa } from './Conversa'
 export { default as ErroDeAtualizacao } from './ErroAtualizacao'
+export { default as Notificacao } from './Notificacao'
+export { default as TipoNotificacao } from './TipoNotificacao'

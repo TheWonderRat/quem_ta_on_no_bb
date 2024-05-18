@@ -5,7 +5,7 @@ import { GerenciadorDeBots } from '../utilitarios/exporter';
 import { bot } from '../../SSOT/exporter';
 
 
-export default function carregarRotinas(){
+function carregarRotinas(){
 
   cron.schedule('30 8 * * *',async () =>{
     const aprovados = await AprovadoRepo.buscarTodos();
@@ -24,3 +24,10 @@ export default function carregarRotinas(){
 
   console.log('rotinas carregadas!')
 };
+
+function enviarNotificacoes(){
+  //busca por todos os usuarios
+  AprovadoRepo.buscarTodos()
+}
+
+

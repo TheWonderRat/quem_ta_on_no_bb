@@ -10,7 +10,7 @@ export default class Contato{
   posicao: number;
 
   @Column({name: atributos.Contato.UUIDWhatsapp})
-  uuidWhatsapp: number;
+  uuidWhatsapp: string;
 
   @Column({name: atributos.Contato.Email})
   email: string

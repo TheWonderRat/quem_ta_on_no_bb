@@ -1,6 +1,7 @@
 import { SessaoDeMensagem } from "../../modulos/Mensagens/sessoes/SessaoDeMensagem";
 import PerguntaNome from "../../modulos/Mensagens/sessoes/login/1-PerguntaNome";
-import { Aprovado } from "src/database/ORM/modelo/exporter";
+import { Aprovado, ErroDeAtualizacao } from "../../database/ORM/modelo/exporter";
+import { ErroDeAtualizacaoRepo } from "../../database/ORM/repositorio/exporter"
 
 //  TODO:: organizar melhor
 export class ParametrosDeMensagem{
@@ -59,10 +60,16 @@ class UsuarioLogado{
 
   //  WARNING:: gera errors se o parametro errado for passado
   //  funciona apenas com numeros do whatsapp
-  public static gerarIndice(uuidWhats: string): number{
-    const rtn = Number(uuidWhats.split('@')[0]);
-
-    return rtn;
+  public static gerarIndice(uuidWhats: string): number {
+    //  inserir aqui quando surgirem caracteres especiais no numero do whats
+    let whatsNumber = ''
+    for( const l of uuidWhats){
+      if( isNaN(Number(l)) ) {
+        break;
+      }
+      whatsNumber = whatsNumber.concat(l)
+    }
+    return Number(whatsNumber);
   }
 
   protected setSessao( sessao: SessaoDeMensagem ){
@@ -113,17 +120,17 @@ class GerenciadorDeMensagens{
 
       const onFound = async ( lSup: number, lInf: number, ptr: number ): Promise<string[]> => {
         //  interage com o usuario, pois ele ja esta logado
-        const usuario =  this.usuariosLogados[ptr];
+        const usuario: UsuarioLogado =  this.usuariosLogados[ptr];
         //  talvez eu deva criar um tipo de interacao, ver depois
         const mensagens = await usuario.interagir(mensagem)
         return mensagens;
-      };
+      }
+      
       //  insere um novo usuario, pois o numero nao tem sessao aberta
       const onNotFound = async ( lSup: number, lInf: number, ponteiro: number ): Promise<string[]> => {
         if ( this.usuariosLogados.length === 0 ){
           const usuario = new UsuarioLogado( clientUUID);
           this.usuariosLogados.push( usuario );
-
           return usuario.getMensagemAtual();
         } else {
           const direita = this.usuariosLogados[ lSup ].indice < indice;
@@ -151,6 +158,7 @@ class GerenciadorDeMensagens{
     aoEncontrar: ( lSp: number, lInf: number, ponteiro: number ) => Promise<string[]>,
     aoNaoEncontrar: ( lSp: number, lInf: number, ponteiro: number ) => Promise<string[]>,
   ): Promise<string[]>{
+
 
     if( this.usuariosLogados.length < 1){
       return aoNaoEncontrar(0, 0, 0);

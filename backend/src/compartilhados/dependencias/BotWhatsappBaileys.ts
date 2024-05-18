@@ -60,14 +60,16 @@ async function connectToWhatsApp (): Promise<BotWhatsapp>{
 
   const bot = new BotWhatsapp( enviar );
 
+
   sock.ev.on('messages.upsert', async ( m ) => {
+    //  console.log(`\nraw message from the socket: ${ JSON.stringify(m) }\n`)
     const uuid = m.messages[0].key.remoteJid;
     const textoRecebido = m.messages[0].message?.conversation ;
     const selfSent = m.messages[0].key.fromMe;
 
     if( uuid && textoRecebido && !selfSent ){
       const textList = await bot.receberMensagem( uuid, textoRecebido );
-      for(let i = 0; i < textList.length; i++){
+      for( let i = 0; i < textList.length; i++ ){
         await sock.sendMessage(uuid, { text: textList[i] })
       }
     }
@@ -79,10 +81,14 @@ async function connectToWhatsApp (): Promise<BotWhatsapp>{
 async function whatsappBotFactory(): Promise<BotWhatsapp>{
   return await connectToWhatsApp();
 }
+/*
 const WhatsappBot = whatsappBotFactory()
   .then((ok) => ok )
   .catch(( err ) => undefined );
+*/
+//  esse aqui e usado para evitar a conexao com o whatsapp
+//  e apenas retornar a mensagem para o cliente http
+const WhatsappBot: BotWhatsapp= new BotWhatsapp(async (miau: string) => {})
 
-//  const WhatsappBot = new BotWhatsapp(async (str1: string, str2: string) => { })
 
 export default WhatsappBot;

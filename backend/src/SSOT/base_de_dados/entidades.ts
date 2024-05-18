@@ -13,3 +13,4 @@ export const Sugestao: string = 'Sugestao';
 export const Conversa: string = 'Conversa';
 export const ErroDeAtualizacao: string = 'ErroDeAtualizacao';
 export const Notificacao: string = 'Notificacao'
+export const TipoNotificacao: string = 'TipoNotificacao'

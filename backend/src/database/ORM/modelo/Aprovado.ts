@@ -24,7 +24,7 @@ import {
   Sugestao,
   Conversa,
   ErroDeAtualizacao,
-  //Notificacoes,
+  Notificacao
 } from '../modelo/exporter';
 
 //TODO:: inserir no arquivo de constantes
@@ -52,16 +52,15 @@ export default class Aprovado{
   @Column({ name: atributos.Aprovado.DataPosse, nullable: true })
   dataPosse: Date;
 
+  @Column({ name: atributos.Aprovado.Ativo, default: false })
+  ativado: boolean;
+
   @Column({ name: atributos.Aprovado.PPP })
   ppp: boolean;
 
-  @Column({ name: atributos.Aprovado.PCD })
+  @Column({ name: atributos.Aprovado.PCD ,default: false })
   pcd: boolean;
   
-  //  serve para receber notificacoes
-  @Column()
-  ativado: boolean;
-
   @CreateDateColumn()
   criadoEm: Date;
 
@@ -71,8 +70,10 @@ export default class Aprovado{
   @DeleteDateColumn()
   excluidoEm: Date;
 
-
   /*-------------------------------joins------------------------------*/
+  //  @ManyToMany(() => Notificacao,(notificacao) => notificacao.tipo)
+  //  notificacoes: Notificacao[]
+
   //as joins devem ter exatamente o mesmo nome das contantes de SSOT/base_de_dados/relacionamentos
   @OneToOne(() => LotadoEm, (lotadoEm) => lotadoEm.aprovadoVinculado)
   //TODO:: inserir os nomes dos atributos no SSOT
@@ -104,10 +105,10 @@ export default class Aprovado{
   @OneToMany(() => ErroDeAtualizacao, (erro) => erro.aprovadoVinculado)
   errosDeAtualizacao: Conversa[];
 
-  /*
-  @OneToMany(() => Notificacao, (notificacao) => notificacao.aprovadoVinculado)
+  @OneToMany(() => Notificacao,(notificacao)=> notificacao.aprovadoVinculado)
+  //TODO:: inserir os nomes dos atributos no SSOT
   notificacoes: Notificacao[];
-  */
+
 
   //-------------------------------------getters/setters
   public setDataPosse( data: Date ){

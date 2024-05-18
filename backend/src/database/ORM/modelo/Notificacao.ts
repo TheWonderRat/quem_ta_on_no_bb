@@ -1,29 +1,27 @@
-/*
 import { 
   Entity, 
   Column, 
   PrimaryColumn, 
-  OneToOne, 
+  ManyToOne, 
   JoinColumn, 
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn 
 } from 'typeorm'
 import Aprovado from './Aprovado';
-import { atributos, entidades } from '../../../SSOT/base_de_dados/exporter';
+import { atributos, entidades, valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
+import TipoNotificacao from './TipoNotificacao';
 
 //TODO:: inserir no arquivo de constantes
-@Entity(entidades.Contato)
+@Entity(entidades.Notificacao)
 export default class Notificacao{
 
-  @PrimaryColumn({name: atributos.Contato.PosicaoAmpla})
-  posicao: number;
+  @PrimaryColumn({ name: atributos.Notificacao.Tipo })
+  //  criar um enum depois?
+  tipo: number;
 
-  @Column({name: atributos.Notificacao.Tipo})
-  tipo: string;
-
-  @Column({name: atributos.Notificacao.Ativado})
-  ativada: boolean
+  @PrimaryColumn({ name: atributos.Notificacao.PosicaoDoAprovado})
+  posicaoDoAprovado: number
 
   @CreateDateColumn()
   criadoEm: Date
@@ -35,40 +33,23 @@ export default class Notificacao{
   excluidoEm: Date
 
   //--------------------------------join---------------------------------------
+  @ManyToOne(() => TipoNotificacao,(tipo) => tipo.tipo)
+  @JoinColumn({
+    name: atributos.Notificacao.Tipo, 
+    referencedColumnName: atributos.TipoNotificacao.Tipo
+  })
+  tipoNotificacao: TipoNotificacao 
 
-  @OneToOne(() => Aprovado,(usuario) => usuario.notificacoes)
-  @JoinColumn({name: atributos.Contato.PosicaoAmpla, referencedColumnName: atributos.Aprovado.PosicaoAmpla})
-  aprovadoVinculado: Aprovado 
-  //---------------------------------setters
-  public ativar(){
+  @ManyToOne(() => Aprovado,(aprovado) => aprovado.notificacoes)
+  @JoinColumn({
+    name: atributos.Notificacao.PosicaoDoAprovado, 
+    referencedColumnName: atributos.Aprovado.PosicaoAmpla
+  })
+  aprovadoVinculado: Aprovado
 
-  }
-
-  public desativar(){
-
-  }
-
-  //--------------------------------metodos
-
-  public async notificar(){
-    //usa o numero do aprovado vinculado para notificar
-    switch(this.tipo){
-      case 'ao_atualizar':
-        break;
-      case 'ao_atualizar_todos':
-        break;
-      case 'ao_mudar_situacao':
-        break;
-    }
-  }
-
-  protected async aoAtualizar(){
-  }
-  
-  protected async aoAtualizarTodos(){
-  }
-
-  protected async aoMudarSituacao(){
-  }
 }
-*/
+
+
+
+
+

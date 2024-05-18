@@ -88,11 +88,17 @@ export enum Aprovado{
   Ativo = 'ativo',
   CriadoEm = 'criado_em',
   AtualizadoEm = 'atualizado_em'
+
 };
 
 
 export enum Notificacao{
   PosicaoDoAprovado = 'posicao',
-  Tipo = 'tipo',
+  Tipo = 'tipo_de_notificacao',
   Ativado = 'ativado',
+}
+
+export enum TipoNotificacao{
+  Tipo = 'tipo',
+  Descricao = 'descricao'
 }

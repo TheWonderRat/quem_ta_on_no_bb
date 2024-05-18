@@ -8,7 +8,7 @@ import dataSource from '../../config';
 import { Aprovado } from '../modelo/exporter';
 import TurmaRepo from './TurmaRepo';
 
-import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
+import { atributos, entidades, valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
 
  class AprovadoRepo extends Repository<Aprovado> {
   //-----------------------------------buscar por Lotacao
@@ -105,7 +105,7 @@ import { valoresPadrao } from '../../../SSOT/base_de_dados/exporter';
     return await this
       .createQueryBuilder('apr')
       .select()
-      .orderBy('apr.posicao')
+      .orderBy(`apr.${atributos.Aprovado.PosicaoAmpla}`)
       .getMany()
   }
 

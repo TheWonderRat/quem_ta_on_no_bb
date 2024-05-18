@@ -42,6 +42,13 @@ export enum TipoRanking {
   PCDCR = 'lista_pcd_cr'
 }
 
+export enum Notificacao{
+  //  notificacoes sobre as situacoes dos aprovados
+  Situacao = 'situacao',
+  //  informa as posses de cada diretoria
+  Diretoria = 'diretoria'
+}
+
 export enum Estatisticas{
   PPP = 'ppp',
   PCD = 'pcd',

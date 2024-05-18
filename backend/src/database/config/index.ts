@@ -13,7 +13,9 @@ import {
   Aprovado,
   Conversa,
   Sugestao,
-  ErroDeAtualizacao
+  ErroDeAtualizacao,
+  Notificacao,
+  TipoNotificacao
 } from '../ORM/modelo/exporter';
 
 import { DataSource } from 'typeorm';
@@ -47,7 +49,9 @@ const dataSource = new DataSource({
     Aprovado,
     Conversa,
     Sugestao,
-    ErroDeAtualizacao
+    ErroDeAtualizacao,
+    Notificacao,
+    TipoNotificacao
   ],
   migrations: [
     '../ORM/modelo/*.ts'
